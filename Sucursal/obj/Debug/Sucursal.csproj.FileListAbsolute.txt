@@ -1,0 +1,91 @@
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\Sucursal.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\Sucursal.pdb
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.baml
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.g.cs
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.cache
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.lref
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.g.resources
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.Properties.Resources.resources
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.CopyComplete
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.dll
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.pdb
+C:\Users\pc\Desktop\SiasoftAppGS\Library\Sucursal.dll
+C:\Users\pc\Desktop\SiasoftAppGS\Library\Sucursal.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\Sucursal\obj\Debug\Sucursal.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\Sucursal.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\Sucursal.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\Sucursal\obj\Debug\Sucursal.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\Sucursal.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\Sucursal.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\Sucursal.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\Sucursal.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Sucursal\obj\Debug\Sucursal.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\Sucursal.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\Sucursal.pdb
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.g.cs
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.baml
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.g.resources
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.dll
+D:\SiasoftApp_SDA\Library\project\Sucursal\obj\Debug\Sucursal.pdb
+D:\SiasoftApp_SDA\Library\Sucursal.dll
+D:\SiasoftApp_SDA\Library\Sucursal.pdb

@@ -1,0 +1,14 @@
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Reportes\obj\Debug\ReportesCompraPv.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\ReportesCompraPv.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\ReportesCompraPv.pdb

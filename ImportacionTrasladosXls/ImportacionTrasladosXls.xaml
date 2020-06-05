@@ -1,0 +1,114 @@
+﻿<Window x:Class="SiasoftAppExt.ImportacionTrasladosXls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"             
+             Width="1000" Height="500">
+
+    <Window.Resources>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+        <Style TargetType="Border" x:Key="borde">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="BorderThickness" Value="1,1,1,1"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="Black">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 0">
+                <Button Name="BtnImportar" ToolTip="Importar archivo xls segun el formato de plantilla xls" Width="130" Background="#2196F3" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Importa XLS" Cursor="Hand" Click="BtnImportar_Click"/>
+                <Button Name="BtnGenerar" ToolTip="Plantilla con la cual funciona el proceso de importacion de esta pantalla" Width="130" Background="#2196F3" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Plantilla XLS" Cursor="Hand" Click="BtnGenerar_Click"/>
+                <Button Name="BtnCrear" ToolTip="Generar documentos de retiros de activos" Width="130" Background="#2196F3" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Documentos" Cursor="Hand" Click="BtnGenerarDoc_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="1" Style="{StaticResource borde}">
+            <Grid>
+                <syncfusion:SfBusyIndicator Grid.Row="1" Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Importando Datos" Height="100" IsBusy="False" Foreground="#2196F3"/>
+                <syncfusion:SfDataGrid Name="dataGridRefe" Grid.Row="0" Margin="2" EnableDataVirtualization = "True" AllowResizingColumns="True" AutoGenerateColumns="True" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" GridValidationMode="InEdit" SelectionChanged="DataGridRefe_SelectionChanged" ItemsSource="{Binding Path=DocAfijo, Mode=TwoWay}">
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn HeaderText="COD_TRN" MappingName="COD_TRN" Width="70"/>
+                        <syncfusion:GridTextColumn HeaderText="NUM_TRN" MappingName="NUM_TRN" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="FEC_TRN" MappingName="FEC_TRN" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="COD_ACT" MappingName="COD_ACT" Width="120"/>
+                        <syncfusion:GridTextColumn HeaderText="NOM_ACT" MappingName="NOM_ACT" Width="180"/>
+                        <syncfusion:GridTextColumn HeaderText="DOC_INT" MappingName="DOC_INT" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="NUEVO GRU" MappingName="COD_GRU" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="NOM_GRU" MappingName="NOM_GRU" Width="80" IsHidden="True"/>
+                        <syncfusion:GridTextColumn HeaderText="GRUPO ANT" MappingName="GRU_ANT" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="NOM_ANT" MappingName="NOM_ANT" Width="80" IsHidden="True"/>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Background="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Grid Background="Black" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Grid.Row="0" Text="Grupo Actual: " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
+                <TextBlock x:Name="Tx_gruact" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
+
+                <TextBlock Grid.Row="2" Text="Grupo Anterior: " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
+                <TextBlock x:Name="Tx_grupoAnt" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
+
+            </Grid>
+
+            <Grid Grid.Row="1" Background="#373737">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Total Registros: " Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                    <TextBlock Name="Tx_total" Text="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="Filas con errores: " Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                    <TextBlock Name="Tx_errores" Text="0" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <Button Name="BtnErrores" Content="lista errores" VerticalAlignment="Center" Margin="10,0,0,0" Padding="5,2,5,2" Foreground="White" Background="#2196F3" BorderBrush="{x:Null}" Click="BtnErrores_Click"/>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+
+
+    </Grid>
+
+
+</Window>

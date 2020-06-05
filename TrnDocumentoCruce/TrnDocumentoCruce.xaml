@@ -1,0 +1,95 @@
+﻿<Window x:Class="SiasoftAppExt.TrnDocumentoCruce"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:SiasoftAppExt"
+        mc:Ignorable="d"
+        Title="SiasoftApp  - Cruce de Documento " WindowStyle="SingleBorderWindow" Height="580" Width="1000" Closing="Window_Closing" PreviewKeyDown="Window_PreviewKeyDown" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="110"/>
+        </Grid.RowDefinitions>
+        <Grid Background="WhiteSmoke"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Tercero:" Margin="0,0,2,0" Grid.Row="0" Grid.Column="0" Foreground="Green" FontWeight="Bold" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtNit" Margin="2,0,0,0" Grid.Row="0" Grid.Column="1" FontSize="15" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtNomTer" Margin="2,0,0,0" Grid.Row="0" Grid.Column="2" FontSize="15" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+            <TextBlock Text="Fecha Corte:" Margin="0,0,2,0" Foreground="Green" FontWeight="Bold" Grid.Row="1" Grid.Column="0" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtFechaCorte" Margin="2,0,0,0" Grid.Row="1" Grid.Column="1" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Text="Cuenta:" Foreground="Green" FontWeight="Bold" Margin="0,0,2,0" Grid.Row="0" Grid.Column="3" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtCuenta" Margin="2,0,0,0" Grid.Row="0" Grid.Column="4" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Text="F8-Cruzar pago , F5=Salir" Margin="2,0,0,0" Grid.Row="10" Grid.Column="4" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Grid.Row="1" Grid.Column="5" Content="Seleccionar"  Margin="2,2,2,2" Background="DodgerBlue" Foreground="White" IsCancel="True" />
+            <Button Grid.Row="1" Grid.Column="6" Content="Salir"  IsCancel="True" Click="Button_Click" Margin="2,2,2,2" Background="DodgerBlue" Foreground="White"/>
+        </Grid>
+        <syncfusion:SfDataGrid Name="dataGrid"  Grid.Row="1"    NavigationMode="Cell"  EnableDataVirtualization = "True" AutoGenerateColumns="False"  FontSize="12" AllowFiltering="False" SelectionMode="Single"  
+                              HeaderStyle="{StaticResource headerStyle}"          PreviewKeyDown="dataGrid_PreviewKeyDown_1" CurrentCellEndEdit="dataGrid_CurrentCellEndEdit">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="40" />
+                <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="90" />
+                <syncfusion:GridDateTimeColumn HeaderText="Fecha"   MappingName="fec_trn" Width="90" />
+                <syncfusion:GridDateTimeColumn HeaderText="Fecha Vence"   MappingName="fec_ven" Width="90" />
+                <syncfusion:GridTextColumn HeaderText="Dias"   MappingName="dias" Width="40" />
+
+                <syncfusion:GridTextColumn HeaderText="Factura"   MappingName="factura" Width="90" />
+                <syncfusion:GridTextColumn HeaderText="Detalle"   MappingName="des_mov" Width="200" />
+                <syncfusion:GridNumericColumn HeaderText="Valor" MappingName="valor" Width="110" NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" ></syncfusion:GridNumericColumn>
+                <syncfusion:GridNumericColumn HeaderText="Saldo" MappingName="saldo" Width="110" NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3"/>
+                <syncfusion:GridNumericColumn HeaderText="Vlr Abono" AllowEditing="True" MappingName="abono"                                         
+                                        NumberDecimalSeparator="."
+                                        NumberGroupSeparator="," 
+                                        NumberGroupSizes="3" 
+                                        
+ Width="110"   />
+
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+        <Grid Grid.Row="2" Background="WhiteSmoke" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" >
+                <Border BorderBrush="DodgerBlue" Background="WhiteSmoke" BorderThickness="0.5"  Width="300" Margin="3,3,3,3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Total Saldo" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                        <TextBlock Text="0.00" x:Name="TotalRecaudo" Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38"/>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,133 @@
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csprojResolveAssemblyReference.cache
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.Cache
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CoreCompileInputs.cache
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\AnalisisDeCartera.dll
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\AnalisisDeCartera.pdb
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csprojResolveAssemblyReference.cache
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.Cache
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+C:\Debug02102017\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+C:\Debug02102017\Debug\Library\AnalisisDeCartera.dll
+C:\Debug02102017\Debug\Library\AnalisisDeCartera.pdb
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.g.cs
+C:\Fuentes\SiasoftAppFuentes\SiasoftAppBeta1-2.3.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.baml
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csprojResolveAssemblyReference.cache
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.baml
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.g.cs
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.Cache
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CoreCompileInputs.cache
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\AnalisisDeCartera.dll
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\AnalisisDeCartera.pdb
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csprojResolveAssemblyReference.cache
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.baml
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.g.cs
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.Cache
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CoreCompileInputs.cache
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\AnalisisDeCartera.dll
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.6.126022018\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\AnalisisDeCartera.pdb
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.baml
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.g.cs
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.cache
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CoreCompileInputs.cache
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CopyComplete
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\AnalisisDeCartera.dll
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\AnalisisDeCartera.pdb
+F:\Fuentes\SiasoftApp2.6.124022018\SiasoftApp2.7\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csprojResolveAssemblyReference.cache
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csprojResolveAssemblyReference.cache
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.baml
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.g.cs
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.Cache
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+C:\SiasoftApp\SiasoftApp\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+C:\SiasoftApp\SiasoftApp\Library\AnalisisDeCartera.dll
+C:\SiasoftApp\SiasoftApp\Library\AnalisisDeCartera.pdb
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.baml
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.g.cs
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.cache
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CopyComplete
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\AnalisisDeCartera.dll
+C:\Users\PC\Desktop\SiasoftLecoEscritorio\SiasoftLeco\Library\AnalisisDeCartera.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\AnalisisDeCartera.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\AnalisisDeCartera.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCarteraDetalle.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\AnalisisDeCartera.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\AnalisisDeCartera.pdb

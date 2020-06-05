@@ -1,0 +1,26 @@
+﻿<Window x:Class="AnalisisDeCartera.BrowMini"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnalisisDeCartera"
+        xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="BrowMini" Height="450" Width="800" Loaded="Window_Loaded">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <SiaSf:SfDataGrid  x:Name="dataGridCxC"  AllowResizingColumns="True" EnableDataVirtualization = "True"  FrozenColumnCount="2" AutoGenerateColumns="True" ShowGroupDropArea="True" ItemsSource="{Binding DtTraslados}" AllowFiltering="True"/>
+        
+        <Grid Background="#373737" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Total:" Foreground="White" VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="Bold"/>
+                <TextBlock Name="Tx_Total" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+    
+</Window>

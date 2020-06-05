@@ -1,0 +1,4 @@
+D:\SiasoftApp_SDA\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion_MarkupCompile.lref

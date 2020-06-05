@@ -1,0 +1,15 @@
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif.csprojResolveAssemblyReference.cache
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Menu.g.cs
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif_MarkupCompile.cache
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif_MarkupCompile.lref
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Menu.baml
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif.g.resources
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif.Properties.Resources.resources
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif.csproj.GenerateResource.Cache
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif.csproj.CoreCompileInputs.cache
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif.dll
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Niif.pdb
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\Niif.dll
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\Niif.pdb
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Trn.g.cs
+F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\Trn.baml

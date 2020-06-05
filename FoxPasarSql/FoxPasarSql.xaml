@@ -1,0 +1,254 @@
+﻿<Window x:Class="SiasoftAppExt.FoxPasarSql"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             mc:Ignorable="d" 
+             Width="1000" Height="500">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Snackbar.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="CONSULTA">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Tablas de fox pro" VerticalAlignment="Center" Margin="10 0 10 0" FontWeight="Bold" FontSize="16"/>
+
+                        <TextBlock Grid.Column="1" Text="Modulo : " VerticalAlignment="Center" Margin="10 0 5 0" FontWeight="Bold"/>
+                        <ComboBox Name="CbModulo" Grid.Column="2" DisplayMemberPath="idModu" SelectedValuePath="rutaFox" Margin="5" SelectionChanged="CbModulo_SelectionChanged"/>
+
+                        <TextBlock Grid.Column="3" Text="Tabla : " VerticalAlignment="Center" Margin="10 0 5 0" FontWeight="Bold"/>
+                        <ComboBox Grid.Column="4" Name="CbTableFox" DisplayMemberPath="TABLE_NAME" SelectedValuePath="TABLE_NAME"/>
+
+                        <Button Content="Consultar" Click="Button_Click" Grid.Column="5" Margin="10 0 10 0"/>
+
+                        <Button Name="Config" Content="{materialDesign:PackIcon ContentSave}" Grid.Column="6" Width="50" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="DodgerBlue" BorderBrush="Gray" Foreground="White" Click="Config_Click" />
+
+                        <Button Name="BtnExcel" Content="{materialDesign:PackIcon FileExcelBox}" Grid.Column="6" Width="50" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="Green" BorderBrush="Gray" Foreground="White" Click="BtnExcel_Click" Margin="0 0 80 0"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <SiaSf:SfDataGrid AllowFiltering="True" Grid.Row="1" AutoGenerateColumns="True" Name="GridCon"/>
+                        <!--<DataGrid Name="GridCon" Margin="10" AutoGenerateColumns="True" IsReadOnly="True"/>-->
+                    </Grid>
+
+                    <Grid Grid.Row="2" Background="#373737">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Rows" Foreground="White" VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                        <TextBlock Grid.Column="1" Name="TXrows" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0 0 0"/>
+                    </Grid>
+
+
+                    <SiaSf:SfBusyIndicator Name="sfBusyIndicatorCons" Grid.Row="1" Margin="5" VerticalAlignment="Center" FontSize="12" AnimationSpeed="100" AnimationType="HorizontalPulsingBox" Header="Cargando ..." Height="200" IsBusy="False"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Contabilidad">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid Height="400">
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock" x:Key="title">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalAlignment" Value="Right"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Name="Panel" Grid.ColumnSpan="12" Grid.RowSpan="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <ToggleButton  Grid.Row="0" Grid.Column="1" Tag="mae_cta" Name="comae_cta" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="1" Grid.Column="1" Tag="mae_ciu" Name="comae_ciu" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="2" Grid.Column="1" Tag="mae_cco" Name="comae_cco" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="3" Grid.Column="1" Tag="mae_ter" Name="comae_ter" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="4" Grid.Column="1" Tag="bancos" Name="cobancos" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="5" Grid.Column="1" Tag="cab_doc" Name="cocab_doc" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="6" Grid.Column="1" Tag="cue_doc" Name="cocue_doc" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="7" Grid.Column="1" Tag="co_confi" Name="co_confi" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+
+                            <ToggleButton  Grid.Row="0" Grid.Column="3" Tag="co_var" Name="co_var" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="1" Grid.Column="3" Tag="cocabrcpv" Name="cocabrcpv" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="2" Grid.Column="3" Tag="CoCie_caja" Name="CoCie_caja" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="3" Grid.Column="3" Tag="Coco_concil" Name="Coco_concil" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="4" Grid.Column="3" Tag="Cocon_ica" Name="Cocon_ica" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="5" Grid.Column="3" Tag="Cocon_iva" Name="Cocon_iva" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="6" Grid.Column="3" Tag="Cocon_rete" Name="Cocon_rete" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="7" Grid.Column="3" Tag="Cocon_rica" Name="Cocon_rica" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+
+                            <ToggleButton  Grid.Row="0" Grid.Column="5" Tag="cocuercpv" Name="cocuercpv" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="1" Grid.Column="5" Tag="Cocxc_call" Name="Cocxc_call" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="2" Grid.Column="5" Tag="Cocxp_call" Name="Cocxp_call" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="3" Grid.Column="5" Tag="Codes_cli" Name="Codes_cli" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="4" Grid.Column="5" Tag="Cofor_egr" Name="Cofor_egr" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="5" Grid.Column="5" Tag="cofpagrpv" Name="cofpagrpv" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="6" Grid.Column="5" Tag="Comae_aut" Name="Comae_aut" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="7" Grid.Column="5" Tag="Comae_con" Name="Comae_con" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+
+                            <ToggleButton  Grid.Row="0" Grid.Column="7" Tag="Comae_concc" Name="Comae_concc" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="1" Grid.Column="7" Tag="Comae_concp" Name="Comae_concp" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="2" Grid.Column="7" Tag="Comae_dcco" Name="Comae_dcco" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="3" Grid.Column="7" Tag="comae_dep" Name="comae_dep" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="4" Grid.Column="7" Tag="Comae_dif" Name="Comae_dif" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="5" Grid.Column="7" Tag="Comae_imp" Name="Comae_imp" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="6" Grid.Column="7" Tag="Comae_inf" Name="Comae_inf" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="7" Grid.Column="7" Tag="Comae_pais" Name="Comae_pais" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+
+
+                            <ToggleButton  Grid.Row="0" Grid.Column="9" Tag="Comae_pres" Name="Comae_pres" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="1" Grid.Column="9" Tag="Comae_pro" Name="Comae_pro" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="2" Grid.Column="9" Tag="Comae_region" Name="Comae_region" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="3" Grid.Column="9" Tag="Comae_suc" Name="Comae_suc" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="4" Grid.Column="9" Tag="Comae_tcm" Name="Comae_tcm" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="5" Grid.Column="9" Tag="Comae_trn" Name="Comae_trn" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="6" Grid.Column="9" Tag="Copresup" Name="Copresup" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="7" Grid.Column="9" Tag="Copventas" Name="Copventas" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+
+                            <ToggleButton  Grid.Row="0" Grid.Column="11" Tag="Corel_dcco" Name="Corel_dcco" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="1" Grid.Column="11" Tag="Corel_dif" Name="Corel_dif" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="2" Grid.Column="11" Tag="CoSaldos_cta" Name="CoSaldos_cta" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="3" Grid.Column="11" Tag="cotalon_rc" Name="cotalon_rc" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="4" Grid.Column="11" Tag="Cotarif_cree" Name="Cotarif_cree" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="5" Grid.Column="11" Tag="CoTrnCode" Name="CoTrnCode" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+                            <ToggleButton  Grid.Row="6" Grid.Column="11" Tag="Covar_bal" Name="Covar_bal" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"/>
+
+
+
+                        </Grid>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Tag="mae_cta" Text="Comae_cta :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Tag="mae_ciu" Text="Comae_ciu :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Tag="mae_cco" Text="Comae_cco :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Tag="mae_ter" Text="Comae_ter :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Tag="bancos" Text="Cobancos :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="5" Grid.Column="0" Tag="cab_doc" Text="Cocab_doc :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="6" Grid.Column="0" Tag="cue_doc" Text="Cocue_doc :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="7" Grid.Column="0" Tag="co_confi" Text="Co_confi :" Style="{StaticResource title}"/>
+
+
+                        <TextBlock Grid.Row="0" Grid.Column="2"  Tag="co_var" Text="co_var :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2"  Tag="cocabrcpv" Text="cocabrcpv :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="2"  Tag="CoCie_caja" Text="CoCie_caja :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="3" Grid.Column="2"  Tag="Coco_concil" Text="Coco_concil :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="4" Grid.Column="2"  Tag="Cocon_ica" Text="Cocon_ica :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="5" Grid.Column="2"  Tag="Cocon_iva" Text="Cocon_iva :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="6" Grid.Column="2"  Tag="Cocon_rete" Text="Cocon_rete :" Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="7" Grid.Column="2"  Tag="Cocon_rica" Text="Cocon_rica :" Style="{StaticResource title}"/>
+                        
+
+                    </Grid>
+
+                    <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Gear" Header="Procesando" Height="200" IsBusy="False"/>
+
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Grid.Row="1">
+                        <Button Width="250" Name="BtnProcess" Click="BtnProcess_Click" Content="Procces"/>
+                    </Grid>
+
+                    <materialDesign:Snackbar x:Name="Notificaction" IsActive="False" HorizontalAlignment="Left" Panel.ZIndex="2" Grid.Row="1"  ActionButtonStyle="{StaticResource MaterialDesignSnackbarActionMidButton}">
+                        <materialDesign:SnackbarMessage  x:Name="NotiMessa" Content=""  ActionContent="ok" ActionClick="SnackbarMessage_ActionClick" />
+                    </materialDesign:Snackbar>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Inventario">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Resultados Contabilidad">
+                <TabControl Name="Tab_resul"/>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+
+</Window>
+
+    
+    
+    

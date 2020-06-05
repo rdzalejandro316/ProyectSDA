@@ -1,0 +1,15 @@
+﻿<Window x:Class="RecibosDeCaja.EntradasLista"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecibosDeCaja"
+        mc:Ignorable="d"
+        Title="Entradas Pendientes " Height="100" Width="500" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+    <Grid>
+        <TextBlock Text="  Entradas por Traslados pendientes"/>
+        <ComboBox x:Name="CmbListaEntrada" Width="220" Height="25" Margin="5,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="BtnLoadEntrada" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="230,25,0,0" Width="120" Height="25" Content="Cargar documento" Background="Orange" Click="BtnLoadEntrada_Click"/>
+        <Button x:Name="BtnSalir" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="360,25,0,0" Width="120" Height="25" Content="Cancelar" Background="Orange" Click="BtnSalir_Click"/>
+    </Grid>
+</Window>

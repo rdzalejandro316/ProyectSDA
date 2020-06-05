@@ -1,0 +1,116 @@
+﻿<Window x:Class="SiasoftAppExt.PvInventariosPorGrupoPrint"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             mc:Ignorable="d" Width="1050" Height="600"
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="Window_Loaded" Title="Saldos de Inventarios">
+    <Window.Resources>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+        <Style TargetType="SiaSf:GridCell">
+            <Setter Property="BorderBrush" Value="LightGray" />
+        </Style>
+        <Style TargetType="SiaSf:GroupDropArea">
+            <Setter Property="BorderBrush" Value="Indigo"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="700"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Background="WhiteSmoke">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Reporte:"  Grid.Row="0" Grid.Column="0" Foreground="Indigo" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" />
+                <ComboBox  x:Name="CmbTipoRep" Margin="2,8,2,8" Grid.Row="0"  Grid.Column="1"  SelectionChanged="CmbTipoRep_SelectionChanged" >
+                    <ComboBoxItem  Content="Resumido Linea" IsSelected="True"/>
+                    <ComboBoxItem Content="Detallado Linea"/>
+                </ComboBox>
+
+                <TextBlock Text="Fecha:  "  Grid.Row="1" Grid.Column="0" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
+                <DatePicker x:Name="FechaIni" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" ></DatePicker>
+
+                <TextBlock Text="Linea: "  Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
+                <TextBox x:Name="TxtTip" MaxLength="3" Grid.Row="2" Grid.Column="1" Margin="2,5,2,5"  PreviewKeyDown="Txt_PreviewKeyDown" Tag="inmae_tip" VerticalContentAlignment="Center" LostFocus="TxtTip_LostFocus"/>
+                <TextBlock x:Name="TxtNomTip" Text="-"  Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="13"/>
+                <TextBlock Text="Grupo: " Visibility="Hidden" Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
+                <TextBox x:Name="TxtGru" Visibility="Hidden" MaxLength="4" Grid.Row="4" Grid.Column="1" Margin="2,5,2,5"  PreviewKeyDown="Txt_PreviewKeyDown" Tag="inmae_gru" VerticalContentAlignment="Center" LostFocus="TxtTip_LostFocus"/>
+                <TextBlock x:Name="TxtNomGru" Text="-"  Grid.Row="4" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="13"/>
+                <TextBlock Text="Bodega: "  Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
+                <TextBox x:Name="TxtBodega" MaxLength="3" Grid.Row="3" Grid.Column="1" Margin="2,5,2,5" PreviewKeyDown="Txt_PreviewKeyDown" Tag="inmae_bod" VerticalContentAlignment="Center" LostFocus="TxtTip_LostFocus"/>
+                <TextBlock x:Name="TxtNomBod" Text="-"  Grid.Row="3" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="13"/>
+                <Button x:Name="Ejecutar" Content="Ejecutar" Grid.Column="1" Grid.Row="5" Margin="5,5,5,0" Background="DodgerBlue" Foreground="WhiteSmoke" Height="30" VerticalAlignment="Top" Click="Ejecutar_Click"/>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  Background="Gold"   Margin="5,5,25,5">
+                    <TextBlock x:Name="TextTituloReporte" Text="Saldos de Inventarios Por Linea" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Center" Foreground="Indigo"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <SiaSf:SfDataGrid  x:Name="dataGridSF"  Margin="5,5,25,5"
+                        EnableDataVirtualization = "True"
+                        AutoGenerateColumns="True" ShowGroupDropArea="False" FontSize="11" AllowFiltering="False"
+                       HorizontalAlignment="Left" 
+                        ItemsSource="{Binding DtTraslados}" AllowResizingColumns="True">
+                        <SiaSf:SfDataGrid.Columns>
+                            <SiaSf:GridTextColumn HeaderText="Linea" MappingName="cod_tip" Width="120" AllowFiltering="True"/>
+                            <SiaSf:GridTextColumn HeaderText="Nombre Linea" MappingName="nom_tip" Width="450" AllowFiltering="True"/>
+                            <SiaSf:GridTextColumn HeaderText="Saldo" DisplayBinding="{Binding Path=saldo_fin, StringFormat='n2'}"  Width="90" />
+
+                        </SiaSf:SfDataGrid.Columns>
+                    </SiaSf:SfDataGrid>
+                    <SiaSf:SfBusyIndicator Name="sfBusyIndicator"
+                                    Margin="5"
+                                    VerticalAlignment="Stretch"  FontSize="12" AnimationSpeed="100" IsBusy="False"
+                                    AnimationType="Rainy"  Header="Cargando Datos - SiasoftApp" HorizontalAlignment="Stretch"/>
+
+
+                </Grid>
+                <Grid Grid.Row="2" Background="WhiteSmoke">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock   Grid.Column="0" Text="Total Cantidades:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,2,0,5" Foreground="Indigo" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" x:Name="TextTotalEntradas" Text="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,10,5,5"  Height="25" Width="80" Foreground="Indigo" FontWeight="Bold"/>
+                    <Button x:Name="Imprimir" Content="Imprimir" Grid.Column="3" Margin="5,5,5,5" Background="DodgerBlue"  Foreground="White" Click="Imprimir_Click"/>
+                    <Button x:Name="ExportarXLS" Content="Exportar XLS" Grid.Column="4" Margin="5,5,5,5" Background="DodgerBlue"  Foreground="White" Click="ExportarXLS_Click"/>
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

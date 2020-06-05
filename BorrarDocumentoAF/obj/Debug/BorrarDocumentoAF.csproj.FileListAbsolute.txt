@@ -1,0 +1,13 @@
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.g.cs
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.baml
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.g.resources
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.dll
+D:\SiasoftApp_SDA\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.pdb
+D:\SiasoftApp_SDA\Library\BorrarDocumentoAF.dll
+D:\SiasoftApp_SDA\Library\BorrarDocumentoAF.pdb

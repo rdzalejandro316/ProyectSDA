@@ -1,0 +1,422 @@
+﻿<Window x:Class="SiasoftAppExt.AnalisisPV"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+                     xmlns:chart1="http://schemas.syncfusion.com/wpf"
+
+                xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF" 
+
+             mc:Ignorable="d" 
+             d:DesignHeight="700" Height="700" Width="1250" d:DesignWidth="1200" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="Background" Value="#3498db"/>
+            <Setter Property="Background" Value="#3498db"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+    </Window.Resources>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="1*"/>
+ 
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"  BorderBrush="Silver" BorderThickness="1,1,1,1" Margin="2">
+            <Grid Background="WhiteSmoke" x:Name="GridConfiguracion">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                        
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0"  FontSize="12" Foreground="Black" HorizontalAlignment="right" Text="Fecha Inicial: " VerticalAlignment="Center"></TextBlock>
+                    <DatePicker Name="FecIni"   HorizontalAlignment="Left" Text="{Binding CabSource.FechaIni}" VerticalAlignment="Center" Width="100" Height="25" Grid.Column="1"  Margin="2"  FontSize="12"/>
+                    <TextBlock Grid.Column="2"  FontSize="12" Foreground="Black" HorizontalAlignment="right" Text="Fecha Final: " VerticalAlignment="Center"></TextBlock>
+                    <DatePicker Name="FecFin"   HorizontalAlignment="Left" Text="{Binding CabSource.FechaFin}" VerticalAlignment="Center" Width="100" Height="25" Grid.Column="3" Margin="2"  FontSize="12"/>
+
+
+                    <TextBlock  Grid.Column="4" Grid.Row="5" FontSize="12"  HorizontalAlignment="right" Foreground="Black" VerticalAlignment="Center" Text="Codigo : "></TextBlock>
+                    <TextBox x:Name="TextBoxTerCod" VerticalContentAlignment="Center" PreviewKeyDown="TextBoxTerCod_PreviewKeyDown" GotFocus="TextBoxTerCod_GotFocus" LostFocus="TextBoxTerCod_LostFocus" Grid.Column="5"  Width="100" Margin="3"  Height="25" MaxLength="15" Foreground="Black" FontSize="12"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+                
+                    <TextBlock  Grid.Column="6" FontSize="12"  HorizontalAlignment="right" Foreground="Black" VerticalAlignment="Center" Text="Cliente : "></TextBlock>
+                    <TextBlock x:Name="TextBoxTerI" Height="25"  Grid.Column="7" Grid.ColumnSpan="3" Width="300" Margin="3,8,0,0"  Foreground="Black" FontSize="12"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+
+                    <Button Padding="5" Foreground="white" Background="DodgerBlue" Grid.Column="9" Name="BtnEjecutar" Width="115"  HorizontalAlignment="Center" VerticalAlignment="Center"  Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=BtnEjecutar}" Click="ButtonRefresh_Click" Cursor="Hand" BorderBrush="{x:Null}">Consultar</Button>
+
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1"  BorderBrush="Silver" BorderThickness="1,1,1,1" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="100"/>
+
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="100"/>
+
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Analisis de Ventas Cliente " Foreground="Green" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <Button  Grid.Column="11" Content="Exportar Xls" Width="100"  HorizontalAlignment="Right" Background="black" Foreground="White" Cursor="Hand" Click="ExportaXLS_Click" Tag="1"/>
+                    <TextBlock Grid.Column="2" Text="Subtotal: " Foreground="Green" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="4" Text="Descuento: " Foreground="Green" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="6" Text="Iva: " Foreground="Green" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="8" Text="Total: " Foreground="Green" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="3" x:Name="TextSubtotal"  Text="{Binding StringFormat=c}"  FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#c0392b" />
+
+                    <TextBlock x:Name="TextDescuento" Grid.Column="5" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#c0392b" />
+
+                    <TextBlock x:Name="TextIva" Grid.Column="7" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#c0392b" />
+
+                    <TextBlock x:Name="TextTotal" Grid.Column="9" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#c0392b" />
+
+                </Grid>
+                <TabControl Margin="5,5,5,5" Grid.Row="1">
+                    <TabItem IsSelected="True" Header="Listado de Ventas"  Width="200" Foreground="DodgerBlue"  >
+                        <SiaSf:SfDataGrid  Grid.Row="1" x:Name="VentasPorProducto"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}" >
+                        <SiaSf:SfDataGrid.Columns>
+                            <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="cod_trn" Width="55" />
+                            <SiaSf:GridTextColumn HeaderText="Numero" MappingName="num_trn" Width="100" />
+                            <SiaSf:GridTextColumn HeaderText="Fecha" MappingName="fec_trn" Width="140" />
+                            <SiaSf:GridTextColumn HeaderText="Linea" MappingName="nom_tip" Width="140" />
+                            <SiaSf:GridTextColumn HeaderText="Grupo" MappingName="nom_gru" Width="140" />
+                            <SiaSf:GridTextColumn HeaderText="Cod_Ref" MappingName="cod_ref" Width="140" />
+                            <SiaSf:GridTextColumn HeaderText="Referencia" MappingName="nom_ref" Width="320" />
+                            <SiaSf:GridTextColumn HeaderText="Bodega" MappingName="nom_bod" Width="80" />
+                            <SiaSf:GridTextColumn HeaderText="Vendedor" MappingName="nom_mer" Width="170" />
+                            <SiaSf:GridTextColumn HeaderText="cod_fpag" MappingName="cod_fpag" Width="80" />
+                            
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=val_uni, StringFormat='{}{0:c}'}" Width="90" HeaderText="SubTotal" TextAlignment="Right" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}" Width="90" HeaderText="SubTotal" TextAlignment="Right" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=val_des, StringFormat='{}{0:c}'}" Width="90" HeaderText="Valor Dcto" TextAlignment="Right" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=val_iva, StringFormat='{}{0:c}'}" Width="90" HeaderText="Valor Iva" TextAlignment="Right" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=tot_tot, StringFormat='{}{0:c}'}" Width="90" HeaderText="Valor Total" TextAlignment="Right" />
+                            
+                    </SiaSf:SfDataGrid.Columns>
+
+                        <SiaSf:SfDataGrid.GroupSummaryRows>
+                            <SiaSf:GridSummaryRow ShowSummaryInRow="False">
+                                <SiaSf:GridSummaryRow.SummaryColumns>
+                                    <SiaSf:GridSummaryColumn Name="SubTotal" Format="'{Sum:c}'" MappingName="subtotal" SummaryType="DoubleAggregate" />
+                                    <SiaSf:GridSummaryColumn Name="Valor Dcto" Format="'{Sum:c}'" MappingName="val_des" SummaryType="DoubleAggregate" />
+                                    <SiaSf:GridSummaryColumn Name="Costo" Format="'{Sum:c}'" MappingName="costo" SummaryType="DoubleAggregate" />
+                                </SiaSf:GridSummaryRow.SummaryColumns>
+                            </SiaSf:GridSummaryRow>
+                            <SiaSf:GridSummaryRow Title="Total Sales in Year for {ProductCount} Products : {YearSales}" ShowSummaryInRow="True">
+                                <SiaSf:GridSummaryRow.SummaryColumns>
+                                    <SiaSf:GridSummaryColumn Name="YearSales" Format="'{Sum:c}'" MappingName="subtotal" SummaryType="DoubleAggregate" />
+                                    <SiaSf:GridSummaryColumn Name="ProductCount" Format="'{Count:d}'" MappingName="Name" SummaryType="CountAggregate" />
+                                </SiaSf:GridSummaryRow.SummaryColumns>
+                            </SiaSf:GridSummaryRow>
+                        </SiaSf:SfDataGrid.GroupSummaryRows>
+
+                    </SiaSf:SfDataGrid>
+                    </TabItem>
+                    <TabItem IsSelected="True" Header="Análisis"  Width="200" Foreground="DodgerBlue"  >
+                        <Grid  x:Name="Charts">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Border BorderThickness="1" BorderBrush="LightGray"  Grid.Row="0" Margin="5,5,5,5">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="300"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid  Grid.Row="0" Name="CharVentasLinea"  >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid.Resources>
+
+                                                <DataTemplate x:Key="headerTemplate">
+                                                    <TextBlock FontSize="10" Foreground="Black"
+                           Margin="5" Text="{Binding}"/>
+                                                </DataTemplate>
+
+                                                <DataTemplate x:Key="labelTemplate">
+                                                    <TextBlock FontSize="11" Foreground="Black" 
+                           Margin="5" Text="{Binding Path=LabelContent}"/>
+                                                </DataTemplate>
+
+                                                <Style TargetType="Line" x:Key="AxisStyle">
+                                                    <Setter Property="Stroke" Value="DarkGray"  />
+                                                    <Setter Property="StrokeThickness" Value="1"/>
+                                                </Style>
+
+                                            </Grid.Resources>
+
+                                            <chart:SfChart x:Name="AreaChart" AreaBorderThickness="0,1,1,0"  
+                       HorizontalAlignment="Center" Margin="0,0,0,0" >
+
+                                                <chart:SfChart.Header>
+                                                    <TextBlock FontSize="15" FontFamily="Segoe UI" Foreground="Black"
+                           Margin="0,0,0,10">Ventas por Linea</TextBlock>
+                                                </chart:SfChart.Header>
+
+                                                <chart:SfChart.PrimaryAxis>
+                                                    <chart:CategoryAxis Header="Linea" PlotOffset="30" 
+                                    LabelTemplate="{StaticResource labelTemplate}" 
+                                    HeaderTemplate="{StaticResource headerTemplate}" 
+                                    AxisLineStyle="{StaticResource AxisStyle}"
+                                    MajorTickLineStyle="{StaticResource AxisStyle}">
+                                                    </chart:CategoryAxis>
+                                                </chart:SfChart.PrimaryAxis>
+
+                                                <chart:SfChart.SecondaryAxis>
+                                                    <chart:NumericalAxis Header="Valor" 
+                                     HeaderTemplate="{StaticResource headerTemplate}"  LabelTemplate="{StaticResource labelTemplate}" 
+                                     AxisLineStyle="{StaticResource AxisStyle}"
+                                     MajorTickLineStyle="{StaticResource AxisStyle}">
+                                                    </chart:NumericalAxis>
+                                                </chart:SfChart.SecondaryAxis>
+
+                                                <chart:AreaSeries x:Name="AreaSeriesVta" EnableAnimation="True" FontSize="10"
+                              XBindingPath="nom_tip" 
+                              Label="Linea"
+                              YBindingPath="total" 
+                              ItemsSource="{Binding Fruits}" 
+                              ShowTooltip="True" >
+                                                    <chart:AreaSeries.AdornmentsInfo>
+                                                        <chart:ChartAdornmentInfo AdornmentsPosition="Bottom"  
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              ShowLabel="True">
+                                                            <chart:ChartAdornmentInfo.LabelTemplate>
+                                                                <DataTemplate>
+                                                                    <Grid>
+                                                                        <Ellipse Height="27" Width="27" 
+                                             Stroke="#FF1BA1E2" Fill="White" 
+                                             StrokeThickness="2" 
+                                             HorizontalAlignment="Center"/>
+                                                                        <TextBlock Text="{Binding}" Foreground="Black" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               FontFamily="Segoe UI"  FontSize="11"/>
+                                                                    </Grid>
+                                                                </DataTemplate>
+                                                            </chart:ChartAdornmentInfo.LabelTemplate>
+                                                        </chart:ChartAdornmentInfo>
+                                                    </chart:AreaSeries.AdornmentsInfo>
+                                                </chart:AreaSeries>
+
+                                            </chart:SfChart>
+
+                                        </Grid>
+                                        <Grid Grid.Column="1" Background="LightYellow">
+                                            <Border BorderThickness="1" BorderBrush="LightGray" Grid.Column="1"  Margin="5,5,5,5">
+                                                <Grid Grid.Column="0" Grid.Row="0" Name="CharVentasAno" >
+                                                    <Grid.Resources>
+
+                                                        <DataTemplate x:Key="headerTemplate">
+                                                            <TextBlock FontSize="10" Foreground="Black"
+                           Margin="5" Text="{Binding}"/>
+                                                        </DataTemplate>
+
+                                                        <DataTemplate x:Key="labelTemplate">
+                                                            <TextBlock FontSize="11" Foreground="Black" 
+                           Margin="5" Text="{Binding Path=LabelContent}"/>
+                                                        </DataTemplate>
+
+                                                        <Style TargetType="Line" x:Key="AxisStyle">
+                                                            <Setter Property="Stroke" Value="DarkGray"  />
+                                                            <Setter Property="StrokeThickness" Value="1"/>
+                                                        </Style>
+
+                                                    </Grid.Resources>
+
+                                                    <chart:SfChart x:Name="AreaChartAno" AreaBorderThickness="0,1,1,0" 
+                       HorizontalAlignment="Center" Margin="0,0,0,0" >
+
+                                                        <chart:SfChart.Header>
+                                                            <TextBlock FontSize="15" FontFamily="Segoe UI" Foreground="Black"
+                           Margin="0,0,0,10">Ventas por Año</TextBlock>
+                                                        </chart:SfChart.Header>
+
+                                                        <chart:SfChart.PrimaryAxis>
+                                                            <chart:CategoryAxis Header="Linea" PlotOffset="30" 
+                                    LabelTemplate="{StaticResource labelTemplate}" 
+                                    HeaderTemplate="{StaticResource headerTemplate}" 
+                                    AxisLineStyle="{StaticResource AxisStyle}"
+                                    MajorTickLineStyle="{StaticResource AxisStyle}">
+                                                            </chart:CategoryAxis>
+                                                        </chart:SfChart.PrimaryAxis>
+
+                                                        <chart:SfChart.SecondaryAxis>
+                                                            <chart:NumericalAxis Header="Valor" 
+                                     HeaderTemplate="{StaticResource headerTemplate}"  LabelTemplate="{StaticResource labelTemplate}" 
+                                     AxisLineStyle="{StaticResource AxisStyle}"
+                                     MajorTickLineStyle="{StaticResource AxisStyle}">
+                                                            </chart:NumericalAxis>
+                                                        </chart:SfChart.SecondaryAxis>
+
+                                                        <chart:AreaSeries x:Name="AreaSeriesVtaAno" EnableAnimation="True" FontSize="10"
+                              XBindingPath="ano" 
+                              Label="Linea"
+                              YBindingPath="total" 
+                              ItemsSource="{Binding Fruits}" 
+                              ShowTooltip="True" >
+                                                            <chart:AreaSeries.AdornmentsInfo>
+                                                                <chart:ChartAdornmentInfo AdornmentsPosition="Bottom"  
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              ShowLabel="True">
+                                                                    <chart:ChartAdornmentInfo.LabelTemplate>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <Ellipse Height="27" Width="27" 
+                                             Stroke="#FF1BA1E2" Fill="White" 
+                                             StrokeThickness="2" 
+                                             HorizontalAlignment="Center"/>
+                                                                                <TextBlock Text="{Binding}" Foreground="Black" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               FontFamily="Segoe UI"  FontSize="11"/>
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </chart:ChartAdornmentInfo.LabelTemplate>
+                                                                </chart:ChartAdornmentInfo>
+                                                            </chart:AreaSeries.AdornmentsInfo>
+                                                        </chart:AreaSeries>
+
+                                                    </chart:SfChart>
+
+                                                </Grid>
+                                            </Border>
+
+                                        </Grid>
+
+
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Border BorderThickness="1" BorderBrush="LightGray" Grid.Column="0" Grid.Row="1" Margin="5,5,5,5">
+                                <Grid Grid.Column="0" Grid.Row="0" Name="CharVentasGrupo" >
+                                    <Grid.Resources>
+
+                                        <DataTemplate x:Key="headerTemplate">
+                                            <TextBlock FontSize="10" Foreground="Black"
+                           Margin="5" Text="{Binding}"/>
+                                        </DataTemplate>
+
+                                        <DataTemplate x:Key="labelTemplate">
+                                            <TextBlock FontSize="11" Foreground="Black" 
+                           Margin="5" Text="{Binding Path=LabelContent}"/>
+                                        </DataTemplate>
+
+                                        <Style TargetType="Line" x:Key="AxisStyle">
+                                            <Setter Property="Stroke" Value="DarkGray"  />
+                                            <Setter Property="StrokeThickness" Value="1"/>
+                                        </Style>
+
+                                    </Grid.Resources>
+
+                                    <chart:SfChart x:Name="AreaChartGrupo" AreaBorderThickness="0,1,1,0" 
+                       HorizontalAlignment="Center" Margin="0,0,0,0" >
+
+                                        <chart:SfChart.Header>
+                                            <TextBlock FontSize="15" FontFamily="Segoe UI" Foreground="Black"
+                           Margin="0,0,0,10">Ventas por Grupo</TextBlock>
+                                        </chart:SfChart.Header>
+
+                                        <chart:SfChart.PrimaryAxis>
+                                            <chart:CategoryAxis Header="Grupo" PlotOffset="30" 
+                                    LabelTemplate="{StaticResource labelTemplate}" 
+                                    HeaderTemplate="{StaticResource headerTemplate}" 
+                                    AxisLineStyle="{StaticResource AxisStyle}"
+                                    MajorTickLineStyle="{StaticResource AxisStyle}">
+                                            </chart:CategoryAxis>
+                                        </chart:SfChart.PrimaryAxis>
+
+                                        <chart:SfChart.SecondaryAxis>
+                                            <chart:NumericalAxis Header="Valor" 
+                                     HeaderTemplate="{StaticResource headerTemplate}"  LabelTemplate="{StaticResource labelTemplate}" 
+                                     AxisLineStyle="{StaticResource AxisStyle}"
+                                     MajorTickLineStyle="{StaticResource AxisStyle}">
+                                            </chart:NumericalAxis>
+                                        </chart:SfChart.SecondaryAxis>
+
+                                        <chart:AreaSeries x:Name="AreaSeriesVtaGrupo" EnableAnimation="True" FontSize="10"
+                              XBindingPath="nom_gru" 
+                              Label="Linea"
+                              YBindingPath="total" 
+                              ItemsSource="{Binding Fruits}" 
+                              ShowTooltip="True" >
+                                            <chart:AreaSeries.AdornmentsInfo>
+                                                <chart:ChartAdornmentInfo AdornmentsPosition="Bottom"  
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              ShowLabel="True">
+                                                    <chart:ChartAdornmentInfo.LabelTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <Ellipse Height="27" Width="27" 
+                                             Stroke="#FF1BA1E2" Fill="White" 
+                                             StrokeThickness="2" 
+                                             HorizontalAlignment="Center"/>
+                                                                <TextBlock Text="{Binding}" Foreground="Black" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               FontFamily="Segoe UI"  FontSize="11"/>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </chart:ChartAdornmentInfo.LabelTemplate>
+                                                </chart:ChartAdornmentInfo>
+                                            </chart:AreaSeries.AdornmentsInfo>
+                                        </chart:AreaSeries>
+
+                                    </chart:SfChart>
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+            
+
+            </TabItem>
+                </TabControl>
+            </Grid>
+
+            </Border>
+
+ 
+        </Grid>
+    
+    
+</Window>

@@ -1,0 +1,16 @@
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.g.cs
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.baml
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.g.resources
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.dll
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\EliminacionActivo.pdb
+D:\SiasoftApp_SDA\Library\EliminacionActivo.dll
+D:\SiasoftApp_SDA\Library\EliminacionActivo.pdb
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\Documentos.g.cs
+D:\SiasoftApp_SDA\Library\project\EliminacionActivo\obj\Debug\Documentos.baml

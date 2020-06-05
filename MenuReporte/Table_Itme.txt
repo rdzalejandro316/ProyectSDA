@@ -1,0 +1,34 @@
+﻿create table Menu_Reports_Items
+(
+	idrow int IDENTITY(1,1) PRIMARY KEY,  
+	cod_item char(15),
+	name_item varchar(50),
+	type_item char(1),	
+)
+
+
+insert into Menu_Reports_Items (cod_item,name_item,type_item) values ('01','Reporte Portal','0')
+insert into Menu_Reports_Items (cod_item,name_item,type_item) values ('02','Tablero de Ventas Diarias','0')
+insert into Menu_Reports_Items (cod_item,name_item,type_item) values ('03','Power BI','0')
+
+
+
+create table Menu_Reports_SubItems
+(
+	idrow int IDENTITY(1,1) PRIMARY KEY,  
+	cod_Subitem char(15),
+	cod_item char(15),
+	name_Subitem varchar(50),
+	type_Subitem char(1),	
+	type_pnt char(1),	
+	name_pnt varchar(max),	
+)
+
+0 -- tab
+1 -- tabU
+2 -- windows
+3 -- navegador
+
+insert into Menu_Reports_SubItems (cod_Subitem,cod_item,name_Subitem,type_Subitem,type_pnt,name_pnt) values ('01','01','Reporte 1','1','4','https://powerbi.microsoft.com/es-es/')
+insert into Menu_Reports_SubItems (cod_Subitem,cod_item,name_Subitem,type_Subitem,type_pnt,name_pnt) values ('02','01','Reporte 2','1','1','Sia.TabU(9301,"AnalisisDeVenta");')
+

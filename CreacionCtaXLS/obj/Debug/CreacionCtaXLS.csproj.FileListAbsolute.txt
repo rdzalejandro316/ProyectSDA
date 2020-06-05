@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.g.cs
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.baml
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.g.resources
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.dll
+D:\SiasoftApp_SDA\Library\project\CreacionCtaXLS\obj\Debug\CreacionCtaXLS.pdb
+D:\SiasoftApp_SDA\Library\CreacionCtaXLS.dll
+D:\SiasoftApp_SDA\Library\CreacionCtaXLS.pdb

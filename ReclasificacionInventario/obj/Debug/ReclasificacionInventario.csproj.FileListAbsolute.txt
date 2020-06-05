@@ -1,0 +1,14 @@
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.g.cs
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario_MarkupCompile.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario_MarkupCompile.lref
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.baml
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.g.resources
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.Properties.Resources.resources
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.CopyComplete
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.dll
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.pdb
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\ReclasificacionInventario.dll
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\ReclasificacionInventario.pdb

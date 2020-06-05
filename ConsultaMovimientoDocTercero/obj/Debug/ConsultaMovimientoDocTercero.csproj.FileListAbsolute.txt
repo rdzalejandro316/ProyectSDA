@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.g.cs
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.baml
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.g.resources
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.dll
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.pdb
+D:\SiasoftApp_SDA\Library\ConsultaMovimientoDocTercero.dll
+D:\SiasoftApp_SDA\Library\ConsultaMovimientoDocTercero.pdb
+D:\SiasoftApp_SDA\Library\project\ConsultaMovimientoDocTercero\obj\Debug\ConsultaMovimientoDocTercero.csprojAssemblyReference.cache

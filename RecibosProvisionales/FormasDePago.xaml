@@ -1,0 +1,92 @@
+﻿<Window x:Class="RecibosProvisionales.FormasDePago"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:local="clr-namespace:RecibosProvisionales"
+             mc:Ignorable="d" 
+             Title="Formas de Pago" Width="750" Height="400" WindowStyle="None"  PreviewKeyDown="Window_PreviewKeyDown">
+
+    <Window.Resources>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="300*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="230"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Agregar Banco : " VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                    <ComboBox Name="CBpagos" VerticalAlignment="Center" Width="160" />
+                    <Button Name="BtnAdd" Width="30" Height="25" Margin="10 0 0 0" Background="DodgerBlue" BorderBrush="{x:Null}" Click="Btnadd_Click" Cursor="Hand">
+                        <Image Source="imagenes\plus.png" Margin="5"/>
+                    </Button>
+
+
+                    <Button Name="BtnDel" Width="30" Height="25" Margin="10 0 0 0" Background="DodgerBlue" BorderBrush="{x:Null}" Click="BtnDel_Click" Cursor="Hand">
+                        <Image Source="imagenes\bin2.png" Margin="5"/>
+                    </Button>
+
+                </StackPanel>
+
+            </Grid>
+
+
+            <TextBlock Grid.Column="1" Text="Saldo por Pagar:" VerticalAlignment="Center" FontSize="13" FontWeight="Bold" HorizontalAlignment="Right" Margin="1,1,5,1"/>
+            <Border Background="Black" Grid.Column="3">
+                <TextBox Focusable="False" Text="0" FontSize="25" x:Name="TxtTotalRecaudo" Foreground="DodgerBlue" Width="210" Height="35" Background="Transparent" HorizontalContentAlignment="Right" Margin="5,5,5,5"/>
+            </Border>
+
+        </Grid>
+        <Grid Grid.Row="1" Margin="5,5,5,5" Grid.ColumnSpan="2">
+            <syncfusion:SfDataGrid Name="dataGrid"  Grid.Row="1"    EnableDataVirtualization = "True" AutoGenerateColumns="False"  FontSize="12"  SelectionMode="Single" Loaded="dataGrid_Loaded" HeaderStyle="{StaticResource headerStyle}"  PreviewKeyDown="dataGrid_PreviewKeyDown_1" CurrentCellEndEdit="dataGrid_CurrentCellEndEdit" >
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn MappingName="cod_ban"  IsHidden="True"/>
+                    <syncfusion:GridTextColumn MappingName="cod_cta"  IsHidden="True"/>
+                    <syncfusion:GridTextColumn x:Name="ComboBanco" HeaderText="Banco" MappingName="nom_ban" Width="170"/>
+                    <syncfusion:GridNumericColumn HeaderText="Valor Pagado" AllowEditing="True" MappingName="valor" NumberDecimalSeparator="." NumberDecimalDigits="2" NumberGroupSeparator=","  NumberGroupSizes="3"/>
+                    <syncfusion:GridDateTimeColumn HeaderText="Fecha Vencimiento" Width="110" MappingName="fec_venc" AllowEditing="True"/>
+                    <syncfusion:GridDateTimeColumn HeaderText="Fecha Consignacion" Width="110" MappingName="fec_con" AllowEditing="True"/>
+                    <syncfusion:GridTextColumn HeaderText="Documento" MappingName="documento" AllowEditing="True"  Width="120"/>
+                    <syncfusion:GridTextColumn HeaderText="Banco" MappingName="cod_banco" Width="80"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="F5=Grabar" Margin="5,5,5,5" Grid.Column="0" x:Name="BtnGrabar" Click="Button_Click" Background="DodgerBlue" Foreground="White"/>
+            <Button Content="Cancelar" Margin="5,5,5,5" Grid.Column="1" Click="Button_Click_1" Background="DodgerBlue" Foreground="White"/>
+
+            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Text="F8=Cancela Saldo" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Green"/>
+                <TextBlock Text="F6=Abrir Maestra Bancos" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Green"/>
+            </StackPanel>
+
+            <TextBlock Text="Total Pago:" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TxtTotalPagado" Text="0" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15"/>
+        </Grid>
+    </Grid>
+</Window>

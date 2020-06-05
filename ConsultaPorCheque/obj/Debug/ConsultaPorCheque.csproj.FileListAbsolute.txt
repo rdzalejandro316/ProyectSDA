@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.g.cs
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.baml
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.g.resources
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.dll
+D:\SiasoftApp_SDA\Library\project\ConsultaPorCheque\obj\Debug\ConsultaPorCheque.pdb
+D:\SiasoftApp_SDA\Library\ConsultaPorCheque.dll
+D:\SiasoftApp_SDA\Library\ConsultaPorCheque.pdb

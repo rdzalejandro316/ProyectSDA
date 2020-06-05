@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="MenuReporteSetting.Form"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"             
+             xmlns:local="clr-namespace:MenuReporteSetting"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="850" Name="panelForm" Loaded="PanelForm_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="WhiteSmoke">
+
+        <materialDesign:Card  Width="500" Height="400" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <materialDesign:ColorZone Mode="Accent" Padding="6" Background="#03A9F4">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Name="BTNatras" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" HorizontalAlignment="Left"  Click="BtnAtras_Click">
+                                <materialDesign:PackIcon Kind="ArrowLeftThick" Foreground="White" Width="20" Height="20" />
+                            </Button>
+                            <TextBlock Name="TX_title" Margin="8 0 0 0" VerticalAlignment="Center" FontSize="16" FontFamily="Microsoft JhengHei Light"/>
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+
+
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Name="TX_nameitem" Grid.Row="0" Grid.Column="0" materialDesign:HintAssist.Hint="Nombre"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" x:FieldModifier="public"/>
+                    <ComboBox Name="TX_parent" Grid.Row="0" Grid.Column="2" materialDesign:HintAssist.Hint="Parent"  ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" VerticalAlignment="Center"/>
+
+                    <Grid  Grid.Row="1" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Tipo" Foreground="DodgerBlue" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                        <StackPanel Name="GridTipo" Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left">
+                            <CheckBox Name="Check1" Style="{StaticResource MaterialDesignCheckBox}" Content="Nada" Margin="5 0 0 5" Checked="CheckBox_Checked"/>
+                            <CheckBox Name="Check2" Style="{StaticResource MaterialDesignCheckBox}" Content="Reporte" Margin="5 0 0 5" Checked="CheckBox_Checked"/>
+                            <CheckBox Name="Check3" Style="{StaticResource MaterialDesignCheckBox}" Content="Pantalla" Margin="5 0 5 0" Checked="CheckBox_Checked"/>
+                            <CheckBox Name="Check4" Style="{StaticResource MaterialDesignCheckBox}" Content="Navegador" Margin="5 0 5 0" Checked="CheckBox_Checked"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <Grid  Grid.Row="2" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Tipo de Reporte" Foreground="DodgerBlue" FontWeight="DemiBold" VerticalAlignment="Center"/>
+
+                        <StackPanel Name="GridNada" Orientation="Horizontal" Grid.Row="1" Visibility="Visible">
+                            <CheckBox Tag="0" Name="Ck1" Style="{StaticResource MaterialDesignCheckBox}" Content="Nada" Margin="5 0 5 0" Checked="Cheking"/>
+                        </StackPanel>
+                        
+                        <StackPanel Name="GridReport" Orientation="Horizontal" Grid.Row="1" Visibility="Hidden">
+                            <CheckBox Tag="1" Name="Ck2" Style="{StaticResource MaterialDesignCheckBox}" Content="Tab Report" Margin="5 0 5 0" Checked="Cheking"/>
+                            <CheckBox Tag="3" Name="Ck4" Style="{StaticResource MaterialDesignCheckBox}" Content="Windows" Margin="5 0 5 0" Checked="Cheking"/>
+                        </StackPanel>
+
+                        <StackPanel Name="GridPnt" Orientation="Horizontal" Grid.Row="1" Visibility="Hidden">
+                            <CheckBox Tag="2" Name="Ck7" Style="{StaticResource MaterialDesignCheckBox}" Content="User control" Margin="5 0 5 0" Checked="Cheking"/>
+                            <CheckBox Tag="3" Name="Ck8" Style="{StaticResource MaterialDesignCheckBox}" Content="Windows" Margin="5 0 5 0" Checked="Cheking"/>
+                        </StackPanel>
+
+                        <StackPanel Name="GridNavegador" Orientation="Horizontal" Grid.Row="1" Visibility="Hidden">
+                            <CheckBox Tag="4" Name="Ck9" Style="{StaticResource MaterialDesignCheckBox}" Content="Power BI" Margin="5 0 5 0" Checked="Cheking"/>
+                            <CheckBox Tag="5" Name="Ck10" Style="{StaticResource MaterialDesignCheckBox}" Content="URL" Margin="5 0 5 0" Checked="Cheking"/>
+                        </StackPanel>
+                    </Grid>
+
+
+                    <TextBox Name="TX_idAcceso" MaxLength="4" Grid.Row="3" Grid.Column="0" materialDesign:HintAssist.Hint="Id Acceso" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" x:FieldModifier="public" PreviewKeyDown="ValidacionNumeros"/>
+
+                    <TextBox Name="TX_idscreen" MaxLength="4" Grid.Row="3" Grid.Column="2" materialDesign:HintAssist.Hint="Id Screen" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" x:FieldModifier="public" PreviewKeyDown="ValidacionNumeros" IsEnabled="False"/>
+
+
+                    <Grid Grid.Row="4" Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBox Name="TX_urlreporte" Grid.Column="0"  materialDesign:HintAssist.Hint="url reporte" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" x:FieldModifier="public" IsEnabled="False"/>
+                        <ComboBox Name="TX_server" Grid.Column="2" materialDesign:HintAssist.Hint="Servidor" Style="{StaticResource MaterialDesignFloatingHintComboBox}" VerticalAlignment="Center" DisplayMemberPath="ServerIP" SelectedValuePath="idrow" IsEnabled="False"/>
+                    </Grid>
+
+                </Grid>
+
+                
+                
+                <Grid Grid.Row="2">
+                    <Button Name="BTN_form" Width="100" HorizontalAlignment="Right" Margin="0 0 10 0" Click="BTN_form_Click"/>
+                </Grid>
+
+            </Grid>
+        </materialDesign:Card>
+
+    </Grid>
+</UserControl>
+
+    
+    
+    

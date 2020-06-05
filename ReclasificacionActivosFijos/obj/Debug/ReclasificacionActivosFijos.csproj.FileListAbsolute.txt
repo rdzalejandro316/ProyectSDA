@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.g.cs
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.baml
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.g.resources
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.dll
+D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.pdb
+D:\SiasoftApp_SDA\Library\ReclasificacionActivosFijos.dll
+D:\SiasoftApp_SDA\Library\ReclasificacionActivosFijos.pdb

@@ -1,0 +1,51 @@
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.g.cs
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros_MarkupCompile.cache
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros_MarkupCompile.lref
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.baml
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.g.resources
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.Properties.Resources.resources
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.CopyComplete
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.dll
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.pdb
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\MaestraTerceros.dll
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\MaestraTerceros.pdb
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\GridDoble.g.cs
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\aleja\Desktop\GS\server 11\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\GridDoble.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\GridDoble.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\GridDoble.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\MaestraTerceros.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\MaestraTerceros.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.g.cs
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\GridDoble.g.cs
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.baml
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\GridDoble.baml
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.g.resources
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.dll
+D:\SiasoftApp_SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.pdb
+D:\SiasoftApp_SDA\Library\MaestraTerceros.dll
+D:\SiasoftApp_SDA\Library\MaestraTerceros.pdb

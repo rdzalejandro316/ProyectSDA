@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.g.cs
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.baml
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.g.resources
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.dll
+D:\SiasoftApp_SDA\Library\project\InactivarCuentasPorRango\obj\Debug\InactivarCuentasPorRango.pdb
+D:\SiasoftApp_SDA\Library\InactivarCuentasPorRango.dll
+D:\SiasoftApp_SDA\Library\InactivarCuentasPorRango.pdb

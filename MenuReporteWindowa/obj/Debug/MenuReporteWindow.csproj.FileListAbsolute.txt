@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.g.cs
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.baml
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.g.resources
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.dll
+D:\SiasoftApp_SDA\Library\project\MenuReporteWindowa\obj\Debug\MenuReporteWindow.pdb
+D:\SiasoftApp_SDA\Library\MenuReporteWindow.dll
+D:\SiasoftApp_SDA\Library\MenuReporteWindow.pdb

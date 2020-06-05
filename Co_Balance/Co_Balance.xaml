@@ -1,0 +1,255 @@
+﻿<UserControl x:Class="SiasoftAppExt.Co_Balance"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                           
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:Controls="using:Co_Balance"
+             xmlns:local="clr-namespace:Co_Balance"           
+                      xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        xmlns:sync="http://schemas.syncfusion.com/wpf"
+
+             mc:Ignorable="d"              
+             d:DesignHeight="600" d:DesignWidth="1500" Loaded="UserControl_Loaded">
+
+
+
+    <!--<UserControl.Resources>
+        <local:UnboundCellStyleConverter x:Key="unboundCellStyleConverter"/>
+    </UserControl.Resources>-->
+    <SiaSf:TabControlExt Name="TabControl1" Loaded="TabControl1_Loaded" Margin="5,0,10,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="False" TabItemSelectedBackground="#064063" EnableLabelEdit="False">
+        <SiaSf:TabItemExt Name="tabItemExt1"  Header="Configuracion" Width="120" HeaderMargin="10 0 0 0 " FontSize="12" >
+            <Grid Background="#00ade7">
+
+                <Grid  x:Name="GridConfiguracion" Height="410"  Width="600" Margin="0,0,0,0"   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" >
+                    <Border Background="White">
+                        <Border.Effect>
+                            <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                        </Border.Effect>
+                    </Border>
+                    <Grid  Width="600" Height="400" >
+
+                        <Grid.Resources>
+                            <Style x:Key="botones-menu">
+                                <Setter Property="Control.Background" Value="#00ade5"/>
+                                <Setter Property="Control.BorderBrush" Value="{x:Null}"/>
+                                <Setter Property="Control.Foreground" Value="White"/>
+                                <Setter Property="Control.Width" Value="400"/>
+                                <Setter Property="Control.VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="Control.HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="Control.Margin" Value="20 0 20 0"/>
+                                <Setter Property="Control.Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="Control.IsMouseOver" Value="True">
+                                        <Setter Property="Control.Background" Value="#2980b9"/>
+                                        <Setter Property="Control.Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Resources>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="90"/>
+                            <RowDefinition Height="0.2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.ColumnSpan="7" Background="White" VerticalAlignment="Top" Margin="0 -5 0 0">
+                            <TextBlock Text="Balance - Secretaria Distrital Del Ambiente"  x:Name="TituloBalance" Foreground="#00ade7" Padding="15" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="22"/>
+                        </Grid>
+
+                        
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Fecha:" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="Desde" Foreground="Black"  HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold"/>
+                        <DatePicker Grid.Row="1" Grid.Column="2" Margin="5" Grid.ColumnSpan="2" x:Name="fecha_ini" Width="110" VerticalAlignment="Center"  HorizontalAlignment="Left" />
+
+                        <TextBlock Grid.Row="0" Grid.Column="4" Text="Hasta" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" />
+                        <DatePicker Grid.Row="1" Grid.Column="4" Margin="5" Grid.ColumnSpan="2" x:Name="fecha_fin" Width="110"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+                        <TextBlock Text="Cuenta : " Grid.Row="2" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBox Name="C1" Grid.Column="2" Grid.Row="2" Height="30" Width="110" HorizontalAlignment="Left" Margin="5" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_cta1" GotFocus="Cuen_GotFocus" LostFocus="Cuen_LostFocus"></TextBox>
+                        <TextBlock Name="F8_1" Text="Press the key F8" Grid.Column="3" Grid.Row="2" Foreground="#2980b9" Width="60" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Center"  Visibility="Hidden" />
+
+                        
+                        <TextBox Name="C2" Grid.Column="4" Grid.Row="2" Height="30" Width="110" HorizontalAlignment="Left" Margin="5"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_cta2" GotFocus="Cuen_GotFocus" LostFocus="Cuen_LostFocus" ></TextBox>
+                        <TextBlock Name="F8_2" Text="Press the key F8" Grid.Column="5" Grid.Row="2" Foreground="#2980b9"  Width="60" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Center"  Visibility="Hidden"/>
+
+                        <TextBlock Text="Nivel de Cuenta : " Grid.Row="3" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="Bold"/>
+                        <TextBox Name="NV1" Grid.Column="2" Grid.Row="3" Height="30" Width="110" HorizontalAlignment="Left" Margin="5" PreviewTextInput="NumberValidationTextBox" MaxLength="1"></TextBox>
+
+                        
+                        <TextBox Name="NV2" Grid.Column="4" Grid.Row="3" Height="30" Width="110" HorizontalAlignment="Left" Margin="5"  PreviewTextInput="NumberValidationTextBox" MaxLength="1"></TextBox>
+
+
+                        <TextBlock Text="Detallar Terceros : " Grid.Row="4" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
+                        <ComboBox Name="TipoBal" Grid.Row="4" Grid.Column="2" Height="30" Margin="5" >
+                            <ComboBoxItem IsSelected="True">No</ComboBoxItem>
+                            <ComboBoxItem >Si</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Text="Tipo de Balance : " Grid.Row="5" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
+                        <ComboBox Name="TipoBalNiif" Grid.Row="5" Grid.Column="2" Height="30" Margin="5" >
+                            <ComboBoxItem IsSelected="True">Fiscal</ComboBoxItem>
+                            <ComboBoxItem >NIIF</ComboBoxItem>
+                        </ComboBox>
+
+
+                        <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7">
+
+                            <Button Name="BtnEjecutar" HorizontalAlignment="Center"  Grid.Column="0"  Height="45" Content="Consultar" Click="Button_Click"  Style="{StaticResource botones-menu}"/>
+                            
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+                <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Rainy" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Foreground="Black"/>
+
+            </Grid>
+        </SiaSf:TabItemExt>
+
+        <SiaSf:TabItemExt Name="tabItemExt2"  Header="Consulta" Width="120" HeaderMargin="30 0 0 0 " FontSize="12" >
+            <Grid>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.Resources>
+                            <Style  x:Key="gridStyle" TargetType="SiaSf:GridCell">
+                                <Setter Property="BorderBrush" Value="LightGray" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=tip_cta}" Value="M">
+                                        <Setter Property="Background" Value="White" />
+                                        <Setter Property="Control.Foreground" Value="Red" />
+                                        <Setter Property="Control.FontFamily" Value="Courier New"/>
+                                        <Setter Property="Control.FontSize" Value="11"></Setter>
+                                        <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=tip_cta}" Value="A">
+                                        <Setter Property="Background" Value="Azure" />
+                                        <Setter Property="Control.Foreground" Value="Blue" />
+                                        <Setter Property="Control.FontFamily" Value="Courier New"/>
+                                        <Setter Property="Control.FontSize" Value="11"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="FontSize" Value="11"/>
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Background" Value="#bdc3c7"/>
+                            </Style>
+                        </Grid.Resources>
+                        <SiaSf:SfDataGrid   Grid.Row="1" x:Name="dataGridConsulta"  AllowGrouping="False" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="False"  AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"   CellStyle="{StaticResource gridStyle}" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Cell" MouseDoubleClick="dataGridConsulta_MouseDoubleClick">
+                            <SiaSf:SfDataGrid.Columns>
+                                <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_cta" Width="100" AllowFiltering="True">
+                                </SiaSf:GridTextColumn>
+                                <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" MappingName="nom_cta" Width="400" AllowFiltering="True" />
+                                <SiaSf:GridTextColumn HeaderText="Nit/CC" MappingName="cod_ter" Width="100"/>
+                                <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tip_cta" Width="50" >
+                                </SiaSf:GridTextColumn>
+                                <SiaSf:GridTextColumn HeaderText="Nivel" MappingName="niv_cta" Width="50"/>
+                                <SiaSf:GridTextColumn HeaderText="Nat" MappingName="nat_cta" Width="50" />
+                                <!--<SiaSf:GridTemplateColumn MappingName="sal_ant">
+                                    <SiaSf:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding sal_ant}" Foreground="{Binding sal_ant, Converter={StaticResource  changeForegroundConverter}}"/>
+                                        </DataTemplate>
+                                    </SiaSf:GridTemplateColumn.CellTemplate>
+                                </SiaSf:GridTemplateColumn>-->
+                                <SiaSf:GridTextColumn HeaderText="Saldo Anterior" Width="130" DisplayBinding="{Binding Path=sal_ant, StringFormat='n2'}" TextAlignment="Right" />
+                                <SiaSf:GridTextColumn HeaderText="Debitos" Width="130" DisplayBinding="{Binding Path=debito, StringFormat='n2'}" TextAlignment="Right" />
+                                <SiaSf:GridTextColumn HeaderText="Creditos" Width="130" DisplayBinding="{Binding Path=credito, StringFormat='n2'}" TextAlignment="Right" />
+                                <SiaSf:GridTextColumn HeaderText="Saldo Final" Width="130" DisplayBinding="{Binding Path=sal_fin, StringFormat='n2'}" TextAlignment="Right" />
+                                <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                    <SiaSf:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtnDetalle" Content="...." Click="BtnDetalle_Click" Background="LightSteelBlue"/>
+                                        </DataTemplate>
+                                    </SiaSf:GridTemplateColumn.CellTemplate>
+                                </SiaSf:GridTemplateColumn>
+
+                            </SiaSf:SfDataGrid.Columns>
+                        </SiaSf:SfDataGrid>
+                    </Grid>
+
+                    <Grid Grid.Row="1" >
+                        <Grid Height="40">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Total del registros : " Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <TextBlock Name="Total" Grid.Column="1" Foreground="#2980b9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Button Grid.Column="4" Content="Reportes Auxiliares" Name="BTNReportesAux" Click="BTNReportesAux_Click" Margin="3" Background="#009adc" Cursor="Hand" Foreground="White"/>
+                            <Button Grid.Column="5" Content="Imprimir Balance" Name="BTNimprimir" Click="BTNimprimir_Click" Margin="3" Background="#009adc" Cursor="Hand" Foreground="White"/>
+                            <Button Grid.Column="6" Content="Exporatar XLS" Name="BTNexpo" Click="BTNexpo_Click" Margin="3" Background="#009adc" Cursor="Hand" Foreground="White"/>
+
+                        </Grid>
+                    </Grid>
+
+
+                </Grid>
+
+            </Grid>
+        </SiaSf:TabItemExt>
+        <SiaSf:TabItemExt Name="tabItemExt3" Visibility="Collapsed" Header="Auxiliar de Cuenta" Width="140" HeaderMargin="10 0 0 0 " FontSize="12" >
+            <Grid >
+                <wfi:WindowsFormsHost Margin="1,1,1,1" x:Name="winFormsHost" Background="White" >
+
+                    <wfr:ReportViewer  x:Name="viewer"  Print="viewer_Print" ProcessingMode="Remote" />
+
+                </wfi:WindowsFormsHost>
+
+
+            </Grid>
+
+        </SiaSf:TabItemExt>
+        <SiaSf:TabItemExt Name="tabItemExt4" Visibility="Collapsed"  Header="Auxiliar de Cuenta-Tercero" Width="200" HeaderMargin="10 0 0 0 " FontSize="12" >
+            <Grid >
+                <wfi:WindowsFormsHost Margin="1,1,1,1" x:Name="winFormsHost1" Background="White" >
+
+                    <wfr:ReportViewer  x:Name="viewer1" ProcessingMode="Local" Print="viewer_Print" />
+
+                </wfi:WindowsFormsHost>
+
+
+            </Grid>
+
+        </SiaSf:TabItemExt>
+
+    </SiaSf:TabControlExt>
+
+</UserControl>

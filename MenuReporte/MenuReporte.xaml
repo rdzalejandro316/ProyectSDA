@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="SiasoftAppExt.MenuReporte"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             mc:Ignorable="d" 
+            d:DesignHeight="500" d:DesignWidth="1200" >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Column="1"  Grid.Row="1" Name="PanelMenu" Background="Black" Width="300" HorizontalAlignment="Left" Margin="-300,0,0,0" Panel.ZIndex="1">
+            <Grid Grid.Row="1" Background="{x:Null}"  VerticalAlignment="Top" Margin="0,0,0,0" >
+                <Grid.Resources>
+                    <!--<Style x:Key="botones-menu">-->
+                    <Style TargetType="Button">
+                        <Setter Property="Control.Background" Value="{x:Null}"/>
+                        <Setter Property="Control.BorderBrush" Value="{x:Null}"/>
+                        <Setter Property="Control.Foreground" Value="White"/>
+                        <Setter Property="Control.VerticalAlignment" Value="Center"/>
+                        <Setter Property="Control.HorizontalAlignment" Value="Left"/>
+                        <Setter Property="Control.Cursor" Value="Hand"/>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Control.IsMouseOver" Value="True">
+                                <Setter Property="Control.Background" Value="{x:Null}"/>
+                                <Setter Property="Control.Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="StackPanel" x:Key="panel">
+                        <Setter Property="Orientation" Value="Horizontal"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                    </Style>
+                </Grid.Resources>
+
+                <TreeView Name="Menu"  Width="Auto" Foreground="White" FontSize="18">
+
+                </TreeView>
+
+
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1"  Grid.Row="0" Name="menu_panel" Background="black" Panel.ZIndex="2">
+            <materialDesign:ColorZone  Mode="Inverted"  Padding="5">
+                <DockPanel>
+                    <materialDesign:PopupBox DockPanel.Dock="Right"  PlacementMode="BottomAndAlignCentres" Background="Red">
+                        <Button Name="BTNsetting" Cursor="Hand" Margin="5" Click="BTNsetting_Click" Background="#373737">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon  Kind="PackageVariantClosed" Height="20" Width="20" Foreground="#FF2196F3" />
+                                <TextBlock Text="setting" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#FF2196F3" FontSize="10"/>
+                            </StackPanel>
+                        </Button>
+                    </materialDesign:PopupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton  Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Click="Button_Vis" Tag="1" Name="MenuBTN" Cursor="Hand" Margin="15 0 0 0" Foreground="White"/>
+                        <TextBlock  VerticalAlignment="Center"  Margin="10 0 0 0"/>
+                    </StackPanel>
+                    <Button VerticalAlignment="Center" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}">
+                    
+                    </Button>
+                </DockPanel>
+            </materialDesign:ColorZone>
+        </Grid>
+
+        <Grid Name="conte" Grid.Row="1">
+            <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Center" FontSize="12" AnimationSpeed="100" AnimationType="Rainy" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Panel.ZIndex="2" Focusable="False"/>
+            <SiaSf:TabControlExt Name="TabControlPricipal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True" EnableLabelEdit="False"/>
+        </Grid>
+
+
+    </Grid>
+
+</UserControl>
+
+    

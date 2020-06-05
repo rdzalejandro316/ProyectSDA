@@ -1,0 +1,30 @@
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\PvFacturaAnular.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\PvFacturaAnular.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\ConsultaDocumentos.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\ConsultaDocumentos.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.csprojResolveAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\ConsultaDocumentos.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\ConsultaDocumentos.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvFacturaAnular\obj\Debug\PvFacturaAnular.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\PvFacturaAnular.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\PvFacturaAnular.pdb

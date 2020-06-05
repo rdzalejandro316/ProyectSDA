@@ -1,0 +1,68 @@
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\Auditoria\obj\Debug\Auditoria.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\Auditoria.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\Auditoria.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Auditoria\obj\Debug\Auditoria.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\Auditoria.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\Auditoria.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\Auditoria\obj\Debug\Auditoria.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\Auditoria.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\Auditoria.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\Auditoria\obj\Debug\Auditoria.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\Auditoria.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\Auditoria.pdb
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.g.cs
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.baml
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.g.resources
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.dll
+D:\SiasoftApp_SDA\Library\project\Auditoria\obj\Debug\Auditoria.pdb
+D:\SiasoftApp_SDA\Library\Auditoria.dll
+D:\SiasoftApp_SDA\Library\Auditoria.pdb

@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.g.cs
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.baml
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.g.resources
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.dll
+D:\SiasoftApp_SDA\Library\project\AFConsecutivoDocumento\obj\Debug\AFConsecutivoDocumento.pdb
+D:\SiasoftApp_SDA\Library\AFConsecutivoDocumento.dll
+D:\SiasoftApp_SDA\Library\AFConsecutivoDocumento.pdb

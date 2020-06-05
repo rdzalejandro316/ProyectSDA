@@ -1,0 +1,21 @@
+﻿<Window x:Class="SiasoftAppExt.MenuReporteWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/ex1pression/blend/2008"              
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             xmlns:sync="http://schemas.syncfusion.com/wpf"
+             xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+             xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+             mc:Ignorable="d" 
+             Width="1000" Height="500" Loaded="Window_Loaded" Closed="Window_Closed" Title="WINDOWS" WindowStartupLocation="CenterScreen">
+
+
+    <Grid >
+        <!--<sync:ReportViewer Name="viewer"/>-->
+        <wfi:WindowsFormsHost Margin="1,1,1,1" x:Name="winFormsHost" Background="White" >
+            <wfr:ReportViewer  x:Name="viewer" ProcessingMode="Remote" />
+        </wfi:WindowsFormsHost>
+
+    </Grid>
+</Window>

@@ -1,0 +1,54 @@
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.g.cs
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.baml
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.g.resources
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.dll
+C:\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.pdb
+C:\SiasoftApp\SiasoftGS\Library\DocumentosReportes.dll
+C:\SiasoftApp\SiasoftGS\Library\DocumentosReportes.pdb
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csprojAssemblyReference.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.g.cs
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes_MarkupCompile.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes_MarkupCompile.lref
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.baml
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.g.resources
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.Properties.Resources.resources
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.GenerateResource.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.CoreCompileInputs.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.CopyComplete
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.dll
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.pdb
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\DocumentosReportes.dll
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\DocumentosReportes.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\DocumentosReportes\obj\Debug\DocumentosReportes.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\DocumentosReportes.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\DocumentosReportes.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\DocumentosReportes\obj\Debug\DocumentosReportes.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\DocumentosReportes.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\DocumentosReportes.pdb

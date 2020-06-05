@@ -1,0 +1,274 @@
+﻿<Window x:Class="SiasoftAppExt.RecProvisional"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:local="clr-namespace:SiasoftAppExt"
+        mc:Ignorable="d"
+        Title="SiasoftApp  - Recibos Provisionales " WindowStyle="SingleBorderWindow" Height="718" Width="1150" 
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf">
+    <Window.Resources>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="218"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="45"/>
+
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="380"/>
+                <ColumnDefinition Width="480"/>
+                <ColumnDefinition Width="260"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Foreground="LightSlateGray" Grid.Row="0"  Margin="0,5,5,2" Grid.Column="0" Text="Fecha:"  HorizontalAlignment="Right"/>
+                <TextBlock Foreground="LightSlateGray"  Grid.Row="1" Margin="0,5,5,2" Grid.Column="0" Text="Cedula/Nit Cliente:" HorizontalAlignment="Right"/>
+                <TextBlock Foreground="LightSlateGray" Grid.Row="2" Margin="0,5,5,0" Grid.Column="0" x:Name="LabelBanco" Text="Banco/Caja:" HorizontalAlignment="Right" Height="22" VerticalAlignment="Top"/>
+                <TextBlock Foreground="LightSlateGray" Grid.Row="4" Margin="0,5,5,2" Grid.Column="0" x:Name="LabelVendedor" Text="Vendedor Recaudor:" HorizontalAlignment="Right"/>
+                <TextBlock Foreground="LightSlateGray" Margin="0,5,5,2" Grid.Row="3" Grid.Column="0" Text="Detalle:" HorizontalAlignment="Right" />
+                <TextBlock Foreground="LightSlateGray" Grid.Row="5" Margin="0,5,5,2"  Grid.Column="0" Text="Recibo Prov:" HorizontalAlignment="Right"/>
+                <TextBlock Foreground="LightSlateGray" Grid.Row="6" Margin="0,5,5,2"  Grid.Column="0" Text="Vendedor Comision:" HorizontalAlignment="Right"/>
+                <TextBox  Grid.Row="0" Margin="0,1,0,1" Grid.Column="1" x:Name="TextFecha" Focusable="False" FontSize="12"/>
+                <TextBox Grid.Row="1" Width="100" Margin="0,1,0,1" Grid.Column="1" MaxLength="15" x:Name="TextCodeCliente"  FontSize="12" HorizontalAlignment="Left"  LostFocus="TextCodeCliente_LostFocus" PreviewKeyDown="TextCodeCliente_PreviewKeyDown"/>
+                <TextBox Grid.Row="1" Width="155" Margin="105,1,0,1" Grid.Column="1" x:Name="TextNomCliente" Focusable="False" FontSize="12" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="CmbBan" SelectedValue="{Binding SelectedValue, Mode=TwoWay}" Margin="0,1,0,1" Grid.Row="2" Grid.Column="1"  IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding SelectedItem}" PreviewKeyDown="CmbTipoDoc_PreviewKeyDown"/>
+                <ComboBox x:Name="CmbVen" Margin="0,1,0,1" Grid.Row="4" Grid.Column="1" SelectedValue="{Binding cod_ven,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=true,ValidatesOnExceptions=true}"  SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True"  VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" PreviewKeyDown="CmbTipoDoc_PreviewKeyDown" SelectionChanged="CmbVen_SelectionChanged" />
+                <ComboBox x:Name="CmbVen1" Margin="0,1,0,1" Grid.Row="6" Grid.Column="1" SelectedValue="{Binding cod_ven,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=true,ValidatesOnExceptions=true}"  SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True"  VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" PreviewKeyDown="CmbTipoDoc_PreviewKeyDown" />
+                <TextBox Grid.Row ="3" Grid.Column="1" Margin="0,1,0,1" x:Name="TextNota" MaxLength="60" FontSize="12"/> <!--PreviewKeyDown="Grid_PreviewKeyDown"-->
+                <TextBox Grid.Row="5" Grid.Column="1" MaxLength="10" Margin="0,1,0,1" x:Name="TextRProv"  FontSize="12" PreviewKeyDown="TextRProv_PreviewKeyDown" LostFocus="TextRProv_LostFocus"  />
+                <TextBlock Text="F9=Cruzar Todo /" Grid.Row="7" Grid.Column="0" Margin="30,0,0,1" x:Name="TextKey"  FontSize="10"/>
+                <TextBlock Text=" F6= Cancelar cruces / F8=Cruzar Reg. actual / F5=Grabar" Grid.Row="7" Grid.Column="1" Margin="1,0,1,1" x:Name="TextKey1"  FontSize="10"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+
+                </Grid.RowDefinitions>
+                <TextBlock Text="Descuento:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"/>
+                <TextBlock Text="ReteFte:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"/>
+                <TextBlock Text="Ica:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right"/>
+                <TextBlock Text="ReteIva:" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right"/>
+                <TextBlock Text="May.Vlr.Pagado:" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right"/>
+                <TextBlock Text="Men.Vlr.Pagado:" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right"/>
+                <TextBlock Text="Anticipo:" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right"/>
+                <syncfusion:CurrencyTextBox CurrencySymbol="" x:Name="TextDescto" CurrencyDecimalDigits="2" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="2" />
+                <syncfusion:CurrencyTextBox CurrencySymbol="" x:Name="TextRetefte" CurrencyDecimalDigits="2" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="3" />
+                <syncfusion:CurrencyTextBox CurrencySymbol="" x:Name="TextIca" CurrencyDecimalDigits="2" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="4" />
+                <syncfusion:CurrencyTextBox CurrencySymbol="" x:Name="TextReteIva" CurrencyDecimalDigits="2" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="5" />
+                <syncfusion:CurrencyTextBox CurrencySymbol="" x:Name="TextMayorVlr" CurrencyDecimalDigits="2" HorizontalContentAlignment="Right" Grid.Column="3" Grid.Row="2" />
+                <syncfusion:CurrencyTextBox CurrencySymbol="" x:Name="TextMenorVlr" CurrencyDecimalDigits="2" HorizontalContentAlignment="Right" Grid.Column="3" Grid.Row="3" />
+                <syncfusion:CurrencyTextBox CurrencySymbol="" x:Name="TextAnticipo" CurrencyDecimalDigits="2" HorizontalContentAlignment="Right" Grid.Column="3" Grid.Row="4" />
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Grid.Column="2" Height="80" VerticalAlignment="Top" BorderThickness="2" Margin="5,5,5,2" BorderBrush="LightGray">
+                    <Grid  Background="WhiteSmoke">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="LightSlateGray" Text="Empresa:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" />
+                        <TextBlock Foreground="LightSlateGray" Text="PVenta:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" />
+                        <TextBlock  Foreground="LightSlateGray" x:Name="TxtEmpresa" Margin="5,1" Text ="---" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" />
+                        <TextBlock Foreground="LightSlateGray" x:Name="TxtPVenta" Margin="5,1" Text="---:" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" />
+                        <TextBlock Foreground="LightSlateGray" Text="Bodega:"  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" />
+                        <TextBlock Foreground="LightSlateGray" x:Name="TxtBod" Margin="5,1" Text="---:" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" />
+                        <TextBlock Foreground="LightSlateGray" Text="Usuario:"  Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" />
+                        <TextBlock Foreground="LightSlateGray" x:Name="TxtUser" Margin="5,1" Text="---:" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" />
+                    </Grid>
+                </Border>
+                <Border Grid.Row="1"  Height="45" VerticalAlignment="Top" BorderThickness="2" Margin="5,2,5,1" BorderBrush="LightGray">
+                    <Grid>
+                        <TextBlock Text="Documento:" Margin="2,8,0,0" HorizontalAlignment="Left"/>
+                        <TextBox  Width="120" Margin="100,2,0,5" Height="30" HorizontalAlignment="Left" Grid.Column="1" x:Name="TextNumeroDoc" Focusable="False" FontSize="14" Foreground="Red" FontWeight="Bold"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="2"  Height="40" VerticalAlignment="Top" BorderThickness="2" Background="#373737" Margin="5,2,5,10" BorderBrush="LightGray">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="BtbGrabar" Grid.Column="0" Margin="5,5,5,5" Background="Orange" Foreground="Black" Click="BtbGrabar_Click" Content="Nuevo" Height="25"    ></Button>
+                        <Button x:Name="BtbCancelar" Grid.Column="1" Background="Orange" Foreground="Black"  Click="BtbCancelar_Click" Content="Salir" Margin="5,5,5,5" Height="25"  ></Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        <syncfusion:SfDataGrid Name="dataGrid"  Grid.Row="1"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="12" AllowFiltering="True" SelectionMode="Single"  
+                              HeaderStyle="{StaticResource headerStyle}"          PreviewKeyDown="dataGrid_PreviewKeyDown_1" CurrentCellEndEdit="dataGrid_CurrentCellEndEdit" Margin="0,0,0,30" Grid.RowSpan="2">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50" />
+                <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="100" />
+                <syncfusion:GridDateTimeColumn HeaderText="Fecha"   MappingName="fec_trn" Width="100" />
+                <syncfusion:GridTextColumn HeaderText="Clase"   MappingName="tipo" Width="100" />
+                <syncfusion:GridTextColumn HeaderText="Dias"   MappingName="dias" Width="50" />
+                <syncfusion:GridTextColumn HeaderText="Cuenta"   MappingName="cod_cta" Width="100" />
+                <syncfusion:GridNumericColumn HeaderText="Valor" MappingName="valor" Width="120" NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" ></syncfusion:GridNumericColumn>
+                <syncfusion:GridNumericColumn HeaderText="Saldo" MappingName="saldo" Width="120" NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3"/>
+                <syncfusion:GridNumericColumn HeaderText="Vlr Abono" AllowEditing="True" MappingName="abono"  NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" Width="120"   />
+                <syncfusion:GridNumericColumn HeaderText="Dto Imal" AllowEditing="True" MappingName="dto_imal"  NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" Width="120"   />
+                <syncfusion:GridNumericColumn HeaderText="Dto Incol" AllowEditing="True" MappingName="dto_incol"  NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" Width="120"   />
+                <syncfusion:GridNumericColumn HeaderText="Dto TMK" AllowEditing="True" MappingName="dto_tmk"  NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" Width="120"   />
+                <syncfusion:GridNumericColumn HeaderText="Dto Gab" AllowEditing="True" MappingName="dto_gab"  NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" Width="120"   />
+                <syncfusion:GridNumericColumn HeaderText="Dto VCD" AllowEditing="True" MappingName="dto_vcd"  NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" Width="120"   />
+                <syncfusion:GridNumericColumn HeaderText="Dto Sic" AllowEditing="True" MappingName="dto_sic"  NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" Width="120"   />
+                <syncfusion:GridNumericColumn HeaderText="Dto Otros" AllowEditing="True" MappingName="dto_ot"  NumberDecimalSeparator="." NumberGroupSeparator="," NumberGroupSizes="3" Width="120"   />
+
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+        <Grid Grid.Row="2" Background="#373737">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0"  BorderBrush="DodgerBlue" BorderThickness="0.5" Margin="3,6,3,0" >
+                <Grid Grid.Row="2" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="DodgerBlue" BorderThickness="0.5" Grid.Row="0" Grid.Column="1">
+                        <TextBlock Text="CxC"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" />
+                    </Border>
+                    <Border BorderBrush="DodgerBlue" BorderThickness="0.5" Grid.Row="0" Grid.Column="2">
+                        <TextBlock Text="CxC-Anticipo" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    </Border>
+                    <Border BorderBrush="DodgerBlue" BorderThickness="0.5" Grid.Row="0" Grid.Column="3">
+                        <TextBlock Text="CxP" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="12"/>
+                    </Border>
+                    <Border BorderBrush="DodgerBlue" BorderThickness="0.5" Grid.Row="0" Grid.Column="4">
+                        <TextBlock Text="CxP-Anticipo" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    </Border>
+                    <Border BorderBrush="DodgerBlue" BorderThickness="0.5" Grid.Row="0" Grid.Column="5">
+                        <TextBlock Text="Saldo CxC" Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    </Border>
+                    <TextBlock Text="Causado:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock Text="Abonos:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock Text="Saldos:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TextCxC" Grid.Row="1" Grid.Column="1" Text="0"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" />
+                    <TextBlock  x:Name="TextCxCAnt" Text="0.00" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TextCxP" Text="0.00" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TextCxPAnt" Text="0.00" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TotalCxc" Text="0.00" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TextCxCAbono" Grid.Row="2" Grid.Column="1"  Text="0.00" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="12" />
+                    <TextBlock  x:Name="TextCxCAntAbono" Text="0.00" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TextCxPAbono" Text="0.00" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" />
+                    <TextBlock  x:Name="TextCxPAntAbono" Text="0.00" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TotalAbono" Text="0.00" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TextCxCSaldo" Grid.Row="3" Grid.Column="1"  Text="0.00" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="12"/>
+                    <TextBlock  x:Name="TextCxCAntSaldo" Text="0.00" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TextCxPSaldo" Text="0.00" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TextCxPAntSaldo" Text="0.00" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock  x:Name="TotalSaldo" Text="0.00" Grid.Row="3" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Column="1">
+                <Border BorderBrush="DodgerBlue" BorderThickness="0.5"  Width="300" Margin="3,3,3,3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Total Recaudo" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                        <TextBlock Text="0.00" x:Name="TotalRecaudo" Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38"/>
+                    </Grid>
+                </Border>
+
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Imal:" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="11"/>
+            <TextBlock Text="0.00" x:Name="TxtBDtoImal" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+            <TextBlock Text="Incolbesto:" Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="11"/>
+            <TextBlock Text="0.00" x:Name="TxtBDtoIncol" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+            <TextBlock Text="TMK:" Grid.Row="0" Grid.Column="4"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="11"/>
+            <TextBlock Text="0.00" x:Name="TxtBDtoTmk" Grid.Row="0" Grid.Column="5"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+            <TextBlock Text="Gabriel:" Grid.Row="0" Grid.Column="6"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="11"/>
+            <TextBlock Text="0.00" x:Name="TxtBDtoGab" Grid.Row="0" Grid.Column="7"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+            <TextBlock Text="Victor:" Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="11"/>
+            <TextBlock Text="0.00" x:Name="TxtBDtoVcd" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+            <TextBlock Text="Sicolsa:" Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="11"/>
+            <TextBlock Text="0.00" x:Name="TxtBDtoSic" Grid.Row="1" Grid.Column="3"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+            <TextBlock Text="Otros:" Grid.Row="1" Grid.Column="4"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="11"/>
+            <TextBlock Text="0.00" x:Name="TxtBDtoOt" Grid.Row="1" Grid.Column="5"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+        </Grid>
+    </Grid>
+
+</Window>        

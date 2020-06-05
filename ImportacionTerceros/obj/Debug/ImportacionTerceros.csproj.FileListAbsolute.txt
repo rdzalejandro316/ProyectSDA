@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.baml
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.g.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.dll
+D:\SiasoftApp_SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.pdb
+D:\SiasoftApp_SDA\Library\ImportacionTerceros.dll
+D:\SiasoftApp_SDA\Library\ImportacionTerceros.pdb

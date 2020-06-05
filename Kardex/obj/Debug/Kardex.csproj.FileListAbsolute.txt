@@ -1,0 +1,122 @@
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.csprojAssemblyReference.cache
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.g.cs
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.baml
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.g.resources
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.csproj.GenerateResource.cache
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.csproj.CoreCompileInputs.cache
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.dll
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.pdb
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\Kardex.dll
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\Kardex.pdb
+C:\Users\Oscar Rojas\Desktop\SiasoftLeco\Library\project\Kardex\obj\Debug\Kardex.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.baml
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.g.cs
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.g.resources
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.dll
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.pdb
+C:\SiasoftApp\SiasoftGS\Library\Kardex.dll
+C:\SiasoftApp\SiasoftGS\Library\Kardex.pdb
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.baml
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.g.cs
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.g.resources
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.dll
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.pdb
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\Kardex.dll
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\Kardex.pdb
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.lref
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.g.cs
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.lref
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.dll
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.pdb
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.baml
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.g.resources
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csproj.CopyComplete
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\Kardex.dll
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\Kardex.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\Kardex\obj\Debug\Kardex.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\Kardex.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\Kardex.pdb
+C:\SiasoftApp\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\Kardex\obj\Debug\Kardex.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\Kardex.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\Kardex.pdb
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.csprojAssemblyReference.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.g.cs
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex_MarkupCompile.lref
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.baml
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.g.resources
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.GenerateResource.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.CoreCompileInputs.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.CopyComplete
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.dll
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.pdb
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\Kardex.dll
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\Kardex.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\Kardex\obj\Debug\Kardex.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\Kardex.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\Kardex.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\Kardex\obj\Debug\Kardex.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\Kardex.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\Kardex.pdb

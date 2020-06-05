@@ -1,0 +1,16 @@
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\BrowDocumentos.g.cs
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.g.cs
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\BrowDocumentos.baml
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.baml
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.g.resources
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.dll
+D:\SiasoftApp_SDA\Library\project\Importacion740\obj\Debug\Importacion740.pdb
+D:\SiasoftApp_SDA\Library\Importacion740.dll
+D:\SiasoftApp_SDA\Library\Importacion740.pdb

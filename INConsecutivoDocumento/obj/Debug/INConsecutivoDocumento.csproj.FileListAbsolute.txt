@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.g.cs
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.baml
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.g.resources
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.dll
+D:\SiasoftApp_SDA\Library\project\INConsecutivoDocumento\obj\Debug\INConsecutivoDocumento.pdb
+D:\SiasoftApp_SDA\Library\INConsecutivoDocumento.dll
+D:\SiasoftApp_SDA\Library\INConsecutivoDocumento.pdb

@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.g.cs
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.baml
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.g.resources
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.dll
+D:\SiasoftApp_SDA\Library\project\AmortizacionDiferidos\obj\Debug\AmortizacionDiferidos.pdb
+D:\SiasoftApp_SDA\Library\AmortizacionDiferidos.dll
+D:\SiasoftApp_SDA\Library\AmortizacionDiferidos.pdb

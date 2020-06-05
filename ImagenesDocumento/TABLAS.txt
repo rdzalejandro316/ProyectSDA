@@ -1,0 +1,16 @@
+﻿CREATE TABLE IMG_CabDoc(
+	idrow int IDENTITY(1,1) PRIMARY KEY,
+	idreg int not null,
+	nombre varchar(100) not null,
+	fec_crea datetime not null
+)
+
+CREATE TABLE IMG_ImgDoc(
+	idrow int IDENTITY(1,1) PRIMARY KEY,
+	idregDoc int,
+	descripcion varchar(100),
+	image_name varchar(50),
+	imagen image,
+	fec_crea datetime
+)
+insert into IMG_ImgDoc(idregDoc,descripcion,image_name,imagen,fec_crea) values (@idregDoc,@descripcion,@image_name,@imagen,@fec_crea)

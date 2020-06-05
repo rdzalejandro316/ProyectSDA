@@ -1,0 +1,356 @@
+﻿<Window x:Class="SiasoftAppExt.PvTrasladosBodega"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"        
+        xmlns:local="clr-namespace:SiasoftAppExt"
+        mc:Ignorable="d"
+        Height="620" Width="1100" Closing="Window_Closing" Loaded="Window_Loaded" >
+
+    <Window.Resources>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+        <Style TargetType="Button" x:Key="boton">
+            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Margin" Value="10 3 10 3"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="DarkOrange"/>
+                    <Setter Property="Control.Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <syncfusion:TabControlExt Name="TabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  syncfusion:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True" CloseButtonType="Hide" TabItemSelectedBackground="Orange" TabItemSelectedForeground="Black" EnableLabelEdit="False">
+        <syncfusion:TabItemExt Name="tabItemExt1"  Header="Documentos de Traslados" FontSize="14" IsSelected="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="210"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" PreviewKeyDown="Grid_PreviewKeyDown">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="15"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock" x:Key="title">
+                                <Setter Property="Foreground" Value="LightSlateGray"/>
+                                <Setter Property="Margin" Value="10 0 0 0"/>
+                                <Setter Property="HorizontalAlignment" Value="Right"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </Grid.Resources>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Fecha : "  Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Tipo de Documento : " Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Documento : " Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" x:Name="LabelBodegaOrigen" Text="Bodega Origen : " Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" x:Name="LabelBodegaDestino" Text="Bodega Destino : " Style="{StaticResource title}"/>
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Nota : " Style="{StaticResource title}"/>
+
+                        <TextBox Grid.Row="0" Margin="2" Grid.Column="1" x:Name="TextFecha" Focusable="False" FontSize="12"/>
+                        <ComboBox   x:Name="CmbTipoDoc" Margin="2" Grid.Row="1"  Grid.Column="1" PreviewKeyDown="CmbTipoDoc_PreviewKeyDown" SelectionChanged="CmbTipoDoc_SelectionChanged" SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True" Cursor="Hand" FontSize="12">
+                            <ComboBoxItem  Content="Salida Traslado de Bodega"/>
+                            <ComboBoxItem Content="Salida Traslado Bodega Consignacion/Remision"/>
+                            <ComboBoxItem Content="Devolucion traslado consignacion"/>
+                        </ComboBox>
+
+                        <TextBox Grid.Row="2" Margin="2" Grid.Column="1" x:Name="TextNumeroDoc" Focusable="False" FontSize="12"/>
+                        <ComboBox x:Name="CmbBodOrigen" SelectedValue="{Binding SelectedValue, Mode=TwoWay}" Margin="2" Grid.Row="3" Grid.Column="1"  IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding SelectedItem}" PreviewKeyDown="CmbTipoDoc_PreviewKeyDown" Cursor="Hand" FontSize="12"/>
+
+                        <ComboBox x:Name="CmbBodDestino" Margin="2" Grid.Row="4" Grid.Column="1" SelectedValue="{Binding cod_bod,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=true,ValidatesOnExceptions=true}"  SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True"  VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" PreviewKeyDown="CmbTipoDoc_PreviewKeyDown" Cursor="Hand" FontSize="12" SelectionChanged="CmbBodDestino_SelectionChanged"/>
+
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="2" x:Name="TextNota"  FontSize="12"/>
+                        <ComboBox Visibility="Hidden" x:Name="CmbTipoTraslado" Margin="0,1,0,1" Grid.Row="6"  Grid.Column="1" PreviewKeyDown="CmbTipoDoc_PreviewKeyDown"  SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True" >
+                            <ComboBoxItem  Content="Traslado entre tiendas "/>
+                            <ComboBoxItem Content="Traslado gerente de producto"/>
+                            <ComboBoxItem Content="Traslado gerente administrativo"/>
+                        </ComboBox>
+
+                        <Grid  Grid.Row="7" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="F3=Eliminar registro " Grid.Column="0" Margin="10,0,0,1" x:Name="TextKey"  FontSize="10"/>
+                            <TextBlock Text="F8=Cambiar cantidad  -  F5=Grabar" Grid.Column="1" x:Name="TextKey1"  FontSize="10"/>
+                        </Grid>
+
+                    </Grid>
+
+                    <Border Grid.Row="0" Grid.Column="2" Height="145" VerticalAlignment="Top" BorderThickness="2" Margin="5,5,5,5" BorderBrush="LightGray">
+                        <Grid  Background="WhiteSmoke">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="28"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Foreground="LightSlateGray" Text="Empresa:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" />
+                            <TextBlock Foreground="LightSlateGray" Text="PVenta:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" />
+                            <TextBlock  Foreground="LightSlateGray" x:Name="TxtEmpresa" Margin="5,1" Text ="---" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" />
+                            <TextBlock Foreground="LightSlateGray" x:Name="TxtPVenta" Margin="5,1" Text="---:" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" />
+                            <TextBlock Foreground="LightSlateGray" Text="Bodega:"  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" />
+                            <TextBlock Foreground="LightSlateGray" x:Name="TxtBod" Margin="5,1" Text="---:" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" />
+
+                            <TextBlock Foreground="LightSlateGray" Text="Usuario:"  Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" />
+                            <TextBlock Foreground="LightSlateGray" x:Name="TxtUser" Margin="5,1" Text="---:" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" />
+
+                            <TextBlock Foreground="LightSlateGray" Text="CND:"  Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" />
+                            <TextBlock Foreground="LightSlateGray" x:Name="TxtCND" Margin="5,1" Text="---:" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" />
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                <DataGrid Name="dataGrid" GotFocus="dataGrid_GotFocus"  Grid.Row="1"  AutoGenerateColumns="False"  ItemsSource="{Binding RefGDCSource,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedItem="{Binding SelectedItem, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"   Background="WhiteSmoke" RowBackground="White" AlternatingRowBackground="Azure" IsReadOnly="True" CanUserAddRows="False"   CanUserDeleteRows="False"  HorizontalGridLinesBrush="LightGray" Margin="5,5,5,5" FontSize="12" VerticalGridLinesBrush="LightGray" HeadersVisibility="Column" SelectionMode="Single" SelectionUnit="FullRow" IsSynchronizedWithCurrentItem="True" VirtualizingStackPanel.IsVirtualizing="False"   EnableRowVirtualization="False" EnableColumnVirtualization="False" SelectionChanged="dataGrid_SelectionChanged" CellEditEnding="DataGrid_CellEditEnding"  CurrentCellChanged="DataGrid_CurrentCellChanged" PreviewKeyDown="dataGrid_PreviewKeyDown" BeginningEdit="dataGrid_BeginningEdit" >
+                    <DataGrid.Resources>
+                        <Style x:Key="CellStyle" TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Focusable" Value="False"/>
+                        </Style>
+
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="#373737" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="Height" Value="22"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="100" MinWidth="120" Header="Codigo" Binding="{Binding cod_ref,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="Nombre"  CellStyle="{StaticResource CellStyle}" IsReadOnly="True" Binding="{Binding nom_ref,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Width="300"/>
+                        <DataGridTextColumn x:Name="col_cantidad" Header="Cantidad" Binding="{Binding cantidad,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, StringFormat=N2 }" Width="70">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn x:Name="ColValRef" Width="100"  Header="Val Uni" Binding="{Binding val_ref,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat=N2}" Visibility="Hidden" IsReadOnly="True">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                    <Setter Property="TextBlock.Focusable" Value="False" />
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn x:Name="ColProDesc" Width="80" Header="% descto" Binding="{Binding pordescto,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat=N2}" Visibility="Hidden" IsReadOnly="True">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                    <Setter Property="TextBlock.Focusable" Value="False" />
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn x:Name="ColSubtotal" Width="100" Header="Subtotal" Binding="{Binding subtotal,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat=N2}" Visibility="Hidden" IsReadOnly="True">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                    <Setter Property="TextBlock.Focusable" Value="False" />
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn x:Name="ColValIva" Width="100" Header="Valor Iva" Binding="{Binding valiva,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat=N2}" Visibility="Hidden" IsReadOnly="True">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                    <Setter Property="TextBlock.Focusable" Value="False" />
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+
+                        </DataGridTextColumn>
+
+
+                        <DataGridTextColumn x:Name="ColIva" Width="60" Header="% Iva" Binding="{Binding poriva,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat=N2}" Visibility="Hidden" IsReadOnly="True">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                    
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn x:Name="ColTotal" Width="100" Header="Total" Binding="{Binding total,NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,StringFormat=N2}" Visibility="Hidden" IsReadOnly="True">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                                    
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+
+                        </DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid Grid.Row="2" Background="Black">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" x:Key="title">
+                            <Setter Property="Foreground" Value="Orange"/>
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="5 0 0 0"/>
+                        </Style>
+                        <Style TargetType="TextBlock" x:Key="values">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="12"/>
+                        </Style>
+                    </Grid.Resources>
+
+                    <TextBlock Text="Total Cantidades: " Style="{StaticResource title}"/>
+                    <TextBlock x:Name="TextCantidades" Grid.Column="1" Style="{StaticResource values}"/>
+
+                    <TextBlock Text="Total Item(s): " Grid.Column="2" Style="{StaticResource title}"/>
+                    <TextBlock x:Name="TextItem"  Grid.Column="3" Style="{StaticResource values}"/>
+
+                    <TextBlock Text="Saldos Unidades: " Grid.Column="4" Style="{StaticResource title}"/>
+                    <TextBlock x:Name="TextSaldoU"  Grid.Column="5" Text="0" Style="{StaticResource values}"/>
+
+                    <Grid Grid.Column="6">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="BtbGrabar"  Click="BtbGrabar_Click" Content="Nuevo"  Style="{StaticResource boton}" Width="130"/>
+                            <Button x:Name="BtbCancelar" Click="BtbCancelar_Click" Content="Salir" Style="{StaticResource boton}" Width="130"/>
+                        </StackPanel>
+                    </Grid>
+
+
+                </Grid>
+            </Grid>
+        </syncfusion:TabItemExt>
+
+        <syncfusion:TabItemExt Name="tabItemExt2"  Header="Consultas Documentos de Traslados" FontSize="14" IsSelected="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  Background="Black">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="180"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Fecha:  "  Grid.Row="0" Grid.Column="0" Foreground="Orange" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
+                    <DatePicker x:Name="FechaIni" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" ></DatePicker>
+                    <DatePicker x:Name="FechaFin" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" ></DatePicker>
+
+                    <TextBlock Text="Tipo Trn:  "  Grid.Row="0" Grid.Column="3" Foreground="Orange" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
+                    <ComboBox x:Name="CmbTipoCons" Margin="5" Grid.Column="4" IsSynchronizedWithCurrentItem="True" Cursor="Hand" FontSize="12" SelectionChanged="CmbTipoCons_SelectionChanged">
+                        <ComboBoxItem Content="Salida Traslado de Bodega"/>
+                        <ComboBoxItem Content="Salida Traslado Bodega Consignacion/Remision"/>
+                        <ComboBoxItem Content="Devolucion traslado consignacion"/>
+                    </ComboBox>
+
+                    <Button x:Name="Ejecutar" Content="Ejecutar" Grid.Column="5" Click="Ejecutar_Click" Style="{StaticResource boton}"/>
+                    <Button x:Name="ExportaXLS" Content="Exportar XLS" Grid.Column="6" Click="ExportaXLS_Click" Style="{StaticResource boton}"/>
+                    <Button x:Name="ReImprimir" Content="Re-Imprimir" Grid.Column="7" Click="ReImprimir_Click" Style="{StaticResource boton}"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <syncfusion:SfDataGrid  x:Name="dataGridSF"  
+                        EnableDataVirtualization = "True"
+                        AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" AllowFiltering="True"
+                        HeaderStyle="{StaticResource headerStyle}"
+                        ItemsSource="{Binding DtTraslados}">
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn MappingName="idreg" IsHidden="True"/>
+                            <syncfusion:GridTextColumn HeaderText="Tipo" MappingName="cod_trn" Width="40"/>
+                            <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="100"/>
+                            <syncfusion:GridTextColumn HeaderText="Fecha" MappingName="fec_trn" Width="120"/>
+                            <syncfusion:GridTextColumn HeaderText="BodDes" MappingName="cod_boddes" Width="70"/>
+                            <syncfusion:GridTextColumn HeaderText="Bodega Destino" MappingName="bodegades" Width="120"/>
+                            <syncfusion:GridTextColumn HeaderText="BodOrg" MappingName="cod_bodorg" Width="70"/>
+                            <syncfusion:GridTextColumn HeaderText="Bodega Origen" MappingName="bodegaorigen" Width="120"/>
+                            <syncfusion:GridTextColumn HeaderText="Referencia" MappingName="cod_ref" Width="100"/>
+                            <syncfusion:GridTextColumn HeaderText="Nombre Producto" MappingName="nom_ref" Width="250"/>
+                            <syncfusion:GridNumericColumn HeaderText="Cantidad" MappingName="cantidad" Width="80"/>
+                            <syncfusion:GridTextColumn x:Name="COLMval_uni" DisplayBinding="{Binding Path=val_uni, StringFormat='{}{0:c}'}"  HeaderText="Valor Unit" TextAlignment="Right" Width="100" />
+                            <syncfusion:GridTextColumn x:Name="COLMsubtotal" DisplayBinding="{Binding Path=subtotal, StringFormat='{}{0:c}'}"  HeaderText="Subtotal" TextAlignment="Right" Width="100"/>
+                            <syncfusion:GridNumericColumn x:Name="COLMpor_des" MappingName="por_des" HeaderText="% Desc" TextAlignment="Right" Width="80" NumberDecimalDigits="2"/>
+                            <syncfusion:GridTextColumn x:Name="COLMtot_tot" DisplayBinding="{Binding Path=tot_tot, StringFormat='{}{0:c}'}"  HeaderText="Total" TextAlignment="Right" Width="100"/>
+
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+                <Grid Grid.Row="2" Background="#373737">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Total Registros : " HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Column="0" Foreground="White" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock  x:Name="TX_Total" Text="0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Grid.Column="1"/>
+
+                </Grid>
+            </Grid>
+        </syncfusion:TabItemExt>
+
+    </syncfusion:TabControlExt>
+</Window>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="Co_Balance.Detalle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:Co_Balance"
+        mc:Ignorable="d"
+        Title="Detalle" Height="450" Width="800" Loaded="Window_Loaded">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="1" Margin="2">
+            <Grid>
+                
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1" Margin="2">
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="FontSize" Value="13"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Background" Value="#bdc3c7"/>
+                    </Style>
+                </Grid.Resources>
+                
+                <SiaSf:SfDataGrid x:Name="dataGridConsulta"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="12" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}" >
+                    <SiaSf:SfDataGrid.Columns>
+                        <SiaSf:GridTextColumn HeaderText="columna" MappingName="nom_cta" Width="100" />
+                        <SiaSf:GridTextColumn HeaderText="columna" MappingName="niv_cta" Width="100"/>
+                        <SiaSf:GridTextColumn HeaderText="columna" MappingName="nat_cta" Width="100" />
+                        <SiaSf:GridTextColumn HeaderText="columna" MappingName="cod_ter" Width="100" />
+                        <SiaSf:GridTextColumn HeaderText="columna" MappingName="nom_ter" Width="100" />
+                    </SiaSf:SfDataGrid.Columns>
+                </SiaSf:SfDataGrid>
+            </Grid>
+        </Border>
+        
+    </Grid>
+    
+    
+</Window>

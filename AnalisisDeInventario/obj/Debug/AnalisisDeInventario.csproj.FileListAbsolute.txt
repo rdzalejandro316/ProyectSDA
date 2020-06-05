@@ -1,0 +1,53 @@
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\AnalisisDeInventario.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\AnalisisDeInventario.pdb
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.g.cs
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.baml
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.g.resources
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.dll
+C:\SiasoftApp\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.pdb
+C:\SiasoftApp\SiasoftGS\Library\AnalisisDeInventario.dll
+C:\SiasoftApp\SiasoftGS\Library\AnalisisDeInventario.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\AnalisisDeInventario.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\AnalisisDeInventario.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AnalisisDeInventario\obj\Debug\AnalisisDeInventario.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\AnalisisDeInventario.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\AnalisisDeInventario.pdb

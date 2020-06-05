@@ -1,0 +1,129 @@
+﻿<Window x:Class="GeneracionPedidosProvedores.Detalle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:GeneracionPedidosProvedores"
+        mc:Ignorable="d"
+        Title="Detalle" Height="500" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="Background" Value="#373737"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+
+    <SiaSf:TabControlExt Name="TabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro" IsDisableUnloadTabItemExtContent="True" TabItemSelectedBackground="#373737" CloseButtonType="Hide">
+        <SiaSf:TabItemExt Name="tabItemExt1"  Header="Pendiente" Width="100" HeaderMargin="15 0 0 0" FontSize="14">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Border BorderBrush="LightGray" BorderThickness="1" Margin="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Referencia : " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5 0 2 0" FontWeight="Bold"/>
+                        <TextBlock Name="Name_Ref" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Name="Cod_Ref" Visibility="Hidden"/>
+                        <TextBlock Name="Cod_Bod" Visibility="Hidden"/>
+                        <TextBlock Name="TXT_mesini" Visibility="Hidden"/>
+                        <TextBlock Name="TXT_backorder" Visibility="Hidden"/>
+                        <TextBlock Name="TXT_empresa" Visibility="Hidden"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1" Margin="5">
+                    <Grid>
+                        <SiaSf:SfDataGrid  x:Name="dataGridCxC" FrozenColumnCount="2" AllowResizingColumns="True" EnableDataVirtualization = "True"  AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="11" AllowFiltering="True"   ItemsSource="{Binding DtTraslados}"  HeaderStyle="{StaticResource headerStyle}" Background="#FFF9F8F8">
+                            <SiaSf:SfDataGrid.Columns>
+                                <SiaSf:GridDateTimeColumn HeaderText="Fecha trn"  MappingName="fec_trn" Width="120"/>
+                                <SiaSf:GridTextColumn HeaderText="Documento"  MappingName="doc_cru" Width="120"/>
+                                <SiaSf:GridTextColumn  HeaderText="codigo" MappingName="cod_ref" Width="100"/>
+                                <SiaSf:GridTextColumn  HeaderText="Referencia" MappingName="nom_ref" Width="150"/>
+                                <SiaSf:GridTextColumn  HeaderText="cantidad" MappingName="can_pend" Width="100"/>
+                            </SiaSf:SfDataGrid.Columns>
+                        </SiaSf:SfDataGrid>
+                    </Grid>
+                </Border>
+
+                <Grid Background="#373737" Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Resitros : " HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" Margin="5 0 2 0"/>
+                    <TextBlock Name="Total" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" />
+
+                </Grid>
+
+            </Grid>
+        </SiaSf:TabItemExt>
+
+        <SiaSf:TabItemExt Name="tabItemExt2"  Header="backorder" Width="100" HeaderMargin="15 0 0 0" FontSize="14">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Border BorderBrush="LightGray" BorderThickness="1" Margin="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Referencia : " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5 0 2 0" FontWeight="Bold"/>
+                        <TextBlock Name="Name_Ref2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Name="Cod_Ref2" Visibility="Hidden"/>
+                        <TextBlock Name="Cod_Bod2" Visibility="Hidden"/>
+                        <TextBlock Name="TXT_mesini2" Visibility="Hidden"/>
+                        <TextBlock Name="TXT_empresa2" Visibility="Hidden"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1" Margin="5">
+                    <Grid>
+                        <SiaSf:SfDataGrid  x:Name="dataGridbackorder" FrozenColumnCount="2" AllowResizingColumns="True" EnableDataVirtualization = "True"  AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="11" AllowFiltering="True"   ItemsSource="{Binding DtTraslados}"  HeaderStyle="{StaticResource headerStyle}" Background="#FFF9F8F8">
+                            <SiaSf:SfDataGrid.Columns>
+                                <SiaSf:GridDateTimeColumn HeaderText="Fecha trn"  MappingName="fec_trn" Width="120"/>
+                                <SiaSf:GridTextColumn HeaderText="Documento"  MappingName="doc_cru" Width="120"/>
+                                <SiaSf:GridTextColumn  HeaderText="Codigo" MappingName="cod_ref" Width="100"/>
+                                <SiaSf:GridTextColumn  HeaderText="Referencia" MappingName="nom_ref" Width="150"/>
+                                <SiaSf:GridTextColumn  HeaderText="Cantidad" MappingName="can_pend" Width="100"/>
+                            </SiaSf:SfDataGrid.Columns>
+                        </SiaSf:SfDataGrid>
+                    </Grid>
+                </Border>
+
+                <Grid Background="#373737" Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Resitros : " HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" Margin="5 0 2 0"/>
+                    <TextBlock Name="Total2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" />
+
+                </Grid>
+
+            </Grid>
+        </SiaSf:TabItemExt>
+    </SiaSf:TabControlExt>
+
+
+
+</Window>

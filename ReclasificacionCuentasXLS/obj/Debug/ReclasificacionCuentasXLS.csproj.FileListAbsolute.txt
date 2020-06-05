@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.g.cs
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.baml
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.g.resources
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.dll
+D:\SiasoftApp_SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.pdb
+D:\SiasoftApp_SDA\Library\ReclasificacionCuentasXLS.dll
+D:\SiasoftApp_SDA\Library\ReclasificacionCuentasXLS.pdb

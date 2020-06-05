@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.g.cs
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.baml
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.g.resources
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumento.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.dll
+D:\SiasoftApp_SDA\Library\project\BorrarDocumento\obj\Debug\BorrarDocumentoCO.pdb
+D:\SiasoftApp_SDA\Library\BorrarDocumentoCO.dll
+D:\SiasoftApp_SDA\Library\BorrarDocumentoCO.pdb

@@ -1,0 +1,13 @@
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.g.cs
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.baml
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.g.resources
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.dll
+D:\SiasoftApp_SDA\Library\project\PNTprueba\obj\Debug\PNTprueba.pdb
+D:\SiasoftApp_SDA\Library\PNTprueba.dll
+D:\SiasoftApp_SDA\Library\PNTprueba.pdb

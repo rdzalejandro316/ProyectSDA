@@ -1,0 +1,58 @@
+﻿<Window x:Class="FoxPasarSql.Config"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"             
+        xmlns:local="clr-namespace:FoxPasarSql"
+        mc:Ignorable="d"
+        Title="Config" Height="450" Width="800" Loaded="Window_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="5">
+            <Grid.Resources>
+                <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontFamily" Value="Arial"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="Gray"/>
+                </Style>
+            </Grid.Resources>
+            <syncfusion:SfDataGrid AutoGenerateColumns="True"  ShowRowHeader="True"  AllowResizingColumns="True" x:Name="GridConfig" ShowGroupDropArea="False" FontSize="12" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}" AllowEditing="True" CurrentCellEndEdit="GridConfig_CurrentCellEndEdit"  AddNewRowPosition="Bottom" >
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTemplateColumn MappingName="DELETE" Width="70"  AllowFiltering="False">
+                        <syncfusion:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="BtnDetalle" Content="..." Click="Delete_Click" Background="Red" Cursor="Hand"/>
+                            </DataTemplate>
+                        </syncfusion:GridTemplateColumn.CellTemplate>
+                    </syncfusion:GridTemplateColumn>
+                    
+                    <syncfusion:GridTextColumn HeaderText="idrow" MappingName="idrow" AllowEditing="False" Width="60" IsHidden="True"/>
+                    <syncfusion:GridTextColumn HeaderText="tablaFox" MappingName="tablaFox"/>
+                    <syncfusion:GridTextColumn HeaderText="tablaSQL" MappingName="tablaSQL"/>
+                    <syncfusion:GridTextColumn HeaderText="idModu" MappingName="idModu"/>
+                    <syncfusion:GridTextColumn HeaderText="selecTable Fox" MappingName="selecTable"/>
+                    <syncfusion:GridTextColumn HeaderText="inserTable" MappingName="inserTable"/>
+                    <syncfusion:GridTextColumn HeaderText="selectCamp" MappingName="selectCamp"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="#373737">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Total : " VerticalAlignment="Center" Margin="10 0 0 0" Foreground="White" FontWeight="Bold"/>
+                <TextBlock Name="TxTotal" VerticalAlignment="Center" Margin="5 0 0 0" Foreground="White" />
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+
+</Window>

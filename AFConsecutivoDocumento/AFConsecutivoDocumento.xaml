@@ -1,0 +1,262 @@
+﻿<Window x:Class="SiasoftAppExt.AFConsecutivoDocumento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SiasoftAppExt"
+        xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="AFConsecutivoDocumento" Height="450" Width="800" Loaded="Window_Loaded">
+    
+    <Window.Resources>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="Background" Value="#373737"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="SiaSf:FilterToggleButton">
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Width" Value="15" />
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.6*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Margin="5">
+            <Border Background="White">
+                <Border.Effect>
+                    <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                </Border.Effect>
+            </Border>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Modulo :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="Bold" Foreground="#03A9F4"/>
+                    <TextBlock Text="Activos Fijos" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                </StackPanel>
+                <SiaSf:SfDataGrid  x:Name="dataGridDoc" Grid.Row="1" AllowResizingColumns="False" EnableDataVirtualization = "True"  AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="False"  HeaderStyle="{StaticResource headerStyle}" Background="#FFF9F8F8" SelectionChanged="dataGridDoc_SelectionChanged">
+                    <SiaSf:SfDataGrid.Columns>
+                        <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_trn" Width="80" AllowFiltering="True"/>
+                        <SiaSf:GridTextColumn HeaderText="Tipo de Documento"  MappingName="nom_trn" Width="190"/>
+                        <SiaSf:GridTextColumn MappingName="ind_con" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="num_act" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="inicial" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="lon_num" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="Ind_modi" IsHidden="True"/>
+                    </SiaSf:SfDataGrid.Columns>
+                </SiaSf:SfDataGrid>
+            </Grid>
+        </Grid>
+
+        <Grid Margin="5" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="170"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Margin="5">
+                <Border Background="White">
+                    <Border.Effect>
+                        <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                    </Border.Effect>
+                </Border>
+
+                <Grid Name="GridPanelEdit" IsEnabled="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Maneja Consecutivo : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#03A9F4"/>
+
+                    <ComboBox Name="Cb_consec" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="5" HorizontalContentAlignment="Left" SelectionChanged="Combo_SelectionChanged" Tag="ind_con">
+                        <ComboBoxItem>Ninguno</ComboBoxItem>
+                        <ComboBoxItem>Si</ComboBoxItem>
+                        <ComboBoxItem>No</ComboBoxItem>
+                        <ComboBoxItem>Periodo</ComboBoxItem>
+                    </ComboBox>
+
+
+                    <TextBlock Grid.Row="1" Text="Numero Actual Consecutivo : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#03A9F4"/>
+                    <TextBox PreviewTextInput="Number_PreviewTextInput" LostFocus="ValidBox" Tag="num_act" Name="Tx_consecutivo" Grid.Row="1" Grid.Column="1" Margin="5"/>
+
+
+                    <TextBlock Grid.Row="2" Text="Longitud del consecutivo : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#03A9F4"/>
+                    <ComboBox Name="Cb_long" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="5" SelectionChanged="Combo_SelectionChanged" Tag="lon_num">
+                        <ComboBoxItem>0</ComboBoxItem>
+                        <ComboBoxItem>1</ComboBoxItem>
+                        <ComboBoxItem>2</ComboBoxItem>
+                        <ComboBoxItem>3</ComboBoxItem>
+                        <ComboBoxItem>4</ComboBoxItem>
+                        <ComboBoxItem>5</ComboBoxItem>
+                        <ComboBoxItem>6</ComboBoxItem>
+                        <ComboBoxItem>7</ComboBoxItem>
+                        <ComboBoxItem>8</ComboBoxItem>
+                        <ComboBoxItem>9</ComboBoxItem>
+                        <ComboBoxItem>10</ComboBoxItem>
+                        <ComboBoxItem>11</ComboBoxItem>
+                        <ComboBoxItem>12</ComboBoxItem>
+                    </ComboBox>
+
+
+                    <TextBlock Grid.Row="3" Text="Iniciales del consecutivo : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#03A9F4"/>
+                    <TextBox LostFocus="ValidBox" Tag="inicial" Name="Tx_ini" Grid.Row="3" Grid.Column="1" Margin="5" MaxLength="6"/>
+
+                    <TextBlock Grid.Row="4" Text="No modificar consecutivo : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#03A9F4"/>
+                    <ComboBox Name="Cb_mod" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="5" HorizontalContentAlignment="Left" SelectionChanged="Combo_SelectionChanged" Tag="Ind_modi">
+                        <ComboBoxItem Content="Si"/>
+                        <ComboBoxItem Content="No"/>
+                    </ComboBox>
+
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="5">
+                <Border Background="White">
+                    <Border.Effect>
+                        <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                    </Border.Effect>
+                </Border>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Name="Tx_example" Width="200" Margin="10" HorizontalAlignment="Center"/>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Name="BtnExample" Content="Ver ejemplo" Margin="5" Padding="6" Width="100" Background="#03A9F4" BorderBrush="{x:Null}" Foreground="White" Click="BtnExample_Click"/>
+                        <Button Name="BtnExit" Content="Salir" Margin="5" Padding="6" Width="100" Background="#03A9F4" BorderBrush="{x:Null}" Foreground="White" Click="BtnExit_Click"/>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+
+
+        </Grid>
+
+        <Grid Margin="5" Grid.Column="2">
+            <Border Background="White">
+                <Border.Effect>
+                    <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                </Border.Effect>
+            </Border>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock" x:Key="title">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="Foreground" Value="#03A9F4"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                    <Style TargetType="TextBox" x:Key="value">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="5"/>
+                    </Style>
+                </Grid.Resources>
+
+                <TextBlock Grid.Row="0" Text="Enero : " Style="{StaticResource title}"/>
+
+                <TextBlock Grid.Row="1" Text="Febrero : " Style="{StaticResource title}"/>
+
+                <TextBlock Grid.Row="2" Text="Marzo : " Style="{StaticResource title}"/>
+
+                <TextBlock Grid.Row="3" Text="Abril : " Style="{StaticResource title}"/>
+
+
+
+                <TextBlock Grid.Row="4" Text="Mayo : " Style="{StaticResource title}"/>
+
+
+                <TextBlock Grid.Row="5" Text="Junio : " Style="{StaticResource title}"/>
+
+                <TextBlock Grid.Row="6" Text="Julio : " Style="{StaticResource title}"/>
+
+                <TextBlock Grid.Row="7" Text="Agosto : " Style="{StaticResource title}"/>
+
+
+
+                <TextBlock Grid.Row="8" Text="Septiembre : " Style="{StaticResource title}"/>
+
+                <TextBlock Grid.Row="9" Text="Octubre : " Style="{StaticResource title}"/>
+
+                <TextBlock Grid.Row="10" Text="Noviembre : " Style="{StaticResource title}"/>
+
+
+
+                <TextBlock Grid.Row="11" Text="Diciembre : " Style="{StaticResource title}"/>
+
+                <Grid x:Name="GridDates" Grid.Column="1" Grid.RowSpan="12" IsEnabled="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="mes1" Tag="num_01" LostFocus="ValidBox" Grid.Row="0" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes2" Tag="num_02" LostFocus="ValidBox" Grid.Row="1" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes3" Tag="num_03" LostFocus="ValidBox" Grid.Row="2" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes4" Tag="num_04" LostFocus="ValidBox" Grid.Row="3" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes5" Tag="num_05" LostFocus="ValidBox" Grid.Row="4" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes6" Tag="num_06" LostFocus="ValidBox" Grid.Row="5" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes7" Tag="num_07" LostFocus="ValidBox" Grid.Row="6" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes8" Tag="num_08" LostFocus="ValidBox" Grid.Row="7" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes9" Tag="num_09" LostFocus="ValidBox" Grid.Row="8" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes10" Tag="num_10" LostFocus="ValidBox" Grid.Row="9" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes11" Tag="num_11" LostFocus="ValidBox" Grid.Row="10" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                    <TextBox x:Name="mes12" Tag="num_12" LostFocus="ValidBox" Grid.Row="11" Grid.Column="1"  Style="{StaticResource value}" PreviewTextInput="Number_PreviewTextInput"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+</Window>

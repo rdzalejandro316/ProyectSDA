@@ -1,0 +1,26 @@
+﻿<Window x:Class="FoxPasarSql.Totales"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FoxPasarSql"
+        mc:Ignorable="d"
+        Title="Totales" Height="300" Width="500" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Text="Insetados" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Green" FontSize="30"/>
+        <TextBlock Name="TxInsert" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+
+        <TextBlock  Grid.Column="1" Text="Fallidos" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" FontSize="30"/>
+        <TextBlock Name="TxFall" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+
+    </Grid>
+</Window>

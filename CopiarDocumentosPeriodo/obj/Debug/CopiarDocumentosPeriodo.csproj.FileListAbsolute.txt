@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.g.cs
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.baml
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.g.resources
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.dll
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.pdb
+D:\SiasoftApp_SDA\Library\CopiarDocumentosPeriodo.dll
+D:\SiasoftApp_SDA\Library\CopiarDocumentosPeriodo.pdb
+D:\SiasoftApp_SDA\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.csprojAssemblyReference.cache

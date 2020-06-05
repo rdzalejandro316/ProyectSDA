@@ -1,0 +1,113 @@
+﻿<Window x:Class="Egreso.ViewDocument"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:Egreso"
+        mc:Ignorable="d"
+        Title="ViewDocument" Height="450" Width="800" Background="WhiteSmoke" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="Grid" x:Key="grid">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Height" Value="Auto"/>
+        </Style>
+        <Style TargetType="Border" x:Key="card">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Style="{StaticResource grid}">
+            <Border Style="{StaticResource card}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <TextBlock Width="200" Text="Documentos Cabeza" HorizontalAlignment="Left"  Background="DodgerBlue" Foreground="WhiteSmoke" TextAlignment="Center" Margin="5 5 0 0 "/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <syncfusion:SfDataGrid Name="dataGridCab" Margin="5" EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="12" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="DataGridCab_SelectionChanged">
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50"/>
+                            <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="150"/>
+                            <syncfusion:GridTextColumn HeaderText="Fecha" MappingName="fec_trn" Width="150"/>
+                            <syncfusion:GridTextColumn HeaderText="Vendedor" MappingName="nom_mer" Width="250"/>
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Style="{StaticResource grid}">
+            <Border Style="{StaticResource card}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <TextBlock Width="200" Text="Documentos Cuerpo" HorizontalAlignment="Left"  Background="DodgerBlue" Foreground="WhiteSmoke" TextAlignment="Center" Margin="5 5 0 0 "/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <syncfusion:SfDataGrid Name="dataGridCue" Margin="5" EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="12" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="DataGridCab_SelectionChanged">
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="100"/>
+                            <syncfusion:GridTextColumn HeaderText="cod_cco" MappingName="cod_cco" Width="60"/>
+                            <syncfusion:GridTextColumn HeaderText="des_mov" MappingName="des_mov" Width="200"/>
+                            <syncfusion:GridTextColumn HeaderText="bas_mov" MappingName="bas_mov" Width="80"/>
+                            <syncfusion:GridTextColumn HeaderText="deb_mov" MappingName="deb_mov" Width="80"/>
+                            <syncfusion:GridTextColumn HeaderText="cre_mov" MappingName="cre_mov" Width="80"/>
+                            <syncfusion:GridTextColumn HeaderText="doc_cruc" MappingName="doc_cruc" Width="100"/>
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2" Style="{StaticResource grid}">
+            <Border Style="{StaticResource card}"/>
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Total Debito : " VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Name="TotDeb" VerticalAlignment="Center" Width="150" Foreground="DodgerBlue"/>
+                    <TextBlock Text="Total Creditos : " VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Name="TotCre" VerticalAlignment="Center" Width="150" Foreground="DodgerBlue"/>
+                    <TextBlock Text="Diferencia : " VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Name="Dife" VerticalAlignment="Center" Width="150" Foreground="DodgerBlue"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+        
+        
+    </Grid>
+
+</Window>

@@ -1,0 +1,185 @@
+﻿<Window x:Class="SiasoftAppExt.Sucursal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             Height="400" Width="600" Loaded="Window_Loaded"  SiaSf:SkinStorage.VisualStyle="Metro" ResizeMode="NoResize" >
+
+    <Window.Resources>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#bdc3c7"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="boxValues">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <!--<Setter Property="VerticalAlignment" Value="Center"/>-->
+        </Style>
+        <Style TargetType="TextBox" x:Key="boxBlock">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="DodgerBlue"/>
+            <!--<Setter Property="VerticalAlignment" Value="Center"/>-->
+        </Style>
+        <Style TargetType="TextBlock" x:Key="title">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="white" Height="Auto"  BorderBrush="Silver" BorderThickness="1,1,1,1"  Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Tercero: " HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 0 2 0" FontWeight="Bold"/>
+                <TextBlock Name="TXT_name" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Name="TXT_code" Visibility="Hidden"/>
+
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Background="white" Height="Auto"  BorderBrush="Silver" BorderThickness="1,1,1,1"  Margin="5">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <SiaSf:SfDataGrid x:Name="dataGridSuc"  AllowResizingColumns="True"  EnableDataVirtualization="True" AutoGenerateColumns="False" AllowFiltering="True"  Margin="5" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="dataGridSuc_SelectionChanged">
+                        <SiaSf:SfDataGrid.Columns>
+                            <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_suc" ColumnSizer="Star"/>
+                            <SiaSf:GridTextColumn HeaderText="Sucursal" MappingName="nom_suc" ColumnSizer="Star" Width="160"/>
+                            <SiaSf:GridTextColumn MappingName="dir" IsHidden="True"/>
+                            <SiaSf:GridTextColumn MappingName="dir_corres" IsHidden="True"/>
+                            <SiaSf:GridTextColumn MappingName="tel" IsHidden="True"/>
+                            <SiaSf:GridTextColumn MappingName="ciudad" IsHidden="True"/>
+                            <SiaSf:GridTextColumn MappingName="estado" IsHidden="True"/>
+                            <SiaSf:GridTextColumn MappingName="cod_zona" IsHidden="True"/>
+                            <SiaSf:GridTextColumn MappingName="Nom_zona" IsHidden="True"/>
+                        </SiaSf:SfDataGrid.Columns>
+                    </SiaSf:SfDataGrid>
+
+                    <Grid Grid.Row="1" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style x:Key="Boton">
+                                <Setter Property="Control.Background" Value="#3498db"/>
+                                <Setter Property="Control.BorderBrush" Value="{x:Null}"/>
+                                <Setter Property="Control.Margin" Value="10 5 10 5"/>
+                                <Setter Property="Control.Cursor" Value="Hand"/>
+                            </Style>
+                        </Grid.Resources>
+
+                        <Button Name="BTNuevo" Grid.Column="0" Click="BTNuevo_Click" Style="{StaticResource Boton}" ToolTip="Nuevo">
+                            <Image Source="imagenes/document-add.png"/>
+                        </Button>
+                        <Button Name="BTNeliminar" Grid.Column="1" Margin="5" Click="BTNeliminar_Click" Style="{StaticResource Boton}" ToolTip="Eliminar">
+                            <Image Source="imagenes/delete.png"/>
+                         </Button>
+                        <Button Name="BtnActulizar" Grid.Column="2" Click="BtnActulizar_Click" Style="{StaticResource Boton}" ToolTip="Actualizar">
+                            <Image Source="imagenes/repeat.png"/>
+                        </Button>
+                        
+                    </Grid>
+                    
+                </Grid>
+
+                <Grid Grid.Column="1" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock Grid.Row="0" Text="Sucursal: " Style="{StaticResource title}"/>
+                    <TextBox Name="TB_codSuc" Grid.Column="1" Grid.Row="0" Style="{StaticResource boxValues}" LostFocus="TB_codSuc_LostFocus" MaxLength="3" />
+
+                    <TextBlock Grid.Row="1" Text="Nombre: " Style="{StaticResource title}"/>
+                    <TextBox Name="TB_NomSuc" Grid.Column="1" Grid.Row="1" Style="{StaticResource boxValues}"/>
+                                        
+                    <TextBlock Grid.Row="2" Text="Direccion: " Style="{StaticResource title}"/>
+                    <TextBox Name="TB_DirSuc" Grid.Column="1" Grid.Row="2" Style="{StaticResource boxValues}"/>
+
+                    <TextBlock Grid.Row="3" Text="Dir Corresp: " Style="{StaticResource title}"/>
+                    <TextBox Name="TB_DirCorSuc" Grid.Column="1" Grid.Row="3" Style="{StaticResource boxValues}"/>
+                    
+                    <TextBlock Grid.Row="4" Text="Telefonos: " Style="{StaticResource title}"/>
+                    <TextBox Name="TB_TelSuc" Grid.Column="1" Grid.Row="4" Style="{StaticResource boxValues}"/>
+                    
+                    <TextBlock Grid.Row="5" Text="Ciudad: " Style="{StaticResource title}"/>
+                    <TextBox Name="TB_CiuSuc" Grid.Column="1" Grid.Row="5" Style="{StaticResource boxValues}"/>
+
+                    <TextBlock Grid.Row="6" Text="Estado: " Style="{StaticResource title}"/>
+                    <ComboBox Name="TB_EstSuc" Grid.Row="6" Grid.Column="1" Margin="5">
+                        <ComboBoxItem Tag="0" IsSelected="True" Content="Inactivo"/>
+                        <ComboBoxItem Tag="1" Content="Activo"/>
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="7" Text="Zona: " Style="{StaticResource title}"/>
+                    <TextBox Name="TB_ZonaSuc" Grid.Column="1" Grid.Row="7" Style="{StaticResource boxValues}" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_zona"/>
+                    <TextBox Name="TB_CodigoZonaSuc" Visibility="Hidden"/>
+
+                    <Grid Grid.Row="8" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style x:Key="Botones">
+                                <Setter Property="Control.Background" Value="#3498db"/>
+                                <Setter Property="Control.BorderBrush" Value="{x:Null}"/>
+                                <Setter Property="Control.Foreground" Value="White"/>
+                                <Setter Property="Control.Cursor" Value="Hand"/>
+                                <Setter Property="Control.Margin" Value="2"/>
+                            </Style>
+                        </Grid.Resources>
+
+                        <Button Name="BTnGuardar" Grid.Column="0" Content="Guardar" Click="BTnGuardar_Click" Style="{StaticResource Botones}" />
+                        <Button Name="BTnSalir" Grid.Column="1" Content="Cancelar" Click="BTnSalir_Click" Style="{StaticResource Botones}"/>
+                    </Grid>
+                </Grid>  
+              
+            </Grid>
+        </Border>
+
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.baml
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.g.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.dll
+D:\SiasoftApp_SDA\Library\project\ImportacionInventario750\obj\Debug\ImportacionInventario750.pdb
+D:\SiasoftApp_SDA\Library\ImportacionInventario750.dll
+D:\SiasoftApp_SDA\Library\ImportacionInventario750.pdb

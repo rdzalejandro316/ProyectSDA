@@ -1,0 +1,15 @@
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\MainWindow.g.cs
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\App.g.cs
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\bin\Debug\ImpOpGet.exe.config
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\bin\Debug\ImpOpGet.exe
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\bin\Debug\ImpOpGet.pdb
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\MainWindow.baml
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet.g.resources
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet.exe
+D:\SiasoftApp_SDA\Library\project\ImpOpGet\obj\Debug\ImpOpGet.pdb

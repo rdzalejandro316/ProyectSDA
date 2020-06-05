@@ -1,0 +1,13 @@
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.g.cs
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.baml
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.g.resources
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.dll
+D:\SiasoftApp_SDA\Library\project\BasesAnuales\obj\Debug\BasesAnuales.pdb
+D:\SiasoftApp_SDA\Library\BasesAnuales.dll
+D:\SiasoftApp_SDA\Library\BasesAnuales.pdb

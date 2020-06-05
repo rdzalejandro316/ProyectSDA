@@ -1,0 +1,14 @@
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\ListaPrecionBodMasivo\obj\Debug\ListaPrecionBodMasivo.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\ListaPrecionBodMasivo.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\ListaPrecionBodMasivo.pdb

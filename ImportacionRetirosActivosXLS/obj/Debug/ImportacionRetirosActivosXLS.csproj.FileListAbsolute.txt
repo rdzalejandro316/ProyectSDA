@@ -1,0 +1,16 @@
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.baml
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.g.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.dll
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\ImportacionRetirosActivosXLS.pdb
+D:\SiasoftApp_SDA\Library\ImportacionRetirosActivosXLS.dll
+D:\SiasoftApp_SDA\Library\ImportacionRetirosActivosXLS.pdb
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\BrowDocumentos.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportacionRetirosActivosXLS\obj\Debug\BrowDocumentos.baml

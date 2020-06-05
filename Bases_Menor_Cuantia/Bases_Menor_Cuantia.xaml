@@ -1,0 +1,69 @@
+﻿<Window x:Class="SiasoftAppExt.Bases_Menor_Cuantia"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SiasoftAppExt"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+             Width="500" Height="400">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="#373737"/>
+            </Style>
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#373737">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Año : " VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0" FontWeight="Bold"/>
+            <syncfusion:SfDatePicker x:Name="Txdate" Grid.Column="1" Margin="5" SelectorFormatString="yyyy" FormatString="yyyy"/>
+
+            <Button Name="BtnAdd" Content="Adicionar" Grid.Column="2" Width="100" HorizontalAlignment="Left" Margin="5" Click="BtnAdd_Click"/>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <syncfusion:SfDataGrid Name="GridConsulta" Grid.Row="1" AutoGenerateColumns="False" AllowResizingColumns="True"  ShowGroupDropArea="False" FontSize="10" AllowFiltering="True"  HeaderStyle="{StaticResource headerStyle}"  Margin="5" CurrentCellEndEdit="GridConsulta_CurrentCellEndEdit" AllowEditing="True">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn MappingName="idrow" IsHidden="True"/>
+                    <syncfusion:GridTextColumn HeaderText="Año" MappingName="año" Width="60" AllowEditing="False"/>
+                    <syncfusion:GridNumericColumn HeaderText="Base M.C Activo" MappingName="b_mca" Width="130"/>
+                    <syncfusion:GridNumericColumn HeaderText="Base M.C Deprec" MappingName="b_mcd" Width="130"/>
+                    <syncfusion:GridTextColumn HeaderText="Fecha Ini" MappingName="fecha" Width="80"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+
+        </Grid>
+        
+        
+    </Grid>
+    
+    
+</Window>

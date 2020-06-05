@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportacionXLS_741", "ImportacionXLS_741.csproj", "{2520DE6F-7F2E-461C-AB4C-CD485FB2A757}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImpoXLS", "..\ImpoXLS\ImpoXLS.csproj", "{F12CCF47-8E7C-419A-A75B-38BA7F4CCC97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2520DE6F-7F2E-461C-AB4C-CD485FB2A757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2520DE6F-7F2E-461C-AB4C-CD485FB2A757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2520DE6F-7F2E-461C-AB4C-CD485FB2A757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2520DE6F-7F2E-461C-AB4C-CD485FB2A757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12CCF47-8E7C-419A-A75B-38BA7F4CCC97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12CCF47-8E7C-419A-A75B-38BA7F4CCC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12CCF47-8E7C-419A-A75B-38BA7F4CCC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12CCF47-8E7C-419A-A75B-38BA7F4CCC97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EE270B6-C375-492B-9BFD-ABEE8177F5DC}
+	EndGlobalSection
+EndGlobal

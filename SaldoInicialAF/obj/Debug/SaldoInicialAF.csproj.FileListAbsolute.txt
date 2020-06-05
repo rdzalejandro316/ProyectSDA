@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.g.cs
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.baml
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.g.resources
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.dll
+D:\SiasoftApp_SDA\Library\project\SaldoInicialAF\obj\Debug\SaldoInicialAF.pdb
+D:\SiasoftApp_SDA\Library\SaldoInicialAF.dll
+D:\SiasoftApp_SDA\Library\SaldoInicialAF.pdb

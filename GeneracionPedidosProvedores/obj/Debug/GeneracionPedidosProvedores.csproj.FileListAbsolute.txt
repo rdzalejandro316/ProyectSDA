@@ -1,0 +1,197 @@
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftLeco\Library\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftAppGS\SiasoftAppGS\Library\GeneracionPedidosProvedores.pdb
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\GeneracionPedidosProvedores.dll
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\GeneracionPedidosProvedores.pdb
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\pc\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\GeneracionPedidosProvedores.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\SiasoftAppGS\Library\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\project\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\GeneracionPedidosProvedores.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftAppGS\Library\GeneracionPedidosProvedores.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\GeneracionPedidosProvedores.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\GeneracionPedidosProvedores.pdb
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\GeneracionPedidosProvedores.dll
+\\192.168.0.10\SiasoftApp\SiasoftGS\Library\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\Library\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\GeneracionPedidosProvedores.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS-Alejandro\Library\GeneracionPedidosProvedores.pdb
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csprojAssemblyReference.cache
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.g.cs
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.cs
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.cache
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores_MarkupCompile.lref
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\Detalle.baml
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.baml
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.g.resources
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.Properties.Resources.resources
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.GenerateResource.cache
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.csproj.CopyComplete
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.dll
+C:\Users\USER\Desktop\SiasoftGS\Library\projectGS\GeneracionPedidosProvedores\obj\Debug\GeneracionPedidosProvedores.pdb
+C:\Users\USER\Desktop\SiasoftGS\Library\GeneracionPedidosProvedores.dll
+C:\Users\USER\Desktop\SiasoftGS\Library\GeneracionPedidosProvedores.pdb

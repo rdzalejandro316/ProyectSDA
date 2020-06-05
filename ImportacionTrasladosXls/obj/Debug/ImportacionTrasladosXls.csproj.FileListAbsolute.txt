@@ -1,0 +1,16 @@
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.baml
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.g.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.dll
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\ImportacionTrasladosXls.pdb
+D:\SiasoftApp_SDA\Library\ImportacionTrasladosXls.dll
+D:\SiasoftApp_SDA\Library\ImportacionTrasladosXls.pdb
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\BrowDocumentos.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportacionTrasladosXls\obj\Debug\BrowDocumentos.baml

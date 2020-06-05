@@ -1,0 +1,26 @@
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\AuditoriaTrasladoEmpresa.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\AuditoriaTrasladoEmpresa.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\AuditoriaTrasladoEmpresa\obj\Debug\AuditoriaTrasladoEmpresa.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\AuditoriaTrasladoEmpresa.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\AuditoriaTrasladoEmpresa.pdb

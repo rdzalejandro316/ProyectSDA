@@ -1,0 +1,64 @@
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\Form.g.cs
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.g.cs
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting_MarkupCompile.cache
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting_MarkupCompile.lref
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\Form.baml
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.baml
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.g.resources
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.Properties.Resources.resources
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.GenerateResource.cache
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.CoreCompileInputs.cache
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.CopyComplete
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.dll
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.pdb
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\MenuReporteSetting.dll
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\MenuReporteSetting.pdb
+C:\Users\aleja\OneDrive\Escritorio\SiasoftGS-Alejandro\SiasoftGS\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csprojAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csprojAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\Form.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\Form.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.GenerateResource.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.CoreCompileInputs.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.CopyComplete
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\MenuReporteSetting.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\Library\MenuReporteSetting.pdb
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csprojAssemblyReference.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\Form.g.cs
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.g.cs
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting_MarkupCompile.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting_MarkupCompile.lref
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\Form.baml
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.baml
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.g.resources
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.Properties.Resources.resources
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.CopyComplete
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.dll
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\MenuReporteSetting\obj\Debug\MenuReporteSetting.pdb
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\MenuReporteSetting.dll
+C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\MenuReporteSetting.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\Form.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\Form.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporteSetting\obj\Debug\MenuReporteSetting.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\MenuReporteSetting.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\MenuReporteSetting.pdb

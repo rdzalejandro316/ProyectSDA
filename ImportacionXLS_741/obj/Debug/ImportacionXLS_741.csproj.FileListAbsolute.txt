@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.g.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.dll
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.pdb
+D:\SiasoftApp_SDA\Library\ImportacionXLS_741.dll
+D:\SiasoftApp_SDA\Library\ImportacionXLS_741.pdb
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportacionXLS_741\obj\Debug\ImportacionXLS_741.baml

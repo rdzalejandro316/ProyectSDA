@@ -1,0 +1,133 @@
+﻿<UserControl x:Class="SiasoftAppExt.ImportacionXLS_741"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key = "bluck" TargetType = "TextBlock">
+            <Setter Property="VerticalAlignment" Value = "Center" />
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="5 0 0 0"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="but" TargetType="Button">
+            <Setter Property="Background" Value="#03A9F4"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="5 0 5 0"/>
+            <Setter Property="Padding" Value="5 0 5 0"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="35"/>
+        </Style>
+        <Style x:Key="bux" TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style x:Key="but2" TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#373737">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Button Style="{StaticResource but}" Content="Cargar archivo" Click="Button_Cargar"/>
+                <Button Style="{StaticResource but}" Content="Importar Documento" Click="Button_Impo"/>
+                <Button Visibility="Hidden" Style="{StaticResource but}" Background="Red" Content="Exportar Documento de errores" Click="Button_Impo"/>
+                <!--<Button Style="{StaticResource but}" Content="Importar" Click="Button_Impo"/>-->
+                <!--<Button Style="{StaticResource but}" Content="Importar" Click="Button_Impo"/>-->
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="133*"/>
+                    <ColumnDefinition Width="267*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid EnableColumnVirtualization="True" EnableRowVirtualization="True" VirtualizingStackPanel.VirtualizationMode = "Recycling" VirtualizingStackPanel.IsVirtualizing = "True" CanUserAddRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Visible" AutoGenerateColumns="True" x:Name="Datos"  Margin="5" Grid.ColumnSpan="2"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" Background="#373737">
+                    <Grid Margin="5" x:Name="gridErrores">
+                    </Grid>
+                </ScrollViewer>
+
+            </Grid>
+
+        </Grid>
+
+        <!--373737-->
+        <Grid Grid.Row="2" Background="#373737">
+            <Grid  Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Visibility="Hidden" Style="{StaticResource bluck}" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Text="Cuenta: "/>
+                <TextBlock Visibility="Hidden" Style="{StaticResource bluck}" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Text="Tercero: "/>
+                <TextBlock Visibility="Hidden" Style="{StaticResource bluck}" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Text="CCO: "/>
+                <TextBox Visibility="Hidden" Style="{StaticResource bux}" Grid.Row="0" Grid.Column="1"/>
+                <TextBox Visibility="Hidden" Style="{StaticResource bux}" Grid.Row="1" Grid.Column="1"/>
+                <TextBox Visibility="Hidden" Style="{StaticResource bux}" Grid.Row="2" Grid.Column="1"/>
+                <Button Visibility="Hidden" Style="{StaticResource but2}" Grid.Row="0" Grid.Column="2"/>
+                <Button Visibility="Hidden" Style="{StaticResource but2}" Grid.Row="1" Grid.Column="2"/>
+                <Button Visibility="Hidden" Style="{StaticResource but2}" Grid.Row="2" Grid.Column="2"/>
+                <Button Visibility="Hidden" Style="{StaticResource but2}" Grid.Row="0" Grid.Column="3"/>
+                <Button Visibility="Hidden" Style="{StaticResource but2}" Grid.Row="1" Grid.Column="3"/>
+                <Button Visibility="Hidden" Style="{StaticResource but2}" Grid.Row="2" Grid.Column="3"/>
+                <TextBlock Style="{StaticResource bluck}" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="4" Text="Totales: "/>
+                <TextBox Name="debi" Style="{StaticResource bux}" Grid.Row="0" Grid.Column="5"/>
+                <TextBlock Style="{StaticResource bluck}" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="5" Text="Diferencia: "/>
+                <TextBox Name="credi" Style="{StaticResource bux}" Grid.Row="0" Grid.Column="6"/>
+                <TextBox Name="dife" Style="{StaticResource bux}" Grid.Row="1" Grid.Column="6"/>
+                <Button Grid.Row="0" Grid.Column="9" Content="Salir" Margin="5" Click="Button_Salir"/>
+                <Button Grid.Row="1" Grid.Column="9" Content="Estructura" Margin="5" Click="Button_Crear" ToolTip="Creacion de la plantilla de importacion"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

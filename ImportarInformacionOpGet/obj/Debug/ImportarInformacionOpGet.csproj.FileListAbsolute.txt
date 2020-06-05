@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.g.cs
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.baml
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.g.resources
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.dll
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.pdb
+D:\SiasoftApp_SDA\Library\ImportarInformacionOpGet.dll
+D:\SiasoftApp_SDA\Library\ImportarInformacionOpGet.pdb
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\ImportarInformacionOpGet\obj\Debug\ImportarInformacionOpGet.csproj.CopyComplete

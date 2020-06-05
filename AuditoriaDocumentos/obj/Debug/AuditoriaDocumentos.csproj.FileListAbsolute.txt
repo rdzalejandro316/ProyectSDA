@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.g.cs
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.baml
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.g.resources
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.dll
+D:\SiasoftApp_SDA\Library\project\AuditoriaDocumentos\obj\Debug\AuditoriaDocumentos.pdb
+D:\SiasoftApp_SDA\Library\AuditoriaDocumentos.dll
+D:\SiasoftApp_SDA\Library\AuditoriaDocumentos.pdb

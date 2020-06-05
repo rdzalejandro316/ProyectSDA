@@ -1,0 +1,14 @@
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.csprojAssemblyReference.cache
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.g.cs
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia_MarkupCompile.cache
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia_MarkupCompile.lref
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.baml
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.g.resources
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.Properties.Resources.resources
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.csproj.GenerateResource.cache
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.csproj.CoreCompileInputs.cache
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.csproj.CopyComplete
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.dll
+D:\SiasoftApp_SDA\Library\project\Bases_Menor_Cuantia\obj\Debug\Bases_Menor_Cuantia.pdb
+D:\SiasoftApp_SDA\Library\Bases_Menor_Cuantia.dll
+D:\SiasoftApp_SDA\Library\Bases_Menor_Cuantia.pdb

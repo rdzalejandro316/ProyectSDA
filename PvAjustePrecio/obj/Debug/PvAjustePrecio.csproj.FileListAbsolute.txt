@@ -1,0 +1,77 @@
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.cs
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.cache
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.lref
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.baml
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.resources
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.Properties.Resources.resources
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.dll
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.pdb
+C:\Users\pc\Desktop\SiasoftAppGS\Library\PvAjustePrecio.dll
+C:\Users\pc\Desktop\SiasoftAppGS\Library\PvAjustePrecio.pdb
+C:\Users\pc\Desktop\SiasoftAppGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csprojResolveAssemblyReference.cache
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.cs
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.baml
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.resources
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.dll
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.pdb
+C:\SiasoftApp\SiasoftGS\Library\PvAjustePrecio.dll
+C:\SiasoftApp\SiasoftGS\Library\PvAjustePrecio.pdb
+C:\SiasoftApp\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.CopyComplete
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\PvAjustePrecio.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\PvAjustePrecio.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csprojResolveAssemblyReference.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.cs
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.lref
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.baml
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.Properties.Resources.resources
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.GenerateResource.Cache
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.pdb
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\PvAjustePrecio.dll
+C:\Users\Grupo Saavedra\Desktop\SiasoftGS-alejo\Library\PvAjustePrecio.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.cs
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.lref
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.baml
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.Properties.Resources.resources
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.GenerateResource.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.CoreCompileInputs.cache
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.CopyComplete
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.pdb
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\PvAjustePrecio.dll
+C:\Users\alejandro\Desktop\SiasoftGS-Alejandro\SiasoftGS\Library\PvAjustePrecio.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\project\PvAjustePrecio\obj\Debug\PvAjustePrecio.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\PvAjustePrecio.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGS\Library\PvAjustePrecio.pdb
