@@ -6,105 +6,106 @@
              xmlns:local="clr-namespace:SiasoftAppExt"
              xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
              Width="1000" Height="500" Loaded="Window_Loaded">
+    <Window.Resources>
+        <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
+    </Window.Resources>
+
 
     <SiaSf:TabControlExt Name="TabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True" TabPanelBackground="#FFEBEBEB" TabItemSelectedBackground="#f1c40f">
         <SiaSf:TabItemExt Name="tabItemExt1"  Header="Configuracion" FontSize="14" >
-            <Grid Name="ConfigGrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
 
-                <TextBlock Text="Activos Fijos" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="#f1c40f" FontWeight="Bold" FontSize="20"/>
+            <Grid>
+                <Grid Name="ConfigGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <Grid Grid.Row="1">
-                    <Grid Width="500" Height="250" Background="#FFEBEBEB">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="0.5*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.2*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="0.5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock" x:Key="Title">
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="HorizontalAlignment" Value="Right"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
-                                <Setter Property="Margin" Value="5"/>
-                                <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
-                            </Style>
-                            <Style TargetType="TextBox" x:Key="values">
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="HorizontalAlignment" Value="Left"/>
-                                <Setter Property="BorderBrush" Value="{x:Null}"/>
-                                <Setter Property="Margin" Value="2"/>
-                                <Setter Property="Width" Value="80"/>
-                                <Setter Property="Padding" Value="2"/>
-                            </Style>
-                            <Style TargetType="TextBox" x:Key="valuesTitle">
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="BorderBrush" Value="{x:Null}"/>
-                                <Setter Property="Margin" Value="2"/>
-                                <Setter Property="Width" Value="170"/>
-                                <Setter Property="Padding" Value="2"/>
-                                <Setter Property="Background" Value="Beige"/>
-                                <Setter Property="IsReadOnly" Value="True"/>
-                            </Style>
-                            <Style TargetType="ComboBox" x:Key="anulado">
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="Margin" Value="0"/>
-                            </Style>
-                            <Style TargetType="Button" x:Key="botones">
-                                <Setter Property="BorderBrush" Value="{x:Null}"/>
-                                <Setter Property="Background" Value="#f1c40f"/>
-                                <Setter Property="Foreground" Value="White"/>
-                                <Setter Property="Margin" Value="2"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Style>
-                        </Grid.Resources>
+                    <TextBlock Text="Activos Fijos" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="#f1c40f" FontWeight="Bold" FontSize="20"/>
 
-
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Año: " Style="{StaticResource Title}"/>
-
-                        <SiaSf:SfDatePicker Name="Fecha_Ano" Grid.Row="1" Grid.Column="1"  Margin="5"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{x:Null}" SelectorFormatString="Y"  FormatString="yyy" AccentBrush="#f1c40f"/>
-
-
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Empresa: " Style="{StaticResource Title}"/>
-                        <SiaSf:ComboBoxAdv x:Name="CB_Empresa" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" FontSize="12" Margin="5" AllowMultiSelect="False"  DefaultText="Seleccione la Empresa" DisplayMemberPath="businessname"  SelectedValuePath="businesscode"/>
-
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Pasar Saldos: " Style="{StaticResource Title}"/>
-                        <ComboBox Name="TipoSal" Grid.Row="3" Grid.Column="1" Margin="5">
-                            <ComboBoxItem Tag="0" IsSelected="True">No</ComboBoxItem>
-                            <ComboBoxItem Tag="1">Si</ComboBoxItem>
-                        </ComboBox>
-
-                        <Grid Grid.Row="5" Grid.ColumnSpan="4">
+                    <Grid Grid.Row="1">
+                        <Grid Width="500" Height="200" Background="#FFEBEBEB">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.8*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="0.5*"/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock" x:Key="Title">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+                                    <Setter Property="Margin" Value="5"/>
+                                    <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+                                </Style>
+                                <Style TargetType="TextBox" x:Key="values">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                    <Setter Property="Margin" Value="2"/>
+                                    <Setter Property="Width" Value="80"/>
+                                    <Setter Property="Padding" Value="2"/>
+                                </Style>
+                                <Style TargetType="TextBox" x:Key="valuesTitle">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                    <Setter Property="Margin" Value="2"/>
+                                    <Setter Property="Width" Value="170"/>
+                                    <Setter Property="Padding" Value="2"/>
+                                    <Setter Property="Background" Value="Beige"/>
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                                <Style TargetType="ComboBox" x:Key="anulado">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Margin" Value="0"/>
+                                </Style>
+                                <Style TargetType="Button" x:Key="botones">
+                                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                    <Setter Property="Background" Value="#f1c40f"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Margin" Value="2"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Style>
+                            </Grid.Resources>
 
-                            <Button Name="BTNconsultar" Grid.Column="1" Content="Consultar" Style="{StaticResource botones}" Click="BTNconsultar_Click"/>
-                            <Button Name="BTNcancelar" Grid.Column="2" Content="Cancelar" Style="{StaticResource botones}" Click="BTNcancelar_Click"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="Año: " Style="{StaticResource Title}"/>
+                            <SiaSf:SfDatePicker Name="Fecha_Ano" Grid.Row="1" Grid.Column="2"  Margin="5"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{x:Null}" SelectorFormatString="Y"  FormatString="yyy" AccentBrush="#f1c40f"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="Pasar Saldos: " Style="{StaticResource Title}"/>
+                            <ComboBox Name="TipoSal" Grid.Row="2" Grid.Column="2" Margin="5" >
+                                <ComboBoxItem Tag="0" IsSelected="True">No</ComboBoxItem>
+                                <ComboBoxItem Tag="1">Si</ComboBoxItem>
+                            </ComboBox>
+
+                            <Grid Grid.Row="4" Grid.ColumnSpan="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Name="BTNconsultar" Grid.Column="1" Content="Consultar" Style="{StaticResource botones}" Click="BTNconsultar_Click"/>
+                                <Button Name="BTNcancelar" Grid.Column="2" Content="Cancelar" Style="{StaticResource botones}" Click="BTNcancelar_Click"/>
+                            </Grid>
+
                         </Grid>
-
                     </Grid>
-                    <SiaSf:SfBusyIndicator  Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="100" IsBusy="False" Foreground="#f1c40f"/>
+
+
                 </Grid>
-                
-                
+                <SiaSf:SfBusyIndicator  Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="100" Panel.ZIndex="2"  IsBusy="False" Foreground="#f1c40f"/>
             </Grid>
         </SiaSf:TabItemExt>
 

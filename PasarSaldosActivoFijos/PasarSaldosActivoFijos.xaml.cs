@@ -40,8 +40,7 @@ namespace SiasoftAppExt
         public PasarSaldosActivoFijos()
         {
             InitializeComponent();
-            SiaWin = Application.Current.MainWindow;                             
-            cargarEmpresas();
+            SiaWin = Application.Current.MainWindow;                                         
         }
 
 
@@ -70,25 +69,7 @@ namespace SiasoftAppExt
                 MessageBox.Show("error en el load:" + e);
             }
         }
-
-        public void cargarEmpresas()
-        {
-            try
-            {
-                string cadena = "select businesscode,businessname from Business";
-                DataTable empresas = SiaWin.Func.SqlDT(cadena, "Empresas", 0);
-                CB_Empresa.ItemsSource = empresas.DefaultView;
-
-                CB_Empresa.SelectedIndex = 0;
-            }
-            catch (Exception w)
-            {
-                MessageBox.Show("error al cargar empresas");
-            }
-
-
-        }
-
+        
         private async void BTNconsultar_Click(object sender, RoutedEventArgs e)
         {            
             try
@@ -103,7 +84,7 @@ namespace SiasoftAppExt
                 source.CancelAfter(TimeSpan.FromSeconds(1));
 
                 DateTime tiempo = Convert.ToDateTime(Fecha_Ano.Value.ToString());
-                string empresa = CB_Empresa.SelectedValue.ToString();
+                string empresa = "010";
                 var pasarSald = ((ComboBoxItem)TipoSal.SelectedItem).Tag.ToString();
 
 
