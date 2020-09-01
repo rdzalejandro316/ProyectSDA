@@ -4,7 +4,7 @@
 library
 C#
 .cs
-F:\Fuentes_SiasoftApp\Fuentes\SiasoftAppFuentes\SiasoftApp2.6.1\SiasoftApp\bin\Debug\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\NIIF\SiasoftAppExt\Niif\obj\Debug\
 Niif
 none
 false
@@ -16,5 +16,5 @@ DEBUG;TRACE
 131569487696
 Menu.xaml;Trn.xaml;
 
-False
+True
 

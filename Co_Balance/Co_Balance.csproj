@@ -92,9 +92,16 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BalanceAcumuladoCuenta.xaml.cs">
+      <DependentUpon>BalanceAcumuladoCuenta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reporte.xaml.cs">
       <DependentUpon>Reporte.xaml</DependentUpon>
     </Compile>
+    <Page Include="BalanceAcumuladoCuenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Co_Balance.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

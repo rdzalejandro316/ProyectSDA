@@ -37,7 +37,7 @@ namespace SiasoftAppExt
         DataTable DtAuxCtaTer = new DataTable();
         DataTable DtBalance = new DataTable();
         bool loaded = false;
-        
+
         public Co_Balance(dynamic tabitem1)
         {
             InitializeComponent();
@@ -252,22 +252,22 @@ namespace SiasoftAppExt
                 CancellationTokenSource source = new CancellationTokenSource();
 
                 CancellationToken token = source.Token;
-                
+
                 DtBalance.Clear();
                 GridConfiguracion.IsEnabled = false;
                 sfBusyIndicator.IsBusy = true;
                 dataGridConsulta.ItemsSource = null;
                 BtnEjecutar.IsEnabled = false;
-                
+
                 source.CancelAfter(TimeSpan.FromSeconds(1));
-                
+
                 tabitem.Progreso(true);
                 string ffi = fecha_ini.Text.ToString();
                 string fff = fecha_fin.Text.ToString();
                 string tipoBal = TipoBal.SelectedIndex.ToString();
                 int _TipoBalNiif = TipoBalNiif.SelectedIndex;
                 dataGridConsulta.ClearFilters();
-                var slowTask = Task<DataSet>.Factory.StartNew(() => SlowDude(ffi, fff, c1, c2, N1, N2, tipoBal, _TipoBalNiif,source.Token), source.Token);
+                var slowTask = Task<DataSet>.Factory.StartNew(() => SlowDude(ffi, fff, c1, c2, N1, N2, tipoBal, _TipoBalNiif, source.Token), source.Token);
                 await slowTask;
                 //MessageBox.Show(slowTask.Result.ToString());
                 BtnEjecutar.IsEnabled = true;
@@ -275,16 +275,15 @@ namespace SiasoftAppExt
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
                     DtBalance = ((DataSet)slowTask.Result).Tables[0];
-                    //dataGridConsulta.ItemsSource = ((DataSet)slowTask.Result).Tables[0];
                     dataGridConsulta.ItemsSource = DtBalance.DefaultView;
                     Total.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
+
+                    dataGridConsultaDetalle.ItemsSource = DtBalance.DefaultView;
+                    Total.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
+
                     TabControl1.SelectedIndex = 2;
                     TabControl1.SelectedIndex = 1;
-                    //TABLA 0
-                    //double sub = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(subtotal)", "").ToString());
-                    //double descto = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(val_des)", "").ToString());
-                    //double iva = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(val_iva)", "").ToString());
-                    //double total = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(total)", "").ToString());                    
+
                 }
                 this.sfBusyIndicator.IsBusy = false;
                 GridConfiguracion.IsEnabled = true;
@@ -332,7 +331,7 @@ namespace SiasoftAppExt
                 da = new SqlDataAdapter(cmd);
                 da.SelectCommand.CommandTimeout = 0;
                 da.Fill(ds);
-                
+
                 con.Close();
                 //MessageBox.Show(ds.Tables[0].Rows.Count.ToString());
                 return ds;
@@ -459,16 +458,11 @@ namespace SiasoftAppExt
                 string cod_cli = row["cod_ter"].ToString().Trim();
                 string cod_cta = row["cod_cta"].ToString().Trim();
 
-                //MessageBox.Show(cod_cli + "-" + cod_cta);
-                //                var dr1 = dataGridCxC.SelectedItems;
-
-                //                    string cod_cli = dr["cod_ter"].ToString();
-                //                  if (string.IsNullOrEmpty(cod_cli)) return;
-                //                string cod_cta = dr["cod_cta"].ToString();
+                
                 StringBuilder sb = new StringBuilder();
                 sb.Append(" declare @fechaIni as date ; set @fechaIni='" + fecha_ini.SelectedDate.Value.Date.ToShortDateString() + "';declare @fechaFin as date ; set @fechaFin='" + fecha_fin.SelectedDate.Value.Date.ToShortDateString() + "'");
                 sb.Append(" SELEct cab_doc.idreg ,cue_doc.idreg as idregcue,cab_doc.cod_trn,cab_doc.num_trn,cab_doc.fec_trn,cue_doc.cod_cta,cue_doc.cod_cco,cue_doc.cod_ter,comae_ter.nom_ter,");
-                sb.Append(" cue_doc.doc_ref,cue_doc.doc_cruc,cue_doc.num_chq,cue_doc.bas_mov,cue_doc.deb_mov,cue_doc.cre_mov, cab_DOC.factura ");
+                sb.Append(" cue_doc.doc_ref,cue_doc.doc_cruc,cue_doc.num_chq,cue_doc.bas_mov,cue_doc.deb_mov,cue_doc.cre_mov, cab_DOC.factura,des_mov ");
                 sb.Append(" FROM coCUE_DOC cue_doc inner join cocab_doc as cab_doc on cab_doc.idreg = cue_doc.idregcab and cue_doc.cod_cta = '" + cod_cta.Trim() + "' and ");
                 if (cod_cli != "") sb.Append(" cue_doc.cod_ter='" + cod_cli.Trim() + "' and  ");
 
@@ -477,8 +471,8 @@ namespace SiasoftAppExt
                 sb.Append(" left join comae_ter on comae_ter.cod_ter = cue_doc.cod_ter  inner join comae_cta as comae_cta on comae_cta.cod_cta = cue_doc.cod_cta ");
                 sb.Append(" and (comae_cta.tip_blc=0 or comae_cta.tip_blc=" + (TipoBalNiif.SelectedIndex + 1).ToString() + ")");
                 sb.Append(" ORDER BY cod_cta,cab_doc.fec_trn ");
-                //MessageBox.Show(sb.ToString());
-                //Clipboard.SetText(sb.ToString());
+                
+
                 DtAuxCtaTer = SiaWin.DB.SqlDT(sb.ToString(), "Dt", idemp);
                 if (DtAuxCtaTer.Rows.Count == 0)
                 {
@@ -528,28 +522,23 @@ namespace SiasoftAppExt
                 WinDetalle.TextAcumDebito.Text = Convert.ToDouble(row["debito"].ToString()).ToString("C");
                 WinDetalle.TextAcumCredito.Text = Convert.ToDouble(row["credito"].ToString()).ToString("C");
                 WinDetalle.TextSaldoFin.Text = Convert.ToDouble(row["sal_fin"].ToString()).ToString("C");
-                WinDetalle.Owner = SiaWin;
-                //WinDetalle.dataGridCxC_FilterChanged1();
+                WinDetalle.Owner = SiaWin;                
                 WinDetalle.ShowDialog();
-                WinDetalle = null;
-                //ImprimirDoc(Convert.ToInt32(numtrn), "Reimpreso");
+                WinDetalle = null;                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+
         private void dataGridConsulta_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            DetalleCta();
-            //System.Data.DataRow dr = DtBalance.Rows[dataGridConsulta.SelectedIndex];
-            //if (dr != null)
-            //{
-
-            //  string codterc = dr["cod_ter"].ToString();
-            //MessageBox.Show(codterc);
-            //}
+//            DetalleCta();            
         }
+
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             if (loaded == true) return;
@@ -665,71 +654,62 @@ namespace SiasoftAppExt
             viewer.Focus();
             //AuditoriaDoc(DocumentoIdCab, "Imprimio ", idEmp);
         }
+    
         private void LoadReporte()
         {
             try
-            {                                
-                viewer.Reset();                
+            {
+                viewer.Reset();
                 string xnameReporte = @"/Contabilidad/Balances/AuxiliarCuenta";
                 viewer.ServerReport.ReportPath = xnameReporte;
                 viewer.ServerReport.ReportServerUrl = new Uri("http://siasoft:8080/ReportServer");
                 viewer.SetDisplayMode(DisplayMode.Normal);
                 viewer.ProcessingMode = ProcessingMode.Remote;
                 ReportServerCredentials rsCredentials = viewer.ServerReport.ReportServerCredentials;
-                //rsCredentials.NetworkCredentials = new System.Net.NetworkCredential(@"grupo\wilmer.barrios", "Siasoft2018*");
-                //List<DataSourceCredentials> crdentials = new List<DataSourceCredentials>();
                 
-                //foreach (var dataSource in viewer.ServerReport.GetDataSources())
-                //{
-                //    DataSourceCredentials credn = new DataSourceCredentials();
-                //    credn.Name = dataSource.Name;
-                //    credn.UserId = "wilmer.barrios@siasoftsas.com";
-                //    credn.Password = "Camilo654321*";
-                //    crdentials.Add(credn);
-                //}
-                //viewer.ServerReport.SetDataSourceCredentials(crdentials);
-                //                viewer.Update();
-                //viewer.PrinterSettings.Copies = Convert.ToInt16(Copias);
-                //viewer.ZoomPercent = 50;
                 if (ZoomPercent > 0)
                 {
                     viewer.ZoomMode = ZoomMode.Percent;
-                   viewer.ZoomPercent = ZoomPercent;
+                    viewer.ZoomPercent = ZoomPercent;
                 }
-                //viewer.PrinterSettings.PrinterName = "HP DeskJet 5820 series";
-                //            viewer.PrinterSettings.PrintRange = PrintRange..AllPages;
+
                 viewer.PrinterSettings.Collate = false;
                 viewer.RefreshReport();
 
                 // auxiliar cuenta tercero
 
-                viewer1.Reset();
-                //string xnameReporte = @"/Contabilidad/Balances/BalanceGeneral";
+                viewer1.Reset();                
                 string xnameReporte1 = @"/Contabilidad/Balances/AuxiliarTerceroCuenta";
                 viewer1.ServerReport.ReportPath = xnameReporte1;
                 viewer1.ServerReport.ReportServerUrl = new Uri("http://siasoft:8080/ReportServer");
                 viewer1.SetDisplayMode(DisplayMode.Normal);
                 viewer1.ProcessingMode = ProcessingMode.Remote;
-                //ReportServerCredentials rsCredentials1 = viewer1.ServerReport.ReportServerCredentials;
-                //rsCredentials1.NetworkCredentials = new System.Net.NetworkCredential(@"grupo\wilmer.barrios", "Siasoft2018*");
-                //List<DataSourceCredentials> crdentials1 = new List<DataSourceCredentials>();                
-                //foreach (var dataSource in viewer1.ServerReport.GetDataSources())
-                //{
-                //    DataSourceCredentials credn = new DataSourceCredentials();
-                //    credn.Name = dataSource.Name;
-                //    credn.UserId = "wilmer.barrios@siasoftsas.com";
-                //    credn.Password = "Camilo654321*";
-                //    crdentials.Add(credn);
-                //}
-                //viewer1.ServerReport.SetDataSourceCredentials(crdentials1);
-                
+               
                 if (ZoomPercent > 0)
                 {
                     viewer1.ZoomMode = ZoomMode.Percent;
                     viewer1.ZoomPercent = ZoomPercent;
-                }                
+                }
                 viewer1.PrinterSettings.Collate = false;
                 viewer1.RefreshReport();
+
+
+                viewer2.Reset();
+                string xnameReporte904 = @"/Contabilidad/Balances/ImpuestosAuxiliarCuenta904";
+                viewer2.ServerReport.ReportPath = xnameReporte904;
+                viewer2.ServerReport.ReportServerUrl = new Uri("http://siasoft:8080/ReportServer");
+                viewer2.SetDisplayMode(DisplayMode.Normal);
+                viewer2.ProcessingMode = ProcessingMode.Remote;                                
+                
+                if (ZoomPercent > 0)
+                {
+                    viewer2.ZoomMode = ZoomMode.Percent;
+                    viewer2.ZoomPercent = ZoomPercent;
+                }
+                
+                viewer2.PrinterSettings.Collate = false;
+                viewer2.RefreshReport();
+
             }
             catch (Exception ex)
             {
@@ -742,10 +722,147 @@ namespace SiasoftAppExt
         {
             tabItemExt3.Visibility = Visibility.Visible;
             tabItemExt4.Visibility = Visibility.Visible;
-            tabItemExt3.IsSelected=true;
+            tabItemExt5.Visibility = Visibility.Visible;
+            tabItemExt3.IsSelected = true;
             LoadReporte();
 
 
         }
+
+
+        private void BtnAcumAno_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                DataRowView row = (DataRowView)dataGridConsulta.SelectedItems[0];
+                if (row == null)
+                {
+                    MessageBox.Show("Registro sin datos");
+                    return;
+                }
+
+                //BalanceAcumuladoCuenta win = new BalanceAcumuladoCuenta();
+
+                //dynamic win = SiaWin.WindowExt(9658, "BalanceAcumuladoCuenta");
+                BalanceAcumuladoCuenta win = new BalanceAcumuladoCuenta();
+                win.cuenta = row["cod_cta"].ToString();
+                win.fechaba = fecha_ini.Text;
+                win.fechafin = fecha_fin.DisplayDate;
+                win.tercero = row["cod_ter"].ToString().Trim();
+                win.tipo = TipoBalNiif.SelectedIndex;
+                win.idemp = idemp;
+                win.moduloid = moduloid;
+
+                win.nomcta = row["nom_cta"].ToString();
+                win.nomter = row["nom_ter"].ToString();
+                win.ShowInTaskbar = false;
+                win.Owner = Application.Current.MainWindow;
+                win.ShowDialog();
+                //win.Close();
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrir acumulados:" + w);
+            }
+        }
+
+
+        private void dataGridConsultaDetalle_SelectionChanged(object sender, GridSelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (dataGridConsultaDetalle.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)dataGridConsultaDetalle.SelectedItems[0];
+                    string fechaba = fecha_ini.Text;
+                    DateTime fechafin = fecha_fin.DisplayDate;
+                    string tercero = row["cod_ter"].ToString().Trim();
+                    string cuenta = row["cod_cta"].ToString();
+                    int tipo = TipoBalNiif.SelectedIndex;
+                    DateTime fec = Convert.ToDateTime(fechaba.ToString());
+                    LoadAño(fec.Year.ToString(), fechafin.ToString(), tercero, cuenta, tipo, codemp);
+
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al ver el detalle por año:" + w);
+            }
+        }
+
+        public async void LoadAño(string fecha, string fechafin, string ter, string cta, int tipoblc, string cod_empresa)
+        {
+            try
+            {
+
+                CancellationTokenSource source = new CancellationTokenSource();
+                CancellationToken token = source.Token;
+                sfBusyIndicatorPeriodo.IsBusy = true;
+                GridBalance.ClearFilters();
+                GridBalance.ItemsSource = null;
+
+
+                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadDataDetalleAño(fecha, fechafin.ToString(), ter, cta, tipoblc, cod_empresa, source.Token), source.Token);
+                await slowTask;
+
+                if (((DataSet)slowTask.Result) == null)
+                {
+                    this.sfBusyIndicator.IsBusy = false;
+                    //MessageBox.Show("cuenta si movientos", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+                if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
+                {
+                    GridBalance.ItemsSource = ((DataSet)slowTask.Result).Tables[0];
+                }
+
+                this.sfBusyIndicatorPeriodo.IsBusy = false;
+            }
+            catch (SqlException ex)
+            {
+                this.sfBusyIndicator.IsBusy = false;
+                MessageBox.Show(ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                this.sfBusyIndicator.IsBusy = false;
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private DataSet LoadDataDetalleAño(string fecha, string fechafin, string ter, string cta, int tipblc, string empresas, CancellationToken cancellationToken)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(SiaWin._cn);
+                SqlCommand cmd = new SqlCommand();
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                cmd = new SqlCommand("_EmpSpMovCuenta", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ano", fecha);
+                cmd.Parameters.AddWithValue("@fechafin", Convert.ToDateTime(fechafin));
+                cmd.Parameters.AddWithValue("@ter", ter);
+                cmd.Parameters.AddWithValue("@cta", cta);
+                cmd.Parameters.AddWithValue("@tipoblc", tipblc);
+                cmd.Parameters.AddWithValue("@codemp", empresas);
+                da = new SqlDataAdapter(cmd);
+                da.SelectCommand.CommandTimeout = 0;
+                da.Fill(ds);
+                con.Close();
+                return ds;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+
+
     }
-    }
+}

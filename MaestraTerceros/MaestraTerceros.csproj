@@ -13,6 +13,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,9 +74,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GridDoble.xaml.cs">
-      <DependentUpon>GridDoble.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Modelo\Tercero.cs" />
     <Page Include="MaestraTerceros.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -85,10 +83,6 @@
       <DependentUpon>MaestraTerceros.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="GridDoble.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

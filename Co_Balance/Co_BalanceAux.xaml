@@ -28,18 +28,18 @@
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="0" Foreground="Indigo" FontWeight="Bold" Text="Cuenta: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="1" Foreground="Indigo" FontWeight="Bold" x:Name="TextCodigoCta" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="2" Foreground="Indigo" FontWeight="Bold" x:Name="TextNombreCta" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="1" FontSize="14" Grid.Column="0"  Foreground="Indigo" FontWeight="Bold" x:Name="LabelTercero" Text="Tercero: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="1" FontSize="14" Grid.Column="1" Foreground="Indigo" FontWeight="Bold" x:Name="TextCodigoTer" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="1" FontSize="14" Grid.Column="2" Foreground="Indigo" FontWeight="Bold" x:Name="TextNombreTer" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="3" Foreground="Indigo" FontWeight="Bold" x:Name="TextTipoAux" Text="Tipo:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="4" Foreground="Indigo" FontWeight="Bold" x:Name="TextNombreTipoAux" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="0" Foreground="#2196F3" FontWeight="Bold" Text="Cuenta: " HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="1" Foreground="Black" FontWeight="Bold" x:Name="TextCodigoCta" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center" x:FieldModifier="public"/>
+            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="2" Foreground="Black" FontWeight="Bold" x:Name="TextNombreCta" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center" x:FieldModifier="public"/>
+            <TextBlock Grid.Row="1" FontSize="14" Grid.Column="0"  Foreground="#2196F3" FontWeight="Bold" x:Name="LabelTercero" Text="Tercero: " HorizontalAlignment="Right" VerticalAlignment="Center" x:FieldModifier="public"/>
+            <TextBlock Grid.Row="1" FontSize="14" Grid.Column="1" Foreground="Black" FontWeight="Bold" x:Name="TextCodigoTer" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center" x:FieldModifier="public"/>
+            <TextBlock Grid.Row="1" FontSize="14" Grid.Column="2" Foreground="Black" FontWeight="Bold" x:Name="TextNombreTer" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center" x:FieldModifier="public"/>
+            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="3" Foreground="#2196F3" FontWeight="Bold" x:Name="TextTipoAux" Text="Tipo:" HorizontalAlignment="Right" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" FontSize="14" Grid.Column="4" Foreground="Black" FontWeight="Bold" x:Name="TextNombreTipoAux" Text="-- " HorizontalAlignment="Left" VerticalAlignment="Center" x:FieldModifier="public"/>
 
-            <Button Content="Exportar XLS" Background="Indigo" Foreground="White" Grid.Row="0" Grid.Column="5" x:Name="BtnExportarXLS" Click="BtnExportarXLS_Click"/>
-            <Button Content="Imprimir" Background="Indigo" Foreground="White" Grid.Row="0" Grid.Column="6" Click="Button_Click_1"/>
-            <Button Content="Salir" Background="Indigo" Foreground="White" Grid.Row="0" Grid.Column="7" Click="Button_Click" IsCancel="True"/>
+            <Button Content="Exportar XLS" Background="#2196F3" Foreground="White" Grid.Row="0" Grid.Column="5" x:Name="BtnExportarXLS" Click="BtnExportarXLS_Click"/>
+            <Button Content="Imprimir" Background="#2196F3" Foreground="White" Grid.Row="0" Grid.Column="6" Click="Button_Click_1"/>
+            <Button Content="Salir" Background="#2196F3" Foreground="White" Grid.Row="0" Grid.Column="7" Click="Button_Click" IsCancel="True"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.Resources>
@@ -77,32 +77,33 @@
 
             </Grid.Resources>
 
-            <SiaSf:SfDataGrid  x:Name="dataGrid"  Margin="5,5,5,5"
+            <SiaSf:SfDataGrid  x:Name="dataGrid"  Margin="5,5,5,5" x:FieldModifier="public"
                         EnableDataVirtualization = "True" ShowRowHeader="True"
-                        AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10"  AllowFiltering="True" ItemsSource="{Binding DtTraslados}" HeaderStyle="{StaticResource headerStyle}"  FilterChanged="dataGridCxC_FilterChanged">
+                        AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10"  AllowFiltering="True" ItemsSource="{Binding DtTraslados}" HeaderStyle="{StaticResource headerStyle}">
                 <SiaSf:SfDataGrid.Columns>
                     <SiaSf:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="45"/>
-                    <SiaSf:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="90" />
+                    <SiaSf:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="80" />
                     <SiaSf:GridTextColumn DisplayBinding="{Binding Path=fec_trn, StringFormat={}{0:dd/MM/yyyy}}"  Width="75" HeaderText="Fecha" />
                     <SiaSf:GridTextColumn HeaderText="Cco" MappingName="cod_cco"   Width="45" />
                     <SiaSf:GridTextColumn HeaderText="Tercero" MappingName="cod_ter"   Width="75" />
-                    <SiaSf:GridTextColumn HeaderText="Nombre" MappingName="nom_ter"   Width="190" />
-                    <SiaSf:GridTextColumn HeaderText="Factura" MappingName="factura"   Width="80" />
-                    <SiaSf:GridTextColumn HeaderText="DocRefe" MappingName="doc_ref"   Width="80" />
-                    <SiaSf:GridTextColumn HeaderText="DocCruce" MappingName="doc_cruc"   Width="80" />
-                    <SiaSf:GridTextColumn HeaderText="Cheq" MappingName="num_chq"   Width="70" />
-                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=bas_mov, StringFormat='n2'}" Width="90" HeaderText="Base" TextAlignment="Right" AllowFiltering="False"/>
-                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=deb_mov, StringFormat='n2'}" Width="90" HeaderText="Debitos" TextAlignment="Right" AllowFiltering="False" />
-                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=cre_mov, StringFormat='n2'}" Width="90" HeaderText="Creditos" TextAlignment="Right" AllowFiltering="False" />
-                    <SiaSf:GridTemplateColumn MappingName="Docum" Width="50"  AllowFiltering="False">
+                    <SiaSf:GridTextColumn HeaderText="Nombre" MappingName="nom_ter"   Width="120" />
+                    <SiaSf:GridTextColumn HeaderText="Detalle" MappingName="des_mov" AllowResizing="True"  Width="150" />
+                    <SiaSf:GridTextColumn HeaderText="Factura" MappingName="factura"   Width="60" />
+                    <SiaSf:GridTextColumn HeaderText="DocRefe" MappingName="doc_ref"   Width="60" />
+                    <SiaSf:GridTextColumn HeaderText="DocCruce" MappingName="doc_cruc"   Width="70" />
+                    <SiaSf:GridTextColumn HeaderText="Cheq" MappingName="num_chq"   Width="60" />
+                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=bas_mov, StringFormat='n2'}" Width="85" HeaderText="Base" TextAlignment="Right" AllowFiltering="False"/>
+                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=deb_mov, StringFormat='n2'}" Width="85" HeaderText="Debitos" TextAlignment="Right" AllowFiltering="False" />
+                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=cre_mov, StringFormat='n2'}" Width="85" HeaderText="Creditos" TextAlignment="Right" AllowFiltering="False" />
+                    <SiaSf:GridTemplateColumn MappingName="Docum" Width="40"  AllowFiltering="False">
                         <SiaSf:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="BtnDetalle" Content="...."  Background="LightSteelBlue" Click="BtnDetalle_Click"/>
+                                <Button x:Name="BtnDetalle" Content="...."  Background="#2196F3" Click="BtnDetalle_Click"/>
                             </DataTemplate>
                         </SiaSf:GridTemplateColumn.CellTemplate>
                     </SiaSf:GridTemplateColumn>
-                    
-                        
+
+
                 </SiaSf:SfDataGrid.Columns>
             </SiaSf:SfDataGrid>
         </Grid>
@@ -135,10 +136,10 @@
                 <Border BorderBrush="DodgerBlue" BorderThickness="0.5" Grid.Row="0" Grid.Column="3">
                     <TextBlock Text="Saldo Fin" Foreground="DodgerBlue" Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
                 </Border>
-                <TextBlock  x:Name="TextSaldoAnterior" Foreground="DodgerBlue" Grid.Row="1" Grid.Column="0"  Text="0.00" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" />
-                <TextBlock  x:Name="TextAcumDebito" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
-                <TextBlock  x:Name="TextAcumCredito" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
-                <TextBlock  x:Name="TextSaldoFin" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                <TextBlock  x:Name="TextSaldoAnterior" Foreground="DodgerBlue" Grid.Row="1" Grid.Column="0"  Text="0.00" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" x:FieldModifier="public"/>
+                <TextBlock  x:Name="TextAcumDebito" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" x:FieldModifier="public"/>
+                <TextBlock  x:Name="TextAcumCredito" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" x:FieldModifier="public"/>
+                <TextBlock  x:Name="TextSaldoFin" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" x:FieldModifier="public"/>
 
 
                 <Border BorderBrush="DodgerBlue"  BorderThickness="0.5" Grid.Row="0" Grid.Column="5">
@@ -152,9 +153,9 @@
                 </Border>
                 <TextBlock Text="Totales:" Foreground="DodgerBlue" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="12"/>
 
-                <TextBlock  x:Name="TextBase" Foreground="DodgerBlue" Grid.Row="1" Grid.Column="5"  Text="0.00" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" />
-                <TextBlock  x:Name="TextDeb" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
-                <TextBlock  x:Name="TextCre" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                <TextBlock  x:Name="TextBase" Foreground="DodgerBlue" Grid.Row="1" Grid.Column="5"  Text="0.00" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" x:FieldModifier="public"/>
+                <TextBlock  x:Name="TextDeb" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" x:FieldModifier="public"/>
+                <TextBlock  x:Name="TextCre" Foreground="DodgerBlue" Text="0.00" Grid.Row="1" Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" x:FieldModifier="public"/>
             </Grid>
         </Border>
 

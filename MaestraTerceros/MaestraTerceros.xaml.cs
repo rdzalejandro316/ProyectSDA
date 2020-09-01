@@ -2,19 +2,22 @@
 using Microsoft.Win32;
 using Syncfusion.UI.Xaml.Grid.Converter;
 using Syncfusion.XlsIO;
+using Syncfusion.XlsIO.Parser.Biff_Records;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
 using System.IO.Packaging;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;  
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -47,20 +50,35 @@ namespace SiasoftAppExt
         string codigo = "cod_ter";
         string nombre = "nom_ter";
         string idrow = "idrow";
+        //columans q se debe ignoran al recorrer la clase
+        List<string> col_ignorar = new List<string>() { "Error", "Item", "tdocm" };
+        //columnas que tiene un valor predeterminado por ejemplo la fecha de actualizacion
+        Dictionary<string, string> col_valor = new Dictionary<string, string>();
 
         public MaestraTerceros()
         {
             InitializeComponent();
             pantalla();
-            //TimeSpan()
+            loadcolumns();
+        }
 
-            
+        public void loadcolumns()
+        {
+            try
+            {
+                col_valor.Clear();
+                col_valor.Add("fec_act", DateTime.Now.ToString());
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al agrgar columnas:" + 2);
+            }
         }
 
         void pantalla()
         {
-            this.MinWidth = 1200;
-            this.MinHeight = 650;
+            this.MinWidth = 1100;
+            this.MinHeight = 500;
         }
 
         private void LoadConfig()
@@ -74,9 +92,7 @@ namespace SiasoftAppExt
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
                 this.Title = "Maestra de terceros " + cod_empresa + "-" + nomempresa;
 
-                //llena combos
-                MTer.vendedores = LlenaCombo("select rtrim(cod_mer) as cod_mer,rtrim(nom_mer) as nom_mer from InMae_mer  order by nom_mer");
-                MTer.zona = LlenaCombo("select cod_zona,rtrim(Nom_zona) as nom_zona from InMae_zona  order by Nom_zona");
+                //llena combos                                
                 MTer.tdocm = LlenaCombo("select cod_tdo,rtrim(cod_tdo)+'('+rtrim(nom_tdo)+')' as nom_tdo from InMae_tdoc  order by cod_tdo");
 
                 //seguridad
@@ -106,12 +122,11 @@ namespace SiasoftAppExt
             }
         }
 
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                SiaWin = System.Windows.Application.Current.MainWindow;                
+                SiaWin = System.Windows.Application.Current.MainWindow;
                 if (idemp <= 0) idemp = SiaWin._BusinessId;
 
 
@@ -144,9 +159,6 @@ namespace SiasoftAppExt
             }
         }
 
-
-
-
         DataTable LlenaCombo(string _Sql)
         {
             DataTable dt = SiaWin.Func.SqlDT(_Sql, "tabla", idemp);
@@ -157,7 +169,6 @@ namespace SiasoftAppExt
         {
             try
             {
-
                 switch (e.Key)
                 {
                     case Key.F1:
@@ -227,93 +238,52 @@ namespace SiasoftAppExt
                     SiaWin.Func.SqlDR("SELECT * FROM Comae_ter where idrow=" + Id.ToString(), idemp) :
                     dr = SiaWin.Func.SqlDR(_Sql, idemp);
 
-
-                while (dr.Read())
+                dr.Read();
+                foreach (var item in MTer.GetType().GetProperties())
                 {
-                    MTer.idrow = Convert.ToInt32(dr["Idrow"]);
-                    MTer.cod_ter = dr["cod_ter"].ToString().Trim();
-                    MTer.dv = dr["dv"].ToString().Trim();
-                    MTer.nom_ter = dr["nom_ter"].ToString().Trim();
 
-                    MTer.clasific = Convert.ToInt32(dr["clasific"]);
+                    if (col_ignorar.Contains(item.Name)) continue;
 
-                    MTer.repres = dr["repres"].ToString().Trim();
-                    MTer.dir1 = dr["dir1"].ToString().Trim();
-                    MTer.dir2 = dr["dir2"].ToString().Trim();
-                    MTer.tel1 = dr["tel1"].ToString().Trim();
-                    MTer.cel = dr["cel"].ToString().Trim();
-                    MTer.email = dr["email"].ToString().Trim();
-                    MTer.ciudad = dr["ciudad"].ToString().Trim();
-                    MTer.depa = dr["depa"].ToString().Trim();
-                    MTer.pais = dr["pais"].ToString().Trim();
-                    MTer.conta = dr["conta"].ToString().Trim();
-                    MTer.estado = Convert.ToInt16(dr["estado"] is DBNull ? -1 : dr["estado"]);
+                    Type tipo = item.PropertyType;
 
-                    MTer.fec_ing = dr["fec_ing"].ToString().Trim();
-                    MTer.fec_cump = dr["fec_cump"].ToString().Trim();
-                    MTer.fec_act = dr["fec_act"].ToString().Trim();
+                    Type examType = typeof(Tercero);
+                    PropertyInfo piInstance = examType.GetProperty(item.Name);
+                    switch (Type.GetTypeCode(tipo))
+                    {
+                        case TypeCode.String:
+                            piInstance.SetValue(MTer, dr[item.Name] == DBNull.Value ? "" : dr[item.Name].ToString().Trim());
+                            break;
+                        case TypeCode.Int16:
+                            piInstance.SetValue(MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToInt16(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Int32:
+                            piInstance.SetValue(MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToInt32(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Int64:
+                            piInstance.SetValue(MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToInt64(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Decimal:
+                            piInstance.SetValue(MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToDecimal(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Double:
+                            piInstance.SetValue(MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToDouble(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Boolean:
+                            piInstance.SetValue(MTer, dr[item.Name] == DBNull.Value ? false : Convert.ToBoolean(dr[item.Name].ToString().Trim()));
+                            break;
+                    }
 
-                    MTer.tip_prv = Convert.ToInt16(dr["tip_prv"] is DBNull ? -1 : dr["tip_prv"]);
-                    MTer.ind_ret = Convert.ToInt16(dr["ind_ret"] is DBNull ? -1 : dr["ind_ret"]);
-                    MTer.ret_iva = Convert.ToInt16(dr["ret_iva"] is DBNull ? -1 : dr["ret_iva"]);
-                    MTer.ret_ica = Convert.ToInt16(dr["ret_ica"] is DBNull ? -1 : dr["ret_ica"]);
 
-                    MTer.rtiva = Convert.ToInt16(dr["rtiva"] is DBNull ? -1 : dr["rtiva"]);
-                    MTer.rtica = Convert.ToInt16(dr["rtica"] is DBNull ? -1 : dr["rtica"]);
-
-                    MTer.aut_ret = Convert.ToInt16(dr["aut_ret"] is DBNull ? -1 : dr["aut_ret"]);
-                    MTer.ind_rete = Convert.ToInt16(dr["ind_rete"] is DBNull ? -1 : dr["ind_rete"]);
-                    MTer.ind_iva = Convert.ToInt16(dr["ind_iva"] is DBNull ? 1 : dr["ind_iva"]);
-                    MTer.por_ica = Convert.ToDecimal(dr["por_ica"] is DBNull ? 0 : dr["por_ica"]);
-                    MTer.cod_ban = dr["cod_ban"].ToString().Trim();
-                    MTer.cta = dr["cta"].ToString().Trim();
-
-                    MTer.ind_suc = Convert.ToBoolean(dr["ind_suc"] is DBNull ? 0 : dr["ind_suc"]);
-                    MTer.i_cupocc = Convert.ToBoolean(dr["i_cupocc"] is DBNull ? 0 : dr["i_cupocc"]);
-                    MTer.cupo_cxc = Convert.ToInt32(dr["cupo_cxc"] is DBNull ? 0 : dr["cupo_cxc"]);
-                    MTer.i_cupocp = Convert.ToBoolean(dr["i_cupocp"] is DBNull ? 0 : dr["i_cupocp"]);
-                    MTer.cupo_cxp = Convert.ToInt32(dr["cupo_cxp"] is DBNull ? 0 : dr["cupo_cxp"]);
-                    MTer.bloqueo = Convert.ToInt16(dr["bloqueo"] is DBNull ? -1 : dr["bloqueo"]);
-                    MTer.lista_prec = Convert.ToInt16(dr["lista_prec"] is DBNull ? -1 : dr["lista_prec"]);
-                    MTer.ind_mayor = Convert.ToInt16(dr["ind_mayor"] is DBNull ? -1 : dr["ind_mayor"]);
-                    MTer.cod_zona = dr["cod_zona"].ToString().Trim();
-                    MTer.cod_ven = dr["cod_ven"].ToString().Trim();
-                    MTer.dia_plaz = Convert.ToInt16(dr["dia_plaz"] is DBNull ? 0 : dr["dia_plaz"]);
-                    MTer.por_des = Convert.ToInt32(dr["por_des"] is DBNull ? 0 : dr["por_des"]);
-                    MTer.cod_can = dr["cod_can"].ToString().Trim();
-                    MTer.tdoc = dr["tdoc"].ToString();
-                    MTer.razon_soc = dr["razon_soc"].ToString().Trim();
-                    MTer.apl1 = dr["apl1"].ToString().Trim();
-                    MTer.apl2 = dr["apl2"].ToString().Trim();
-                    MTer.nom1 = dr["nom1"].ToString().Trim();
-                    MTer.nom2 = dr["nom2"].ToString().Trim();
-                    MTer.tip_pers = Convert.ToInt16(dr["tip_pers"] is DBNull ? -1 : dr["tip_pers"]);
-                    MTer.cod_ciu = dr["cod_ciu"].ToString().Trim();
-                    MTer.cod_depa = dr["cod_depa"].ToString().Trim();
-                    MTer.cod_pais = dr["cod_pais"].ToString().Trim();
-                    MTer.dir_comer = dr["dir_comer"].ToString().Trim();//Direccion razon social
-                    MTer.observ = dr["observ"].ToString().Trim();
-                    MTer.cont_cxc = dr["cont_cxc"].ToString().Trim();//Contacto cobro                    
-                    MTer.uni_fra = Convert.ToInt16(dr["uni_fra"] is DBNull ? -1 : dr["uni_fra"]);
-                    MTer.esp_gab = Convert.ToInt16(dr["esp_gab"] is DBNull ? 0 : dr["esp_gab"]);
-                    MTer.cta_det = dr["cta_det"].ToString().Trim();
-                    MTer.email_fe = dr["email_fe"].ToString().Trim();
-                    MTer.email_fe = dr["email_fe"].ToString().Trim();
-                    MTer.email_fe = dr["email_fe"].ToString().Trim();
-                    MTer.email_fe = dr["email_fe"].ToString().Trim();
-                    MTer.email_fe = dr["email_fe"].ToString().Trim();
-                    MTer.email_fe = dr["email_fe"].ToString().Trim();
-                    MTer.email_fe = dr["email_fe"].ToString().Trim();
                 }
                 dr.Close();
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("erro sql:" + ex.Message);
             }
             catch (System.Exception _error)
             {
-                MessageBox.Show(_error.Message);
+                MessageBox.Show("error exception:" + _error.Message);
             }
         }
 
@@ -336,194 +306,105 @@ namespace SiasoftAppExt
         }
         void ClearClas()
         {
-            MTer.idrow = -1;
-            MTer.cod_ter = string.Empty;
-            MTer.dv = string.Empty;
-            MTer.nom_ter = string.Empty;
-            MTer.clasific = -1;
-            MTer.repres = string.Empty;
-            MTer.dir1 = string.Empty;
-            MTer.dir2 = string.Empty;
-            MTer.tel1 = string.Empty;
-            MTer.cel = string.Empty;
-            MTer.email = string.Empty;
-            MTer.ciudad = string.Empty;
-            MTer.depa = string.Empty;
-            MTer.pais = string.Empty;
-            MTer.conta = string.Empty;
-            MTer.estado = 1;
-            MTer.fec_ing = DateTime.Now.Date.ToString("dd/MM/yyyy");
-            MTer.tip_prv = -1;
-            MTer.ind_ret = 0;
-            MTer.ret_iva = 0;
-            MTer.ret_ica = 0;
-            MTer.rtiva = 0;
-            MTer.rtica = 0;
-            MTer.aut_ret = 0;
-            MTer.ind_rete = 0;
-            MTer.ind_iva = 1;
-            MTer.por_ica = 0;
-            MTer.cod_ban = string.Empty;
-            MTer.cta = string.Empty;
-            MTer.ind_suc = false;
-            MTer.i_cupocc = false;
-            MTer.cupo_cxc = 0;
-            MTer.i_cupocp = false;
-            MTer.cupo_cxp = 0;
-            MTer.bloqueo = -1;
-            MTer.lista_prec = -1;
-            MTer.ind_mayor = -1;
-            MTer.cod_zona = string.Empty;
-            MTer.cod_ven = string.Empty;
-            MTer.dia_plaz = 0;
-            MTer.por_des = 0;
-            MTer.cod_can = string.Empty;
-            MTer.tdoc = string.Empty;
-            MTer.tip_pers = -1;
-            MTer.cod_ciu = string.Empty;
-            MTer.cod_depa = string.Empty;
-            MTer.cod_pais = string.Empty;
-            MTer.apl1 = string.Empty;
-            MTer.apl2 = string.Empty;
-            MTer.nom1 = string.Empty;
-            MTer.nom2 = string.Empty;
-            MTer.razon_soc = string.Empty;
-            MTer.dir_comer = string.Empty;
-            MTer.observ = string.Empty;
-            MTer.cont_cxc = string.Empty;
-            MTer.fec_cump = DateTime.Now.Date.ToString("dd/MM/yyyy");
-            MTer.uni_fra = 0;
-            MTer.esp_gab = 0;
-            MTer.email_fe = string.Empty;
-            MTer.fec_act = DateTime.Now.Date.ToString("dd/MM/yyyy");
+            try
+            {
+                foreach (var item in MTer.GetType().GetProperties())
+                {
+                    Type examType = typeof(Tercero);
+                    PropertyInfo piInstance = examType.GetProperty(item.Name);
+                    Type tipo = item.PropertyType;
+
+                    if (col_ignorar.Contains(item.Name)) continue;
+
+                    switch (Type.GetTypeCode(tipo))
+                    {
+                        case TypeCode.String:
+                            piInstance.SetValue(MTer, string.Empty);
+                            break;
+                        case TypeCode.Int32:
+                            piInstance.SetValue(MTer, -1);
+                            break;
+                        case TypeCode.Decimal:
+                            piInstance.SetValue(MTer, 0);
+                            break;
+                        case TypeCode.Double:
+                            piInstance.SetValue(MTer, 0);
+                            break;
+                        case TypeCode.Boolean:
+                            piInstance.SetValue(MTer, false);
+                            break;
+                    }
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error ClearClas():" + w);
+            }
         }
+
+
         void ClearClasOld()
         {
-            _MTer.idrow = -1;
-            _MTer.cod_ter = string.Empty;
-            _MTer.dv = string.Empty;
-            _MTer.nom_ter = string.Empty;
-            _MTer.clasific = -1;
-            _MTer.repres = string.Empty;
-            _MTer.dir1 = string.Empty;
-            _MTer.dir2 = string.Empty;
-            _MTer.tel1 = string.Empty;
-            _MTer.cel = string.Empty;
-            _MTer.email = string.Empty;
-            _MTer.ciudad = string.Empty;
-            _MTer.depa = string.Empty;
-            _MTer.pais = string.Empty;
-            _MTer.conta = string.Empty;
-            _MTer.estado = 1;
-            _MTer.fec_ing = DateTime.Now.Date.ToString("dd/MM/yyyy");
-            _MTer.tip_prv = -1;
-            _MTer.ind_ret = 0;
-            _MTer.ret_iva = 0;
-            _MTer.ret_ica = 0;
-            _MTer.rtiva = 0;
-            _MTer.rtica = 0;
-            _MTer.aut_ret = 0;
-            _MTer.ind_rete = 0;
-            _MTer.ind_iva = 1;
-            _MTer.por_ica = 0;
-            _MTer.cod_ban = string.Empty;
-            _MTer.cta = string.Empty;
-            _MTer.ind_suc = false;
-            _MTer.i_cupocc = false;
-            _MTer.cupo_cxc = 0;
-            _MTer.i_cupocp = false;
-            _MTer.cupo_cxp = 0;
-            _MTer.bloqueo = -1;
-            _MTer.lista_prec = -1;
-            _MTer.ind_mayor = -1;
-            _MTer.cod_zona = string.Empty;
-            _MTer.cod_ven = string.Empty;
-            _MTer.dia_plaz = 0;
-            _MTer.por_des = 0;
-            _MTer.cod_can = string.Empty;
-            _MTer.tdoc = string.Empty;
-            _MTer.tip_pers = -1;
-            _MTer.cod_ciu = string.Empty;
-            _MTer.cod_depa = string.Empty;
-            _MTer.cod_pais = string.Empty;
-            _MTer.apl1 = string.Empty;
-            _MTer.apl2 = string.Empty;
-            _MTer.nom1 = string.Empty;
-            _MTer.nom2 = string.Empty;
-            _MTer.razon_soc = string.Empty;
-            _MTer.dir_comer = string.Empty;
-            _MTer.observ = string.Empty;
-            _MTer.cont_cxc = string.Empty;
-            _MTer.fec_cump = DateTime.Now.Date.ToString("dd/MM/yyyy");
-            _MTer.uni_fra = 0;
-            _MTer.esp_gab = 0;
-            _MTer.email_fe = string.Empty;
-            _MTer.fec_act = DateTime.Now.Date.ToString("dd/MM/yyyy");
+            try
+            {
+                foreach (var item in MTer.GetType().GetProperties())
+                {
+                    Type examType = typeof(Tercero);
+                    PropertyInfo piInstance = examType.GetProperty(item.Name);
+                    Type tipo = item.PropertyType;
+
+                    if (col_ignorar.Contains(item.Name)) continue;
+
+                    switch (Type.GetTypeCode(tipo))
+                    {
+                        case TypeCode.String:
+                            piInstance.SetValue(_MTer, string.Empty);
+                            break;
+                        case TypeCode.Int32:
+                            piInstance.SetValue(_MTer, -1);
+                            break;
+                        case TypeCode.Decimal:
+                            piInstance.SetValue(_MTer, 0);
+                            break;
+                        case TypeCode.Double:
+                            piInstance.SetValue(_MTer, 0);
+                            break;
+                        case TypeCode.Boolean:
+                            piInstance.SetValue(_MTer, false);
+                            break;
+                    }
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error ClearClas():" + w);
+            }
         }
+
+
         void Clone()
         {
-            _MTer.idrow = MTer.idrow;
-            _MTer.cod_ter = MTer.cod_ter;
-            _MTer.dv = MTer.dv;
-            _MTer.nom_ter = MTer.nom_ter;
-            _MTer.clasific = MTer.clasific;
-            _MTer.repres = MTer.repres;
-            _MTer.dir1 = MTer.dir1;
-            _MTer.dir2 = MTer.dir2;
-            _MTer.tel1 = MTer.tel1;
-            _MTer.cel = MTer.cel;
-            _MTer.email = MTer.email;
-            _MTer.ciudad = MTer.ciudad;
-            _MTer.depa = MTer.depa;
-            _MTer.pais = MTer.pais;
-            _MTer.conta = MTer.conta;
-            _MTer.estado = MTer.estado;
-            _MTer.fec_ing = MTer.fec_ing;//fecha ingreso
-            _MTer.tip_prv = MTer.tip_prv;
-            _MTer.ind_ret = MTer.ind_ret;
-            _MTer.ret_iva = MTer.ret_iva;
-            _MTer.ret_ica = MTer.ret_ica;
 
-            _MTer.rtiva = MTer.rtiva;
-            _MTer.rtica = MTer.rtica;
+            try
+            {
 
-            _MTer.aut_ret = MTer.aut_ret;
-            _MTer.ind_rete = MTer.ind_rete;
-            _MTer.ind_iva = MTer.ind_iva;
-            _MTer.por_ica = MTer.por_ica;
-            _MTer.cod_ban = MTer.cod_ban;
-            _MTer.cta = string.Empty;
-            //_MTer.cta_ban = MTer.cta_ban;// Cuenta
-            _MTer.ind_suc = MTer.ind_suc;
-            _MTer.i_cupocc = MTer.i_cupocc;
-            _MTer.cupo_cxc = MTer.cupo_cxc;
-            _MTer.i_cupocp = MTer.i_cupocp;//Controla credito proveedor
-            _MTer.cupo_cxp = MTer.cupo_cxp;//Cupo credito proveedor
-            _MTer.bloqueo = MTer.bloqueo;
-            _MTer.lista_prec = MTer.lista_prec;
-            _MTer.ind_mayor = MTer.ind_mayor;
-            _MTer.cod_zona = MTer.cod_zona;
-            _MTer.cod_ven = MTer.cod_ven;
-            _MTer.dia_plaz = MTer.dia_plaz;
-            _MTer.por_des = MTer.por_des;
-            _MTer.cod_can = MTer.cod_can;
-            _MTer.tdoc = MTer.tdoc;
-            _MTer.tip_pers = MTer.tip_pers;
-            _MTer.cod_ciu = MTer.cod_ciu;
-            _MTer.cod_pais = MTer.cod_pais;
-            _MTer.apl1 = MTer.apl1;
-            _MTer.apl2 = MTer.apl2;
-            _MTer.nom1 = MTer.nom1;
-            _MTer.nom2 = MTer.nom2;
-            _MTer.razon_soc = MTer.razon_soc;
-            _MTer.dir_comer = MTer.dir_comer;//Direccion razon social
-            _MTer.observ = MTer.observ;
-            _MTer.cont_cxc = MTer.cont_cxc;//Contacto cobro
-            _MTer.fec_cump = MTer.fec_cump;//FEC_CUMP fecha de cumpleaños
-            _MTer.uni_fra = MTer.uni_fra;
-            _MTer.esp_gab = MTer.esp_gab;
-            _MTer.email_fe = MTer.email_fe;
-            _MTer.fec_act = MTer.fec_act;//FEC_CUMP fecha de cumpleaños
+                foreach (var item in MTer.GetType().GetProperties())
+                {
+                    if (col_ignorar.Contains(item.Name)) continue;
+                    Type examType = typeof(Tercero);
+                    PropertyInfo piInstance = examType.GetProperty(item.Name);
+                    var propertyInfo = typeof(Tercero).GetProperties().Where(p => p.Name == item.Name).Single();
+                    var valueA = propertyInfo.GetValue(MTer, null);
+                    piInstance.SetValue(_MTer, valueA);
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error Clone():" + w);
+            }
         }
 
         private void BtnNuevo_Click(object sender, RoutedEventArgs e)
@@ -543,7 +424,7 @@ namespace SiasoftAppExt
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            
+
             try
             {
                 MessageBoxResult result = MessageBox.Show("Usted desea eliminar el registro....?", "Confirmacion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -561,7 +442,7 @@ namespace SiasoftAppExt
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             try
-            {                
+            {
 
                 if (BtnSave.Content.ToString() == "Modificar")
                 {
@@ -571,11 +452,13 @@ namespace SiasoftAppExt
                         return;
                     }
 
+                    if (!ComparaDatos()) return;
+
+
                     int query = Modificar();
                     if (query > 0)
                     {
-                        ComparaDatos();
-                        SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "actulizo exitosamente el tercero" + MTer.cod_ter, "");                        
+                        SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "actulizo exitosamente el tercero" + MTer.cod_ter, "");
                         MessageBox.Show("actualizo exitosamente la informacion del tercero:" + MTer.cod_ter, "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
                         ClearClas();
                         editdel(true);
@@ -590,12 +473,12 @@ namespace SiasoftAppExt
                         MessageBox.Show("no se puede guardar por que faltan algunos campos que son requeridos", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         return;
                     }
-                    
-                    
+
+
                     int query = Insertar();
                     if (query > 0)
                     {
-                        SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "Inserto exitosamente el tercero" + MTer.cod_ter, "");                        
+                        SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "Inserto exitosamente el tercero" + MTer.cod_ter, "");
                         MessageBox.Show("inserto exitosamente el tercero:" + MTer.cod_ter, "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
                         ClearClas();
                         editdel(false);
@@ -622,74 +505,85 @@ namespace SiasoftAppExt
                     {
                         try
                         {
-                            cmd.CommandText = "INSERT INTO Comae_ter (cod_ter, dv, nom_ter, clasific, repres, dir1, dir2, tel1, cel, email, ciudad, depa, pais, conta, estado, fec_ing, tip_prv, ind_ret, ret_iva, ret_ica, rtiva, rtica, aut_ret, ind_rete, ind_iva, por_ica, cod_ban, cta, ind_suc, i_cupocc, cupo_cxc, i_cupocp, cupo_cxp, bloqueo, lista_prec, ind_mayor, cod_zona, cod_ven, dia_plaz, por_des, cod_can, tdoc, tip_pers, cod_ciu, cod_depa,cod_pais, apl1, apl2, nom1, nom2, razon_soc, dir_comer, observ, cont_cxc, fec_cump, uni_fra, esp_gab,email_fe,fec_act) VALUES (@cod_ter,@dv,@nom_ter,@clasific,@repres,@dir1,@dir2,@tel1,@cel,@email,@ciudad,@depa,@pais,@conta,@estado,@fec_ing,@tip_prv,@ind_ret,@ret_iva,@ret_ica, @rtiva, @rtica,@aut_ret,@ind_rete,@ind_iva,@por_ica,@cod_ban,@cta,@ind_suc,@i_cupocc,@cupo_cxc,@i_cupocp,@cupo_cxp,@bloqueo,@lista_prec,@ind_mayor,@cod_zona,@cod_ven,@dia_plaz,@por_des,@cod_can,@tdoc,@tip_pers,@cod_ciu,@cod_depa,@cod_pais,@apl1,@apl2,@nom1,@nom2,@razon_soc,@dir_comer,@observ,@cont_cxc,@fec_cump, @uni_fra,@esp_gab,@email_fe,@fec_act)";
-                            cmd.Parameters.AddWithValue("@cod_ter", MTer.cod_ter);
-                            cmd.Parameters.AddWithValue("@dv", MTer.dv);
-                            cmd.Parameters.AddWithValue("@nom_ter", MTer.nom_ter);
-                            cmd.Parameters.AddWithValue("@clasific", MTer.clasific);
-                            cmd.Parameters.AddWithValue("@repres", MTer.repres);
-                            cmd.Parameters.AddWithValue("@dir1", MTer.dir1);
-                            cmd.Parameters.AddWithValue("@dir2", MTer.dir2);
-                            cmd.Parameters.AddWithValue("@tel1", MTer.tel1);
-                            cmd.Parameters.AddWithValue("@cel", MTer.cel);
-                            cmd.Parameters.AddWithValue("@email", MTer.email);
-                            cmd.Parameters.AddWithValue("@ciudad", MTer.ciudad);
-                            cmd.Parameters.AddWithValue("@depa", MTer.depa);
-                            cmd.Parameters.AddWithValue("@pais", MTer.pais);
-                            cmd.Parameters.AddWithValue("@conta", MTer.conta);
-                            cmd.Parameters.AddWithValue("@estado", MTer.estado);
+                            Dictionary<string, Type> campos = new Dictionary<string, Type>();
 
-                            cmd.Parameters.AddWithValue("@fec_ing", MTer.fec_ing);
-                            cmd.Parameters.AddWithValue("@fec_cump", MTer.fec_cump);
-                            cmd.Parameters.AddWithValue("@fec_act", DateTime.Now.ToString("dd/MM/yyyy"));
+                            foreach (var item in MTer.GetType().GetProperties())
+                            {
+                                if (!col_ignorar.Contains(item.Name))
+                                {
+                                    if (idrow == item.Name) continue;
+                                    campos.Add("@" + item.Name, item.PropertyType);
+                                }
+                            }
 
-                            cmd.Parameters.AddWithValue("@tip_prv", MTer.tip_prv);
-                            cmd.Parameters.AddWithValue("@ind_ret", MTer.ind_ret);
-                            cmd.Parameters.AddWithValue("@ret_iva", MTer.ret_iva);
-                            cmd.Parameters.AddWithValue("@ret_ica", MTer.ret_ica);
+                            string cab_colm = String.Join(", ", campos.Keys.ToArray()).Replace("@", "");
+                            string cab_colm_parm = String.Join(", ", campos.Keys.ToArray());
 
-                            cmd.Parameters.AddWithValue("@rtiva", MTer.rtiva);
-                            cmd.Parameters.AddWithValue("@rtica", MTer.rtica);
+                            cmd.CommandText = "INSERT INTO " + tabla + " (" + cab_colm + ")  VALUES (" + cab_colm_parm + ")";
 
-                            cmd.Parameters.AddWithValue("@aut_ret", MTer.aut_ret);
-                            cmd.Parameters.AddWithValue("@ind_rete", MTer.ind_rete);
-                            cmd.Parameters.AddWithValue("@ind_iva", MTer.ind_iva);
-                            cmd.Parameters.AddWithValue("@por_ica", MTer.por_ica);
-                            cmd.Parameters.AddWithValue("@cod_ban", MTer.cod_ban);
-                            cmd.Parameters.AddWithValue("@cta", MTer.cta);
+                            foreach (var item in campos)
+                            {
+                                var key = item.Key.Replace("@", "");
 
-                            cmd.Parameters.AddWithValue("@ind_suc", MTer.ind_suc);
-                            cmd.Parameters.AddWithValue("@i_cupocc", MTer.i_cupocc);
-                            cmd.Parameters.AddWithValue("@cupo_cxc", MTer.cupo_cxc);
-                            cmd.Parameters.AddWithValue("@i_cupocp", MTer.i_cupocp);
-                            cmd.Parameters.AddWithValue("@cupo_cxp", MTer.cupo_cxp);
-                            cmd.Parameters.AddWithValue("@bloqueo", MTer.bloqueo);
-                            cmd.Parameters.AddWithValue("@lista_prec", MTer.lista_prec);
-                            cmd.Parameters.AddWithValue("@ind_mayor", MTer.ind_mayor);
-                            cmd.Parameters.AddWithValue("@cod_zona", MTer.cod_zona);
-                            cmd.Parameters.AddWithValue("@cod_ven", MTer.cod_ven);
-                            cmd.Parameters.AddWithValue("@dia_plaz", MTer.dia_plaz);
-                            cmd.Parameters.AddWithValue("@por_des", MTer.por_des);
-                            cmd.Parameters.AddWithValue("@cod_can", MTer.cod_can);
-                            cmd.Parameters.AddWithValue("@tdoc", MTer.tdoc);
-                            cmd.Parameters.AddWithValue("@tip_pers", MTer.tip_pers);
-                            cmd.Parameters.AddWithValue("@cod_ciu", MTer.cod_ciu);
-                            cmd.Parameters.AddWithValue("@cod_depa", MTer.cod_depa);
-                            cmd.Parameters.AddWithValue("@cod_pais", MTer.cod_pais);
-                            cmd.Parameters.AddWithValue("@apl1", MTer.apl1);
-                            cmd.Parameters.AddWithValue("@apl2", MTer.apl2);
-                            cmd.Parameters.AddWithValue("@nom1", MTer.nom1);
-                            cmd.Parameters.AddWithValue("@nom2", MTer.nom2);
-                            cmd.Parameters.AddWithValue("@razon_soc", MTer.razon_soc);
-                            cmd.Parameters.AddWithValue("@dir_comer", MTer.dir_comer);//Direccion razon social
-                            cmd.Parameters.AddWithValue("@observ", MTer.observ);
-                            cmd.Parameters.AddWithValue("@cont_cxc", MTer.cont_cxc);//Contacto cobro
+                                object val = new object();
+                                Type tipo = item.Value;
+                                SqlDbType sqlDb = new SqlDbType();
 
+                                var propertyInfo = typeof(Tercero).GetProperties().Where(p => p.Name == key).Single();
+                                var valueA = propertyInfo.GetValue(MTer, null);
+                                if (!col_ignorar.Contains(key))
+                                {
+                                    if (idrow == key) continue;
+                                    switch (Type.GetTypeCode(tipo))
+                                    {
+                                        case TypeCode.String:
+                                            val = val == DBNull.Value ? "" : valueA;
+                                            sqlDb = SqlDbType.VarChar;
+                                            break;
+                                        case TypeCode.Decimal:
+                                            val = valueA == DBNull.Value ? 0 : Convert.ToDecimal(valueA);
+                                            sqlDb = SqlDbType.Decimal;
+                                            break;
+                                        case TypeCode.Double:
+                                            val = valueA == DBNull.Value ? 0 : Convert.ToDouble(valueA);
+                                            sqlDb = SqlDbType.Float;
+                                            break;
+                                        case TypeCode.Int32:
+                                            val = valueA == DBNull.Value ? 0 : Convert.ToInt32(valueA);
+                                            sqlDb = SqlDbType.Int;
+                                            break;
+                                        case TypeCode.Int16:
+                                            val = valueA == DBNull.Value ? 0 : Convert.ToInt16(valueA);
+                                            sqlDb = SqlDbType.Int;
+                                            break;
+                                        case TypeCode.Int64:
+                                            val = valueA == DBNull.Value ? 0 : Convert.ToInt64(valueA);
+                                            sqlDb = SqlDbType.Int;
+                                            break;
+                                        case TypeCode.Boolean:
+                                            val = valueA == DBNull.Value ? 0 : Convert.ToInt32(valueA);
+                                            sqlDb = SqlDbType.Int;
+                                            break;
+                                        case TypeCode.DateTime:
+                                            val = valueA == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(valueA);
+                                            sqlDb = SqlDbType.Date;
+                                            break;
+                                    }
+                                }
 
-                            cmd.Parameters.AddWithValue("@uni_fra", MTer.uni_fra);
-                            cmd.Parameters.AddWithValue("@esp_gab", MTer.esp_gab);
-                            cmd.Parameters.AddWithValue("@email_fe", MTer.email_fe);
-
+                                if (col_valor.ContainsKey(key))
+                                {
+                                    cmd.Parameters.AddWithValue(item.Key, col_valor[key]);
+                                }
+                                else
+                                {
+                                    SqlParameter param = new SqlParameter();
+                                    param.ParameterName = item.Key;
+                                    param.Value = val;
+                                    param.SqlDbType = sqlDb;
+                                    cmd.Parameters.Add(param);
+                                }
+                            }
 
                             connection.Open();
                             valor = cmd.ExecuteNonQuery();
@@ -711,6 +605,7 @@ namespace SiasoftAppExt
             }
         }
 
+
         int Modificar()
         {
             try
@@ -720,70 +615,91 @@ namespace SiasoftAppExt
                 {
                     using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        cmd.CommandText = "UPDATE Comae_ter SET dv=@dv, nom_ter=@nom_ter, clasific=@clasific, repres=@repres, dir1=@dir1, dir2=@dir2, tel1=@tel1, cel=@cel, email=@email, ciudad=@ciudad, depa=@depa, pais=@pais, conta=@conta, estado=@estado,fec_ing=@fec_ing, tip_prv=@tip_prv, por_des=@por_des, ind_ret=@ind_ret, ret_iva=@ret_iva, ret_ica=@ret_ica, rtiva=@rtiva, rtica=@rtica, aut_ret=@aut_ret, ind_rete=@ind_rete, ind_iva=@ind_iva, por_ica=@por_ica, ind_suc=@ind_suc, i_cupocc=@i_cupocc, cupo_cxc=@cupo_cxc, cod_zona=@cod_zona, cod_ven=@cod_ven, cod_ban=@cod_ban, cta=@cta, cod_can=@cod_can, i_cupocp=@i_cupocp, cupo_cxp=@cupo_cxp, bloqueo=@bloqueo, lista_prec=@lista_prec, ind_mayor=@ind_mayor, dia_plaz=@dia_plaz, tdoc=@tdoc, tip_pers=@tip_pers, cod_ciu=@cod_ciu, cod_depa=@cod_depa,cod_pais=@cod_pais, apl1=@apl1, apl2=@apl2, nom1=@nom1, nom2=@nom2, razon_soc=@razon_soc, dir_comer=@dir_comer, observ=@observ, cont_cxc=@cont_cxc, fec_cump=@fec_cump, uni_fra=@uni_fra,esp_gab=@esp_gab,email_fe=@email_fe,fec_act=@fec_act where idrow=" + MTer.idrow.ToString();
-                        cmd.Parameters.AddWithValue("@dv", MTer.dv);
-                        cmd.Parameters.AddWithValue("@nom_ter", MTer.nom_ter);
-                        cmd.Parameters.AddWithValue("@clasific", MTer.clasific);
-                        cmd.Parameters.AddWithValue("@repres", MTer.repres);
-                        cmd.Parameters.AddWithValue("@dir1", MTer.dir1);
-                        cmd.Parameters.AddWithValue("@dir2", MTer.dir2);
-                        cmd.Parameters.AddWithValue("@tel1", MTer.tel1);
-                        cmd.Parameters.AddWithValue("@cel", MTer.cel);
-                        cmd.Parameters.AddWithValue("@email", MTer.email);
-                        cmd.Parameters.AddWithValue("@ciudad", MTer.ciudad);
-                        cmd.Parameters.AddWithValue("@depa", MTer.depa);
-                        cmd.Parameters.AddWithValue("@pais", MTer.pais);
-                        cmd.Parameters.AddWithValue("@conta", MTer.conta);
-                        cmd.Parameters.AddWithValue("@estado", MTer.estado);
 
-                        cmd.Parameters.AddWithValue("@fec_ing", MTer.fec_ing);
-                        cmd.Parameters.AddWithValue("@fec_cump", MTer.fec_cump);
-                        cmd.Parameters.AddWithValue("@fec_act", DateTime.Now.ToString("dd/MM/yyyy"));
-                        cmd.Parameters.AddWithValue("@tip_prv", MTer.tip_prv);
-                        cmd.Parameters.AddWithValue("@ind_ret", MTer.ind_ret);
-                        cmd.Parameters.AddWithValue("@ret_iva", MTer.ret_iva);
-                        cmd.Parameters.AddWithValue("@ret_ica", MTer.ret_ica);
+                        string query = " ";
+                        Dictionary<string, Type> campos = new Dictionary<string, Type>();
 
-                        cmd.Parameters.AddWithValue("@rtiva", MTer.rtiva);
-                        cmd.Parameters.AddWithValue("@rtica", MTer.rtica);
+                        foreach (var item in MTer.GetType().GetProperties())
+                        {
+                            if (!col_ignorar.Contains(item.Name))
+                            {
+                                if (idrow == item.Name) continue;
+                                query += item.Name + "=@" + item.Name + ",";
+                                campos.Add(item.Name, item.PropertyType);
+                            }
+                        }
 
-                        cmd.Parameters.AddWithValue("@aut_ret", MTer.aut_ret);
-                        cmd.Parameters.AddWithValue("@ind_rete", MTer.ind_rete);
-                        cmd.Parameters.AddWithValue("@ind_iva", MTer.ind_iva);
-                        cmd.Parameters.AddWithValue("@por_ica", MTer.por_ica);
-                        cmd.Parameters.AddWithValue("@cod_ban", MTer.cod_ban);
-                        cmd.Parameters.AddWithValue("@cta", MTer.cta);
-                        //cmd.Parameters.AddWithValue("@cta_ban", MTer.cta_ban);// Cuenta
-                        cmd.Parameters.AddWithValue("@ind_suc", MTer.ind_suc);
-                        cmd.Parameters.AddWithValue("@i_cupocc", MTer.i_cupocc);
-                        cmd.Parameters.AddWithValue("@cupo_cxc", MTer.cupo_cxc);
-                        cmd.Parameters.AddWithValue("@i_cupocp", MTer.i_cupocp);
-                        cmd.Parameters.AddWithValue("@cupo_cxp", MTer.cupo_cxp);
-                        cmd.Parameters.AddWithValue("@bloqueo", MTer.bloqueo);
-                        cmd.Parameters.AddWithValue("@lista_prec", MTer.lista_prec);
-                        cmd.Parameters.AddWithValue("@ind_mayor", MTer.ind_mayor);
-                        cmd.Parameters.AddWithValue("@cod_zona", MTer.cod_zona);
-                        cmd.Parameters.AddWithValue("@cod_ven", MTer.cod_ven);
-                        cmd.Parameters.AddWithValue("@dia_plaz", MTer.dia_plaz);
-                        cmd.Parameters.AddWithValue("@por_des", MTer.por_des);
-                        cmd.Parameters.AddWithValue("@cod_can", MTer.cod_can);
-                        cmd.Parameters.AddWithValue("@tdoc", MTer.tdoc);
-                        cmd.Parameters.AddWithValue("@tip_pers", MTer.tip_pers);
-                        cmd.Parameters.AddWithValue("@cod_ciu", MTer.cod_ciu);
-                        cmd.Parameters.AddWithValue("@cod_depa", MTer.cod_depa);
-                        cmd.Parameters.AddWithValue("@cod_pais", MTer.cod_pais);
-                        cmd.Parameters.AddWithValue("@apl1", MTer.apl1);
-                        cmd.Parameters.AddWithValue("@apl2", MTer.apl2);
-                        cmd.Parameters.AddWithValue("@nom1", MTer.nom1);
-                        cmd.Parameters.AddWithValue("@nom2", MTer.nom2);
-                        cmd.Parameters.AddWithValue("@razon_soc", MTer.razon_soc);
-                        cmd.Parameters.AddWithValue("@dir_comer", MTer.dir_comer);
-                        cmd.Parameters.AddWithValue("@observ", MTer.observ);
-                        cmd.Parameters.AddWithValue("@cont_cxc", MTer.cont_cxc);
+                        query = query.Remove(query.Length - 1);
 
-                        cmd.Parameters.AddWithValue("@uni_fra", MTer.uni_fra);
-                        cmd.Parameters.AddWithValue("@esp_gab", MTer.esp_gab);
-                        cmd.Parameters.AddWithValue("@email_fe", MTer.email_fe);
+                        cmd.CommandText = "UPDATE " + tabla + " SET " + query + " WHERE " + idrow + "=" + MTer.idrow.ToString();
+
+                        foreach (var item in campos)
+                        {
+                            object val = new object();
+                            Type tipo = item.Value;
+                            SqlDbType sqlDb = new SqlDbType();
+
+
+                            var propertyInfo = typeof(Tercero).GetProperties().Where(p => p.Name == item.Key.ToString()).Single();
+                            var valueA = propertyInfo.GetValue(MTer, null);
+
+                            if (!col_ignorar.Contains(item.Key))
+                            {
+                                if (idrow == item.Key) continue;
+                                switch (Type.GetTypeCode(tipo))
+                                {
+                                    case TypeCode.String:
+                                        val = val == DBNull.Value ? "" : valueA;
+                                        sqlDb = SqlDbType.VarChar;
+                                        break;
+                                    case TypeCode.Decimal:
+                                        val = valueA == DBNull.Value ? 0 : Convert.ToDecimal(valueA);
+                                        sqlDb = SqlDbType.Decimal;
+                                        break;
+                                    case TypeCode.Double:
+                                        val = valueA == DBNull.Value ? 0 : Convert.ToDouble(valueA);
+                                        sqlDb = SqlDbType.Float;
+                                        break;
+                                    case TypeCode.Int32:
+                                        val = valueA == DBNull.Value ? 0 : Convert.ToInt32(valueA);
+                                        sqlDb = SqlDbType.Int;
+                                        break;
+                                    case TypeCode.Int16:
+                                        val = valueA == DBNull.Value ? 0 : Convert.ToInt16(valueA);
+                                        sqlDb = SqlDbType.Int;
+                                        break;
+                                    case TypeCode.Int64:
+                                        val = valueA == DBNull.Value ? 0 : Convert.ToInt64(valueA);
+                                        sqlDb = SqlDbType.Int;
+                                        break;
+                                    case TypeCode.Boolean:
+                                        val = valueA == DBNull.Value ? 0 : Convert.ToInt32(valueA);
+                                        sqlDb = SqlDbType.Int;
+                                        break;
+                                    case TypeCode.DateTime:
+                                        val = valueA == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(valueA);
+                                        sqlDb = SqlDbType.Date;
+                                        break;
+                                }
+
+
+                                if (col_valor.ContainsKey(item.Key))
+                                {
+                                    cmd.Parameters.AddWithValue("@" + item.Key, col_valor[item.Key]);
+                                }
+                                else
+                                {
+                                    SqlParameter param = new SqlParameter();
+                                    param.ParameterName = "@" + item.Key;
+                                    param.Value = val;
+                                    param.SqlDbType = sqlDb;
+                                    cmd.Parameters.Add(param);
+                                }
+
+                            }
+                        }
+
+
                         connection.Open();
                         valor = cmd.ExecuteNonQuery();
                     }
@@ -808,74 +724,43 @@ namespace SiasoftAppExt
             {
                 SqlDataReader dr;
                 dr = SiaWin.Func.SqlDR("SELECT * FROM Comae_ter  where idrow=" + MTer.idrow.ToString(), idemp);
-                while (dr.Read())
+
+                dr.Read();
+                foreach (var item in MTer.GetType().GetProperties())
                 {
-
-                    __MTer.idrow = Convert.ToInt32(dr["Idrow"]);
-                    __MTer.cod_ter = dr["cod_ter"].ToString().Trim();
-                    __MTer.dv = dr["dv"].ToString().Trim();
-                    __MTer.nom_ter = dr["nom_ter"].ToString().Trim();
-                    __MTer.clasific = Convert.ToInt16(dr["clasific"] is DBNull ? -1 : dr["clasific"]);
-                    __MTer.repres = dr["repres"].ToString().Trim();
-                    __MTer.dir1 = dr["dir1"].ToString().Trim();
-                    __MTer.dir2 = dr["dir2"].ToString().Trim();
-                    __MTer.tel1 = dr["tel1"].ToString().Trim();
-                    __MTer.cel = dr["cel"].ToString().Trim();
-                    __MTer.email = dr["email"].ToString().Trim();
-                    __MTer.ciudad = dr["ciudad"].ToString().Trim();
-                    __MTer.depa = dr["depa"].ToString().Trim();
-                    __MTer.pais = dr["pais"].ToString().Trim();
-                    __MTer.conta = dr["conta"].ToString().Trim();
-                    __MTer.estado = Convert.ToInt16(dr["estado"] is DBNull ? -1 : dr["estado"]);
-                    __MTer.fec_ing = dr["fec_ing"].ToString().Trim();
-                    __MTer.tip_prv = Convert.ToInt16(dr["tip_prv"] is DBNull ? -1 : dr["tip_prv"]);
-                    __MTer.ind_ret = Convert.ToInt16(dr["ind_ret"] is DBNull ? -1 : dr["ind_ret"]);
-                    __MTer.ret_iva = Convert.ToInt16(dr["ret_iva"] is DBNull ? -1 : dr["ret_iva"]);
-                    __MTer.ret_ica = Convert.ToInt16(dr["ret_ica"] is DBNull ? -1 : dr["ret_ica"]);
-
-                    __MTer.rtiva = Convert.ToInt16(dr["rtiva"] is DBNull ? -1 : dr["rtiva"]);
-                    __MTer.rtica = Convert.ToInt16(dr["rtica"] is DBNull ? -1 : dr["rtica"]);
-
-                    __MTer.aut_ret = Convert.ToInt16(dr["aut_ret"] is DBNull ? -1 : dr["aut_ret"]);
-                    __MTer.ind_rete = Convert.ToInt16(dr["ind_rete"] is DBNull ? -1 : dr["ind_rete"]);
-                    __MTer.ind_iva = Convert.ToInt16(dr["ind_iva"] is DBNull ? 1 : dr["ind_iva"]);
-                    __MTer.por_ica = Convert.ToDecimal(dr["por_ica"] is DBNull ? 0 : dr["por_ica"]);
-                    __MTer.cod_ban = dr["cod_ban"].ToString().Trim();
-                    __MTer.cta = dr["cta"].ToString().Trim();
-                    //__MTer.cta_ban = dr["cta_ban"].ToString().Trim();// Cuenta
-                    __MTer.ind_suc = Convert.ToBoolean(dr["ind_suc"] is DBNull ? 0 : dr["ind_suc"]);
-                    __MTer.i_cupocc = Convert.ToBoolean(dr["i_cupocc"] is DBNull ? 0 : dr["i_cupocc"]);
-                    __MTer.cupo_cxc = Convert.ToInt32(dr["cupo_cxc"] is DBNull ? 0 : dr["cupo_cxc"]);
-                    __MTer.i_cupocp = Convert.ToBoolean(dr["i_cupocp"] is DBNull ? 0 : dr["i_cupocp"]);
-                    __MTer.cupo_cxp = Convert.ToInt32(dr["cupo_cxp"] is DBNull ? 0 : dr["cupo_cxp"]);
-                    __MTer.bloqueo = Convert.ToInt16(dr["bloqueo"] is DBNull ? -1 : dr["bloqueo"]);
-                    __MTer.lista_prec = Convert.ToInt16(dr["lista_prec"] is DBNull ? -1 : dr["lista_prec"]);
-                    __MTer.ind_mayor = Convert.ToInt16(dr["ind_mayor"] is DBNull ? -1 : dr["ind_mayor"]);
-                    __MTer.cod_zona = dr["cod_zona"].ToString().Trim();
-                    __MTer.cod_ven = dr["cod_ven"].ToString().Trim();
-                    __MTer.dia_plaz = Convert.ToInt16(dr["dia_plaz"] is DBNull ? 0 : dr["dia_plaz"]);
-                    __MTer.por_des = Convert.ToInt32(dr["por_des"] is DBNull ? 0 : dr["por_des"]);
-                    __MTer.cod_can = dr["cod_can"].ToString().Trim();
-                    __MTer.tdoc = dr["tdoc"].ToString();
-                    __MTer.tip_pers = Convert.ToInt16(dr["tip_pers"] is DBNull ? -1 : dr["tip_pers"]);
-                    __MTer.cod_ciu = dr["cod_ciu"].ToString().Trim();
-                    __MTer.cod_pais = dr["cod_pais"].ToString().Trim();
-                    __MTer.apl1 = dr["apl1"].ToString().Trim();
-                    __MTer.apl2 = dr["apl2"].ToString().Trim();
-                    __MTer.nom1 = dr["nom1"].ToString().Trim();
-                    __MTer.nom2 = dr["nom2"].ToString().Trim();
-                    __MTer.razon_soc = dr["razon_soc"].ToString().Trim();
-                    __MTer.dir_comer = dr["dir_comer"].ToString().Trim();//Direccion razon social
-                    __MTer.observ = dr["observ"].ToString().Trim();
-                    __MTer.cont_cxc = dr["cont_cxc"].ToString().Trim();//Contacto cobro
-                    __MTer.fec_cump = dr["fec_cump"].ToString().Trim();//FEC_CUMP fecha de cumpleaños
-                    __MTer.uni_fra = Convert.ToInt16(dr["uni_fra"] is DBNull ? -1 : dr["uni_fra"]);
-                    __MTer.esp_gab = Convert.ToInt16(dr["esp_gab"] is DBNull ? 0 : dr["esp_gab"]);
-                    __MTer.email_fe = dr["email_fe"].ToString().Trim();
-                    __MTer.fec_act = dr["fec_act"].ToString().Trim();//FEC_CUMP fecha de cumpleaños
-
+                    if (col_ignorar.Contains(item.Name)) continue;
+                    if (col_valor.ContainsKey(item.Name)) continue;
+                    Type tipo = item.PropertyType;
+                    Type examType = typeof(Tercero);
+                    PropertyInfo piInstance = examType.GetProperty(item.Name);
+                    switch (Type.GetTypeCode(tipo))
+                    {
+                        case TypeCode.String:
+                            piInstance.SetValue(__MTer, dr[item.Name] == DBNull.Value ? "" : dr[item.Name].ToString().Trim());
+                            break;
+                        case TypeCode.Int16:
+                            piInstance.SetValue(__MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToInt16(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Int32:
+                            piInstance.SetValue(__MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToInt32(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Int64:
+                            piInstance.SetValue(__MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToInt64(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Decimal:
+                            piInstance.SetValue(__MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToDecimal(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Double:
+                            piInstance.SetValue(__MTer, dr[item.Name] == DBNull.Value ? 0 : Convert.ToDouble(dr[item.Name].ToString().Trim()));
+                            break;
+                        case TypeCode.Boolean:
+                            piInstance.SetValue(__MTer, dr[item.Name] == DBNull.Value ? false : Convert.ToBoolean(dr[item.Name].ToString().Trim()));
+                            break;
+                    }
                 }
+
                 dr.Close();
+
                 //// recorre campos de la clase
                 MTer.GetType().GetProperties().ToList().ForEach(f =>
                 {
@@ -886,32 +771,35 @@ namespace SiasoftAppExt
                         var valueA = propertyInfo.GetValue(_MTer, null); //ORIGINAL EN MEMORIA
                         var valueB = propertyInfo.GetValue(MTer, null);  //ACTUAL ///
                         var valueC = propertyInfo.GetValue(__MTer, null); //REAL SQL DATA
-                        if (!valueA.Equals(valueC)) sbRed.Append("Tabla:" + tabla + Environment.NewLine + "Cambio Campo " + f.Name + Environment.NewLine + "Anterior :" + valueA + Environment.NewLine + "Nuevo: " + valueC);
-                        if (!valueA.Equals(valueB)) sbLocal.Append("Tabla:" + tabla + " : Cambio Campo " + f.Name + Environment.NewLine + " Anterior :" + valueA + " - Nuevo: " + valueB + Environment.NewLine);
+
+                        //if (col_ignorar.Contains(propertyInfo.Name)) return;
+                        if (!col_valor.ContainsKey(propertyInfo.Name))
+                        {
+
+                            if (!valueA.Equals(valueC)) sbRed.Append("Tabla:" + tabla + Environment.NewLine + "Cambio Campo " + f.Name + Environment.NewLine + "Anterior :" + valueA + Environment.NewLine + "Nuevo: " + valueC);
+
+                            if (!valueA.Equals(valueB)) sbLocal.Append("Tabla:" + tabla + " : Cambio Campo " + f.Name + Environment.NewLine + " Anterior :" + valueA + " - Nuevo: " + valueB + Environment.NewLine);
+                        };
+
+
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
                 });
-                if (sbRed.ToString() != string.Empty)
-                {
-                    //enviar a auditoria el msg y la respuesta y la cadena sbRed
-                    MessageBoxResult result = MessageBox.Show("Otro usuario ha cambiado ya este registro, Usted desea guardar sus cambios?", "Confirmacion", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (result != MessageBoxResult.Yes)
-                    {
-                        //_usercontrol._EstadoSave = true;
-                        //ActualizaCampos(_usercontrol.tabitem.CmpReturn, string.Empty);
-                        //_usercontrol.ActivaDesactivaMaestra(2);
-                        //_usercontrol._EstadoAdEdMae = 0;
-                        return false;
-                    }
+
+                //registra si ya alguien modifico este tercero
+                if (!string.IsNullOrWhiteSpace(sbRed.ToString()))
+                {                    
+                    MessageBoxResult result = MessageBox.Show("Otro usuario ha cambiado ya este registro los cambios fueron "+ sbRed.ToString() + ", Usted desea guardar sus cambios?", "Confirmacion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result != MessageBoxResult.Yes) return false;
+
                 }
                 // registra en auditoria los cambio hechos por el usuario                
-                if (sbLocal.ToString() != string.Empty)
+                if (!string.IsNullOrWhiteSpace(sbLocal.ToString()))
                 {
                     SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, -1, 0, sbLocal.ToString(), "");
-                    //MessageBox.Show("Cambio local:"+sbLocal.ToString());
                 }
             }
             catch (SqlException ex)
@@ -934,72 +822,6 @@ namespace SiasoftAppExt
             bloquear(false);
             ClearClas();
             ClearClasOld();
-        }
-        private void BtnSucursal_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(MTer.cod_ter))
-                {
-                    MessageBox.Show("el codigo del tercero esta vacio para poder grabar una sucursal", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    return;
-                }
-                if (MTer.ind_suc == false)
-                {
-                    MessageBox.Show("debe de habilitar el indicador de maneja sucursales", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    return;
-                }
-
-                string query = "select * from comae_ter where cod_ter = '" + MTer.cod_ter + "'";
-                DataTable dt = SiaWin.Func.SqlDT(query, "tercero", idemp);
-                if (dt.Rows.Count > 0)
-                {
-
-                    dynamic ww = SiaWin.WindowExt(9469, "Sucursal");
-                    ww.idemp = idemp;
-                    ww.ShowInTaskbar = false;
-                    ww.codigo_tercero = MTer.cod_ter;
-                    ww.nombre_tercero = MTer.nom_ter;
-                    ww.ind_suc = MTer.ind_suc;
-                    ww.Owner = Application.Current.MainWindow;
-                    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    ww.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("el tercero debe de estar primero guardado en la base de datos para poderle agregar una sucursal", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    ;
-                }
-            }
-            catch (Exception w)
-            {
-                MessageBox.Show("error al cargar sucursales:" + w);
-            }
-        }
-
-        private void BtnDesct_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(MTer.cod_ter))
-                {
-                    MessageBox.Show("el codigo del tercero esta vacio para poder grabar una sucursal", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    return;
-                }
-
-                dynamic ww = SiaWin.WindowExt(9479, "DescuentoPorLinea");
-                ww.idemp = idemp;
-                ww.ShowInTaskbar = false;
-                ww.codigo_tercero = MTer.cod_ter;
-                ww.nombre_tercero = MTer.nom_ter;
-                ww.Owner = Application.Current.MainWindow;
-                ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                ww.ShowDialog();
-            }
-            catch (Exception w)
-            {
-                MessageBox.Show("error al cargar sucursales:" + w);
-            }
         }
 
         private void txter_LostFocus(object sender, RoutedEventArgs e)
@@ -1036,36 +858,39 @@ namespace SiasoftAppExt
         {
             try
             {
-                int selectedIndex = MTer.tip_pers;
-                if (selectedIndex == 0)
+                if (CtrlA.Visibility == Visibility.Hidden)
                 {
-                    string nombre = MTer.nom_ter;
-                    string[] split = nombre.Split(new Char[] { ' ', ',' });
-
-                    if (split.Length <= 3)
+                    int selectedIndex = MTer.tip_pers;
+                    if (selectedIndex == 0)
                     {
-                        MTer.nom1 = split[0];
-                        MTer.apl1 = split[1];
-                        MTer.apl2 = split[2];
-                        MTer.razon_soc = "";
-                    }
-                    else
-                    {
-                        MTer.nom1 = split[0];
-                        MTer.nom2 = split[1];
-                        MTer.apl1 = split[2];
-                        MTer.apl2 = split[3];
-                        MTer.razon_soc = "";
-                    }
+                        string nombre = MTer.nom_ter;
+                        string[] split = nombre.Split(new Char[] { ' ', ',' });
 
-                }
-                if (selectedIndex == 1)
-                {
-                    MTer.razon_soc = MTer.nom_ter;
-                    MTer.apl1 = "";
-                    MTer.nom1 = "";
-                    MTer.apl2 = "";
-                    MTer.nom2 = "";
+                        if (split.Length <= 3)
+                        {
+                            MTer.nom1 = split[0];
+                            MTer.apl1 = split[1];
+                            MTer.apl2 = split[2];
+                            MTer.raz = "";
+                        }
+                        else
+                        {
+                            MTer.nom1 = split[0];
+                            MTer.nom2 = split[1];
+                            MTer.apl1 = split[2];
+                            MTer.apl2 = split[3];
+                            MTer.raz = "";
+                        }
+
+                    }
+                    if (selectedIndex == 1)
+                    {
+                        MTer.raz = MTer.nom_ter;
+                        MTer.apl1 = "";
+                        MTer.nom1 = "";
+                        MTer.apl2 = "";
+                        MTer.nom2 = "";
+                    }
                 }
             }
             catch (Exception)
@@ -1089,9 +914,6 @@ namespace SiasoftAppExt
                     case "MmMae_pais":
                         cod = "cod_pais"; nom = "nom_pais"; id = "cod_pais"; tit = "Maestra de Pais";
                         break;
-                    case "MmMae_depa":
-                        cod = "cod_dep"; nom = "nom_dep"; id = "cod_dep"; tit = "Maestra de Departamento";
-                        break;
                 }
 
                 dynamic winb = SiaWin.WindowBuscar(tbl, cod, nom, cod, id, tit, cnEmp, false, "", idEmp: idemp);
@@ -1110,11 +932,8 @@ namespace SiasoftAppExt
                         case "MmMae_muni":
                             MTer.cod_ciu = codigo; MTer.ciudad = nombre;
                             break;
-                        case "MmMae_depa":
-                            MTer.cod_depa = codigo; MTer.depa = nombre;
-                            break;
                         case "MmMae_pais":
-                            MTer.cod_pais = codigo; MTer.pais = nombre;
+                            MTer.cod_pais = codigo;
                             break;
                     }
 
@@ -1145,9 +964,6 @@ namespace SiasoftAppExt
                     case "MmMae_pais":
                         cod = "cod_pais"; nom = "nom_pais"; tit = "Maestra de Pais";
                         break;
-                    case "MmMae_depa":
-                        cod = "cod_dep"; nom = "nom_dep"; tit = "Maestra de Departamento";
-                        break;
                 }
 
                 string query = "select * from " + tbl + " where  " + cod + "='" + (sender as TextBox).Text + "' ";
@@ -1161,11 +977,8 @@ namespace SiasoftAppExt
                         case "MmMae_muni":
                             MTer.cod_ciu = code; MTer.ciudad = name;
                             break;
-                        case "MmMae_depa":
-                            MTer.cod_depa = code; MTer.depa = name;
-                            break;
                         case "MmMae_pais":
-                            MTer.cod_pais = code; MTer.pais = name;
+                            MTer.cod_pais = code;
                             break;
                     }
                 }
@@ -1181,6 +994,7 @@ namespace SiasoftAppExt
                 MessageBox.Show("error al buscar:" + w);
             }
         }
+
         private void BtnDigVer_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -1200,23 +1014,6 @@ namespace SiasoftAppExt
             catch (Exception w)
             {
                 MessageBox.Show("errro en el digito de verificacion" + w);
-            }
-        }
-
-        private void BtnNotas_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                dynamic ww = SiaWin.WindowExt(9681, "NotasEmpleados");
-                ww.ShowInTaskbar = false;
-                ww.Owner = Application.Current.MainWindow;
-                ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                ww.cod_empleado = MTer.cod_ter;
-                ww.ShowDialog();
-            }
-            catch (Exception w)
-            {
-                MessageBox.Show("error al agregar una nota:" + w);
             }
         }
 
@@ -1293,6 +1090,8 @@ namespace SiasoftAppExt
                 MTer.repres = ((sender as TextBox).Text);
             }
         }
+
+
     }
 }
 

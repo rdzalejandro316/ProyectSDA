@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\SiasoftApp_SDA\Library\project\ImagenesDocumento\obj\Debug\
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ImagenesDocumento\obj\Debug\
 ImagenesDocumento
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 42123761543
 
-91548768354
-232003744755
+81864797968
+23746242318
 Camara.xaml;Galeria.xaml;ImagenesDocumento.xaml;InsertarImage.xaml;
 
 True

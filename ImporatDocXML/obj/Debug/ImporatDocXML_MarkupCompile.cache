@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\pc\Desktop\SiasoftAppGS\Library\project\ImporatDocXML\obj\Debug\
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ImporatDocXML\obj\Debug\
 ImporatDocXML
 none
 false
@@ -16,5 +16,5 @@ DEBUG;TRACE
 131254293103
 ImporatDocXML.xaml;
 
-False
+True
 

@@ -1,0 +1,14 @@
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AFdepreciacion\obj\Debug\AFdepreciacion.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\AFdepreciacion.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\AFdepreciacion.pdb
