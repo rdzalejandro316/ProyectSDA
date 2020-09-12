@@ -25,13 +25,16 @@ namespace SiasoftAppExt
 {
 
     //   Sia.PublicarPnt(9668,"Importacion740");
+    //   Sia.TabU(9668);
+
+    //   Sia.PublicarPnt(9668,"Importacion740");
     //    dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9668,"Importacion740");
     //    ww.ShowInTaskbar = false;
     //    ww.Owner = Application.Current.MainWindow;
     //    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
     //    ww.ShowDialog();
 
-    public partial class Importacion740 : Window
+    public partial class Importacion740 : UserControl
     {
 
         dynamic SiaWin;
@@ -39,17 +42,20 @@ namespace SiasoftAppExt
         string cnEmp = "";
         string cod_empresa = "";
         string usuario_name = "";
+        dynamic tabitem;
 
         DataTable dt = new DataTable();
         DataTable dt_errores = new DataTable();
         DataSet doc_agru = new DataSet();
 
 
-        public Importacion740()
+        public Importacion740(dynamic tabitem1)
         {
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
             idemp = SiaWin._BusinessId;
+            tabitem = tabitem1;
+
             LoadConfig();
             dt_errores.Columns.Add("error");
         }
@@ -62,8 +68,10 @@ namespace SiasoftAppExt
                 idemp = Convert.ToInt32(foundRow["BusinessId"].ToString().Trim());
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
+                int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                this.Title = "Importacion 740 - " + nomempresa;
+                tabitem.Title = "Importacion 740 - " + nomempresa;
+                tabitem.Logo(idLogo, ".png");
 
                 DataTable dt_use = SiaWin.Func.SqlDT("select UserName,UserAlias from Seg_User where UserId='" + SiaWin._UserId + "' ", "usuarios", 0);
                 usuario_name = dt_use.Rows.Count > 0 ? dt_use.Rows[0]["username"].ToString().Trim() : "USUARIO INEXISTENTE";
@@ -219,6 +227,7 @@ namespace SiasoftAppExt
 
                 agruparDocumentos(dt);
 
+                BtnCrear.IsEnabled = false;
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
                 var slowTask = Task<DataTable>.Factory.StartNew(() => Process(), source.Token);
@@ -231,16 +240,16 @@ namespace SiasoftAppExt
                     TxTot_deb.Text = deb_mov.ToString("N", CultureInfo.InvariantCulture);
                     TxTot_cre.Text = cre_mov.ToString("N", CultureInfo.InvariantCulture);
                     Txdif.Text = (deb_mov - cre_mov).ToString("N", CultureInfo.InvariantCulture);
-                    dataGridRefe.ItemsSource = ((DataTable)slowTask.Result).DefaultView;
-                    
+                    dataGridRefe.ItemsSource = ((DataTable)slowTask.Result).DefaultView;                    
                 }
                 
 
-                MessageBox.Show("Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Application.Current.MainWindow, "Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Tx_total.Text = ((DataTable)slowTask.Result).Rows.Count.ToString();
                 Tx_errores.Text = dt_errores.Rows.Count.ToString();
 
+                BtnCrear.IsEnabled = true;
                 sfBusyIndicator.IsBusy = false;
             }
             catch (Exception w)

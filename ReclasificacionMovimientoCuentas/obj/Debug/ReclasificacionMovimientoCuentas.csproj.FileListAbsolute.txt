@@ -12,3 +12,17 @@ D:\SiasoftApp_SDA\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\Rec
 D:\SiasoftApp_SDA\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.pdb
 D:\SiasoftApp_SDA\Library\ReclasificacionMovimientoCuentas.dll
 D:\SiasoftApp_SDA\Library\ReclasificacionMovimientoCuentas.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionMovimientoCuentas\obj\Debug\ReclasificacionMovimientoCuentas.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\ReclasificacionMovimientoCuentas.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\ReclasificacionMovimientoCuentas.pdb

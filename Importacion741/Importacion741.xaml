@@ -1,13 +1,13 @@
-﻿<Window x:Class="SiasoftAppExt.Importacion741"
+﻿<UserControl x:Class="SiasoftAppExt.Importacion741"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SiasoftAppExt"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"             
-             Width="1000" Height="500">
+             mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="1500">
 
-    <Window.Resources>
+    <UserControl.Resources>
         <SolidColorBrush x:Key="ColorMain" Color="#16a085"/>
         <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="FontWeight" Value="Bold"/>
@@ -26,21 +26,21 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>
+    </UserControl.Resources>
 
 
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
         <Grid Background="Black">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 0">
-                <Button Name="BtnImportar" ToolTip="Importar archivo xls segun el formato de plantilla xls" Width="130" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Importa XLS" Cursor="Hand" Click="BtnImportar_Click"/>
-                <Button Name="BtnCrear" ToolTip="Generar documentos de retiros de activos" Width="130" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Documentos" Cursor="Hand" Click="BtnGenerarDoc_Click"/>
+                <Button Name="BtnImportar" ToolTip="Importar archivo xls segun el formato de plantilla xls" Width="130" Height="40" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Importa XLS" Cursor="Hand" Click="BtnImportar_Click"/>
+                <Button Name="BtnCrear" ToolTip="Generar documentos de retiros de activos" Width="130" Height="40" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Documentos" Cursor="Hand" Click="BtnGenerarDoc_Click"/>
             </StackPanel>
         </Grid>
 
@@ -145,4 +145,4 @@
 
 
 
-</Window>
+</UserControl>

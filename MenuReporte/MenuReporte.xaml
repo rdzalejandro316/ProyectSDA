@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
 
 
-        <Grid Grid.Column="1"  Grid.Row="1" Name="PanelMenu" Background="Black" Width="300" HorizontalAlignment="Left" Margin="-300,0,0,0" Panel.ZIndex="1">
+        <Grid Grid.Column="1"  Grid.Row="1" Name="PanelMenu" Background="Black" Width="350" HorizontalAlignment="Left" Margin="-350,0,0,0" Panel.ZIndex="1">
             <Grid Grid.Row="1" Background="{x:Null}"  VerticalAlignment="Top" Margin="0,0,0,0" >
                 <Grid.Resources>
                     <!--<Style x:Key="botones-menu">-->

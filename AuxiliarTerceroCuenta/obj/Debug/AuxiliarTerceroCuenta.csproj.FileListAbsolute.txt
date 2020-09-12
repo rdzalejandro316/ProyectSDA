@@ -1,0 +1,14 @@
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\AuxiliarTerceroCuenta.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\AuxiliarTerceroCuenta.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuxiliarTerceroCuenta\obj\Debug\AuxiliarTerceroCuenta.csproj.CopyComplete

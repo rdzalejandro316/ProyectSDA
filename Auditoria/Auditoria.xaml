@@ -37,7 +37,7 @@
                 </Grid>
             </Grid>
         </SiaSf:TabItemExt>
-        
+
         <SiaSf:TabItemExt Name="tabItemExt2"  Header="Auditoria" FontSize="14" >
             <Grid>
                 <Grid.RowDefinitions>
@@ -90,9 +90,9 @@
                             <Setter Property="Background" Value="Gray"/>
                         </Style>
 
-                            <Style TargetType="SiaSf:GridCell">
-                                <Setter Property="BorderBrush" Value="LightGray" />
-                            </Style>
+                        <Style TargetType="SiaSf:GridCell">
+                            <Setter Property="BorderBrush" Value="LightGray" />
+                        </Style>
 
 
 

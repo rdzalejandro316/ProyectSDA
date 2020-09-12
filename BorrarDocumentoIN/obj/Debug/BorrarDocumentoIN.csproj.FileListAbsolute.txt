@@ -11,3 +11,17 @@ D:\SiasoftApp_SDA\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.
 D:\SiasoftApp_SDA\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.pdb
 D:\SiasoftApp_SDA\Library\BorrarDocumentoIN.dll
 D:\SiasoftApp_SDA\Library\BorrarDocumentoIN.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoIN\obj\Debug\BorrarDocumentoIN.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\BorrarDocumentoIN.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\BorrarDocumentoIN.pdb

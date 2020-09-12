@@ -22,7 +22,7 @@
         <Grid Grid.Row="1" Panel.ZIndex="2">
             <SiaSf:SfBusyIndicator  Name="sfBusyIndicator" Margin="0" VerticalAlignment="Stretch" FontSize="10" AnimationSpeed="100" AnimationType="Rainy" Header="Generando el proceso" Height="100" IsBusy="False" Foreground="#FF03A9F4"/>
         </Grid>
-        
+
         <Grid x:Name="GridConfiguracion" Margin="20" Panel.ZIndex="1">
             <Border Background="White">
                 <Border.Effect>
@@ -60,18 +60,20 @@
                     <TextBox x:Name="cuen_nueva" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="20 10 20 0" materialDesign:HintAssist.Hint="Cuenta Nueva" ToolTip="F8 buscar" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="Cuen_LostFocus" CaretBrush="#03A9F4" />
 
                 </Grid>
-                
-                
-                
+
+
                 <Grid Grid.Row="2" Background="#373737">
-                    <Button Name="BtnReclasificacion" Content="Reclasificar" Background="#FF03A9F4" BorderBrush="#FF03A9F4" Width="150" HorizontalAlignment="Right" Margin="0 0 5 0" Click="BtnReclasificacion_Click"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Name="BtnView" Content="Ver Documentos Afectados" Background="#FF03A9F4" BorderBrush="#FF03A9F4" Width="250" HorizontalAlignment="Right" Margin="5 0 5 0" Click="BtnView_Click"/>
+                        <Button Name="BtnReclasificacion" Content="Reclasificar" Background="#FF03A9F4" BorderBrush="#FF03A9F4" Width="150" HorizontalAlignment="Right" Margin="5 0 5 0" Click="BtnReclasificacion_Click"/>
+                    </StackPanel>
                 </Grid>
-                
+
 
             </Grid>
 
         </Grid>
-                      
-        
+
+
     </Grid>
 </Window>

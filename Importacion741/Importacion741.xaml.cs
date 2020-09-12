@@ -24,19 +24,23 @@ using System.Windows.Shapes;
 namespace SiasoftAppExt
 {
     //Sia.PublicarPnt(9667,"Importacion741");
+    //Sia.TabU(9667);
+
+    //Sia.PublicarPnt(9667,"Importacion741");
     //dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9667,"Importacion741");
     //ww.ShowInTaskbar = false;
     //ww.Owner = Application.Current.MainWindow;
     //ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
     //ww.ShowDialog();
 
-    public partial class Importacion741 : Window
+    public partial class Importacion741 : UserControl
     {
         dynamic SiaWin;
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
         string usuario_name = "";
+        dynamic tabitem;
 
         DataTable dt = new DataTable();
         DataTable dt_armado = new DataTable();
@@ -44,11 +48,12 @@ namespace SiasoftAppExt
         DataSet doc_agru = new DataSet();
 
 
-        public Importacion741()
+        public Importacion741(dynamic tabitem1)
         {
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
             idemp = SiaWin._BusinessId;
+            tabitem = tabitem1;
             LoadConfig();
             dt_errores.Columns.Add("error");
         }
@@ -61,8 +66,10 @@ namespace SiasoftAppExt
                 idemp = Convert.ToInt32(foundRow["BusinessId"].ToString().Trim());
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
+                int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                this.Title = "Importacion 741 - " + nomempresa;
+                tabitem.Title = "Importacion 741 - " + nomempresa;
+                tabitem.Logo(idLogo, ".png");
 
                 DataTable dt_use = SiaWin.Func.SqlDT("select UserName,UserAlias from Seg_User where UserId='" + SiaWin._UserId + "' ", "usuarios", 0);
                 usuario_name = dt_use.Rows.Count > 0 ? dt_use.Rows[0]["username"].ToString().Trim() : "USUARIO INEXISTENTE";
@@ -166,8 +173,7 @@ namespace SiasoftAppExt
                 //foreach (DataTable dtable in doc_agru.Tables)                
                 //  SiaWin.Browse(dtable);
 
-
-                MessageBox.Show("Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);                
+                MessageBox.Show(Application.Current.MainWindow, "Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);                
                 Tx_errores.Text = dt_errores.Rows.Count.ToString();
                 sfBusyIndicator.IsBusy = false;
             }

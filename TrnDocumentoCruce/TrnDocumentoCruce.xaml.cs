@@ -13,9 +13,7 @@ using Syncfusion.UI.Xaml.ScrollAxis;
 
 namespace SiasoftAppExt
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
+    
     /// Sia.PublicarPnt(9381,"TrnDocumentoCruce");
 
     public partial class TrnDocumentoCruce : Window
@@ -46,6 +44,8 @@ namespace SiasoftAppExt
         public string doc_ref = "";
         public decimal valabono = 0;
         public System.Data.DataRow[] FilasRegistros;
+        public System.Data.DataRow[] FilasRegistrosAbonos = null;
+
         int regcab = 0;
         public TrnDocumentoCruce()
         {
@@ -82,7 +82,9 @@ namespace SiasoftAppExt
             //BtbGrabar.Focus();
             //CmbBan.Focus();
             //ActualizaCampos(cod_ter);
+
             ConsultaSaldoCartera1(cod_ter);
+
             //TextCodeCliente.Focus();
             //dirter = SiaWin.Func.cmpCodigo("comae_ter", "cod_ter", "dir1", TextCodeCliente.Text, idemp);
             //telter = SiaWin.Func.cmpCodigo("comae_ter", "cod_ter", "tel1", TextCodeCliente.Text, idemp);
@@ -100,6 +102,8 @@ namespace SiasoftAppExt
             {
                 //MessageBox.Show(codter+"-"+ codcta+"-"+ fechacorte.ToShortDateString() + "-" + codemp);
                 dtCue = SiaWin.Func.CarteraCliente(codter,codcta,fechacorte, codemp);
+                //SiaWin.Browse(dtCue);
+
                 if (dtCue.Rows.Count == 0)
                 {
                     MessageBox.Show("Sin informacion de cartera");
@@ -108,24 +112,34 @@ namespace SiasoftAppExt
                     //TextNomCliente.Text = "";
                     return;
                 }
-                dtCue.PrimaryKey = new System.Data.DataColumn[] { dtCue.Columns["num_trn"] };
-                if (FilasRegistros.Length > 0)
-                {
-                    for (int i = 0; i < FilasRegistros.Length; i++)
-                    {
-                        string doccruc = FilasRegistros[i]["doc_cruc"].ToString();
-                        if (!string.IsNullOrEmpty(doccruc))
-                        {
-                            System.Data.DataRow rowdele = dtCue.Rows.Find(doccruc);
-                            rowdele.BeginEdit();
-                            rowdele.Delete();
-                            rowdele.EndEdit();
-                            dtCue.AcceptChanges();
-                            ///MessageBox.Show(FilasRegistros[i]["des_mov"].ToString() + "-" + FilasRegistros[i]["doc_cruc"].ToString());
-                        }
-                    }
 
+                dtCue.PrimaryKey = new System.Data.DataColumn[] { dtCue.Columns["num_trn"] };
+
+                if (FilasRegistros != null)
+                {
+                    if (FilasRegistros.Length > 0)
+                    {
+
+                        for (int i = 0; i < FilasRegistros.Length; i++)
+                        {
+                            string doccruc = FilasRegistros[i]["doc_cruc"].ToString().Trim();
+                            if (!string.IsNullOrEmpty(doccruc))
+                            {
+                                System.Data.DataRow rowdele = dtCue.Rows.Find(doccruc);
+                                if (rowdele != null)
+                                {
+                                    rowdele.BeginEdit();
+                                    rowdele.Delete();
+                                    rowdele.EndEdit();
+                                    dtCue.AcceptChanges();
+                                }
+                                ///MessageBox.Show(FilasRegistros[i]["des_mov"].ToString() + "-" + FilasRegistros[i]["doc_cruc"].ToString());
+                            }
+                        }
+
+                    }
                 }
+
                 sumaTotal();
                 dataGrid.ItemsSource = dtCue.DefaultView;
                 dataGrid.Focus();
@@ -187,15 +201,11 @@ namespace SiasoftAppExt
                             ///MessageBox.Show(FilasRegistros[i]["des_mov"].ToString() + "-" + FilasRegistros[i]["doc_cruc"].ToString());
                         }
                     }
-
                 }
-
-
                 sumaTotal();
                 dataGrid.ItemsSource = dtCue.DefaultView;
                 dataGrid.Focus();
                 dataGrid.SelectedIndex = 0;
-
                 this.dataGrid.MoveCurrentCell(new RowColumnIndex(1, 9), false);
             }
             catch(SqlException exsql)
@@ -223,7 +233,8 @@ namespace SiasoftAppExt
         private void sumaAbonos()
         {
             if (dtCue.Rows.Count <= 0) return;
-            //double.TryParse(dtCue.Compute("Sum(abono)", "tip_apli=3").ToString(), out abonoCxC);
+            double.TryParse(dtCue.Compute("Sum(abono)","").ToString(), out abonoCxC);
+            TotalAbonos.Text=(abonoCxC.ToString("C"));
             //double.TryParse(dtCue.Compute("Sum(abono)", "tip_apli=4").ToString(), out abonoCxCAnt);
             //TextCxCAbono.Text = abonoCxC.ToString("C");
             //TextCxCAntAbono.Text = abonoCxCAnt.ToString("C");
@@ -270,11 +281,10 @@ namespace SiasoftAppExt
                     e.Handled = true;
                 }
                 dataGrid.UpdateLayout();
-                //sumaAbonos();
+                sumaAbonos();
             }
             if(e.Key==Key.F5)
             {
-
                 DataRowView row = (DataRowView)dataGrid.SelectedItems[0];
                 if (row == null)
                 {
@@ -290,12 +300,22 @@ namespace SiasoftAppExt
                     valabono = _abono;
                     this.Close();
                 }
-
-
+                FilasRegistrosAbonos = dtCue.Select("abono>0 and num_trn<>'"+doc_cruc+"'","num_trn");
+                if (FilasRegistrosAbonos.Length > 0)
+                {
+                    for (int i = 0; i < FilasRegistrosAbonos.Length; i++)
+                    {
+                        //string doccruc = FilasRegistrosAbonos[i]["num_trn"].ToString()+"- Abono:"+ FilasRegistrosAbonos[i]["abono"].ToString();
+                        //MessageBox.Show(doccruc);
+                    }
+                }
+                else
+                {
+                    FilasRegistrosAbonos = null;
+                }
+                this.Close();
             }
-
         }
-
         private void dataGrid_CurrentCellEndEdit(object sender, CurrentCellEndEditEventArgs e)
         {
             GridNumericColumn Colum = ((SfDataGrid)sender).CurrentColumn as GridNumericColumn;
@@ -313,7 +333,7 @@ namespace SiasoftAppExt
                     
                 }
                 dataGrid.UpdateLayout();
-                //sumaAbonos();
+                sumaAbonos();
             }
 
         }
@@ -326,9 +346,6 @@ namespace SiasoftAppExt
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-           
-
-
             if (e.Key == Key.Escape)
             {
                 this.Close();
@@ -344,13 +361,15 @@ namespace SiasoftAppExt
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            TxtNit.Text = codcliente;
+
+            TxtNit.Text = codcliente.Trim();
             TxtNomTer.Text = nomter;
             TxtFechaCorte.Text = fechacorte.ToShortDateString();
             TxtCuenta.Text = codcta;
             LoadInfo();
-//            MessageBox.Show(FilasRegistros.Length.ToString());
+            //            MessageBox.Show(FilasRegistros.Length.ToString());
             //if(dtCuerpo!=null) MessageBox.Show(dtCuerpo.Rows.Count.ToString());
+
             if (!string.IsNullOrEmpty(codcliente))
             {
                 InitRC(codcliente);
@@ -371,6 +390,36 @@ namespace SiasoftAppExt
             
             this.Close();
         }
+
+        private void BtnSeleccionar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataRowView row = (DataRowView)dataGrid.SelectedItems[0];
+                if (row == null)
+                {
+                    MessageBox.Show("Registro sin datos");
+                    return;
+                }
+                decimal _abono = Convert.ToDecimal(row["abono"].ToString());
+                if (_abono > 0)
+                {
+                    doc_cruc = row["num_trn"].ToString();
+                    doc_ref = row["factura"].ToString();
+                    cod_trn = row["cod_trn"].ToString();
+                    valabono = _abono;
+                    this.Close();
+                }
+                this.Close();
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al seleccionar:"+w);
+            }
+        }
+
+
+
     }
 
 }

@@ -1,0 +1,14 @@
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\CierreEjercicio.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\CierreEjercicio.pdb

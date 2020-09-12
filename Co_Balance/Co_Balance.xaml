@@ -6,10 +6,9 @@
              xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
              xmlns:Controls="using:Co_Balance"
              xmlns:local="clr-namespace:Co_Balance"           
-                      xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
-xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
-        xmlns:sync="http://schemas.syncfusion.com/wpf"
-
+             xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+             xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+             xmlns:sync="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d"              
              d:DesignHeight="600" d:DesignWidth="1500" Loaded="UserControl_Loaded">
 
@@ -64,6 +63,7 @@ xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportV
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
                             <RowDefinition Height="90"/>
                             <RowDefinition Height="0.2*"/>
                         </Grid.RowDefinitions>
@@ -81,7 +81,7 @@ xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportV
                             <TextBlock Text="Balance - Secretaria Distrital Del Ambiente"  x:Name="TituloBalance" Foreground="#00ade7" Padding="15" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="22"/>
                         </Grid>
 
-                        
+
 
                         <TextBlock Grid.Row="1" Grid.Column="1" Text="Fecha:" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
 
@@ -95,33 +95,43 @@ xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportV
                         <TextBox Name="C1" Grid.Column="2" Grid.Row="2" Height="30" Width="110" HorizontalAlignment="Left" Margin="5" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_cta1" GotFocus="Cuen_GotFocus" LostFocus="Cuen_LostFocus"></TextBox>
                         <TextBlock Name="F8_1" Text="Press the key F8" Grid.Column="3" Grid.Row="2" Foreground="#2980b9" Width="60" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Center"  Visibility="Hidden" />
 
-                        
+
                         <TextBox Name="C2" Grid.Column="4" Grid.Row="2" Height="30" Width="110" HorizontalAlignment="Left" Margin="5"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_cta2" GotFocus="Cuen_GotFocus" LostFocus="Cuen_LostFocus" ></TextBox>
                         <TextBlock Name="F8_2" Text="Press the key F8" Grid.Column="5" Grid.Row="2" Foreground="#2980b9"  Width="60" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Center"  Visibility="Hidden"/>
 
                         <TextBlock Text="Nivel de Cuenta : " Grid.Row="3" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="Bold"/>
                         <TextBox Name="NV1" Grid.Column="2" Grid.Row="3" Height="30" Width="110" HorizontalAlignment="Left" Margin="5" PreviewTextInput="NumberValidationTextBox" MaxLength="1"></TextBox>
 
-                        
+
                         <TextBox Name="NV2" Grid.Column="4" Grid.Row="3" Height="30" Width="110" HorizontalAlignment="Left" Margin="5"  PreviewTextInput="NumberValidationTextBox" MaxLength="1"></TextBox>
 
 
-                        <TextBlock Text="Detallar Terceros : " Grid.Row="4" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
-                        <ComboBox Name="TipoBal" Grid.Row="4" Grid.Column="2" Height="30" Margin="5" >
+                        <TextBlock Text="Redondeo: " Grid.Row="4" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
+                        <ComboBox Name="CbxRedondeo" Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="2" Height="30" Margin="5" >
+                            <ComboBoxItem IsSelected="True">Niguno</ComboBoxItem>
+                            <ComboBoxItem >Redondear a 0 (sin decimales)</ComboBoxItem>
+                            <ComboBoxItem IsEnabled="False">Redondear a -1 (a decenas)</ComboBoxItem>
+                            <ComboBoxItem IsEnabled="False">Redondear a -2 (a centenas)</ComboBoxItem>
+                            <ComboBoxItem IsEnabled="False">Redondear a -3 (a mil)</ComboBoxItem>
+                        </ComboBox>
+                        
+                        <TextBlock Text="Detallar Terceros : " Grid.Row="5" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
+                        <ComboBox Name="TipoBal" Grid.Row="5" Grid.Column="2" Height="30" Margin="5" >
                             <ComboBoxItem IsSelected="True">No</ComboBoxItem>
                             <ComboBoxItem >Si</ComboBoxItem>
                         </ComboBox>
-                        <TextBlock Text="Tipo de Balance : " Grid.Row="5" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
-                        <ComboBox Name="TipoBalNiif" Grid.Row="5" Grid.Column="2" Height="30" Margin="5" >
+
+                        <TextBlock Text="Tipo de Balance : " Grid.Row="6" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
+                        <ComboBox Name="TipoBalNiif" Grid.Row="6" Grid.Column="2" Height="30" Margin="5" >
                             <ComboBoxItem IsSelected="True">Fiscal</ComboBoxItem>
                             <ComboBoxItem >NIIF</ComboBoxItem>
                         </ComboBox>
 
+                        
 
-                        <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="7">
 
+                        <Grid Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7">
                             <Button Name="BtnEjecutar" HorizontalAlignment="Center"  Grid.Column="0"  Height="45" Content="Consultar" Click="Button_Click"  Style="{StaticResource botones-menu}"/>
-                            
                         </Grid>
 
                     </Grid>
@@ -134,109 +144,169 @@ xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportV
 
         <SiaSf:TabItemExt Name="tabItemExt2"  Header="Consulta" Width="120" HeaderMargin="30 0 0 0 " FontSize="12" >
             <Grid>
-                <Grid Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="35"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style  x:Key="gridStyle" TargetType="SiaSf:GridCell">
+                        <Setter Property="BorderBrush" Value="LightGray" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=tip_cta}" Value="M">
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Control.Foreground" Value="Red" />
+                                <Setter Property="Control.FontFamily" Value="Courier New"/>
+                                <Setter Property="Control.FontSize" Value="11"></Setter>
+                                <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding Path=tip_cta}" Value="A">
+                                <Setter Property="Background" Value="#4CD3D3D3" />
+                                <Setter Property="Control.FontFamily" Value="Courier New"/>
+                                <Setter Property="Control.FontSize" Value="11"></Setter>
+                            </DataTrigger>
+
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=tip_cta}" Value="A" />
+                                    <Condition Binding="{Binding Path=ind_bal}" Value="1" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Control.FontSize" Value="11"></Setter>
+                                <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+                                <Setter Property="Background" Value="White" />
+                            </MultiDataTrigger>
+
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="FontSize" Value="11"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Background" Value="#373737"/>
+                    </Style>
+                </Grid.Resources>
+
+                <SiaSf:SfDataGrid  Grid.Row="0" x:Name="dataGridConsulta" AllowSorting="False" AllowGrouping="False" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="False"  AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"   CellStyle="{StaticResource gridStyle}" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Cell" MouseDoubleClick="dataGridConsulta_MouseDoubleClick" ColumnSizer="AutoWithLastColumnFill">
+                    <SiaSf:SfDataGrid.Columns>
+                        <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_cta" Width="85" AllowFiltering="True"/>
+                        <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />
+                        <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tip_cta" Width="50"/>
+                        <SiaSf:GridTextColumn HeaderText="Nivel" MappingName="niv_cta" Width="50"/>
+                        <SiaSf:GridTextColumn HeaderText="Nat" MappingName="nat_cta" Width="50" />
+                        <SiaSf:GridTextColumn HeaderText="Saldo Anterior" Width="120"   DisplayBinding="{Binding Path=sal_ant, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
+                        <SiaSf:GridTextColumn HeaderText="Debitos" Width="120"  DisplayBinding="{Binding Path=debito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
+                        <SiaSf:GridTextColumn HeaderText="Creditos" Width="120" DisplayBinding="{Binding Path=credito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
+                        <SiaSf:GridTextColumn HeaderText="Saldo Final" Width="120" DisplayBinding="{Binding Path=sal_fin, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
+                        <SiaSf:GridTextColumn MappingName="dir1" HeaderText="direccion" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="tel1" HeaderText="Telefono" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cod_ter" HeaderText="Cod_Ter" IsHidden="True"/>
+
+                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="50"  AllowFiltering="False">
+                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="BtnDetalle" Content="...." Click="BtnDetalle_Click" Background="#00ade7" Foreground="White" />
+                                </DataTemplate>
+                            </SiaSf:GridTemplateColumn.CellTemplate>
+                        </SiaSf:GridTemplateColumn>
+
+                        <SiaSf:GridTemplateColumn MappingName="AcumAño" Width="50"  AllowFiltering="False" >
+                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="BtnAcumAno" Content="...." Click="BtnAcumAno_Click"  Background="#00ade7" Foreground="White"/>
+                                </DataTemplate>
+                            </SiaSf:GridTemplateColumn.CellTemplate>
+                        </SiaSf:GridTemplateColumn>
+
+                    </SiaSf:SfDataGrid.Columns>
+                </SiaSf:SfDataGrid>
+
+                <Grid  x:Name="GridParameter" Grid.Row="1" Margin="5">
+                    <Border Background="White">
+                        <Border.Effect>
+                            <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
+                        </Border.Effect>
+                    </Border>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.Resources>
-                            <Style  x:Key="gridStyle" TargetType="SiaSf:GridCell">
-                                <Setter Property="BorderBrush" Value="LightGray" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Path=tip_cta}" Value="M">
-                                        <Setter Property="Background" Value="White" />
-                                        <Setter Property="Control.Foreground" Value="Red" />
-                                        <Setter Property="Control.FontFamily" Value="Courier New"/>
-                                        <Setter Property="Control.FontSize" Value="11"></Setter>
-                                        <Setter Property="Control.FontWeight" Value="Bold"></Setter>
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Path=tip_cta}" Value="A">
-                                        <Setter Property="Background" Value="#4CD3D3D3" />
-                                        <Setter Property="Control.FontFamily" Value="Courier New"/>
-                                        <Setter Property="Control.FontSize" Value="11"></Setter>
-                                    </DataTrigger>
-
-                                    <MultiDataTrigger>
-                                        <MultiDataTrigger.Conditions>
-                                            <Condition Binding="{Binding Path=tip_cta}" Value="A" />
-                                            <Condition Binding="{Binding Path=ind_bal}" Value="1" />
-                                        </MultiDataTrigger.Conditions>
-                                        <Setter Property="Control.FontSize" Value="11"></Setter>
-                                        <Setter Property="Control.FontWeight" Value="Bold"></Setter>
-                                        <Setter Property="Background" Value="White" />
-                                    </MultiDataTrigger>
-
-                                </Style.Triggers>
-                            </Style>
-                            <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+                            <Style TargetType="TextBlock" x:Key="label">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
                                 <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="FontSize" Value="11"/>
-                                <Setter Property="Foreground" Value="White"/>
-                                <Setter Property="Background" Value="#373737"/>
+                                <Setter Property="FontSize" Value="10"/>
+                            </Style>
+                            <Style TargetType="TextBlock" x:Key="value">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="Foreground" Value="#00ade7"/>
                             </Style>
                         </Grid.Resources>
-                        <SiaSf:SfDataGrid   Grid.Row="1" x:Name="dataGridConsulta" AllowSorting="False" AllowGrouping="False" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="False"  AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"   CellStyle="{StaticResource gridStyle}" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Cell" MouseDoubleClick="dataGridConsulta_MouseDoubleClick" ColumnSizer="AutoWithLastColumnFill">
-                            <SiaSf:SfDataGrid.Columns>
-                                <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_cta" Width="85" AllowFiltering="True"/>
-                                <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />
 
-                                <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tip_cta" Width="50" >
-                                </SiaSf:GridTextColumn>
-                                <SiaSf:GridTextColumn HeaderText="Nivel" MappingName="niv_cta" Width="50"/>
-                                <SiaSf:GridTextColumn HeaderText="Nat" MappingName="nat_cta" Width="50" />
-                                <SiaSf:GridTextColumn HeaderText="Saldo Anterior" Width="120"   DisplayBinding="{Binding Path=sal_ant, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                                <SiaSf:GridTextColumn HeaderText="Debitos" Width="120"  DisplayBinding="{Binding Path=debito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                                <SiaSf:GridTextColumn HeaderText="Creditos" Width="120" DisplayBinding="{Binding Path=credito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                                <SiaSf:GridTextColumn HeaderText="Saldo Final" Width="120" DisplayBinding="{Binding Path=sal_fin, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                                <SiaSf:GridTextColumn MappingName="dir1" HeaderText="direccion" IsHidden="True"/>
-                                <SiaSf:GridTextColumn MappingName="tel1" HeaderText="Telefono" IsHidden="True"/>
-                                <SiaSf:GridTextColumn MappingName="cod_ter" HeaderText="Cod_Ter" IsHidden="True"/>
+                        <TextBlock Text="FEC INICIAL:" Style="{StaticResource label}"/>
+                        <TextBlock Grid.Column="1" Name="TxFecIni" Style="{StaticResource value}"/>
 
-                                <SiaSf:GridTemplateColumn MappingName="Detalle" Width="50"  AllowFiltering="False">
-                                    <SiaSf:GridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button x:Name="BtnDetalle" Content="...." Click="BtnDetalle_Click" Background="#00ade7" Foreground="White" />
-                                        </DataTemplate>
-                                    </SiaSf:GridTemplateColumn.CellTemplate>
-                                </SiaSf:GridTemplateColumn>
+                        <TextBlock Grid.Column="2" Text="FEC FINAL:" Style="{StaticResource label}"/>
+                        <TextBlock Grid.Column="3" Name="TxFecFin" Style="{StaticResource value}"/>
 
-                                <SiaSf:GridTemplateColumn MappingName="AcumAño" Width="50"  AllowFiltering="False" >
-                                    <SiaSf:GridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button x:Name="BtnAcumAno" Content="...." Click="BtnAcumAno_Click"  Background="#00ade7" Foreground="White"/>
-                                        </DataTemplate>
-                                    </SiaSf:GridTemplateColumn.CellTemplate>
-                                </SiaSf:GridTemplateColumn>
+                        <TextBlock Grid.Column="4" Text="CUENTA INI:" Style="{StaticResource label}"/>
+                        <TextBlock Grid.Column="5" Name="TxCtaIni" Style="{StaticResource value}"/>
 
-                            </SiaSf:SfDataGrid.Columns>
-                        </SiaSf:SfDataGrid>
+                        <TextBlock Grid.Column="6" Text="CUENTA FIN:" Style="{StaticResource label}"/>
+                        <TextBlock Grid.Column="7" Name="TxCtaFin" Style="{StaticResource value}"/>
+
+                        <TextBlock Grid.Column="8" Text="NIVEL INI:" Style="{StaticResource label}"/>
+                        <TextBlock Grid.Column="9" Name="TxNivIni" Style="{StaticResource value}"/>
+
+                        <TextBlock Grid.Column="10" Text="NIVEL FIN:" Style="{StaticResource label}"/>
+                        <TextBlock Grid.Column="11" Name="TxNivFin" Style="{StaticResource value}"/>
+
+                        <TextBlock Grid.Column="12" Text="DETA TER:" Style="{StaticResource label}"/>
+                        <TextBlock Grid.Column="13" Name="TxTer" Style="{StaticResource value}"/>
+
+                        <TextBlock Grid.Column="14" Text="TIPO:" Style="{StaticResource label}"/>
+                        <TextBlock Grid.Column="15" Name="TxTipo" Style="{StaticResource value}"/>
                     </Grid>
-
-                    <Grid Grid.Row="1" >
-                        <Grid Height="40">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200"/>
-                                <ColumnDefinition Width="200"/>
-                                <ColumnDefinition Width="200"/>
-                                <ColumnDefinition Width="120"/>
-                                <ColumnDefinition Width="120"/>
-                                <ColumnDefinition Width="*"/>
-
-
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Text="Total del registros : " Grid.Column="3" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                            <TextBlock Name="Total" Grid.Column="4" Foreground="#2980b9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <Button Grid.Column="0" Content="Reportes Auxiliares" Name="BTNReportesAux" Click="BTNReportesAux_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
-                            <Button Grid.Column="1" Content="Imprimir Balance" Name="BTNimprimir" Click="BTNimprimir_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
-                            <Button Grid.Column="2" Content="Exporatar XLS" Name="BTNexpo" Click="BTNexpo_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
-                        </Grid>
-                    </Grid>
-
-
                 </Grid>
+
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="Reportes Auxiliares" Name="BTNReportesAux" Click="BTNReportesAux_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
+                    <Button Grid.Column="1" Content="Imprimir Balance" Name="BTNimprimir" Click="BTNimprimir_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
+                    <Button Grid.Column="2" Content="Exporatar XLS" Name="BTNexpo" Click="BTNexpo_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
+                    <Button Grid.Column="3" Tag="A" Content="Ocultar Filtros"  Name="BTNhidden" Click="BTNhidden_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
+
+                    <TextBlock Text="Total del registros : " Grid.Column="4" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock Name="Total" Grid.Column="5" Foreground="#2980b9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+
+
 
             </Grid>
         </SiaSf:TabItemExt>
@@ -300,7 +370,6 @@ xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportV
                             <SiaSf:GridTextColumn HeaderText="Saldo Anterior" Width="120"   DisplayBinding="{Binding Path=sal_ant, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
                             <SiaSf:GridTextColumn HeaderText="Debitos" Width="120"  DisplayBinding="{Binding Path=debito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
                             <SiaSf:GridTextColumn HeaderText="Creditos" Width="120" DisplayBinding="{Binding Path=credito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                            <SiaSf:GridTextColumn HeaderText="Ven" MappingName="cod_ven" Width="50"/>
                             <SiaSf:GridTextColumn HeaderText="Saldo Final" Width="120" DisplayBinding="{Binding Path=sal_fin, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
                             <SiaSf:GridTextColumn MappingName="dir1" HeaderText="direccion" IsHidden="True"/>
                             <SiaSf:GridTextColumn MappingName="tel1" HeaderText="Telefono" IsHidden="True"/>

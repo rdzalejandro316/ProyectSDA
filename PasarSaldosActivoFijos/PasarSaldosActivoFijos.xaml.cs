@@ -23,31 +23,25 @@ using System.Windows.Shapes;
 namespace SiasoftAppExt
 {
 
-    //    Sia.PublicarPnt(9669,"PasarSaldosActivoFijos");
-    //    dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9669,"PasarSaldosActivoFijos");
-    //    ww.ShowInTaskbar = false;
-    //    ww.Owner = Application.Current.MainWindow;
-    //    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
-    //    ww.ShowDialog();
+    //Sia.PublicarPnt(9669,"PasarSaldosActivoFijos");
+    //Sia.TabU(9669);
 
-    public partial class PasarSaldosActivoFijos : Window
+    public partial class PasarSaldosActivoFijos : UserControl
     {
         dynamic SiaWin;        
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
+        dynamic tabitem;
 
-        public PasarSaldosActivoFijos()
+        public PasarSaldosActivoFijos(dynamic tabitem1)
         {
             InitializeComponent();
-            SiaWin = Application.Current.MainWindow;                                         
-        }
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+            SiaWin = Application.Current.MainWindow;
+            tabitem = tabitem1;
             LoadConfig();
         }
+        
 
         private void LoadConfig()
         {
@@ -62,7 +56,8 @@ namespace SiasoftAppExt
                 string aliasemp = foundRow["BusinessAlias"].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                this.Title = "Pasar Saldos Activos Fijos-" + cod_empresa + "-" + nomempresa;                
+                tabitem.Title = "Pasar Saldos Activos Fijos-" + cod_empresa + "-" + nomempresa;
+                tabitem.Logo(idLogo, ".png");
             }
             catch (Exception e)
             {
@@ -145,7 +140,7 @@ namespace SiasoftAppExt
 
         private void BTNcancelar_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            tabitem.Cerrar(0);
         }
 
         private void Exportar_Click(object sender, RoutedEventArgs e)

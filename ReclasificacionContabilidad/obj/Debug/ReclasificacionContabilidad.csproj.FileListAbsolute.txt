@@ -26,3 +26,17 @@ D:\SiasoftApp_SDA\Library\project\ReclasificacionContabilidad\obj\Debug\Reclasif
 D:\SiasoftApp_SDA\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.pdb
 D:\SiasoftApp_SDA\Library\ReclasificacionContabilidad.dll
 D:\SiasoftApp_SDA\Library\ReclasificacionContabilidad.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionContabilidad\obj\Debug\ReclasificacionContabilidad.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\ReclasificacionContabilidad.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\ReclasificacionContabilidad.pdb

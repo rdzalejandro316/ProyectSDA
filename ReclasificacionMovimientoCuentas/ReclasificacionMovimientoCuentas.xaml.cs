@@ -32,7 +32,7 @@ namespace SiasoftAppExt
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
-
+        int idmodulo = 1;
         public ReclasificacionMovimientoCuentas()
         {
             InitializeComponent();
@@ -66,9 +66,11 @@ namespace SiasoftAppExt
             if (e.Key == Key.F8 || (e.Key == Key.Enter && string.IsNullOrEmpty((sender as TextBox).Text)))
             {
                 int idr = 0; string code = ""; string nom = "";
-                dynamic winb = SiaWin.WindowBuscar("comae_cta", "cod_cta", "nom_cta", "cod_cta", "idrow", "Maestra de cuentas", SiaWin.Func.DatosEmp(idemp), true, "", idEmp: idemp);
+                dynamic winb = SiaWin.WindowBuscar("comae_cta", "cod_cta", "nom_cta", "cod_cta", "idrow", "Maestra de cuentas", SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
                 winb.ShowInTaskbar = false;
                 winb.Owner = Application.Current.MainWindow;
+                winb.Width = 400;
+                winb.Height = 400;
                 winb.ShowDialog();
                 idr = winb.IdRowReturn;
                 code = winb.Codigo;
@@ -97,9 +99,11 @@ namespace SiasoftAppExt
             {
                 MessageBox.Show("la cuenta ingresada no es valida ingrese una cuenta de la lista");
                 int idr = 0; string code = ""; string nom = "";
-                dynamic winb = SiaWin.WindowBuscar("comae_cta", "cod_cta", "nom_cta", "cod_cta", "idrow", "Maestra de cuentas", SiaWin.Func.DatosEmp(idemp), true, "", idEmp: idemp);
+                dynamic winb = SiaWin.WindowBuscar("comae_cta", "cod_cta", "nom_cta", "cod_cta", "idrow", "Maestra de cuentas", SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
                 winb.ShowInTaskbar = false;
                 winb.Owner = Application.Current.MainWindow;
+                winb.Width = 400;
+                winb.Height = 400;
                 winb.ShowDialog();
                 idr = winb.IdRowReturn;
                 code = winb.Codigo;
@@ -132,6 +136,87 @@ namespace SiasoftAppExt
                     return;
                 }
 
+                MessageBoxResult result = MessageBox.Show("Usted desea reclasificar la cuenta " + cuen_ant.Text.Trim() + " a " + cuen_nueva.Text.Trim() + " desde las fechas " + fec_ini.Text + " a " + fec_fin.Text + " ", "Confirmacion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    CancellationTokenSource source = new CancellationTokenSource();
+                    CancellationToken token = source.Token;
+
+                    GridConfiguracion.IsEnabled = false;
+                    sfBusyIndicator.IsBusy = true;
+
+
+                    string fec_inicial = fec_ini.Text.Trim();
+                    string fec_final = fec_fin.Text.Trim();
+
+                    string cta_ant = cuen_ant.Text.Trim();
+                    string cta_nue = cuen_nueva.Text.Trim();
+
+                    var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(fec_inicial, fec_final, cta_ant, source.Token), source.Token);
+                    await slowTask;
+
+                    if (((DataTable)slowTask.Result).Rows.Count > 0)
+                    {
+                        string query = "";
+                        foreach (DataRow dr in ((DataTable)slowTask.Result).Rows)
+                            query += "update Cocue_doc set cod_cta=replace(cod_cta,'" + cta_ant + "','" + cta_nue + "')   where idreg='" + dr["idreg"].ToString().Trim() + "';";
+
+                        if (SiaWin.Func.SqlCRUD(query, idemp) == true)
+                        {
+                            string tx = "Reclasifico Documentos en las cuentas  - codigo anterior: " + cta_ant + " a codigo nuevo:" + cta_nue + "  de la fecha " + fec_inicial + " a " + fec_final + "";
+                            SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, idmodulo, -1, -9, tx, "");
+
+                            MessageBox.Show("la reclasificacion fue exitosa de cuentas", "proceso", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else MessageBox.Show("fallo el proceso de reclasificacion por favor verifique con el administrador", "fallo del proceso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("el rango de fechas que se ingreso para realizar la reclasificacion no contiene ningun documento", "Alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+
+                    GridConfiguracion.IsEnabled = true;
+                    sfBusyIndicator.IsBusy = false;
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al realizar el proceso de reclasificar:" + w);
+            }
+        }
+
+
+        private DataTable LoadData(string fec_ini, string fec_fin, string cuenta, CancellationToken cancellationToken)
+        {
+            try
+            {
+                string query = "select cue.idreg,cue.cod_trn,cue.num_trn,cab.fec_trn  ";
+                query += "from Cocue_doc cue ";
+                query += "inner join cocab_doc cab on cab.idreg = cue.idregcab ";
+                query += "where convert(date,cab.fec_trn,105) between '" + fec_ini + "' and '" + fec_fin + "'  ";
+                query += "and cue.cod_cta='" + cuenta + "' ";
+
+                System.Data.DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
+                return dt;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+
+        private async void BtnView_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(fec_ini.Text) || string.IsNullOrEmpty(fec_fin.Text) || string.IsNullOrEmpty(cuen_ant.Text))
+                {
+                    MessageBox.Show("llene todos los campos para realizar la reclasificacion", "Alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
 
@@ -145,22 +230,11 @@ namespace SiasoftAppExt
                 string cta_ant = cuen_ant.Text;
                 string cta_nue = cuen_nueva.Text;
 
-                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(fec_inicial, fec_final, source.Token), source.Token);
+                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(fec_inicial, fec_final, cta_ant, source.Token), source.Token);
                 await slowTask;
 
-                if (((DataTable)slowTask.Result).Rows.Count > 0)
-                {
-                    string query = "";
-                    foreach (DataRow dr in ((DataTable)slowTask.Result).Rows)
-                        query += "update Cocue_doc set cod_cta=replace(cod_cta,'" + cta_ant + "','" + cta_nue + "')   where idreg='" + dr["idreg"].ToString().Trim() + "';";
-
-                    if (SiaWin.Func.SqlCRUD(query, idemp) == true) MessageBox.Show("la reclasificacion fue exitosa de cuentas", "proceso", MessageBoxButton.OK, MessageBoxImage.Information);
-                    else MessageBox.Show("fallo el proceso de reclasificacion por favor verifique con el administrador", "fallo del proceso", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("el rango de fechas que se ingreso para realizar la reclasificacion no contiene ningun documento", "Alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+                if (((DataTable)slowTask.Result).Rows.Count > 0) SiaWin.Browse(((DataTable)slowTask.Result));
+                else MessageBox.Show("no existe documentos con los filtros ingresados");
 
                 GridConfiguracion.IsEnabled = true;
                 sfBusyIndicator.IsBusy = false;
@@ -168,30 +242,9 @@ namespace SiasoftAppExt
             }
             catch (Exception w)
             {
-                MessageBox.Show("error al realizar el proceso de reclasificar:" + w);
+                MessageBox.Show("error:" + w);
             }
         }
-
-
-        private DataTable LoadData(string fec_ini, string fec_fin, CancellationToken cancellationToken)
-        {
-            try
-            {
-                System.Data.DataTable dt = SiaWin.Func.SqlDT("select * from Cocue_doc where fecha_aded between '" + fec_ini + "' and '" + fec_fin + " 23:59:59'  ", "tabla", idemp);
-                return dt;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return null;
-            }
-        }
-
-
-
-
-
-
 
 
     }

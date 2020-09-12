@@ -150,3 +150,17 @@ D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CopyC
 D:\SiasoftApp_SDA\Library\MenuReporte.dll
 D:\SiasoftApp_SDA\Library\MenuReporte.pdb
 D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\MenuReporte.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\MenuReporte.pdb

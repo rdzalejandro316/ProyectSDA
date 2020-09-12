@@ -1,0 +1,14 @@
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AfResumenGrupoActivos\obj\Debug\AfResumenGrupoActivos.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\AfResumenGrupoActivos.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\AfResumenGrupoActivos.pdb

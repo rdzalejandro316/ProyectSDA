@@ -1,0 +1,14 @@
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.g.cs
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo_MarkupCompile.cache
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo_MarkupCompile.lref
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.baml
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.g.resources
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.Properties.Resources.resources
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.csproj.CopyComplete
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.dll
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\project\CopiarDocumentosPeriodo\obj\Debug\CopiarDocumentosPeriodo.pdb
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\CopiarDocumentosPeriodo.dll
+C:\Users\aleja\Desktop\corpentunida\Siasoft\Library\CopiarDocumentosPeriodo.pdb

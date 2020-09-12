@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrnDocumentoCruce", "TrnDocumentoCruce.csproj", "{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB2E92AE-22C8-4EB3-A6C4-A663695D3689}
+	EndGlobalSection
+EndGlobal

@@ -103,8 +103,9 @@
                         <ComboBoxItem IsSelected="True">Todos</ComboBoxItem>
                         <ComboBoxItem>Cliente</ComboBoxItem>
                         <ComboBoxItem>Proveedor</ComboBoxItem>
-                        <ComboBoxItem>Vendedor</ComboBoxItem>
                         <ComboBoxItem>Empleado</ComboBoxItem>
+                        <ComboBoxItem>Socio</ComboBoxItem>
+                        <ComboBoxItem>Estado</ComboBoxItem>
                     </ComboBox>
 
                 </StackPanel>
@@ -187,8 +188,8 @@
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Bloquear tercero:" Style="{StaticResource tit}" />
                             <ComboBox SelectedIndex="{Binding bloqueo,Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Foreground="Black"  Width="80" VerticalAlignment="Center">
-                                <ComboBoxItem>Si</ComboBoxItem>
                                 <ComboBoxItem>No</ComboBoxItem>
+                                <ComboBoxItem>Si</ComboBoxItem>
                             </ComboBox>
                         </StackPanel>
 
@@ -363,16 +364,16 @@
                     <StackPanel Grid.Column="0" Orientation="Horizontal">
                         <Label Content="Autoretenedor:" Style="{StaticResource tit}" />
                         <ComboBox SelectedIndex="{Binding aut_ret,Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Foreground="Black"  Width="50" VerticalAlignment="Center">
-                            <ComboBoxItem IsSelected="True">Si</ComboBoxItem>
                             <ComboBoxItem>No</ComboBoxItem>
+                            <ComboBoxItem IsSelected="True">Si</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
                         <Label Content="Retencion fija:" Style="{StaticResource tit}"/>
                         <ComboBox SelectedIndex="{Binding ind_rete,Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True}" Foreground="Black" Width="50" VerticalAlignment="Center">
-                            <ComboBoxItem IsSelected="True">Si</ComboBoxItem>
                             <ComboBoxItem>No</ComboBoxItem>
+                            <ComboBoxItem IsSelected="True">Si</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
 

@@ -1,0 +1,70 @@
+﻿<Window x:Class="AnalisisDeCartera.AbonoDocumentos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:AnalisisDeCartera"
+        Title="AbonoDocumentos" Height="400" Width="650" Loaded="Window_Loaded">
+
+
+    <Window.Resources>
+        <Style TargetType="SiaSf:GridCell">
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+        </Style>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="Background" Value="#4294DE"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+    </Window.Resources>
+        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#373737">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Documento : " Foreground="White" Margin="5 0 0 0" FontWeight="Bold"/>
+                <TextBlock Name="Tx_Document" Foreground="White" Margin="0 0 0 0"/>
+            </StackPanel>
+            
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <SiaSf:SfDataGrid  x:Name="dataGridCxCD" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" FontFamily="Times New Roman" AllowFiltering="True"  HeaderStyle="{StaticResource headerStyle}" >
+                <SiaSf:SfDataGrid.Columns>
+                    <SiaSf:GridTemplateColumn MappingName="Doc" Width="50"  AllowFiltering="False">
+                        <SiaSf:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="BtnDetalleD" Content="...." Click="BtnDetalleD_Click" Background="LightSteelBlue"/>
+                            </DataTemplate>
+                        </SiaSf:GridTemplateColumn.CellTemplate>
+                    </SiaSf:GridTemplateColumn>
+                    <SiaSf:GridTextColumn MappingName="idreg" IsHidden="True"/>
+                    <SiaSf:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50" />
+                    <SiaSf:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="90" />
+                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=fec_trn, StringFormat={}{0:dd/MM/yyyy}}"  Width="80" HeaderText="FechaDoc" />
+                    <SiaSf:GridTextColumn HeaderText="Cod Ven" MappingName="cod_ven" Width="50"/>
+                    <SiaSf:GridTextColumn HeaderText="Nit/CC" MappingName="cod_ter" Width="80"/>
+                    <SiaSf:GridTextColumn HeaderText="Descripcion" MappingName="des_mov" Width="80"/>
+                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=valor, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Valor" TextAlignment="Right" AllowFiltering="False"/>
+                    <SiaSf:GridTextColumn DisplayBinding="{Binding Path=abono, StringFormat='{}{0:N2}'}" Width="80" HeaderText="abono" TextAlignment="Right" AllowFiltering="False"/>
+                </SiaSf:SfDataGrid.Columns>
+            </SiaSf:SfDataGrid>
+
+        </Grid>
+        
+        <Grid Background="#373737" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Registros : " Foreground="White" Margin="5 0 0 0" FontWeight="Bold"/>
+                <TextBlock Name="Tx_rows" Foreground="White" Margin="0 0 0 0"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>

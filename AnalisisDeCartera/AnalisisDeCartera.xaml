@@ -3,59 +3,69 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-            xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF" 
              xmlns:local="clr-namespace:SiasoftAppExt"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="1700"    xmlns:SFDataGrid="clr-namespace:Syncfusion.Windows.Controls.Grid;assembly=Syncfusion.Grid.Wpf"   Height="300" >
+             d:DesignHeight="600" d:DesignWidth="1200"    xmlns:SFDataGrid="clr-namespace:Syncfusion.Windows.Controls.Grid;assembly=Syncfusion.Grid.Wpf" Loaded="UserControl_Loaded">
+
     <Grid >
-        <SiaSf:TabControlExt Name="TabControl1" Margin="5,0,1,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True"  >
-            <SiaSf:TabItemExt Name="tabItemExt1"  Header="Analisis de Cartera" FontSize="14" >
+        <SiaSf:TabControlExt Name="TabControl1" Margin="5,4,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True"  >
+            <SiaSf:TabItemExt Name="tabItemExt1"  Header="Analisis de Cartera" FontSize="12" >
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="110"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0"  Background="White">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40" />
-                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="120"/>
-                            <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
+
                         <TextBlock Text="Fecha Corte:  "  Grid.Row="0" Grid.Column="0" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
                         <DatePicker x:Name="FechaIni" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" ></DatePicker>
+
                         <SiaSf:ComboBoxAdv  FontSize="12" x:Name="comboBoxCuentas" Margin="5" AllowMultiSelect="True" Grid.Column="2" Grid.Row="0"		DefaultText="Seleccione Cuenta" ItemsSource="{Binding Cuentas}"   SelectionChanged="comboBoxCuentas_SelectionChanged" DisplayMemberPath="nom_cta"  SelectedValuePath="cod_cta"  SelectedValueDelimiter="," />
 
+                        <TextBlock Text="Detallado" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Black"  FontSize="13" Margin="10 0 0 0"/>
+                        <ComboBox Name="Cbx_Detalle" Grid.Row="0" Grid.Column="4" Margin="5" SelectionChanged="ComboBox_SelectionChanged">
+                            <ComboBoxItem Tag="No" Content="No"/>
+                            <ComboBoxItem Tag="Si" Content="Si" />
+                        </ComboBox>
 
-                        <TextBlock Text="Cliente:  " Grid.Row="0" Grid.Column="4" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13" Margin="10 0 0 0"/>
-                        <TextBox x:Name="TextCod_Ter" Grid.Row="0" Grid.Column="5" Foreground="Orange" VerticalAlignment="Stretch" Margin="2,6,2,6" HorizontalAlignment="Stretch" FontSize="13" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_ter" LostFocus="TextCod_Ter_LostFocus"/>
-                        <TextBlock x:Name="TextNombreTercero" Text=""  Grid.Column="6" Foreground="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="13"  Background="LightGray"  Margin="2,6,2,6"/>
 
-                        <TextBlock Text="Vendedor: " Grid.Row="0" Grid.Column="7" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13" Margin="10 0 0 0"/>
-                        <TextBox x:Name="TextCod_Ven" Grid.Row="0" Grid.Column="8" Foreground="Orange" VerticalAlignment="Stretch" Margin="2,6,2,6" HorizontalAlignment="Stretch" FontSize="13" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_mer" LostFocus="TextCod_Ven_LostFocus"/>
-                        <TextBlock x:Name="TextNombreVend" Text=""  Grid.Column="9" Foreground="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="13"  Background="LightGray"  Margin="2,6,2,6"/>
+                        <TextBlock Text="Cliente:  " Grid.Row="1" Grid.Column="0" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13" Margin="10 0 0 0"/>
+                        <TextBox x:Name="TextCod_Ter" Grid.Row="1" Grid.Column="1" Foreground="Orange" VerticalAlignment="Stretch" Margin="2,6,2,6" HorizontalAlignment="Stretch" FontSize="13" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_ter" LostFocus="TextCod_Ter_LostFocus" ToolTip="F8 buscar"/>
+                        <TextBlock x:Name="TextNombreTercero" Text=""  Grid.Row="1" Grid.Column="2" Foreground="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="13"  Background="LightGray"  Margin="2,6,2,6"/>
 
-                        <!--<TextBlock Text="Vendedor:  "  Grid.Row="0" Grid.Column="4" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13"/>
-                        <TextBox x:Name="TextCod_bod" Grid.Row="0" Grid.Column="5" Foreground="Orange" VerticalAlignment="Stretch" Margin="2,6,2,6" HorizontalAlignment="Stretch" FontSize="13" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_mer" LostFocus="TextCod_Ven_LostFocus"/>
-                        <TextBlock x:Name="TextNombreBod" Text="" Grid.Row="0" Grid.Column="6" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="13" />-->
 
-                        <Button x:Name="BtnEjecutar" Content="Ejecutar" Grid.Column="11" Margin="5,5,5,5" FontSize="11" Width="90" Background="#FFC107" Foreground="DarkBlue" Click="ButtonRefresh_Click"  Cursor="Hand"/>
-                        <Button x:Name="BtnSalir" Content="Salir" Grid.Column="12" Margin="5,5,5,5" FontSize="11" Width="90" Background="#FFC107" Foreground="DarkBlue" Click="BtnSalir_Click" IsCancel="True" Cursor="Hand"/>
+                        <TextBlock Text="Vendedor: " Grid.Row="1" Grid.Column="3" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="13" Margin="10 0 0 0"/>
+
+                        <SiaSf:ComboBoxAdv  FontSize="12" x:Name="comboBoxVendedor" Margin="5" AllowMultiSelect="True" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1"	DefaultText="Seleccione Vendedor"  DisplayMemberPath="nom_mer" AllowSelectAll="True"  SelectedValuePath="cod_mer"  SelectedValueDelimiter="," />
+                        <!--<TextBox x:Name="TextCod_Ven" Grid.Row="1" Grid.Column="4" Foreground="Orange" VerticalAlignment="Stretch" Margin="2,6,2,6" HorizontalAlignment="Stretch" FontSize="13" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="inmae_mer" LostFocus="TextCod_Ven_LostFocus" ToolTip="F8 buscar"/>
+                        <TextBlock x:Name="TextNombreVend" Text=""  Grid.Row="1" Grid.Column="5" Foreground="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="13"  Background="LightGray"  Margin="2,6,2,6"/>-->
+                        <CheckBox x:Name="CheckIncluirInter" Grid.Row="1" Grid.Column="6" Content="Excluir InterEmpresa" VerticalAlignment="Center" Margin="10,5,5,5"/>
+
+                        <StackPanel Grid.Column="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <Button x:Name="BtnEjecutar" Content="Ejecutar" Grid.Column="5" Margin="5,5,5,0" FontSize="11" Width="90" Background="#FFC107" Foreground="DarkBlue" Click="ButtonRefresh_Click"  Cursor="Hand" Height="30" VerticalAlignment="Top"/>
+                            <Button x:Name="BtnSalir" Content="Salir" Grid.Column="12" Margin="5,5,5,5" FontSize="11" Width="90" Background="#FFC107" Foreground="DarkBlue" Click="BtnSalir_Click" IsCancel="True" Cursor="Hand"/>
+                        </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.Resources>
@@ -70,10 +80,11 @@
                             </Style>
 
                         </Grid.Resources>
-                        <SiaSf:SfDataGrid  x:Name="dataGridCxC"  
-                        EnableDataVirtualization = "True"  FrozenColumnCount="2"
+
+
+                        <SiaSf:SfDataGrid  x:Name="dataGridCxC"   Visibility="Hidden"     EnableDataVirtualization = "True"  FrozenColumnCount="2"
                         AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" FontFamily="Times New Roman" AllowFiltering="True" FilterChanged="dataGridCxC_FilterChanged" 
-                        ItemsSource="{Binding DtTraslados}"  HeaderStyle="{StaticResource headerStyle}" >
+                        ItemsSource="{Binding }"  HeaderStyle="{StaticResource headerStyle}" >
 
                             <SiaSf:SfDataGrid.Columns>
                                 <SiaSf:GridTextColumn HeaderText="Nit/cc" MappingName="cod_ter" Width="80"/>
@@ -106,6 +117,52 @@
 
                             </SiaSf:SfDataGrid.Columns>
                         </SiaSf:SfDataGrid>
+
+                        <SiaSf:SfDataGrid  x:Name="dataGridCxCD"  Visibility="Visible"
+                        EnableDataVirtualization = "True"  FrozenColumnCount="2"
+                        AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" FontFamily="Times New Roman" AllowFiltering="True" FilterChanged="dataGridCxC_FilterChanged" 
+                        ItemsSource="{Binding }"  HeaderStyle="{StaticResource headerStyle}" >
+
+                            <SiaSf:SfDataGrid.Columns>
+                                <SiaSf:GridTextColumn HeaderText="Nit/cc" MappingName="cod_ter" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Nombre cliente"  MappingName="nom_ter" Width="220"/>
+                                <SiaSf:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="70" />
+                                <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tipo" Width="50" />
+                                <SiaSf:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50" />
+                                <SiaSf:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="90" />
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=fec_trn, StringFormat={}{0:dd/MM/yyyy}}"  Width="90" HeaderText="FechaDoc" />
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=fec_ven, StringFormat={}{0:dd/MM/yyyy}}"  Width="90" HeaderText="FechaVenc" />
+                                <SiaSf:GridTextColumn HeaderText="Dias" MappingName="dias" Width="90" />
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=valor,StringFormat='{}{0:N2}'}"   Width="85" HeaderText="Valor Doc" TextAlignment="Right" AllowFiltering="False"/>
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=saldo, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Saldo" TextAlignment="Right" AllowFiltering="False"/>
+                                <SiaSf:GridTextColumn HeaderText="Ven" MappingName="cod_ven" Width="50" />
+
+                                <SiaSf:GridTextColumn HeaderText="Dto imal" IsHidden="True" x:Name="dto_imal" MappingName="dto_imal" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Dto imal" IsHidden="True" x:Name="dto_incol" MappingName="dto_incol" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Dto imal" IsHidden="True" x:Name="dto_tmk"  MappingName="dto_tmk" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Dto imal" IsHidden="True" x:Name="dto_gab" MappingName="dto_gab" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Dto imal" IsHidden="True" x:Name="dto_vcd" MappingName="dto_vcd" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Dto imal" IsHidden="True" x:Name="dto_sic" MappingName="dto_sic" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Dto imal" IsHidden="True" x:Name="dto_ot" MappingName="dto_ot" Width="80"/>
+                                
+                                <SiaSf:GridTemplateColumn MappingName="Doc" Width="56"  AllowFiltering="False">
+                                    <SiaSf:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtnDetalleD" Content="...." Click="BtnDetalleD_Click" Background="LightSteelBlue"/>
+                                        </DataTemplate>
+                                    </SiaSf:GridTemplateColumn.CellTemplate>
+                                </SiaSf:GridTemplateColumn>
+                                <SiaSf:GridTemplateColumn MappingName="RCaja" Width="56"  AllowFiltering="False">
+                                    <SiaSf:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtnRCaja" Content="...." Foreground="WhiteSmoke"  Background="DodgerBlue" Click="BtnRCaja_Click"/>
+                                        </DataTemplate>
+                                    </SiaSf:GridTemplateColumn.CellTemplate>
+                                </SiaSf:GridTemplateColumn>
+
+                            </SiaSf:SfDataGrid.Columns>
+                        </SiaSf:SfDataGrid>
+
                     </Grid>
                     <Border   Grid.Row="2" BorderBrush="DodgerBlue" BorderThickness="0.5" Margin="3,3,3,3" Grid.Column="2">
                         <Grid Grid.Row="2" >
@@ -152,10 +209,27 @@
                             <ComboBox  x:Name="CmbTipoDoc" Margin="2,2,2,2" Grid.Row="0"  Grid.Column="6" FontSize="12" SelectedItem="{Binding SelectedItem}" IsSynchronizedWithCurrentItem="True" >
                                 <ComboBoxItem  Content="Cartera resumida por cliente" IsSelected="True"/>
                                 <ComboBoxItem Content="Cartera detallada por cliente"/>
+                                <ComboBoxItem Content="Cartera detallada por Vendedor"/>
+                                <ComboBoxItem Content="Cartera Altura por Vendedor Resumido"/>
                             </ComboBox>
                             <Button x:Name="Imprimir" Content="Imprimir" Grid.Column="7" Margin="1,1,1,1" Grid.Row="0"   FontSize="12" Background="#FFC107" Width="100" Click="Imprimir_Click" Cursor="Hand" Foreground="DarkBlue"/>
                             <Button x:Name="ExportarXls" Content="Exportar XLS" Grid.Column="8" Margin="1,1,1,1" Grid.Row="0" FontSize="12" Background="#FFC107" Click="ExportarXls_Click" Width="100" Cursor="Hand" Foreground="DarkBlue"/>
                             <Button x:Name="ConciliarCxcCo" Content="Conciliar cuentas" Grid.Column="9" Margin="1,1,1,1" Grid.Row="0" FontSize="12" Background="#FFC107" Click="ConciliarCxcCo_Click" Width="100" Cursor="Hand" Foreground="DarkBlue"/>
+
+
+                            <Button x:Name="BtnvrAbonado" Content="Abonado" Grid.Column="8" Margin="1,1,1,1" Grid.Row="1" FontSize="12" Background="#FFC107" Width="100" Click="BtnvrAbonado_Click" Cursor="Hand" Foreground="DarkBlue"/>
+                            
+                            <Button x:Name="BtnvrDesc" Content="Form Descue" Grid.Column="9" Margin="1,1,1,1" Grid.Row="1" FontSize="12" Background="#FFC107" Width="100" Click="BtnvrDesc_Click" Cursor="Hand" Foreground="DarkBlue"/>
+                            
+                            <StackPanel Grid.Row="1" Grid.Column="6" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!--<TextBlock  VerticalAlignment="Center" HorizontalAlignment="Right" Text="Visualisar Columnas Descuentos"/>
+                                <CheckBox Name="CheckVisi" Margin="5 5 10 5" Checked="CheckVisi_Checked"/>-->
+                            </StackPanel>
+                            
+                            <TextBlock Text="Altura Dias:" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center"/>
+                            <TextBox x:Name="TxtAltura" Text="0" Width="50" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="6" Margin="2"/>
+
+
                             <!--<Button x:Name="BtnPPP" Content="Conciliar cuenta" Grid.Column="9" Margin="1,1,1,1" Grid.Row="1" FontSize="12" Background="DodgerBlue" Click="BtnPPP_Click" Width="90"/>-->
                         </Grid>
                     </Border>
@@ -177,8 +251,148 @@
                 </Grid>
 
             </SiaSf:TabItemExt>
-            <SiaSf:TabItemExt Name="tabItemExt2"  Header="Otros" Width="100" HeaderMargin="25,0" FontSize="14" >
+
+            <SiaSf:TabItemExt Name="tabItemExt3"  Header="Graficos" Width="120" HeaderMargin="25,0" FontSize="14" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <chart:SfChart Name="Chart1" Grid.Column="0" Margin="5" AreaBorderBrush="{x:Null}" Header="Saldos por cuentas" FontWeight="Bold">
+                            <chart:SfChart.Resources>
+                                <ItemsPanelTemplate x:Key="itemPanelTemplate">
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </chart:SfChart.Resources>
+
+                            <chart:SfChart.Legend>
+                                <chart:ChartLegend FontSize="9" DockPosition="Top" ToggleSeriesVisibility="True" ItemsPanel="{StaticResource itemPanelTemplate}"/>
+                            </chart:SfChart.Legend>
+
+                            <chart:DoughnutSeries  Name="ChartCircle" XBindingPath="cod_cta" YBindingPath="saldo" ShowTooltip="True" EnableAnimation="True" AnimationDuration="00:00:03" Palette="Custom">
+                                <chart:DoughnutSeries.ColorModel>
+                                    <chart:ChartColorModel>
+                                        <chart:ChartColorModel.CustomBrushes>
+                                            <SolidColorBrush Color="#03A9F4"/>
+                                            <SolidColorBrush Color="#16a085"/>
+                                            <SolidColorBrush Color="#f1c40f"/>
+                                            <SolidColorBrush Color="#F44336"/>
+                                            <SolidColorBrush Color="#3F51B5"/>
+                                        </chart:ChartColorModel.CustomBrushes>
+                                    </chart:ChartColorModel>
+                                </chart:DoughnutSeries.ColorModel>
+                                <chart:DoughnutSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo AdornmentsPosition="Bottom" SegmentLabelContent="LabelContentPath" HorizontalAlignment="Center" VerticalAlignment="Center" ShowLabel="True">
+                                        <!--<chart:ChartAdornmentInfo.LabelTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Border CornerRadius="2" BorderBrush="{x:Null}" BorderThickness="1" Background="#373737" Padding="5">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="Total : " Margin="0 0 5 0"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"  FontSize="14"/>
+                                                            <TextBlock Text="{Binding}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"  FontSize="14"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </chart:ChartAdornmentInfo.LabelTemplate>-->
+                                    </chart:ChartAdornmentInfo>
+                                </chart:DoughnutSeries.AdornmentsInfo>
+                            </chart:DoughnutSeries>
+                        </chart:SfChart>
+
+                        <chart:SfChart Name="Chart3" Grid.Column="1" Margin="5" AreaBorderBrush="{x:Null}" Header="Altura" FontWeight="Bold">
+                            <chart:SfChart.Resources>
+                                <ItemsPanelTemplate x:Key="itemPanelTemplate">
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </chart:SfChart.Resources>
+
+                            <chart:SfChart.Legend>
+                                <chart:ChartLegend FontSize="9" DockPosition="Top" ToggleSeriesVisibility="True" ItemsPanel="{StaticResource itemPanelTemplate}"/>
+                            </chart:SfChart.Legend>
+
+                            <chart:DoughnutSeries  Name="ChartCircleAltura" XBindingPath="altura" YBindingPath="valor" ShowTooltip="True" EnableAnimation="True" AnimationDuration="00:00:03" Palette="Custom">
+                                <chart:DoughnutSeries.ColorModel>
+                                    <chart:ChartColorModel>
+                                        <chart:ChartColorModel.CustomBrushes>
+                                            <SolidColorBrush Color="#03A9F4"/>
+                                            <SolidColorBrush Color="#16a085"/>
+                                            <SolidColorBrush Color="#f1c40f"/>
+                                            <SolidColorBrush Color="#F44336"/>
+                                            <SolidColorBrush Color="#3F51B5"/>
+                                        </chart:ChartColorModel.CustomBrushes>
+                                    </chart:ChartColorModel>
+                                </chart:DoughnutSeries.ColorModel>
+                                <chart:DoughnutSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo AdornmentsPosition="Bottom" SegmentLabelContent="LabelContentPath" HorizontalAlignment="Center" VerticalAlignment="Center" ShowLabel="True">
+                                        <!--<chart:ChartAdornmentInfo.LabelTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Border CornerRadius="2" BorderBrush="{x:Null}" BorderThickness="1" Background="#373737" Padding="5">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="Total : " Margin="0 0 5 0"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"  FontSize="14"/>
+                                                            <TextBlock Text="{Binding}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"  FontSize="14"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </chart:ChartAdornmentInfo.LabelTemplate>-->
+                                    </chart:ChartAdornmentInfo>
+                                </chart:DoughnutSeries.AdornmentsInfo>
+                            </chart:DoughnutSeries>
+                        </chart:SfChart>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <chart:SfChart Name="Chart2" Grid.Row="1" Header="Saldos por vendedor" Margin="5" FontWeight="Bold" >
+                            <chart:SfChart.Resources>
+                                <DataTemplate x:Key="headerTemplate">
+                                    <TextBlock FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold" Text="{Binding}"/>
+                                </DataTemplate>
+                                <DataTemplate x:Key="labelTemplate">
+                                    <TextBlock FontSize="10" Foreground="Gray" Width="100" TextAlignment="Center" TextWrapping="WrapWithOverflow" Text="{Binding Path=LabelContent}"/>
+                                </DataTemplate>
+                                <DataTemplate x:Key="labelNumeric">
+                                    <TextBlock FontSize="10" Foreground="#03A9F4" Text="{Binding Path=LabelContent}"/>
+                                </DataTemplate>
+                            </chart:SfChart.Resources>
+
+                            <chart:SfChart.PrimaryAxis>
+                                <chart:CategoryAxis PlotOffset="30" LabelTemplate="{StaticResource labelTemplate}" LabelsIntersectAction="MultipleRows" IsIndexed="False"/>
+                            </chart:SfChart.PrimaryAxis>
+
+                            <chart:SfChart.SecondaryAxis>
+                                <chart:NumericalAxis FontSize="14" FontWeight="Bold" PlotOffset="10" LabelTemplate="{StaticResource labelNumeric}"/>
+                            </chart:SfChart.SecondaryAxis>
+
+                            <chart:AreaSeries  Name="chartVende" XBindingPath="cod_ven" YBindingPath="saldo" Interior="#03A9F4" ShowTooltip="True" EnableAnimation="True" AnimationDuration="00:00:03" Margin="10" >
+                                <chart:AreaSeries.AdornmentsInfo>
+                                    <chart:ChartAdornmentInfo AdornmentsPosition="Bottom" SegmentLabelContent="Percentage" HorizontalAlignment="Center" VerticalAlignment="Center" ShowLabel="True">
+                                        <chart:ChartAdornmentInfo.LabelTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Ellipse Height="27" Width="27" Stroke="#FF1BA1E2" Fill="Silver" StrokeThickness="2"  HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding StringFormat=c}" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"  FontSize="12"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </chart:ChartAdornmentInfo.LabelTemplate>
+                                    </chart:ChartAdornmentInfo>
+                                </chart:AreaSeries.AdornmentsInfo>
+                            </chart:AreaSeries>
+                        </chart:SfChart>
+                    </Grid>
+
+                </Grid>
             </SiaSf:TabItemExt>
+
         </SiaSf:TabControlExt>
     </Grid>
 

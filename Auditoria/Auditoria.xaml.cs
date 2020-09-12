@@ -24,7 +24,6 @@ using System.Windows.Shapes;
 namespace SiasoftAppExt
 {
 
-
     //Sia.PublicarPnt(9339,"Auditoria");
     //dynamic WinDescto = ((Inicio)Application.Current.MainWindow).WindowExt(9339, "Auditoria");
     //WinDescto.ShowInTaskbar = false;
@@ -40,13 +39,11 @@ namespace SiasoftAppExt
         string cod_empresa = "";
         public string eventBuscar = "";
 
-
-
         public Auditoria()
         {
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
-            SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, 0, 0, 0, "Ingreso Auditoria SiasoftApp ","");
+            SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, 0, 0, 0, "Ingreso Auditoria SiasoftApp ", "");
             idemp = SiaWin._BusinessId;
             LoadConfig();
         }
@@ -88,7 +85,7 @@ namespace SiasoftAppExt
                 string ff = Fec_Fin.Text.ToString();
 
                 SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "Consulto Auditoria Fecha Inicial:" + fi.ToString() + "- Fecha Final:" + ff.ToString(), "");
-                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(fi, ff,eventBuscar,source.Token), source.Token);
+                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(fi, ff, eventBuscar, source.Token), source.Token);
                 await slowTask;
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
@@ -98,7 +95,7 @@ namespace SiasoftAppExt
                     TabControl1.SelectedIndex = 1;
                 }
                 ConfigGrid.IsEnabled = true;
-                this.sfBusyIndicator.IsBusy = false;             
+                this.sfBusyIndicator.IsBusy = false;
             }
             catch (SqlException w)
             {
@@ -110,23 +107,9 @@ namespace SiasoftAppExt
                 this.Opacity = 1;
             }
         }
+        
 
-
-        //private DataSet SlowDude(string FI, string FF, CancellationToken cancellationToken)
-        //{
-        //    try
-        //    {
-        //        DataSet jj = LoadData(FI, FF, cancellationToken);
-        //        return jj;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show(e.Message);
-        //    }
-        //    return null;
-        //}
-
-        private DataSet LoadData(string FechaIN, string FechaFI,string filtro, CancellationToken cancellationToken)
+        private DataSet LoadData(string FechaIN, string FechaFI, string filtro, CancellationToken cancellationToken)
         {
             try
             {
@@ -138,7 +121,7 @@ namespace SiasoftAppExt
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@FechaIni", FechaIN);
                 cmd.Parameters.AddWithValue("@FechaFin", FechaFI);
-                cmd.Parameters.AddWithValue("Filtro", filtro);
+                cmd.Parameters.AddWithValue("@Filtro", filtro);
                 da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
                 con.Close();
@@ -158,7 +141,7 @@ namespace SiasoftAppExt
             var options = new Syncfusion.UI.Xaml.Grid.Converter.ExcelExportingOptions();
             options.ExportMode = ExportMode.Value;
             options.ExcelVersion = ExcelVersion.Excel2013;
-            
+
 
 
             var excelEngine = GrillaAuditoria.ExportToExcel(GrillaAuditoria.View, options);
@@ -192,19 +175,17 @@ namespace SiasoftAppExt
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if(eventBuscar!="")
+            if (eventBuscar != "")
             {
-
                 BTNconsultar.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-
             }
         }
         // ROWS automatico ******************************************************************************
 
         GridRowSizingOptions gridRowResizingOptions = new GridRowSizingOptions();
-        
+
         double autoHeight = 20;
-        
+
         List<string> excludeColumns = new List<string>() { "UserId", "UserAlias", "UserName", "GroupName", "BusinessName", "ModulesName", "Date_Event", "UserWindows", "MachineName", "EventError" };
 
         private void dataGridCxC_QueryRowHeight(object sender, Syncfusion.UI.Xaml.Grid.QueryRowHeightEventArgs e)
@@ -217,7 +198,7 @@ namespace SiasoftAppExt
                     e.Handled = true;
                 }
 
-                if (e.RowIndex == 0) 
+                if (e.RowIndex == 0)
                 {
                     e.Height = 30;
                     e.Handled = true;

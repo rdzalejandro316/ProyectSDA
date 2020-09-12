@@ -26,3 +26,17 @@ D:\SiasoftApp_SDA\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosAc
 D:\SiasoftApp_SDA\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.pdb
 D:\SiasoftApp_SDA\Library\PasarSaldosActivoFijos.dll
 D:\SiasoftApp_SDA\Library\PasarSaldosActivoFijos.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosActivoFijos\obj\Debug\PasarSaldosActivoFijos.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\PasarSaldosActivoFijos.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\PasarSaldosActivoFijos.pdb

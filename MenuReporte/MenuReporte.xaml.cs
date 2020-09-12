@@ -358,14 +358,14 @@ namespace SiasoftAppExt
                 PanelMenu.Margin = marginMenu;
 
                 Thickness marginCont = conte.Margin;
-                marginCont.Left = 300;
+                marginCont.Left = 350;
                 conte.Margin = marginCont;
                 MenuBTN.Tag = "2";
             }
             else
             {
                 Thickness marginMenu = PanelMenu.Margin;
-                marginMenu.Left = -300;
+                marginMenu.Left = -350;
                 PanelMenu.Margin = marginMenu;
 
                 Thickness marginCont = conte.Margin;

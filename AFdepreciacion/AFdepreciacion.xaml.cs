@@ -275,12 +275,7 @@ namespace SiasoftAppExt
                 return -1;
             }
         }
-
-
-        private void BtnSalir_Click(object sender, RoutedEventArgs e)
-        {
-            tabitem.Cerrar(0);
-        }
+       
 
         private void BtnExportar_Click(object sender, RoutedEventArgs e)
         {

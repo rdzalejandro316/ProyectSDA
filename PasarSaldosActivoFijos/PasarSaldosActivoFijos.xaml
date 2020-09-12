@@ -1,14 +1,15 @@
-﻿<Window x:Class="SiasoftAppExt.PasarSaldosActivoFijos"
+﻿<UserControl x:Class="SiasoftAppExt.PasarSaldosActivoFijos"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SiasoftAppExt"
              xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
-             Width="1000" Height="500" Loaded="Window_Loaded">
-    <Window.Resources>
+             Width="1000" Height="500" Background="White">
+    
+    <UserControl.Resources>
         <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
-    </Window.Resources>
+    </UserControl.Resources>
 
 
     <SiaSf:TabControlExt Name="TabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True" TabPanelBackground="#FFEBEBEB" TabItemSelectedBackground="#f1c40f">
@@ -156,4 +157,4 @@
 
     </SiaSf:TabControlExt>
 
-</Window>
+</UserControl>

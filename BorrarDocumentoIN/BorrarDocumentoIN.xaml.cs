@@ -31,9 +31,11 @@ namespace SiasoftAppExt
         string cnEmp = "";
         string cod_empresa = "";
 
+        string titulo = "Inventario";
         string transaccion = "inmae_trn";
         string doc_cabeza = "incab_doc";
         string doc_cuerpo = "incue_doc";
+        int idmodulo = 2;
 
         public BorrarDocumentoIN()
         {
@@ -54,6 +56,9 @@ namespace SiasoftAppExt
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
                 this.Title = "Eliminacion de documento de inventario";
+
+                TxFecIni.Text = DateTime.Now.ToString();
+                TxFecFin.Text = DateTime.Now.ToString();
 
             }
             catch (Exception e)
@@ -119,6 +124,8 @@ namespace SiasoftAppExt
 
                         if (SiaWin.Func.SqlCRUD(delete, idemp) == true)
                         {
+                            SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, idmodulo, -1, -9, "ELIMINO EXITOSAMENTE DOCU:" + Tx_doc.Text + "- TRN" + Tx_trns.Text + " DE:" + titulo, "");
+
                             MessageBox.Show("la eliminacion fue exitosa", "proceso", MessageBoxButton.OK, MessageBoxImage.Information);
                             Tx_doc.Text = "";
                             Tx_trns.Text = "";
@@ -145,6 +152,57 @@ namespace SiasoftAppExt
         }
 
 
+
+        // segun tab ----------------------------
+
+        private void BtnEliminarRange_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                #region validacion                
+
+                if (string.IsNullOrEmpty(TxFecIni.Text) || string.IsNullOrEmpty(TxFecFin.Text))
+                {
+                    MessageBox.Show(this, "debe de llenar los campos de fechas", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Tx_Rangotrns.Text))
+                {
+                    MessageBox.Show(this, "debe de llenar el campos de transacciones", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+                #endregion
+
+                if (MessageBox.Show("Usted desea eliminar el rango de transacciones " + Tx_Rangotrns.Text + " de las fechas " + TxFecIni.Text + "-" + TxFecFin.Text, "Eliminar Documento", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    string delete = "delete cue from " + doc_cuerpo + " cue inner join " + doc_cabeza + " cab on cab.idreg = cue.idregcab  ";
+                    delete += "where convert(date,cab.fec_trn,105) between '" + TxFecIni.Text + "' and '" + TxFecFin.Text + "' and cab.cod_trn='" + Tx_Rangotrns.Text + "' ";
+
+                    if (SiaWin.Func.SqlCRUD(delete, idemp) == true)
+                    {
+                        string delecab = "delete " + doc_cabeza + " where convert(date," + doc_cabeza + ".fec_trn,105) between '" + TxFecIni.Text + "' and '" + TxFecFin.Text + "' and cod_trn='" + Tx_Rangotrns.Text + "' ";
+
+                        if (SiaWin.Func.SqlCRUD(delecab, idemp) == true)
+                        {
+
+                            SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, idmodulo, -1, -9, "ELIMINO EXITOSAMENTE FECHA INI" + TxFecIni.Text + "- FECHA FINAL" + TxFecFin.Text + "  TRN:" + Tx_Rangotrns.Text + " DE:" + titulo, "");
+
+                            MessageBox.Show("la eliminacion fue exitosa", "proceso", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Tx_Rangotrns.Text = "";
+                        }
+                    }
+
+                }
+
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al eliminar rango de documentos:" + w);
+            }
+        }
 
 
 
