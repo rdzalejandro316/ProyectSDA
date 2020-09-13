@@ -22,7 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Co_Balance
-{ 
+{
     public partial class BalanceAcumuladoCuenta : Window
     {
         dynamic SiaWin;
@@ -38,6 +38,7 @@ namespace Co_Balance
         public string nomcta = "";
         public string nomter = "";
         public int tipo = 0;
+        public int incluirCierre;
 
 
         DateTime fec;
@@ -88,18 +89,10 @@ namespace Co_Balance
                 ter = tercero;
                 cta = cuenta;
                 tipoblc = tipo;
+                int cierre = incluirCierre;
 
-                //if (SiaWin._UserId == 21 || SiaWin._UserId == 235)
-                //{
-                //MessageBox.Show("fec:"+ fec);
-                //MessageBox.Show("fecha:" + fecha);
-                //MessageBox.Show("fefin:" + fefin);
-                //MessageBox.Show("ter:" + ter);
-                //MessageBox.Show("cta:" + cta);
-                //MessageBox.Show("tipoblc:" + tipoblc);
-                //}
 
-                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(fecha, fechafin.ToString(), ter, cta, tipoblc, cod_empresa, source.Token), source.Token);
+                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(fecha, fechafin.ToString(), ter, cta, tipoblc, cod_empresa, cierre), source.Token);
                 await slowTask;
 
                 if (((DataSet)slowTask.Result) == null)
@@ -132,7 +125,7 @@ namespace Co_Balance
 
 
 
-        private DataSet LoadData(string fecha, string fechafin, string ter, string cta, int tipblc, string empresas, CancellationToken cancellationToken)
+        private DataSet LoadData(string fecha, string fechafin, string ter, string cta, int tipblc, string empresas, int incluirCierre)
         {
             try
             {
@@ -148,6 +141,7 @@ namespace Co_Balance
                 cmd.Parameters.AddWithValue("@cta", cta);
                 cmd.Parameters.AddWithValue("@tipoblc", tipblc);
                 cmd.Parameters.AddWithValue("@codemp", empresas);
+                cmd.Parameters.AddWithValue("@IncluirCierre", incluirCierre);
                 da = new SqlDataAdapter(cmd);
                 da.SelectCommand.CommandTimeout = 0;
                 da.Fill(ds);
@@ -252,12 +246,7 @@ namespace Co_Balance
                 string cod_cli = tercero;
                 string cod_cta = row["cod_cta"].ToString().Trim();
 
-                //MessageBox.Show("fechaba.ToString():"+ fechaba.ToString());
-                //MessageBox.Show("fechafin.ToString() :" + fechafin.ToString());
-                //MessageBox.Show("cod_cta.ToString() :" + cod_cta.ToString());
-                //MessageBox.Show("tipo.ToString() :" + tipo);
-                //MessageBox.Show("cod_cli :" + cod_cli);
-                //"Jan 1, 2009";
+                
                 string dateInput = "01/" + row["per_doc"].ToString() + "/" + row["ano"].ToString();
                 DateTime fecinicial = DateTime.Parse(dateInput);
 
@@ -275,6 +264,7 @@ namespace Co_Balance
                 sb.Append(" cue_doc.doc_ref,cue_doc.doc_cruc,cue_doc.num_chq,cue_doc.bas_mov,cue_doc.deb_mov,cue_doc.cre_mov, cab_DOC.factura,des_mov ");
                 sb.Append(" FROM coCUE_DOC cue_doc inner join cocab_doc as cab_doc on cab_doc.idreg = cue_doc.idregcab and cue_doc.cod_cta = '" + cod_cta.Trim() + "' and ");
                 if (cod_cli != "") sb.Append(" cue_doc.cod_ter='" + cod_cli.Trim() + "' and  ");
+                if (incluirCierre == 0) sb.Append(" convert(int,cab_doc.per_doc)<13 and  ");
 
                 sb.Append(" year(cab_doc.fec_trn) = year(@fechaIni) and convert(date, cab_doc.fec_trn) between  @FechaIni and @FechaFin inner join comae_trn as mae_trn on mae_trn.cod_trn = cab_doc.cod_trn ");
                 sb.Append(" and (mae_trn.tip_blc=0 or mae_trn.tip_blc=" + (tipo + 1).ToString() + ")");
@@ -282,75 +272,74 @@ namespace Co_Balance
                 sb.Append(" and (comae_cta.tip_blc=0 or comae_cta.tip_blc=" + (tipo + 1).ToString() + ")");
                 sb.Append(" ORDER BY cod_cta,cab_doc.fec_trn ");
 
+                //MessageBox.Show("sb:" + sb);
+
                 DataTable DtAuxCtaTer = SiaWin.DB.SqlDT(sb.ToString(), "Dt", idemp);
 
-                if (DtAuxCtaTer.Rows.Count == 0)
+                if (DtAuxCtaTer.Rows.Count <= 0)
                 {
                     MessageBox.Show("Sin informacion de cuenta", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
-
-                //Co_BalanceAux WinDetalle = new Co_BalanceAux(idemp, 1, SiaWin);
-                dynamic WinDetalle = SiaWin.WindowExt(9657, "Co_BalanceAux");
-                WinDetalle.idemp = idemp;
-                WinDetalle.moduloid = moduloid;
-
-                WinDetalle.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-                //MessageBox.Show("A2.1");
-                if (string.IsNullOrEmpty(cod_cli.Trim()))
-                {
-                    WinDetalle.LabelTercero.Visibility = Visibility.Hidden;
-                    WinDetalle.TextCodigoTer.Visibility = Visibility.Hidden;
-                    WinDetalle.TextNombreTer.Visibility = Visibility.Hidden;
-                    WinDetalle.TextCodigoTer.Text = cod_cli;
-                    WinDetalle.TextNombreTer.Text = tercero;
-                    if (tipo == 0) WinDetalle.TextNombreTipoAux.Text = "Fiscal";
-                    if (tipo == 1) WinDetalle.TextNombreTipoAux.Text = "NIIF";
-                }
                 else
-                {
-                    //MessageBox.Show("A2.4");
-                    WinDetalle.LabelTercero.Visibility = Visibility.Visible;
-                    WinDetalle.TextCodigoTer.Visibility = Visibility.Visible;
-                    WinDetalle.TextNombreTer.Visibility = Visibility.Visible;
-                    WinDetalle.TextCodigoTer.Text = cod_cli;
-                    WinDetalle.TextNombreTer.Text = tercero;
+                {                    
+                    Co_BalanceAux WinDetalle = new Co_BalanceAux(idemp,1);
+                    WinDetalle.idemp = idemp;
+                    //WinDetalle.moduloid = moduloid;
+
+                    WinDetalle.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                    
+                    //MessageBox.Show("A1");
+
+                    if (string.IsNullOrEmpty(cod_cli.Trim()))
+                    {
+                        WinDetalle.LabelTercero.Visibility = Visibility.Hidden;
+                        WinDetalle.TextCodigoTer.Visibility = Visibility.Hidden;
+                        WinDetalle.TextNombreTer.Visibility = Visibility.Hidden;
+                        WinDetalle.TextCodigoTer.Text = cod_cli;
+                        WinDetalle.TextNombreTer.Text = tercero;
+                        if (tipo == 0) WinDetalle.TextNombreTipoAux.Text = "Fiscal";
+                        if (tipo == 1) WinDetalle.TextNombreTipoAux.Text = "NIIF";                        
+                    }
+                    else
+                    {                        
+                        WinDetalle.LabelTercero.Visibility = Visibility.Visible;
+                        WinDetalle.TextCodigoTer.Visibility = Visibility.Visible;
+                        WinDetalle.TextNombreTer.Visibility = Visibility.Visible;
+                        WinDetalle.TextCodigoTer.Text = cod_cli;
+                        WinDetalle.TextNombreTer.Text = tercero;
+                    }
+                    
+                    WinDetalle.TextCodigoCta.Text = cod_cta;
+                    WinDetalle.TextNombreCta.Text = cod_cta;
+                    WinDetalle.Title = "Auxiliar de Cuenta - Fecha De Corte:" + fechaba.ToString() + " / " + fechafin.ToString();
+                    WinDetalle.dataGrid.ItemsSource = DtAuxCtaTer.DefaultView;
+
+                    // parametros reportes
+                    WinDetalle.fecha_ini = fechaba.ToString();
+                    WinDetalle.fecha_fin = fechafin.ToString();
+                    WinDetalle.codemp = cod_empresa;
+
+                    double valorBase;
+                    double valorDeb = 0;
+                    double valorCre = 0;
+                    double.TryParse(DtAuxCtaTer.Compute("Sum(bas_mov)", "").ToString(), out valorBase);
+                    double.TryParse(DtAuxCtaTer.Compute("Sum(deb_mov)", "").ToString(), out valorDeb);
+                    double.TryParse(DtAuxCtaTer.Compute("Sum(cre_mov)", "").ToString(), out valorCre);
+                    WinDetalle.TextBase.Text = valorBase.ToString("C");
+                    WinDetalle.TextDeb.Text = valorDeb.ToString("C");
+                    WinDetalle.TextCre.Text = valorCre.ToString("C");
+                    WinDetalle.TextSaldoAnterior.Text = Convert.ToDouble(row["sal_ini"].ToString()).ToString("C");
+                    WinDetalle.TextAcumDebito.Text = Convert.ToDouble(row["debitos"].ToString()).ToString("C");
+                    WinDetalle.TextAcumCredito.Text = Convert.ToDouble(row["creditos"].ToString()).ToString("C");
+                    WinDetalle.TextSaldoFin.Text = Convert.ToDouble(row["sal_fin"].ToString()).ToString("C");
+                    WinDetalle.Owner = Application.Current.MainWindow;
+                    WinDetalle.ShowDialog();
+                    WinDetalle = null;
+
                 }
 
-                //MessageBox.Show("A2.5");
-                WinDetalle.TextCodigoCta.Text = cod_cta;
-                WinDetalle.TextNombreCta.Text = cod_cta;
-                WinDetalle.Title = "Auxiliar de Cuenta - Fecha De Corte:" + fechaba.ToString() + " / " + fechafin.ToString();
-                WinDetalle.dataGrid.ItemsSource = DtAuxCtaTer.DefaultView;
-                // parametros reportes
-                WinDetalle.fecha_ini = fechaba.ToString();
-                WinDetalle.fecha_fin = fechafin.ToString();
-                WinDetalle.codemp = cod_empresa;
 
-                //MessageBox.Show("A3");
-                // TOTALIZA 
-                //popo
-                //MessageBox.Show("la pantalla esta en mantenimineto por favor espere");
-                double valorBase;
-                //double valorCxCAnt = 0;
-                double valorDeb = 0;
-                double valorCre = 0;
-                double.TryParse(DtAuxCtaTer.Compute("Sum(bas_mov)", "").ToString(), out valorBase);
-                double.TryParse(DtAuxCtaTer.Compute("Sum(deb_mov)", "").ToString(), out valorDeb);
-                double.TryParse(DtAuxCtaTer.Compute("Sum(cre_mov)", "").ToString(), out valorCre);
-                WinDetalle.TextBase.Text = valorBase.ToString("C");
-                WinDetalle.TextDeb.Text = valorDeb.ToString("C");
-                WinDetalle.TextCre.Text = valorCre.ToString("C");
-                WinDetalle.TextSaldoAnterior.Text = Convert.ToDouble(row["sal_ini"].ToString()).ToString("C");
-                WinDetalle.TextAcumDebito.Text = Convert.ToDouble(row["debitos"].ToString()).ToString("C");
-                WinDetalle.TextAcumCredito.Text = Convert.ToDouble(row["creditos"].ToString()).ToString("C");
-                WinDetalle.TextSaldoFin.Text = Convert.ToDouble(row["sal_fin"].ToString()).ToString("C");
-                WinDetalle.Owner = SiaWin;
-                //WinDetalle.dataGridCxC_FilterChanged1();
-                WinDetalle.ShowDialog();
-                WinDetalle = null;
-                //ImprimirDoc(Convert.ToInt32(numtrn), "Reimpreso");
             }
             catch (Exception ex)
             {

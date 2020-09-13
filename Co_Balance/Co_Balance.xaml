@@ -21,14 +21,13 @@
         <SiaSf:TabItemExt Name="tabItemExt1"  Header="Configuracion" Width="120" HeaderMargin="10 0 0 0 " FontSize="12" >
             <Grid Background="White">
 
-                <Grid  x:Name="GridConfiguracion" Height="410"  Width="600" Margin="0,0,0,0"   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" >
+                <Grid  x:Name="GridConfiguracion" Height="460"  Width="600" Margin="0,0,0,0"   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" >
                     <Border Background="White">
                         <Border.Effect>
                             <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
                         </Border.Effect>
                     </Border>
-                    <Grid  Width="600" Height="400" >
-
+                    <Grid  Width="600" Height="450">
                         <Grid.Resources>
                             <Style x:Key="botones-menu">
                                 <Setter Property="Control.Background" Value="#00ade5"/>
@@ -55,9 +54,9 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-
                         <Grid.RowDefinitions>
                             <RowDefinition Height="80"/>
+                            <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
@@ -114,7 +113,7 @@
                             <ComboBoxItem IsEnabled="False">Redondear a -2 (a centenas)</ComboBoxItem>
                             <ComboBoxItem IsEnabled="False">Redondear a -3 (a mil)</ComboBoxItem>
                         </ComboBox>
-                        
+
                         <TextBlock Text="Detallar Terceros : " Grid.Row="5" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
                         <ComboBox Name="TipoBal" Grid.Row="5" Grid.Column="2" Height="30" Margin="5" >
                             <ComboBoxItem IsSelected="True">No</ComboBoxItem>
@@ -127,10 +126,14 @@
                             <ComboBoxItem >NIIF</ComboBoxItem>
                         </ComboBox>
 
-                        
+                        <TextBlock Text="incluir Cierre : " Grid.Row="7" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Margin="0,5,0,6" FontWeight="Bold"/>
+                        <ComboBox Name="TipoIncluir" Grid.Row="7" Grid.Column="2" Height="30" Margin="5" >
+                            <ComboBoxItem>No</ComboBoxItem>
+                            <ComboBoxItem IsSelected="True">Si</ComboBoxItem>
+                        </ComboBox>
 
 
-                        <Grid Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7">
+                        <Grid Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="7">
                             <Button Name="BtnEjecutar" HorizontalAlignment="Center"  Grid.Column="0"  Height="45" Content="Consultar" Click="Button_Click"  Style="{StaticResource botones-menu}"/>
                         </Grid>
 
@@ -190,7 +193,8 @@
                 <SiaSf:SfDataGrid  Grid.Row="0" x:Name="dataGridConsulta" AllowSorting="False" AllowGrouping="False" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="False"  AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"   CellStyle="{StaticResource gridStyle}" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Cell" MouseDoubleClick="dataGridConsulta_MouseDoubleClick" ColumnSizer="AutoWithLastColumnFill">
                     <SiaSf:SfDataGrid.Columns>
                         <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_cta" Width="85" AllowFiltering="True"/>
-                        <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />
+                        <!--<SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />-->
+                        <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" Width="350" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />
                         <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tip_cta" Width="50"/>
                         <SiaSf:GridTextColumn HeaderText="Nivel" MappingName="niv_cta" Width="50"/>
                         <SiaSf:GridTextColumn HeaderText="Nat" MappingName="nat_cta" Width="50" />
@@ -387,6 +391,13 @@
                     <SiaSf:SfBusyIndicator Grid.Column="1"  Focusable="False"  Name="sfBusyIndicatorPeriodo" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Windmill" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Foreground="#2196F3"/>
                     <SiaSf:SfDataGrid FrozenColumnCount="3" Grid.Column="1" AllowSorting="False" AllowResizingColumns="True" x:Name="GridBalance"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="12"  Tag="1"  RowSelectionBrush="#7F3498DB" HeaderStyle="{StaticResource headerStyle}"   AllowFiltering="False" Margin="5">
                         <SiaSf:SfDataGrid.Columns>
+                            <SiaSf:GridTemplateColumn MappingName="Detalle" Width="60"  AllowFiltering="False">
+                                <SiaSf:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="BtnDetalleAño" Content="...." Click="BtnDetalleAño_Click" Background="#2196F3" Foreground="White" />
+                                    </DataTemplate>
+                                </SiaSf:GridTemplateColumn.CellTemplate>
+                            </SiaSf:GridTemplateColumn>
                             <SiaSf:GridTextColumn MappingName="ano" IsHidden="True"/>
                             <SiaSf:GridTextColumn HeaderText="Periodo" MappingName="per_doc" Width="60"/>
                             <SiaSf:GridTextColumn HeaderText="Saldo Inicial" Width="120" DisplayBinding="{Binding Path=sal_ini, StringFormat='n2'}" TextAlignment="Right" />

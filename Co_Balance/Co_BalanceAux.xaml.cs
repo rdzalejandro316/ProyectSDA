@@ -28,6 +28,7 @@ namespace Co_Balance
         // parametros
         public string fecha_ini = string.Empty;
         public string fecha_fin = string.Empty;
+
         public Co_BalanceAux(int IdEmp,int modid)
         {
             InitializeComponent();

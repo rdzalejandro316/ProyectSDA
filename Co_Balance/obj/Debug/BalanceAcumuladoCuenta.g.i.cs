@@ -112,7 +112,7 @@ namespace Co_Balance {
             if (_contentLoaded) {
                 return;
             }
-            _contentLoaded = true;            
+            _contentLoaded = true;
             System.Uri resourceLocater = new System.Uri("/Co_Balance;component/balanceacumuladocuenta.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\BalanceAcumuladoCuenta.xaml"

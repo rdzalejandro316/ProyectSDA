@@ -266,7 +266,7 @@ namespace SiasoftAppExt
                 TxNivFin.Text = N2;
                 TxTer.Text = TipoBal.SelectedIndex == 0 ? "NO" : "SI";
                 TxTipo.Text = TipoBalNiif.SelectedIndex == 0 ? "FISCAL" : "NIIF";
-
+                int tipo = TipoIncluir.SelectedIndex;
 
 
                 CancellationTokenSource source = new CancellationTokenSource();
@@ -275,17 +275,16 @@ namespace SiasoftAppExt
                 sfBusyIndicator.IsBusy = true;
                 dataGridConsulta.ItemsSource = null;
                 BtnEjecutar.IsEnabled = false;
-                //source.CancelAfter(TimeSpan.FromSeconds(1));
-                //tabitem.Progreso(true);
                 string ffi = fecha_ini.Text.ToString();
                 string fff = fecha_fin.Text.ToString();
                 string tipoBal = TipoBal.SelectedIndex.ToString();
                 int _TipoBalNiif = TipoBalNiif.SelectedIndex;
                 dataGridConsulta.ClearFilters();
-                var slowTask = Task<DataSet>.Factory.StartNew(() => SlowDude(ffi, fff, c1, c2, N1, N2, tipoBal, _TipoBalNiif, source.Token), source.Token);
+
+                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(ffi, fff, c1, c2, N1, N2, tipoBal, _TipoBalNiif, tipo), source.Token);
                 await slowTask;
-                
-                
+
+
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
                     DtBalance = ((DataSet)slowTask.Result).Tables[0];
@@ -328,20 +327,7 @@ namespace SiasoftAppExt
             }
         }
 
-        private DataSet SlowDude(string Fi, string Ff, string C1, string C2, string N1, string N2, string tip, int _TipoBalNiif, CancellationToken cancellationToken)
-        {
-            try
-            {
-                DataSet jj = LoadData(Fi, Ff, C1, C2, N1, N2, tip, _TipoBalNiif, cancellationToken);
-                return jj;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            return null;
-        }
-        private DataSet LoadData(string _Fi, string _Ff, string _C1, string _C2, string _N1, string _N2, string _tip, int _TipoBalNiif, CancellationToken cancellationToken)
+        private DataSet LoadData(string _Fi, string _Ff, string _C1, string _C2, string _N1, string _N2, string _tip, int _TipoBalNiif, int tipo)
         {
             try
             {
@@ -360,6 +346,7 @@ namespace SiasoftAppExt
                 cmd.Parameters.AddWithValue("@ctanivfin", _N2);
                 cmd.Parameters.AddWithValue("@tipobalance", _tip);
                 cmd.Parameters.AddWithValue("@balanceniif", _TipoBalNiif);
+                cmd.Parameters.AddWithValue("@IncluirCierre", tipo);
                 cmd.Parameters.AddWithValue("@codEmp", codemp);
                 da = new SqlDataAdapter(cmd);
                 da.SelectCommand.CommandTimeout = 0;
@@ -775,10 +762,6 @@ namespace SiasoftAppExt
                     return;
                 }
 
-                //BalanceAcumuladoCuenta win = new BalanceAcumuladoCuenta();
-
-                //dynamic win = SiaWin.WindowExt(9658, "BalanceAcumuladoCuenta");
-                //BalanceAcumuladoCuenta win = new BalanceAcumuladoCuenta();
                 BalanceAcumuladoCuenta win = Activator.CreateInstance<BalanceAcumuladoCuenta>();
 
                 win.cuenta = row["cod_cta"].ToString();
@@ -788,7 +771,7 @@ namespace SiasoftAppExt
                 win.tipo = TipoBalNiif.SelectedIndex;
                 win.idemp = idemp;
                 win.moduloid = moduloid;
-
+                win.incluirCierre = TipoIncluir.SelectedIndex;
                 win.nomcta = row["nom_cta"].ToString();
                 win.nomter = row["nom_ter"].ToString();
                 win.ShowInTaskbar = false;
@@ -837,9 +820,9 @@ namespace SiasoftAppExt
                 sfBusyIndicatorPeriodo.IsBusy = true;
                 GridBalance.ClearFilters();
                 GridBalance.ItemsSource = null;
+                int cierre = TipoIncluir.SelectedIndex;
 
-
-                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadDataDetalleAño(fecha, fechafin.ToString(), ter, cta, tipoblc, cod_empresa, source.Token), source.Token);
+                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadDataDetalleAño(fecha, fechafin.ToString(), ter, cta, tipoblc, cod_empresa, cierre), source.Token);
                 await slowTask;
 
                 if (((DataSet)slowTask.Result) == null)
@@ -868,7 +851,7 @@ namespace SiasoftAppExt
             }
         }
 
-        private DataSet LoadDataDetalleAño(string fecha, string fechafin, string ter, string cta, int tipblc, string empresas, CancellationToken cancellationToken)
+        private DataSet LoadDataDetalleAño(string fecha, string fechafin, string ter, string cta, int tipblc, string empresas, int cierre)
         {
             try
             {
@@ -884,6 +867,7 @@ namespace SiasoftAppExt
                 cmd.Parameters.AddWithValue("@cta", cta);
                 cmd.Parameters.AddWithValue("@tipoblc", tipblc);
                 cmd.Parameters.AddWithValue("@codemp", empresas);
+                cmd.Parameters.AddWithValue("@IncluirCierre", cierre);
                 da = new SqlDataAdapter(cmd);
                 da.SelectCommand.CommandTimeout = 0;
                 da.Fill(ds);
@@ -917,6 +901,117 @@ namespace SiasoftAppExt
             catch (Exception w)
             {
                 MessageBox.Show("error al cambiar posiciones:" + w);
+            }
+        }
+
+        private void BtnDetalleAño_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //MessageBox.Show("la pantalla esta en mantenimineto por favor espere");
+
+                string fechaba = fecha_ini.Text;
+                string fechafin = fecha_fin.DisplayDate.ToString();
+
+
+
+                DataRowView row = (DataRowView)dataGridConsultaDetalle.SelectedItems[0];
+                string cod_cli = row["cod_ter"].ToString().Trim();                
+                string tercero = row["nom_ter"].ToString().Trim();
+
+                int tipo = TipoBalNiif.SelectedIndex;
+                string cod_cta = row["cod_cta"].ToString().Trim();
+
+
+                DataRowView rowPeriodo = (DataRowView)GridBalance.SelectedItems[0];
+
+                string dateInput = "01/" + rowPeriodo["per_doc"].ToString() + "/" + rowPeriodo["ano"].ToString();
+                DateTime fecinicial = DateTime.Parse(dateInput);
+
+                int mes = fecinicial.Month == 12 ? fecinicial.Month : fecinicial.Month + 1;
+                DateTime fechafinal = fecinicial.Month == 12 ? new DateTime(fecinicial.Year, 12, 31) : new DateTime(fecinicial.Year, mes, 1).AddDays(-1);
+
+
+
+                if (fecinicial.Month == 13) return;
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append(" declare @fechaIni as date ; set @fechaIni='" + fecinicial.ToString("dd/MM/yyyy") + "';declare @fechaFin as date ; set @fechaFin='" + fechafinal.ToString("dd/MM/yyyy") + "'");
+                sb.Append(" SELEct cab_doc.idreg ,cue_doc.idreg as idregcue,cab_doc.cod_trn,cab_doc.num_trn,cab_doc.fec_trn,cue_doc.cod_cta,cue_doc.cod_cco,cue_doc.cod_ter,comae_ter.nom_ter,");
+                sb.Append(" cue_doc.doc_ref,cue_doc.doc_cruc,cue_doc.num_chq,cue_doc.bas_mov,cue_doc.deb_mov,cue_doc.cre_mov, cab_DOC.factura,des_mov ");
+                sb.Append(" FROM coCUE_DOC cue_doc inner join cocab_doc as cab_doc on cab_doc.idreg = cue_doc.idregcab and cue_doc.cod_cta = '" + cod_cta.Trim() + "' and ");
+                if (cod_cli != "") sb.Append(" cue_doc.cod_ter='" + cod_cli.Trim() + "' and  ");
+                if (TipoIncluir.SelectedIndex == 0 ) sb.Append(" convert(int,cab_doc.per_doc)<13 and  ");
+
+                sb.Append(" year(cab_doc.fec_trn) = year(@fechaIni) and convert(date, cab_doc.fec_trn) between  @FechaIni and @FechaFin inner join comae_trn as mae_trn on mae_trn.cod_trn = cab_doc.cod_trn ");
+                sb.Append(" and (mae_trn.tip_blc=0 or mae_trn.tip_blc=" + (tipo + 1).ToString() + ")");
+                sb.Append(" left join comae_ter on comae_ter.cod_ter = cue_doc.cod_ter  inner join comae_cta as comae_cta on comae_cta.cod_cta = cue_doc.cod_cta ");
+                sb.Append(" and (comae_cta.tip_blc=0 or comae_cta.tip_blc=" + (tipo + 1).ToString() + ")");
+                sb.Append(" ORDER BY cod_cta,cab_doc.fec_trn ");
+
+                DataTable DtAuxCtaTer = SiaWin.DB.SqlDT(sb.ToString(), "Dt", idemp);
+
+                if (DtAuxCtaTer.Rows.Count == 0)
+                {
+                    MessageBox.Show("Sin informacion de cuenta", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                Co_BalanceAux WinDetalle = new Co_BalanceAux(idemp, 1);
+                //dynamic WinDetalle = SiaWin.WindowExt(9657, "Co_BalanceAux");
+                WinDetalle.idemp = idemp;
+                //WinDetalle.moduloid = moduloid;
+
+                WinDetalle.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+                //MessageBox.Show("A2.1");
+                if (string.IsNullOrEmpty(cod_cli.Trim()))
+                {
+                    WinDetalle.LabelTercero.Visibility = Visibility.Hidden;
+                    WinDetalle.TextCodigoTer.Visibility = Visibility.Hidden;
+                    WinDetalle.TextNombreTer.Visibility = Visibility.Hidden;
+                    WinDetalle.TextCodigoTer.Text = cod_cli;
+                    if (tipo == 0) WinDetalle.TextNombreTipoAux.Text = "Fiscal";
+                    if (tipo == 1) WinDetalle.TextNombreTipoAux.Text = "NIIF";
+                }
+                else
+                {
+                    WinDetalle.LabelTercero.Visibility = Visibility.Visible;
+                    WinDetalle.TextCodigoTer.Visibility = Visibility.Visible;
+                    WinDetalle.TextNombreTer.Visibility = Visibility.Visible;
+                    WinDetalle.TextCodigoTer.Text = cod_cli;
+                    WinDetalle.TextNombreTer.Text = tercero;
+                }
+
+                WinDetalle.TextCodigoCta.Text = cod_cta;
+                WinDetalle.TextNombreCta.Text = cod_cta;
+                WinDetalle.Title = "Auxiliar de Cuenta - Fecha De Corte:" + fechaba.ToString() + " / " + fechafin.ToString();
+                WinDetalle.dataGrid.ItemsSource = DtAuxCtaTer.DefaultView;
+
+                WinDetalle.fecha_ini = fechaba.ToString();
+                WinDetalle.fecha_fin = fechafin.ToString();
+                WinDetalle.codemp = codemp;
+
+                double valorBase;
+                double valorDeb = 0;
+                double valorCre = 0;
+                double.TryParse(DtAuxCtaTer.Compute("Sum(bas_mov)", "").ToString(), out valorBase);
+                double.TryParse(DtAuxCtaTer.Compute("Sum(deb_mov)", "").ToString(), out valorDeb);
+                double.TryParse(DtAuxCtaTer.Compute("Sum(cre_mov)", "").ToString(), out valorCre);
+                WinDetalle.TextBase.Text = valorBase.ToString("C");
+                WinDetalle.TextDeb.Text = valorDeb.ToString("C");
+                WinDetalle.TextCre.Text = valorCre.ToString("C");
+                WinDetalle.TextSaldoAnterior.Text = Convert.ToDouble(rowPeriodo["sal_ini"].ToString()).ToString("C");
+                WinDetalle.TextAcumDebito.Text = Convert.ToDouble(rowPeriodo["debitos"].ToString()).ToString("C");
+                WinDetalle.TextAcumCredito.Text = Convert.ToDouble(rowPeriodo["creditos"].ToString()).ToString("C");
+                WinDetalle.TextSaldoFin.Text = Convert.ToDouble(rowPeriodo["sal_fin"].ToString()).ToString("C");
+                WinDetalle.Owner = SiaWin;
+                WinDetalle.ShowDialog();
+                WinDetalle = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
