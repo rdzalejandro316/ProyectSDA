@@ -11,7 +11,6 @@
     <Window.Resources>
         <Style TargetType="SiaSf:GridCell">
             <Setter Property="BorderBrush" Value="LightGray" />
-            <Setter Property="FontFamily" Value="Times New Roman"/>
         </Style>
         <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="Background" Value="#4294DE"/>

@@ -44,9 +44,7 @@ namespace SiasoftAppExt
             tabitem.Title = "Analisis de Cartera";
             tabitem.Logo(9, ".png");
             tabitem.MultiTab = false;
-            //            idemp = SiaWin._BusinessId;
             if (tabitem.idemp > 0) idemp = tabitem.idemp;
-            //if (tabitem.idemp <= 0) idemp = SiaWin._BusinessId;
             codpvta = SiaWin._UserTag;
             LoadConfig();
         }
@@ -62,55 +60,16 @@ namespace SiasoftAppExt
                 codemp = foundRow["BusinessCode"].ToString().Trim();
                 tabitem.Logo(idLogo, ".png");
                 tabitem.Title = "Analisis de Cartera(" + aliasemp + ")";
-                //GroupId = 0;
-                //ProjectId = 0;
-                //BusinessId = 0;
+
                 Cuentas = SiaWin.Func.SqlDT("SELECT rtrim(cod_cta) as cod_cta,rtrim(cod_cta)+'('+rtrim(nom_cta)+')' as nom_cta FROM COMAE_CTA WHERE ind_mod = 1 and (tip_apli = 3 or tip_apli = 4 ) ORDER BY COD_CTA", "Cuentas", idemp);
                 comboBoxCuentas.ItemsSource = Cuentas.DefaultView;
                 //vendedor
-                DataTable dt_ven = SiaWin.Func.SqlDT("select rtrim(cod_mer) as cod_mer,rtrim(nom_mer) as nom_mer from inmae_mer where estado=1", "vendedor", idemp);
-                comboBoxVendedor.ItemsSource = dt_ven.DefaultView;
+                //DataTable dt_ven = SiaWin.Func.SqlDT("select rtrim(cod_mer) as cod_mer,rtrim(nom_mer) as nom_mer from inmae_mer where estado=1", "vendedor", idemp);
+                //comboBoxVendedor.ItemsSource = dt_ven.DefaultView;
 
-                //comboBoxCuentas.DataContext = Cuentas;
                 comboBoxCuentas.DisplayMemberPath = "nom_cta";
                 comboBoxCuentas.SelectedValuePath = "cod_cta";
                 FechaIni.Text = DateTime.Now.ToShortDateString();
-
-                //seguridad
-                //int grupo = SiaWin._UserGroup;
-                //string cod_grupo = "";
-                ////MessageBox.Show("grupo:"+grupo);
-                //DataTable dtGrupo = SiaWin.Func.SqlDT("select* from Seg_Group where GroupId = '" + grupo + "'", "Cuentas", 0);
-                //if (dtGrupo.Rows.Count > 0) cod_grupo = dtGrupo.Rows[0]["GroupCode"].ToString();
-
-                //if (!string.IsNullOrEmpty(cod_grupo))
-                //{
-                //    bool flag = false;
-                //    DataTable dtGrupoRango = SiaWin.Func.SqlDT(" select * from Seg_Group where GroupCode between '050' and '060'", "Cuentas", 0);
-                //    foreach (System.Data.DataRow dr in dtGrupoRango.Rows)
-                //    {
-                //        if (dr["GroupCode"].ToString().Trim() == cod_grupo) flag = true;
-                //    }
-
-                //    //if (flag)
-                //        //TextCod_Ven.IsEnabled = true;
-                //}
-
-
-                //string tag2 = SiaWin._UserTag2;
-                //if (!String.IsNullOrEmpty(tag2))
-                //{
-                //    DataTable dt = SiaWin.Func.SqlDT("select * from inmae_mer where cod_mer='" + tag2 + "'", "Cuentas", idemp);
-                //    if (dt.Rows.Count > 0)
-                //    {
-                //        //TextCod_Ven.Text = dt.Rows[0]["cod_mer"].ToString();
-                //        //TextNombreVend.Text = dt.Rows[0]["nom_mer"].ToString();
-                //        //TextCod_Ven.IsEnabled = false;
-                //    }
-                //    //else`mierdaa
-                //       // TextCod_Ven.IsEnabled = true;
-                //}
-
             }
             catch (Exception e)
             {
@@ -131,21 +90,17 @@ namespace SiasoftAppExt
                 {
                     string tag = ((TextBox)sender).Tag.ToString();
                     string cmptabla = ""; string cmpcodigo = ""; string cmpnombre = ""; string cmporden = ""; string cmpidrow = ""; string cmptitulo = ""; string cmpconexion = ""; bool mostrartodo = false; string cmpwhere = "";
-                    if (string.IsNullOrEmpty(tag)) return;
-                    if (tag == "inmae_mer")
-                    {
-                        cmptabla = tag; cmpcodigo = "cod_mer"; cmpnombre = "nom_mer"; cmporden = "cod_mer"; cmpidrow = "idrow"; cmptitulo = "Maestra de vendedores"; cmpconexion = cnEmp; mostrartodo = false; cmpwhere = "";
-                    }
+                    if (string.IsNullOrEmpty(tag)) return;                   
                     if (tag == "comae_ter")
                     {
                         cmptabla = tag; cmpcodigo = "cod_ter"; cmpnombre = "nom_ter"; cmporden = "cod_ter"; cmpidrow = "idrow"; cmptitulo = "Maestra de Tercero"; cmpconexion = cnEmp; mostrartodo = false; cmpwhere = "";
-                    }
-                    //MessageBox.Show(cmptabla + "-" + cmpcodigo + "-" + cmpnombre + "-" + cmporden + "-" + cmpidrow + "-" + cmptitulo + "-" + cmpconexion + "-" + cmpwhere);
-                    int idr = 0; string code = ""; string nom = "";
-                    //dynamic winb = SiaWin.WindowBuscar(cmptabla, cmpcodigo, cmpnombre, cmporden, cmpidrow, cmptitulo, cnEmp, mostrartodo, cmpwhere);
+                    }                    
+                    int idr = 0; string code = ""; string nom = "";                    
                     dynamic winb = SiaWin.WindowBuscar(cmptabla, cmpcodigo, cmpnombre, cmporden, cmpidrow, cmptitulo, SiaWin.Func.DatosEmp(idemp), mostrartodo, cmpwhere, idEmp: idemp);
                     winb.ShowInTaskbar = false;
                     winb.Owner = Application.Current.MainWindow;
+                    winb.Width = 400;
+                    winb.Height = 400;
                     winb.ShowDialog();
                     idr = winb.IdRowReturn;
                     code = winb.Codigo;
@@ -157,7 +112,6 @@ namespace SiasoftAppExt
                         {
                             TextCod_Ter.Text = code.Trim();
                             TextNombreTercero.Text = nom.Trim();
-                            //TextCod_bod.Text = code; TextNombreBod.Text = nom;
                         }
                         var uiElement = e.OriginalSource as UIElement;
                         uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
@@ -181,13 +135,17 @@ namespace SiasoftAppExt
         {
             try
             {
+
+                #region validaciones
+
+                string Cta = "";
                 if (comboBoxCuentas.SelectedIndex < 0)
                 {
                     MessageBox.Show("Seleccione una cuenta");
                     comboBoxCuentas.Focus();
                     return;
                 }
-                string Cta = "";
+
                 if (comboBoxCuentas.SelectedIndex >= 0)
                 {
                     foreach (DataRowView ob in comboBoxCuentas.SelectedItems)
@@ -199,74 +157,40 @@ namespace SiasoftAppExt
                     if (ss == ",") Cta = Cta.Substring(0, Cta.Trim().Length - 1);
                 }
                 string Ven = "";
-                if (comboBoxVendedor.SelectedIndex >= 0)
-                {
-                    foreach (DataRowView ob in comboBoxVendedor.SelectedItems)
-                    {
-                        String valueCta = ob["cod_mer"].ToString();
-                        Ven += valueCta + ",";
-
-                    }
-                    if (Ven.Trim() != "")
-                    {
-                        string ss = Ven.Trim().Substring(Ven.Trim().Length - 1);
-                        if (ss == ",") Ven = Ven.Substring(0, Ven.Trim().Length - 1);
-                    }
-                }
                 if (Cbx_Detalle.SelectedIndex < 0)
                 {
                     MessageBox.Show("seleccione el tipo de consulta");
                     return;
                 }
 
+                #endregion
+
                 bool detalle = Cbx_Detalle.Text == "No" ? false : true;
-                string where = "";
-                // carmar where
-                if (string.IsNullOrEmpty(where)) where = " ";
                 CancellationTokenSource source = new CancellationTokenSource();
-                CancellationToken token = source.Token;
-                //this.IsEnabled = false;
                 sfBusyIndicator.IsBusy = true;
                 if (detalle == true) DtCarteraD.Clear();
                 if (detalle == false) DtCartera.Clear();
-                //    LoadData(recordChanged());
-                //dataGrid.Model.View.Refresh();
-                //dataGridCxC.ClearFilters();
-                //dataGridCxC.ItemsSource = null;
-                //CharVentasBodega.DataContext = null;
-                //ds.Clear();
                 BtnEjecutar.IsEnabled = false;
                 Imprimir.IsEnabled = false;
                 ExportarXls.IsEnabled = false;
                 ConciliarCxcCo.IsEnabled = false;
                 BtnvrAbonado.IsEnabled = false;
-                BtnvrDesc.IsEnabled = false;
 
-                source.CancelAfter(TimeSpan.FromSeconds(1));
-                //tabitem.Progreso(true);
                 string ffi = FechaIni.Text.ToString();
-                //string Vendedor = comboBoxVendedor.SelectedValue.ToString();
                 string Tercero = TextCod_Ter.Text.Trim();
 
-                //string procedure = columndto == true ? "s" : "_empSpCoAnalisisCxc";
-
-                int exclinter = 0;
-                if (CheckIncluirInter.IsChecked == true) exclinter = 1;
-
-                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(ffi, Cta, Tercero, "", where, exclinter, Ven, detalle, source.Token), source.Token);
+                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(ffi, Cta, Tercero, "", Ven, detalle), source.Token);
                 await slowTask;
                 BtnEjecutar.IsEnabled = true;
                 Imprimir.IsEnabled = true;
                 ExportarXls.IsEnabled = true;
                 ConciliarCxcCo.IsEnabled = true;
                 BtnvrAbonado.IsEnabled = true;
-                BtnvrDesc.IsEnabled = true;
-                //tabitem.Progreso(false);
                 resetTotales();
 
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
-
+                    TxtRecords.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
                     if (detalle == false)
                     {
                         //DataTable dt = ((DataSet)slowTask.Result).Tables[0];
@@ -299,67 +223,9 @@ namespace SiasoftAppExt
                         TotalAbono.Text = ((valorCxC - saldoCxC) - (valorCxCAnt - saldoCxCAnt)).ToString("C");
                         TotalSaldo.Text = (saldoCxC - saldoCxCAnt - saldoCxP + saldoCxPAnt).ToString("C");
 
-
-                        System.Data.DataTable AgruCuentas = new System.Data.DataTable();
-                        System.Data.DataTable dtCxc = ((DataSet)slowTask.Result).Tables[0];
-
-                        if (dtCxc.Rows.Count > 0)
-                        {
-                            AgruCuentas = dtCxc.AsEnumerable()
-                                .GroupBy(a => a["cod_cta"].ToString().Trim())
-                                .Select(c =>
-                                {
-                                    var row = ((DataSet)slowTask.Result).Tables[0].NewRow();
-                                    row["cod_cta"] = c.Key;
-                                    row["saldo"] = c.Sum(a => a.Field<decimal>("saldo"));
-                                    return row;
-                                }).CopyToDataTable();
-                        }
-
-                        ChartCircle.ItemsSource = AgruCuentas;
-                        //ppppp
-                        System.Data.DataTable AgruVendedor = new System.Data.DataTable();
-
-                        if (dtCxc.Rows.Count > 0)
-                        {
-                            AgruVendedor = dtCxc.AsEnumerable()
-                                .GroupBy(a => a["cod_cta"].ToString().Trim())
-                                .Select(c =>
-                                {
-                                    var row = ((DataSet)slowTask.Result).Tables[0].NewRow();
-                                    row["cod_ven"] = c.Key;
-                                    row["saldo"] = c.Sum(a => a.Field<decimal>("saldo"));
-                                    return row;
-                                }).CopyToDataTable();
-                        }
-
-                        chartVende.ItemsSource = AgruVendedor;
-
-
-                        double ven01 = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(ven01)", ""));
-                        double ven02 = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(ven02)", ""));
-                        double ven03 = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(ven03)", ""));
-                        double ven04 = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(ven04)", ""));
-                        double ven05 = Convert.ToDouble(((DataSet)slowTask.Result).Tables[0].Compute("Sum(ven05)", ""));
-
-                        DataTable dtAltura = new DataTable();
-                        dtAltura.Columns.Add("altura");
-                        dtAltura.Columns.Add("valor", typeof(decimal));
-                        dtAltura.Rows.Add("[1-30]", ven01);
-                        dtAltura.Rows.Add("[31-60]", ven02);
-                        dtAltura.Rows.Add("[61-90]", ven03);
-                        dtAltura.Rows.Add("[91-120]", ven04);
-                        dtAltura.Rows.Add("[+121]", ven01);
-
-                        ChartCircleAltura.ItemsSource = dtAltura;
-
-
-
                     }
                     else
                     {
-                        //DataTable dt = ((DataSet)slowTask.Result).Tables[0];
-                        //SiaWin.Browse(dt);
                         DtCarteraD = ((DataSet)slowTask.Result).Tables["D"];
                         dataGridCxCD.ItemsSource = ((DataSet)slowTask.Result).Tables["D"];
                         double valorCxC, valorCxCAnt = 0;
@@ -391,18 +257,16 @@ namespace SiasoftAppExt
                 }
                 else
                 {
-                    //TextTotalDoc.Text = "0";
-                    //TextSaldo.Text = "0";
+                    TxtRecords.Text = "0";
                 }
+
+
                 this.sfBusyIndicator.IsBusy = false;
                 SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "Consulto Cartera cuentas:" + Cta + " Fecha:" + ffi.ToString() + " - " + tabitem.Title, "");
 
-                //this.IsEnabled = true;
-                //   dataGrid.Focus();
             }
             catch (Exception ex)
             {
-                SiaWin.seguridad.ErrorLog("Error  ", "AnalisisDeCartera-ButtonRefresh:" + ex.Message.ToString());
                 MessageBox.Show("Error :" + ex.Message, "Error SiasoftApp");
                 tabitem.Progreso(false);
                 BtnEjecutar.IsEnabled = true;
@@ -415,23 +279,8 @@ namespace SiasoftAppExt
                 this.Opacity = 1;
             }
         }
-        //private DataSet SlowDude(string procedure,string ffi, string ctas, string cter, string cco, string where, string ven, bool detalle, CancellationToken cancellationToken)
-        //{
-        //    try
-        //    {
-        //        DataSet jj = LoadData(procedure, ffi, ctas, cter, cco, where, ven, detalle, cancellationToken);
-        //        return jj;
 
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        SiaWin.seguridad.ErrorLog("Error  ", "AnalisisDeCartera-SlowDude:" + e.Message.ToString());
-        //        MessageBox.Show(e.Message);
-        //    }
-        //    return null;
-        //}
-
-        private DataSet LoadData(string Fi, string ctas, string cter, string cco, string where, int exclinteremp, string ven, bool detalle, CancellationToken cancellationToken)
+        private DataSet LoadData(string Fi, string ctas, string cter, string cco, string ven, bool detalle)
         {
             try
             {
@@ -441,34 +290,23 @@ namespace SiasoftAppExt
                 DataSet ds1 = new DataSet();
                 cmd = new SqlCommand("_empSpCoAnalisisCxc", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Ter", cter);//if you have parameters.
-                cmd.Parameters.AddWithValue("@Cta", ctas);//if you have parameters.
-                cmd.Parameters.AddWithValue("@TipoApli", 1);//if you have parameters.
-                //cmd.Parameters.AddWithValue("@Resumen", 0);//if you have parameters.
-                cmd.Parameters.AddWithValue("@Resumen", detalle == true ? 1 : 0);//if you have parameters.
-                cmd.Parameters.AddWithValue("@Fecha", Fi);//if you have parameters.
-                cmd.Parameters.AddWithValue("@TrnCo", "");//if you have parameters.
-                cmd.Parameters.AddWithValue("@NumCo", "");//if you have parameters.
-                cmd.Parameters.AddWithValue("@Cco", cco);//if you have parameters.
-                cmd.Parameters.AddWithValue("@Ven", ven);//if you have parameters.
-                cmd.Parameters.AddWithValue("@codemp", codemp);//if you have parameters.
-                cmd.Parameters.AddWithValue("@ExcluirInterEmpresa", exclinteremp);
-                //cmd.Parameters.AddWithValue("@Where", where);//if you have parameters.
-                //if(ven!="")     
-                //ds.Tables[0].Select("cod_ven='"+)
+                cmd.Parameters.AddWithValue("@Ter", cter);
+                cmd.Parameters.AddWithValue("@Cta", ctas);
+                cmd.Parameters.AddWithValue("@TipoApli", 1);
+                cmd.Parameters.AddWithValue("@Resumen", detalle == true ? 1 : 0);
+                cmd.Parameters.AddWithValue("@Fecha", Fi);
+                cmd.Parameters.AddWithValue("@TrnCo", "");
+                cmd.Parameters.AddWithValue("@NumCo", "");
+                cmd.Parameters.AddWithValue("@Cco", cco);
+                cmd.Parameters.AddWithValue("@Ven", ven);
+                cmd.Parameters.AddWithValue("@codemp", codemp);
                 da = new SqlDataAdapter(cmd);
                 da.SelectCommand.CommandTimeout = 0;
-                //if (cco != "") da.Fill(ds.Tables[0].Select("cod_ven='AFR'").CopyToDataTable());
-                //if (cco=="") da.Fill(ds);
-                //if (cco != "") da.Fill(ds.Tables[0].Select("cod_ven='"+cco+"'").CopyToDataTable());
                 string dataName = "C";
                 if (detalle == true) dataName = "D";
                 da.Fill(ds, dataName);
                 con.Close();
                 return ds;
-                //VentasPorProducto.ItemsSource = ds.Tables[0];
-                //VentaPorBodega.ItemsSource = ds.Tables[1];
-                //VentasPorCliente.ItemsSource = ds.Tables[2];
             }
             catch (Exception e)
             {
@@ -480,41 +318,19 @@ namespace SiasoftAppExt
 
         private void BtnDetalle_Click(object sender, RoutedEventArgs e)
         {
-            //if (comboBoxCuentas.SelectedIndex < 0)
-            // {
-            //   MessageBox.Show("Seleccione una cuenta...");
-            // comboBoxCuentas.Focus();
-            //comboBoxCuentas.IsDropDownOpen = true;
-            //return;
-            //}
-            //            DataRowView drv = (DataRowView)comboBoxCuentas.SelectedItem;
-            //            String valueOfItem = drv["cod_cta"].ToString();
-            //            MessageBox.Show(valueOfItem);
+
             string Cta = "";
             if (comboBoxCuentas.SelectedIndex > 0)
             {
                 foreach (DataRowView ob in comboBoxCuentas.SelectedItems)
                 {
-                    //dr["cod_ter"].ToString();
                     String valueCta = ob["cod_cta"].ToString();
                     Cta += valueCta + ",";
-                    //MessageBox.Show(valueOfItem1.ToString());
                 }
                 string ss = Cta.Trim().Substring(Cta.Trim().Length - 1);
                 if (ss == ",") Cta = Cta.Substring(0, Cta.Trim().Length - 1);
             }
 
-            string Ven = "";
-            if (comboBoxVendedor.SelectedIndex >= 0)
-            {
-                foreach (DataRowView ob in comboBoxVendedor.SelectedItems)
-                {
-                    String valueCta = ob["cod_mer"].ToString().Trim();
-                    Ven += valueCta + ",";
-                }
-                string ss = Ven.Trim().Substring(Ven.Trim().Length - 1);
-                if (ss == ",") Ven = Ven.Substring(0, Ven.Trim().Length - 1);
-            }
 
 
 
@@ -529,11 +345,6 @@ namespace SiasoftAppExt
                 }
                 string cod_cli = row[0].ToString();
                 string cod_cta = row[2].ToString();
-                //                var dr1 = dataGridCxC.SelectedItems;
-
-                //                    string cod_cli = dr["cod_ter"].ToString();
-                //                  if (string.IsNullOrEmpty(cod_cli)) return;
-                //                string cod_cta = dr["cod_cta"].ToString();
                 SqlConnection con = new SqlConnection(SiaWin._cn);
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
@@ -552,7 +363,7 @@ namespace SiasoftAppExt
                 cmd.Parameters.AddWithValue("@TrnCo", "");//if you have parameters.
                 cmd.Parameters.AddWithValue("@NumCo", "");//if you have parameters.
                 cmd.Parameters.AddWithValue("@Cco", "");//if you have parameters.
-                cmd.Parameters.AddWithValue("@Ven", Ven);//if you have parameters.
+                cmd.Parameters.AddWithValue("@Ven", "");//if you have parameters.
                 cmd.Parameters.AddWithValue("codemp", codemp);
                 //cmd.Parameters.AddWithValue("@Cco", TextCod_bod.Text.Trim());//if you have parameters.
                 //cmd.Parameters.AddWithValue("@Where", where);//if you have parameters.
@@ -831,6 +642,8 @@ namespace SiasoftAppExt
         {
             try
             {
+
+                #region validacion
                 bool mm = IsNumber(TxtAltura.Text.Trim());
                 if (!mm)
                 {
@@ -854,52 +667,26 @@ namespace SiasoftAppExt
                 if (comboBoxCuentas.SelectedIndex >= 0)
                 {
                     foreach (DataRowView ob in comboBoxCuentas.SelectedItems)
-                    {
-                        //dr["cod_ter"].ToString();
+                    {                        
                         String valueCta = ob["cod_cta"].ToString().Trim();
-                        Cta += valueCta + ",";
-                        //MessageBox.Show(valueOfItem1.ToString());
+                        Cta += valueCta + ",";                     
                     }
                     string ss = Cta.Trim().Substring(Cta.Trim().Length - 1);
                     if (ss == ",") Cta = Cta.Substring(0, Cta.Trim().Length - 1);
                 }
                 if (Cta == "") return;
-                string Ven = "";
-                if (comboBoxVendedor.SelectedIndex >= 0)
-                {
-                    foreach (DataRowView ob in comboBoxVendedor.SelectedItems)
-                    {
-                        String valueCta = ob["cod_mer"].ToString();
-                        Ven += valueCta + ",";
-                    }
-                    string ss = Ven.Trim().Substring(Ven.Trim().Length - 1);
-                    if (ss == ",") Ven = Ven.Substring(0, Ven.Trim().Length - 1);
-                }
-                else
-                {
-                    if (CmbTipoDoc.SelectedIndex == 2)
-                    {
-                        MessageBox.Show("El Reporte seleccionado requere 1 vendedor..", "Mensaje SIA");
-                        comboBoxVendedor.Focus();
-                        return;
-                    }
-                }
-                //MessageBox.Show(Cta);
+                string Ven = "";                
+
+                #endregion
+
                 List<ReportParameter> parameters = new List<ReportParameter>();
                 ReportParameter paramcodemp = new ReportParameter();
                 paramcodemp.Values.Add(codemp);
                 paramcodemp.Name = "codemp";
                 parameters.Add(paramcodemp);
-                ReportParameter paramfechaini = new ReportParameter();
-                //MessageBox.Show("FECHA PASABLE:"+ FechaIni.Text);0
-                //MessageBox.Show("FECHA COMO STRING:" + FechaIni.ToString());
-
-                paramfechaini.Values.Add(FechaIni.SelectedDate.Value.ToShortDateString());
-                //paramfechaini.Values.Add("08-15-2019");
-
-                //string xx = DateTime.ParseExact(FechaIni.SelectedDate.Value.ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture).ToShortDateString();
-                //MessageBox.Show(xx);
-                //fecha_ini.SelectedDate.Value.ToShortDateString();
+                ReportParameter paramfechaini = new ReportParameter();                
+                paramfechaini.Values.Add(FechaIni.SelectedDate.Value.ToShortDateString());                
+                
                 paramfechaini.Values.Add(FechaIni.SelectedDate.Value.ToShortDateString());
                 paramfechaini.Name = "Fecha";
                 parameters.Add(paramfechaini);
@@ -982,23 +769,16 @@ namespace SiasoftAppExt
 
                 string TipoReporte = @"/CuentasPorCobrar/CuentasPorCobrarResumida";
                 if (CmbTipoDoc.SelectedIndex == 1) TipoReporte = @"/CuentasPorCobrar/CuentasPorCobrarDetalladas";
-                if (CmbTipoDoc.SelectedIndex == 2) TipoReporte = @"/CuentasPorCobrar/CuentasPorCobrarDetalladasVendedor";
-                if (CmbTipoDoc.SelectedIndex == 3) TipoReporte = @"/CuentasPorCobrar/CuentasPorCobrarResumenAlturaPorVendedor";
+                //if (CmbTipoDoc.SelectedIndex == 2) TipoReporte = @"/CuentasPorCobrar/CuentasPorCobrarDetalladasVendedor";
+                //if (CmbTipoDoc.SelectedIndex == 3) TipoReporte = @"/CuentasPorCobrar/CuentasPorCobrarResumenAlturaPorVendedor";
 
                 SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "Consulto Cartera - Imprimio :" + Cta + " Fecha:" + paramfechaini + " - " + tabitem.Title + " Reporte:" + TipoReporte, "");
                 string TituloReport = "Cuentas por Cobrar Resumida -";
                 if (CmbTipoDoc.SelectedIndex == 1) TituloReport = "Cuentas por Cobrar Detallada -";
-                if (CmbTipoDoc.SelectedIndex == 2) TituloReport = "Cuentas por Cobrar Detallada - Vendedor";
-                if (CmbTipoDoc.SelectedIndex == 3) TituloReport = "Cuentas por Cobrar Altura - Vendedor";
-
-                //public Reportes(List<ReportParameter> parameters, string reporteNombre, string TituloReporte = "", bool DirecPrinter = false, int Copias = 1, string PrintName = "", int ZoomPercent = 0, int idemp = -1)
+                //if (CmbTipoDoc.SelectedIndex == 2) TituloReport = "Cuentas por Cobrar Detallada - Vendedor";
+                //if (CmbTipoDoc.SelectedIndex == 3) TituloReport = "Cuentas por Cobrar Altura - Vendedor";
+                
                 SiaWin.Reportes(parameters, TipoReporte, TituloReporte: TituloReport, Modal: true, idemp: idemp);
-                //-ReportCxC rp = new ReportCxC(parameters, TipoReporte);
-                //parameters, @"/Contabilidad/Balances/BalanceGeneral"
-                //-rp.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                //-rp.Owner = SiaWin;
-                //-rp.Show();
-                //-rp = null;
 
             }
             catch (Exception ex)
@@ -1256,9 +1036,8 @@ namespace SiasoftAppExt
             {
                 if (dataGridCxCD.SelectedIndex >= 0)
                 {
-                    //AbonoDocumentos view = new AbonoDocumentos(idemp);
-                    dynamic view = SiaWin.WindowExt(9659, "AbonoDocumentos");
-                    //AbonoDocumentos view = new AbonoDocumentos(idemp);
+                    //dynamic view = SiaWin.WindowExt(9659, "AbonoDocumentos");                 
+                    AbonoDocumentos view = new AbonoDocumentos(idemp);                     
                     DataRowView row = (DataRowView)dataGridCxCD.SelectedItems[0];
                     view.num_trn = row["num_trn"].ToString();
                     view.cod_ter = row["cod_ter"].ToString();
@@ -1281,122 +1060,7 @@ namespace SiasoftAppExt
             }
         }
 
-        private void BtnvrDesc_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
 
-                if (comboBoxVendedor.SelectedIndex<0)
-                {
-                    MessageBox.Show("seleccione un vendedor","alerta",MessageBoxButton.OK,MessageBoxImage.Exclamation);
-                    return;
-                }
-
-                string direccion_formato = @"/CuentasPorCobrar/CxCdescuentos";
-
-
-                List<ReportParameter> parameters = new List<ReportParameter>();
-
-                ReportParameter paramcodemp = new ReportParameter();
-                paramcodemp.Values.Add(codemp);
-                paramcodemp.Name = "codemp";
-                parameters.Add(paramcodemp);
-
-
-                ReportParameter paramcodter = new ReportParameter();
-                paramcodter.Values.Add(string.IsNullOrEmpty(TextCod_Ter.Text) ? "" : TextCod_Ter.Text);
-                paramcodter.Name = "Ter";
-                parameters.Add(paramcodter);
-
-                ReportParameter paramcta = new ReportParameter();
-                paramcta.Values.Add(CountSelected());
-                paramcta.Name = "Cta";
-                parameters.Add(paramcta);
-
-                ReportParameter paramapli = new ReportParameter();
-                paramapli.Values.Add("1");
-                paramapli.Name = "TipoApli";
-                parameters.Add(paramapli);
-
-                ReportParameter paramares = new ReportParameter();
-                paramares.Values.Add("1");
-                paramares.Name = "Resumen";
-                parameters.Add(paramares);
-
-
-                ReportParameter paramafec = new ReportParameter();
-                paramafec.Values.Add(FechaIni.Text);
-                paramafec.Name = "Fecha";
-                parameters.Add(paramafec);
-
-
-                ReportParameter paramatrn = new ReportParameter();
-                paramatrn.Values.Add("");
-                paramatrn.Name = "TrnCo";
-                parameters.Add(paramatrn);
-
-                ReportParameter paramaNmt = new ReportParameter();
-                paramaNmt.Values.Add("");
-                paramaNmt.Name = "NumCo";
-                parameters.Add(paramaNmt);
-
-                ReportParameter paramacco = new ReportParameter();
-                paramacco.Values.Add("");
-                paramacco.Name = "Cco";
-                parameters.Add(paramacco);
-
-
-                string vendedor = string.IsNullOrEmpty(comboBoxVendedor.SelectedValue.ToString()) ? "" : getvend();
-
-
-                ReportParameter paramaven = new ReportParameter();
-                paramaven.Values.Add(vendedor);
-                paramaven.Name = "Ven";
-                parameters.Add(paramaven);
-
-                ReportParameter paramatr = new ReportParameter();
-                paramatr.Values.Add("0");
-                paramatr.Name = "TipoReporte";
-                parameters.Add(paramatr);
-
-
-                ReportParameter paramexc = new ReportParameter();
-                paramexc.Values.Add("0");
-                paramexc.Name = "ExcluirInterEmpresa";
-                parameters.Add(paramexc);
-
-
-                string TituloReport = "titulo desde c#";
-
-                SiaWin.Reportes(parameters, direccion_formato, TituloReporte: TituloReport, Modal: true, idemp: idemp, ZoomPercent: 50);
-
-            }
-            catch (Exception w)
-            {
-                MessageBox.Show("error en el docuemnto:" + w);
-            }
-        }
-
-
-        public string getvend()
-        {
-            string Ven = "";
-            if (comboBoxVendedor.SelectedIndex >= 0)
-            {
-                foreach (DataRowView ob in comboBoxVendedor.SelectedItems)
-                {
-                    String valueCta = ob["cod_mer"].ToString();
-                    Ven += valueCta + ",";
-                }
-                if (Ven.Trim() != "")
-                {
-                    string ss = Ven.Trim().Substring(Ven.Trim().Length - 1);
-                    if (ss == ",") Ven = Ven.Substring(0, Ven.Trim().Length - 1);
-                }
-            }
-
-            return Ven;
-        }
 
 
 

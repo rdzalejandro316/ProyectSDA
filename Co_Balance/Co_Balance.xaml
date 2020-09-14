@@ -14,9 +14,6 @@
 
 
 
-    <!--<UserControl.Resources>
-        <local:UnboundCellStyleConverter x:Key="unboundCellStyleConverter"/>
-    </UserControl.Resources>-->
     <SiaSf:TabControlExt Name="TabControl1" Loaded="TabControl1_Loaded" Margin="5,0,10,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="False" TabItemSelectedBackground="#373737" EnableLabelEdit="False">
         <SiaSf:TabItemExt Name="tabItemExt1"  Header="Configuracion" Width="120" HeaderMargin="10 0 0 0 " FontSize="12" >
             <Grid Background="White">

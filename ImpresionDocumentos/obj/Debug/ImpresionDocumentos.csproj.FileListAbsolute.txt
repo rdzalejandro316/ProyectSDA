@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.g.cs
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.baml
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.g.resources
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.dll
+D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.pdb
+D:\Empresas\SDA\Library\ImpresionDocumentos.dll
+D:\Empresas\SDA\Library\ImpresionDocumentos.pdb

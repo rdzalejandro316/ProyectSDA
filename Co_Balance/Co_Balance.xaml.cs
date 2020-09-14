@@ -693,8 +693,12 @@ namespace SiasoftAppExt
                     viewer.ZoomPercent = ZoomPercent;
                 }
 
+                
+
                 viewer.PrinterSettings.Collate = false;
                 viewer.RefreshReport();
+
+
 
                 // auxiliar cuenta tercero
 

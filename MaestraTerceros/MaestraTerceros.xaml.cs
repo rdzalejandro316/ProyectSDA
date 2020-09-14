@@ -235,7 +235,7 @@ namespace SiasoftAppExt
                 SqlDataReader dr;
 
                 dr = _Sql == string.Empty ?
-                    SiaWin.Func.SqlDR("SELECT * FROM Comae_ter where idrow=" + Id.ToString(), idemp) :
+                    SiaWin.Func.SqlDR("SELECT * FROM "+ tabla + " where idrow=" + Id.ToString(), idemp) :
                     dr = SiaWin.Func.SqlDR(_Sql, idemp);
 
                 dr.Read();
