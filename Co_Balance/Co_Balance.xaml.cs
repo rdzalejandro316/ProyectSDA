@@ -485,6 +485,7 @@ namespace SiasoftAppExt
                 sb.Append(" cue_doc.doc_ref,cue_doc.doc_cruc,cue_doc.num_chq,cue_doc.bas_mov,cue_doc.deb_mov,cue_doc.cre_mov, cab_DOC.factura,des_mov ");
                 sb.Append(" FROM coCUE_DOC cue_doc inner join cocab_doc as cab_doc on cab_doc.idreg = cue_doc.idregcab and cue_doc.cod_cta = '" + cod_cta.Trim() + "' and ");
                 if (cod_cli != "") sb.Append(" cue_doc.cod_ter='" + cod_cli.Trim() + "' and  ");
+                if (TipoIncluir.SelectedIndex == 0) sb.Append(" convert(int,cab_doc.per_doc)<13 and  ");
 
                 sb.Append(" year(cab_doc.fec_trn) = year(@fechaIni) and convert(date, cab_doc.fec_trn) between  @FechaIni and @FechaFin inner join comae_trn as mae_trn on mae_trn.cod_trn = cab_doc.cod_trn ");
                 sb.Append(" and (mae_trn.tip_blc=0 or mae_trn.tip_blc=" + (TipoBalNiif.SelectedIndex + 1).ToString() + ")");
@@ -693,7 +694,7 @@ namespace SiasoftAppExt
                     viewer.ZoomPercent = ZoomPercent;
                 }
 
-                
+
 
                 viewer.PrinterSettings.Collate = false;
                 viewer.RefreshReport();
@@ -920,7 +921,7 @@ namespace SiasoftAppExt
 
 
                 DataRowView row = (DataRowView)dataGridConsultaDetalle.SelectedItems[0];
-                string cod_cli = row["cod_ter"].ToString().Trim();                
+                string cod_cli = row["cod_ter"].ToString().Trim();
                 string tercero = row["nom_ter"].ToString().Trim();
 
                 int tipo = TipoBalNiif.SelectedIndex;
@@ -945,7 +946,7 @@ namespace SiasoftAppExt
                 sb.Append(" cue_doc.doc_ref,cue_doc.doc_cruc,cue_doc.num_chq,cue_doc.bas_mov,cue_doc.deb_mov,cue_doc.cre_mov, cab_DOC.factura,des_mov ");
                 sb.Append(" FROM coCUE_DOC cue_doc inner join cocab_doc as cab_doc on cab_doc.idreg = cue_doc.idregcab and cue_doc.cod_cta = '" + cod_cta.Trim() + "' and ");
                 if (cod_cli != "") sb.Append(" cue_doc.cod_ter='" + cod_cli.Trim() + "' and  ");
-                if (TipoIncluir.SelectedIndex == 0 ) sb.Append(" convert(int,cab_doc.per_doc)<13 and  ");
+                if (TipoIncluir.SelectedIndex == 0) sb.Append(" convert(int,cab_doc.per_doc)<13 and  ");
 
                 sb.Append(" year(cab_doc.fec_trn) = year(@fechaIni) and convert(date, cab_doc.fec_trn) between  @FechaIni and @FechaFin inner join comae_trn as mae_trn on mae_trn.cod_trn = cab_doc.cod_trn ");
                 sb.Append(" and (mae_trn.tip_blc=0 or mae_trn.tip_blc=" + (tipo + 1).ToString() + ")");
@@ -1018,6 +1019,19 @@ namespace SiasoftAppExt
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void BTNmaeCta_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SiaWin.Tab(9277, idEmp: idemp);
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("erro al abrir la maestra de cuentas:" + w);
+            }
+        }
+
 
 
     }

@@ -15,15 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasarSaldosContabilidad", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Importacion741", "..\Importacion741\Importacion741.csproj", "{1685C914-57E1-4D08-8924-069B4B4A0880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BorrarDocumentoIN", "..\BorrarDocumentoIN\BorrarDocumentoIN.csproj", "{E0B63C63-F348-4578-8553-2F6E30030B1A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CierreEjercicio", "..\CierreEjercicio\CierreEjercicio.csproj", "{DF455E11-B6B7-407F-9250-CEA81005347E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxiliarTerceroCuenta", "..\AuxiliarTerceroCuenta\AuxiliarTerceroCuenta.csproj", "{D19872D2-5412-4F60-A397-84083F981B4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmortizacionDiferidos", "..\AmortizacionDiferidos\AmortizacionDiferidos.csproj", "{A6AEABBD-DCD3-4EC5-8BA8-7A7E1FAA0E7A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReclasificacionMovimientoCuentas", "..\ReclasificacionMovimientoCuentas\ReclasificacionMovimientoCuentas.csproj", "{508DBF5D-3FBC-416C-8C47-F44C9605572A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReclasificacionContabilidad", "..\ReclasificacionContabilidad\ReclasificacionContabilidad.csproj", "{F7C27C3C-DC1B-4B51-A676-78777C2E4B09}"
 EndProject
@@ -36,6 +32,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalisisDeCartera", "..\AnalisisDeCartera\AnalisisDeCartera.csproj", "{50FB6FED-2639-4372-8553-4D7AD49DEC96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImpresionDocumentos", "..\ImpresionDocumentos\ImpresionDocumentos.csproj", "{22EB957F-03E5-46D3-9259-12BDE8C9B16C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auditoria", "..\Auditoria\Auditoria.csproj", "{B0FB3BC1-1EFC-4AA1-B211-819F95EA360C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrnDocumentoCruce", "..\TrnDocumentoCruce\TrnDocumentoCruce.csproj", "{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuditoriaDocumentContable", "..\AuditoriaDocumentContable\AuditoriaDocumentContable.csproj", "{ABC5713F-A365-440E-971B-EEA310BC0AEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +69,6 @@ Global
 		{1685C914-57E1-4D08-8924-069B4B4A0880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1685C914-57E1-4D08-8924-069B4B4A0880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1685C914-57E1-4D08-8924-069B4B4A0880}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0B63C63-F348-4578-8553-2F6E30030B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0B63C63-F348-4578-8553-2F6E30030B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0B63C63-F348-4578-8553-2F6E30030B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0B63C63-F348-4578-8553-2F6E30030B1A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF455E11-B6B7-407F-9250-CEA81005347E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF455E11-B6B7-407F-9250-CEA81005347E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF455E11-B6B7-407F-9250-CEA81005347E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,10 +81,6 @@ Global
 		{A6AEABBD-DCD3-4EC5-8BA8-7A7E1FAA0E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6AEABBD-DCD3-4EC5-8BA8-7A7E1FAA0E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6AEABBD-DCD3-4EC5-8BA8-7A7E1FAA0E7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{508DBF5D-3FBC-416C-8C47-F44C9605572A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{508DBF5D-3FBC-416C-8C47-F44C9605572A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{508DBF5D-3FBC-416C-8C47-F44C9605572A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{508DBF5D-3FBC-416C-8C47-F44C9605572A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7C27C3C-DC1B-4B51-A676-78777C2E4B09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7C27C3C-DC1B-4B51-A676-78777C2E4B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7C27C3C-DC1B-4B51-A676-78777C2E4B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -111,6 +105,18 @@ Global
 		{22EB957F-03E5-46D3-9259-12BDE8C9B16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22EB957F-03E5-46D3-9259-12BDE8C9B16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22EB957F-03E5-46D3-9259-12BDE8C9B16C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FB3BC1-1EFC-4AA1-B211-819F95EA360C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FB3BC1-1EFC-4AA1-B211-819F95EA360C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FB3BC1-1EFC-4AA1-B211-819F95EA360C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FB3BC1-1EFC-4AA1-B211-819F95EA360C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F12D8BF-46F5-4BF1-9D3B-CA32EED0300A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC5713F-A365-440E-971B-EEA310BC0AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC5713F-A365-440E-971B-EEA310BC0AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC5713F-A365-440E-971B-EEA310BC0AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC5713F-A365-440E-971B-EEA310BC0AEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

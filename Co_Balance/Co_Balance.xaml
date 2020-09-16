@@ -294,6 +294,7 @@
                         <ColumnDefinition Width="180"/>
                         <ColumnDefinition Width="180"/>
                         <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="180"/>
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
@@ -301,10 +302,11 @@
                     <Button Grid.Column="0" Content="Reportes Auxiliares" Name="BTNReportesAux" Click="BTNReportesAux_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
                     <Button Grid.Column="1" Content="Imprimir Balance" Name="BTNimprimir" Click="BTNimprimir_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
                     <Button Grid.Column="2" Content="Exporatar XLS" Name="BTNexpo" Click="BTNexpo_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
-                    <Button Grid.Column="3" Tag="A" Content="Ocultar Filtros"  Name="BTNhidden" Click="BTNhidden_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
+                    <Button Grid.Column="3" Content="Maestra de Cuentas" Name="BTNmaeCta" Click="BTNmaeCta_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
+                    <Button Grid.Column="4" Tag="A" Content="Ocultar Filtros"  Name="BTNhidden" Click="BTNhidden_Click" Margin="3" Background="#00ade7" Cursor="Hand" Foreground="White"/>
 
-                    <TextBlock Text="Total del registros : " Grid.Column="4" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                    <TextBlock Name="Total" Grid.Column="5" Foreground="#2980b9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock Text="Total del registros : " Grid.Column="5" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBlock Name="Total" Grid.Column="6" Foreground="#2980b9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
 
 

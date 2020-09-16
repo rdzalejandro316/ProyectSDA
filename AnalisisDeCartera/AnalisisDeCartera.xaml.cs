@@ -175,6 +175,7 @@ namespace SiasoftAppExt
                 ExportarXls.IsEnabled = false;
                 ConciliarCxcCo.IsEnabled = false;
                 BtnvrAbonado.IsEnabled = false;
+                BtnCalcularInt.IsEnabled = false;
 
                 string ffi = FechaIni.Text.ToString();
                 string Tercero = TextCod_Ter.Text.Trim();
@@ -186,6 +187,7 @@ namespace SiasoftAppExt
                 ExportarXls.IsEnabled = true;
                 ConciliarCxcCo.IsEnabled = true;
                 BtnvrAbonado.IsEnabled = true;
+                BtnCalcularInt.IsEnabled = true;
                 resetTotales();
 
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
@@ -582,42 +584,7 @@ namespace SiasoftAppExt
             //TextTotalDoc.Text = (valordoc-valordocA).ToString("C");
             //TextSaldo.Text = (saldodoc-saldodocA).ToString("C");
         }
-
-        private void BtnRCaja_Click(object sender, RoutedEventArgs e)
-        {
-            SiaWin.ValReturn = null;
-            DataRowView row = dataGridCxC.Visibility == Visibility.Visible ?
-                (DataRowView)dataGridCxC.SelectedItems[0] : (DataRowView)dataGridCxCD.SelectedItems[0];
-
-            if (row == null)
-            {
-                MessageBox.Show("Registro sin datos");
-                return;
-            }
-            string cod_cli = row["cod_ter"].ToString();
-            string cod_cta = row["cod_cta"].ToString();
-            if (string.IsNullOrEmpty(cod_cli)) return;
-            //MessageBox.Show(cod_cli + "-" + cod_cta);
-
-            SiaWin.ValReturn = cod_cli;
-            //Window ww = SiaWin.WindowExt(9299, "RecibosDeCaja");  //carga desde sql
-
-            //ww.ShowInTaskbar = false;
-            //ww.Owner = Application.Current.MainWindow;
-            //ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            //ww.ShowDialog();
-            //ww = null;
-            dynamic ww = SiaWin.WindowExt(9305, "RecibosDeCaja");  //carga desde sql
-            ww.ShowInTaskbar = false;
-            ww.Owner = Application.Current.MainWindow;
-            ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            ww.idemp = idemp;
-            ww.fechaPublic = FechaIni.Text;
-            ww.codpvta = codpvta;
-            ww.codter = cod_cli;
-            ww.Show();
-            ww = null;
-        }
+        
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
         {
@@ -1060,14 +1027,10 @@ namespace SiasoftAppExt
             }
         }
 
+        private void BtnCalcularInt_Click(object sender, RoutedEventArgs e)
+        {
 
-
-
-
-
-
-
-
+        }
     }
 
 }

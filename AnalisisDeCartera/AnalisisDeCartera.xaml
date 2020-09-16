@@ -108,14 +108,7 @@
                                 <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
                                     <SiaSf:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="BtnDetalle" Content="...." Click="BtnDetalle_Click" Background="LightSteelBlue"/>
-                                        </DataTemplate>
-                                    </SiaSf:GridTemplateColumn.CellTemplate>
-                                </SiaSf:GridTemplateColumn>
-                                <SiaSf:GridTemplateColumn MappingName="RCaja" Width="56"  AllowFiltering="False">
-                                    <SiaSf:GridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button x:Name="BtnRCaja" Content="...." Foreground="WhiteSmoke"  Background="DodgerBlue" Click="BtnRCaja_Click"/>
+                                            <Button x:Name="BtnDetalle" Content="...." Click="BtnDetalle_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}"/>
                                         </DataTemplate>
                                     </SiaSf:GridTemplateColumn.CellTemplate>
                                 </SiaSf:GridTemplateColumn>
@@ -140,14 +133,7 @@
                                 <SiaSf:GridTemplateColumn MappingName="Doc" Width="56"  AllowFiltering="False">
                                     <SiaSf:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="BtnDetalleD" Content="...." Click="BtnDetalleD_Click" Background="LightSteelBlue"/>
-                                        </DataTemplate>
-                                    </SiaSf:GridTemplateColumn.CellTemplate>
-                                </SiaSf:GridTemplateColumn>
-                                <SiaSf:GridTemplateColumn MappingName="RCaja" Width="56"  AllowFiltering="False">
-                                    <SiaSf:GridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button x:Name="BtnRCaja" Content="...." Foreground="WhiteSmoke"  Background="DodgerBlue" Click="BtnRCaja_Click"/>
+                                            <Button x:Name="BtnDetalleD" Content="...." Click="BtnDetalleD_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}"/>
                                         </DataTemplate>
                                     </SiaSf:GridTemplateColumn.CellTemplate>
                                 </SiaSf:GridTemplateColumn>
@@ -217,7 +203,7 @@
                             <Button x:Name="ExportarXls" Content="Exportar XLS" Grid.Column="8" Grid.Row="0" Click="ExportarXls_Click" Style="{StaticResource BtnStlye}"/>
                             <Button x:Name="ConciliarCxcCo" Content="Conciliar cuentas" Grid.Column="9" Grid.Row="0" Click="ConciliarCxcCo_Click" Style="{StaticResource BtnStlye}"/>
                             <Button x:Name="BtnvrAbonado" Content="Abonado" Grid.Column="7" Grid.Row="1" Width="100" Click="BtnvrAbonado_Click" Style="{StaticResource BtnStlye}"/>
-                            <Button x:Name="BtnCalcularInt" Content="Calcular Interes" Grid.Column="8" Grid.Row="1" Width="100" Click="BtnvrAbonado_Click" Style="{StaticResource BtnStlye}"/>
+                            <Button x:Name="BtnCalcularInt" Content="Calcular Interes" Grid.Column="8" Grid.Row="1" Width="100" Click="BtnCalcularInt_Click" Style="{StaticResource BtnStlye}"/>
 
                             
 
