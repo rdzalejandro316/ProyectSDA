@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.g.cs
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.baml
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.g.resources
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.dll
+D:\Empresas\SDA\Library\project\PasarSaldosInventario\obj\Debug\PasarSaldosInventario.pdb
+D:\Empresas\SDA\Library\PasarSaldosInventario.dll
+D:\Empresas\SDA\Library\PasarSaldosInventario.pdb

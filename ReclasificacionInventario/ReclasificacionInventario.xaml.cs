@@ -16,6 +16,7 @@ namespace SiasoftAppExt
     //ww.Owner = Application.Current.MainWindow;
     //ww.WindowStartupLocation=WindowStartupLocation.CenterScreen;
     //ww.ShowDialog();
+
     public partial class ReclasificacionInventario : Window
     {
 
@@ -27,6 +28,7 @@ namespace SiasoftAppExt
         bool flag = false;
 
         DataSet dsTemporal = new DataSet();
+        string tipo = "CON";
 
         public ReclasificacionInventario()
         {
@@ -366,6 +368,186 @@ namespace SiasoftAppExt
             }
             flag = true;
         }
+
+        private DataSet Saldos(string cod_ant, string cod_nue, string passa, string column)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(SiaWin._cn);
+                SqlCommand cmd = new SqlCommand();
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                cmd = new SqlCommand("_EmpReclasificacionSaldos", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@cod_ant", cod_ant);
+                cmd.Parameters.AddWithValue("@cod_nue", cod_nue);
+                cmd.Parameters.AddWithValue("@modulo", tipo);
+                cmd.Parameters.AddWithValue("@pass", passa);
+                cmd.Parameters.AddWithValue("@columna", column);
+                cmd.Parameters.AddWithValue("@codemp", "010");
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                con.Close();
+                return ds;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("en la consulta:" + e.Message);
+                return null;
+            }
+        }
+
+
+
+        private void BTNviewSaldosNormales_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                #region validacion
+
+                if (TipoCBX.SelectedIndex < 0)
+                {
+                    MessageBox.Show("seleccione el tipo de reclasificacion", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (TipoCBX.SelectedIndex == 0)
+                {
+                    if (existencia() == true)
+                    {
+                        (sender as TextBox).Text = "";
+                        MessageBox.Show("El codigo nuevo que ingreso existe", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                }
+
+                if (TipoCBX.SelectedIndex == 1)
+                {
+                    if (existencia() == false)
+                    {
+                        MessageBox.Show("el codigo nuevo ingresado no existe", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                }
+
+                if (CodAnt.Text == "" || string.IsNullOrEmpty(CodAnt.Text))
+                {
+                    MessageBox.Show("el codigo anterior esta vacio", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (CodNue.Text == "" || string.IsNullOrEmpty(CodNue.Text))
+                {
+                    MessageBox.Show("el codigo nuevo esta vacio", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                #endregion
+
+                string tag = BTNreclasificar.Tag.ToString().Trim();
+                string column = tag == "Cuentas" ? "cod_cta" : "cod_ter";
+                string query = "select* From CoSaldos_cta where " + column + "= '" + CodAnt.Text + "' or " + column + " = '" + CodNue.Text + "'; ";
+                DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
+                if (dt.Rows.Count > 0)
+                {
+                    SiaWin.Browse(dt);
+                }
+                else
+                {
+                    MessageBox.Show("Sin Saldos Iniciales", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al cargar:" + w);
+            }
+        }
+
+        private void BTNviewSaldosReclasificados_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                #region validacion
+
+                if (TipoCBX.SelectedIndex < 0)
+                {
+                    MessageBox.Show("seleccione el tipo de reclasificacion", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(CodAnt.Text))
+                {
+                    MessageBox.Show("el codigo anterior esta vacio", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(CodNue.Text))
+                {
+                    MessageBox.Show("el codigo nuevo esta vacio", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                #endregion
+
+                CancellationTokenSource source = new CancellationTokenSource();
+                Card.IsEnabled = false;
+                GridMain.IsEnabled = false;
+                TipoCBX.IsEnabled = false;
+                sfBusyIndicator.IsBusy = true;
+
+                string tag = BTNreclasificar.Tag.ToString().Trim();
+                string cod_ant = CodAnt.Text.Trim();
+                string cod_nue = CodNue.Text.Trim();
+
+                string column = tag == "Cuentas" ? "cod_cta" : "cod_ter";
+                var slowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "0", column), source.Token);
+                await slowTask;
+
+                if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
+                {
+
+                    SiaWin.Browse(((DataSet)slowTask.Result).Tables[0]);
+                }
+
+
+                Card.IsEnabled = true;
+                GridMain.IsEnabled = true;
+                TipoCBX.IsEnabled = true;
+                sfBusyIndicator.IsBusy = false;
+
+            }
+            catch (Exception w)
+            {
+
+                MessageBox.Show("error al cargar saldos:" + w);
+            }
+        }
+
+        private void BTNview_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (dsTemporal.Tables[0].Rows.Count > 0)
+                {
+                    SiaWin.Browse(dsTemporal.Tables[0]);
+                }
+                else
+                {
+                    MessageBox.Show("no tiene ninguna tabla para afectar", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("erro al abrir tablas:" + w);
+            }
+        }
+
+
+
+
 
 
 

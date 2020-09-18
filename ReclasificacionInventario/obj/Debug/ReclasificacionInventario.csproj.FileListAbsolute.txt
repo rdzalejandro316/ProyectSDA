@@ -12,3 +12,17 @@ C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\
 C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\projectGS\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.pdb
 C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\ReclasificacionInventario.dll
 C:\Users\alejandro\Desktop\Grupo_Saavedra\SiasoftGS-Alejandro\Library\ReclasificacionInventario.pdb
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.g.cs
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.baml
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.g.resources
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.dll
+D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.pdb
+D:\Empresas\SDA\Library\ReclasificacionInventario.dll
+D:\Empresas\SDA\Library\ReclasificacionInventario.pdb

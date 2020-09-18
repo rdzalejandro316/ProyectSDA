@@ -10,10 +10,10 @@
 
     <Window.Resources>
         <ResourceDictionary>
+            <SolidColorBrush Color="#3F51B5" x:Key="ColorMain"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
 
 
-        <Grid Background="#03A9F4">
+        <Grid Background="{StaticResource ColorMain}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="1*"/>
@@ -83,11 +83,11 @@
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
-                        <ToggleButton x:Name="Togle1" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Referencia"/>
-                        <ToggleButton x:Name="Togle2" Grid.Row="1" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Linea"/>
-                        <ToggleButton x:Name="Togle3" Grid.Row="2" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Grupo"/>
-                        <ToggleButton x:Name="Togle4" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="SubGrupo"/>
-                        <ToggleButton x:Name="Togle5" Grid.Row="4" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Bodega"/>
+                        <ToggleButton x:Name="Togle1" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Referencia" Background="{StaticResource ColorMain}"/>
+                        <ToggleButton x:Name="Togle2" Grid.Row="1" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Linea" Background="{StaticResource ColorMain}"/>
+                        <ToggleButton x:Name="Togle3" Grid.Row="2" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Grupo" Background="{StaticResource ColorMain}"/>
+                        <ToggleButton x:Name="Togle4" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="SubGrupo" Background="{StaticResource ColorMain}"/>
+                        <ToggleButton x:Name="Togle5" Grid.Row="4" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Bodega" Background="{StaticResource ColorMain}"/>
                     </Grid>
 
 
@@ -108,7 +108,7 @@
                                 <RowDefinition Height="50"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Name="Tab_reclas" Text="Title" Foreground="#FF2196F3" FontSize="25" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Name="Tab_reclas" Text="Title" Foreground="{StaticResource ColorMain}" FontSize="25" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
                             <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
@@ -131,7 +131,15 @@
                                 <TextBox Name="CodNue" Grid.Column="1" Grid.Row="2" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" LostFocus="CodNue_LostFocus"/>
                                 <TextBox Name="CodNueName" Grid.Column="2" Grid.Row="2" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Name" IsReadOnly="True" Focusable="False"/>
                             </Grid>
-                            <Button Name="BTNreclasificar" Grid.Row="4" Width="120" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Reclasificar" Margin="0 0 10 0" Click="BTNreclasificar_Click"/>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+                                <Button Name="BTNviewSaldosNormales" Content="{materialDesign:PackIcon FileDocumentBox}" Height="35" Width="50" HorizontalAlignment="Right" ToolTip="Consultar Saldos Iniciales" Margin="0 0 10 0" Click="BTNviewSaldosNormales_Click" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Foreground="White" Focusable="False"/>
+                                <Button Name="BTNviewSaldosReclasificados" Content="{materialDesign:PackIcon FileDocumentBoxOutline}" Height="35" Width="50" HorizontalAlignment="Right" ToolTip="Consultar Saldos Como Quedarian Reclasificados" Margin="0 0 10 0" Click="BTNviewSaldosReclasificados_Click" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Foreground="White" Focusable="False"/>
+                                <Button Name="BTNview"  Height="35" Width="50" Content="{materialDesign:PackIcon TableColumn}" HorizontalAlignment="Right" ToolTip="Consultar Tablas a reclasificar" Margin="0 0 10 0" Click="BTNview_Click" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Foreground="White" Focusable="False"/>
+                                <Button Name="BTNreclasificar" Width="120" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Reclasificar" Click="BTNreclasificar_Click" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Foreground="White" Margin="0 0 10 0"/>
+                            </StackPanel>
+                            
+
                         </Grid>
                     </materialDesign:Card>
                 </Grid>
