@@ -1,0 +1,48 @@
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.g.cs
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto_MarkupCompile.cache
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto_MarkupCompile.lref
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.baml
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.g.resources
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.Properties.Resources.resources
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.CopyComplete
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.dll
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.pdb
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\CreacionLinGruSubGrProducto.dll
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\CreacionLinGruSubGrProducto.pdb
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\AddNew.g.cs
+C:\Users\aleja\Desktop\GS\server 10 original\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\AddNew.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\AddNew.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\AddNew.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\CreacionLinGruSubGrProducto.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\CreacionLinGruSubGrProducto.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\AddNew.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\AddNew.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CreacionLinGruSubGrProducto\obj\Debug\CreacionLinGruSubGrProducto.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\CreacionLinGruSubGrProducto.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\CreacionLinGruSubGrProducto.pdb

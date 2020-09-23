@@ -33,7 +33,7 @@
             <TextBlock Text="Tipo de reclasificacion : " Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="10 0 0 0"/>
 
             <ComboBox Name="TipoCBX" Grid.Column="1" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="White" Foreground="White" Cursor="Hand" Margin="5 0 0 0" SelectionChanged="TipoCBX_SelectionChanged">
-                <ComboBoxItem IsSelected="True" Content="El codigo nuevo no existe"/>
+                <ComboBoxItem Content="El codigo nuevo no existe"/>
                 <ComboBoxItem Content="El codigo nuevo ya existe"/>
             </ComboBox>
         </Grid>
@@ -100,7 +100,7 @@
 
             <Grid Grid.Column="1" Background="WhiteSmoke">
                 <Grid VerticalAlignment="Center">
-                    <materialDesign:Card x:Name="Card" materialDesign:ShadowAssist.ShadowDepth="Depth4" Width="400" Height="200" IsEnabled="False">
+                    <materialDesign:Card x:Name="Card" materialDesign:ShadowAssist.ShadowDepth="Depth4" Width="450" Height="200" IsEnabled="False">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
@@ -118,18 +118,18 @@
                                     <RowDefinition Height="0.5*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="80"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Anterior : " Grid.Row="1" VerticalAlignment="Center" Margin="20 0 0 0" FontWeight="Bold" TextAlignment="Right" FontSize="14"/>
-                                <TextBox Name="CodAnt" Grid.Column="1" Grid.Row="1" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" LostFocus="CodAnt_LostFocus"/>
-                                <TextBox Name="CodAntName" Grid.Column="2" Grid.Row="1" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Name" IsReadOnly="True" Focusable="False"/>
+                                <TextBox Name="CodAnt" Grid.Column="1" Grid.Row="1" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" LostFocus="CodAnt_LostFocus" PreviewKeyDown="Cod_PreviewKeyDown" ToolTip="F8 Buscar"/>
+                                <TextBox Name="CodAntName" Grid.Column="2" Grid.Row="1" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Name" IsReadOnly="True" Focusable="False"/>
 
                                 <TextBlock Text="Nuevo : " Grid.Row="2" VerticalAlignment="Center" Margin="20 0 0 0" FontWeight="Bold" TextAlignment="Right" FontSize="14"/>
-                                <TextBox Name="CodNue" Grid.Column="1" Grid.Row="2" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" LostFocus="CodNue_LostFocus"/>
-                                <TextBox Name="CodNueName" Grid.Column="2" Grid.Row="2" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Name" IsReadOnly="True" Focusable="False"/>
+                                <TextBox Name="CodNue" Grid.Column="1" Grid.Row="2" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" LostFocus="CodNue_LostFocus" PreviewKeyDown="Cod_PreviewKeyDown" ToolTip="F8 Buscar"/>
+                                <TextBox Name="CodNueName" Grid.Column="2" Grid.Row="2" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Name" IsReadOnly="True" Focusable="False"/>
                             </Grid>
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
@@ -144,7 +144,7 @@
                     </materialDesign:Card>
                 </Grid>
 
-                <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Actualizando ..." Height="100" IsBusy="False" Panel.ZIndex="2"/>
+                <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Actualizando ..." Height="100" IsBusy="False" Panel.ZIndex="2" Foreground="{StaticResource ColorMain}"/>
             </Grid>
 
 

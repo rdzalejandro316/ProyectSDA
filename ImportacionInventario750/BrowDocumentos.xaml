@@ -1,0 +1,52 @@
+﻿<Window x:Class="ImportacionInventario750.BrowDocumentos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImportacionInventario750"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"        
+        Title="Documentos" Height="400" Width="500" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+
+
+    <Window.Resources>
+        <SolidColorBrush Color="Indigo" x:Key="ColorMain"/>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <syncfusion:SfDataGrid Name="dataGrid" Grid.Row="0" Margin="2" EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="12" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn MappingName="COD_TDO" IsHidden="True"/>
+                <syncfusion:GridTextColumn HeaderText="Trn Con" MappingName="COD_TRN" Width="65"/>
+                <syncfusion:GridTextColumn HeaderText="Documento" MappingName="NUM_TRN" Width="120"/>
+                <syncfusion:GridDateTimeColumn HeaderText="Fecha" MappingName="FEC_TRN" Width="120"/>
+                <syncfusion:GridTemplateColumn MappingName="Doc INV" Width="80" AllowFiltering="False">
+                    <syncfusion:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnGetDocument" Click="BtnGetDocument_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}" Foreground="White" Content="..." Tag="co"/>
+                        </DataTemplate>
+                    </syncfusion:GridTemplateColumn.CellTemplate>
+                </syncfusion:GridTemplateColumn>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+
+        <Grid Grid.Row="1" Background="#373737">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Documentos : " Foreground="White" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="Bold"/>
+                <TextBlock Name="Tx_totales" Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+
+</Window>

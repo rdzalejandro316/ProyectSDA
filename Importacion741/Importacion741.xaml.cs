@@ -98,6 +98,12 @@ namespace SiasoftAppExt
             using (ExcelEngine excelEngine = new ExcelEngine())
             {
                 IApplication application = excelEngine.Excel;
+                if (!application.IsSupported(FileName))
+                {
+                    MessageBox.Show("el tipo de extencion .xls no se admite por favor actualizarlo a .xlsx", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return null;
+                }
+
                 application.DefaultVersion = ExcelVersion.Excel2013;
                 IWorkbook workbook = application.Workbooks.Open(FileName);
                 IWorksheet worksheet = workbook.Worksheets[0];
@@ -125,6 +131,7 @@ namespace SiasoftAppExt
                 dt.Clear(); dt_errores.Clear();
 
                 dt = ConvertExcelToDataTable(root);
+                if (dt == null) { sfBusyIndicator.IsBusy = false; return; }
 
                 if (validarArchioExcel(dt) == false)
                 {
@@ -133,10 +140,6 @@ namespace SiasoftAppExt
                     return;
                 }
 
-
-                //RearmarDoc(dt);
-                //SiaWin.Browse(dt);
-                //agruparDocumentos(dt);
 
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
@@ -173,7 +176,7 @@ namespace SiasoftAppExt
                 //foreach (DataTable dtable in doc_agru.Tables)                
                 //  SiaWin.Browse(dtable);
 
-                MessageBox.Show(Application.Current.MainWindow, "Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);                
+                MessageBox.Show(Application.Current.MainWindow, "Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
                 Tx_errores.Text = dt_errores.Rows.Count.ToString();
                 sfBusyIndicator.IsBusy = false;
             }
@@ -197,7 +200,7 @@ namespace SiasoftAppExt
                 dt_armado.Columns.Add("NUM_TRN");
                 dt_armado.Columns.Add("ANO_DOC");
                 dt_armado.Columns.Add("PER_DOC");
-                dt_armado.Columns.Add("DIA_DOC");                
+                dt_armado.Columns.Add("DIA_DOC");
                 dt_armado.Columns.Add("COD_CTA");
                 dt_armado.Columns.Add("COD_TER");
                 dt_armado.Columns.Add("DES_MOV");
@@ -210,7 +213,7 @@ namespace SiasoftAppExt
                 {
 
                     #region variables debito
-                    
+
                     double debito1 = dr[11] == DBNull.Value || double.TryParse(dr[11].ToString(), out dou) == false ? 0 : Convert.ToDouble(dr[11]);//INVERSION
                     double debito2 = dr[12] == DBNull.Value || double.TryParse(dr[12].ToString(), out dou) == false ? 0 : Convert.ToDouble(dr[12]);//FUNCIO
                     double debito3 = dr[13] == DBNull.Value || double.TryParse(dr[13].ToString(), out dou) == false ? 0 : Convert.ToDouble(dr[13]);//DEBITO_3
@@ -341,7 +344,7 @@ namespace SiasoftAppExt
         public void agruparDocumentos(DataTable dt)
         {
             try
-            {                
+            {
                 DataView dv = dt.DefaultView;
                 dv.Sort = "NUM_TRN desc";
                 DataTable sortedDT = dv.ToTable();
@@ -360,7 +363,7 @@ namespace SiasoftAppExt
                 dd.Columns.Add("NOM_CTA");
                 dd.Columns.Add("COD_TER");
                 dd.Columns.Add("NOM_TER");
-                dd.Columns.Add("DES_MOV");                
+                dd.Columns.Add("DES_MOV");
                 dd.Columns.Add("BAS_MOV");
                 dd.Columns.Add("DEB_MOV", typeof(double));
                 dd.Columns.Add("CRE_MOV", typeof(double));
@@ -401,10 +404,10 @@ namespace SiasoftAppExt
                             "",
                             dr["COD_TER"].ToString(),
                             "",
-                            dr["DES_MOV"].ToString(),                            
+                            dr["DES_MOV"].ToString(),
                             baseco,
                             deb,
-                            cre                            
+                            cre
                             );
 
                         if (i == sortedDT.Rows.Count) { doc_agru.Tables.Add(dd.Copy()); dd.Clear(); }//ultima columna
@@ -421,7 +424,7 @@ namespace SiasoftAppExt
                             "",
                             dr["COD_TER"].ToString(),
                             "",
-                            dr["DES_MOV"].ToString(),                            
+                            dr["DES_MOV"].ToString(),
                             baseco,
                             deb,
                             cre
@@ -436,9 +439,9 @@ namespace SiasoftAppExt
 
                 //foreach (DataTable dtable in doc_agru.Tables)
                 //{
-                  //  SiaWin.Browse(dtable);
+                //  SiaWin.Browse(dtable);
                 //}
-                
+
             }
             catch (Exception w)
             {
@@ -513,7 +516,7 @@ namespace SiasoftAppExt
                         }
 
                         #endregion
-                                                                                        
+
                         #region descripcion
 
                         if (!string.IsNullOrEmpty(dr["DES_MOV"].ToString()))
@@ -571,7 +574,7 @@ namespace SiasoftAppExt
             return flag;
         }
 
-        
+
         private void BtnGenerarDoc_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -642,10 +645,10 @@ namespace SiasoftAppExt
                     Tx_ter.Text = "";
                     Tx_ter.Text = "";
                     Tx_total.Text = "";
-
-                    #endregion
-
+                    
                 }
+                #endregion
+
 
             }
             catch (Exception w)

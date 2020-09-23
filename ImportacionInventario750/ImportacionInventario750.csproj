@@ -40,6 +40,10 @@
     <Reference Include="Syncfusion.Data.WPF">
       <HintPath>..\..\Syncfusion.Data.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.WPF, Version=16.1460.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Syncfusion.SfBusyIndicator.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.SfGrid.WPF">
       <HintPath>..\..\Syncfusion.SfGrid.WPF.dll</HintPath>
     </Reference>
@@ -79,11 +83,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="BrowDocumentos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ImportacionInventario750.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="DisplayAttribute.cs" />
+    <Compile Include="BrowDocumentos.xaml.cs">
+      <DependentUpon>BrowDocumentos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImportacionInventario750.xaml.cs">
       <DependentUpon>ImportacionInventario750.xaml</DependentUpon>
       <SubType>Code</SubType>

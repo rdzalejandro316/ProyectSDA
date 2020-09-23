@@ -10,18 +10,18 @@
     
     <Window.Resources>
         <ResourceDictionary>
-            <SolidColorBrush Color="#F44336" x:Key="ColorMain"/>
+            <SolidColorBrush Color="Indigo" x:Key="ColorMain"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Indigo.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
         <materialDesign:Card VerticalAlignment="Center" HorizontalAlignment="Center">
-            <SiaSf:TabControlExt Name="TabControl1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="300" SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="False" TabItemSelectedBackground="#F44336" EnableLabelEdit="False" CloseButtonType="Hide" TabScrollButtonVisibility="Hidden" ShowTabItemContextMenu="False" ShowTabListContextMenu="False">
+            <SiaSf:TabControlExt Name="TabControl1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="300" SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="False" TabItemSelectedBackground="{StaticResource ColorMain}" EnableLabelEdit="False" CloseButtonType="Hide" TabScrollButtonVisibility="Hidden" ShowTabItemContextMenu="False" ShowTabListContextMenu="False">
                 <SiaSf:TabItemExt Name="tabItemExt1"  Header="Eliminacion Individual" Width="170" HeaderMargin="10 0 0 0 " FontSize="14">
                     <Grid Width="250" Height="200">
                         <Grid.RowDefinitions>
@@ -39,8 +39,8 @@
                         <TextBox Name="Tx_doc" Grid.Row="1"  materialDesign:HintAssist.Hint="Documento" Grid.ColumnSpan="2"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
                         <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button Name="BtnEliminar"  Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Margin="5" ToolTip="Eliminar" Content="Eliminar" Click="BtnEliminar_Click"/>
-                            <Button Name="BtnSalir"  Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Margin="5" ToolTip="Salir" Content="Salir" Click="BtnSalir_Click"/>
+                            <Button Name="BtnEliminar" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}"  Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Margin="5" ToolTip="Eliminar" Content="Eliminar" Click="BtnEliminar_Click"/>
+                            <Button Name="BtnSalir"  Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Margin="5" ToolTip="Salir" Content="Salir" Click="BtnSalir_Click"/>
                         </StackPanel>
 
                     </Grid>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace SiasoftAppExt
 {
@@ -25,10 +26,10 @@ namespace SiasoftAppExt
         string cnEmp = "";
         string cod_empresa = "";
 
-        bool flag = false;
 
         DataSet dsTemporal = new DataSet();
-        string tipo = "CON";
+        string tipo = "INV";
+        string saldos = "InIn_acum";
 
         public ReclasificacionInventario()
         {
@@ -49,25 +50,26 @@ namespace SiasoftAppExt
             {
                 System.Data.DataRow foundRow = SiaWin.Empresas.Rows.Find(idemp);
                 idemp = Convert.ToInt32(foundRow["BusinessId"].ToString().Trim());
-                //cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
                 this.Title = "Reclasificacion Inventario " + cod_empresa + "-" + nomempresa;
                 cnEmp = SiaWin.Func.DatosEmp(idemp);
-                //MessageBox.Show("cnEmp:"+cnEmp);
             }
             catch (Exception e)
             {
                 MessageBox.Show("error en el load" + e.Message);
             }
         }
-
-
-
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             try
             {
+                if (TipoCBX.SelectedIndex < 0)
+                {
+                    MessageBox.Show("seleccione el tipo de reclasificacion", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    (sender as ToggleButton).IsChecked = false;
+                    return;
+                }
 
                 if (((ToggleButton)sender).IsChecked == true) Card.IsEnabled = true;
 
@@ -76,6 +78,15 @@ namespace SiasoftAppExt
                 {
                     if (item.Name != Name) item.IsChecked = false;
                 }
+
+                CodAnt.Text = "";
+                CodNue.Text = "";
+                CodAntName.Text = "";
+                CodNueName.Text = "";
+
+                BTNviewSaldosNormales.IsEnabled = TipoCBX.SelectedIndex == 1 && (Name == "Togle1" || Name == "Togle5") ? true : false;
+                BTNviewSaldosReclasificados.IsEnabled = TipoCBX.SelectedIndex == 1 && (Name == "Togle1" || Name == "Togle5") ? true : false;
+
                 Tab_reclas.Text = ((ToggleButton)sender).Tag.ToString();
                 BTNreclasificar.Tag = ((ToggleButton)sender).Tag.ToString();
 
@@ -88,14 +99,12 @@ namespace SiasoftAppExt
             }
 
         }
-
-
         public void cargarTemporal(string tag)
         {
             try
             {
                 dsTemporal.Clear();
-                string tipo = TipoCBX.SelectedIndex.ToString();
+                string index = TipoCBX.SelectedIndex.ToString();
                 SqlConnection con = new SqlConnection(SiaWin._cn);
                 con.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -103,8 +112,8 @@ namespace SiasoftAppExt
                 cmd = new SqlCommand("_EmpReclasificacion", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Tag", tag);
-                cmd.Parameters.AddWithValue("@tipo", tipo);
-                cmd.Parameters.AddWithValue("@modulo", "INV");//INV,CON
+                cmd.Parameters.AddWithValue("@tipo", index);
+                cmd.Parameters.AddWithValue("@modulo", tipo);
                 cmd.Parameters.AddWithValue("@codemp", cod_empresa);
                 da = new SqlDataAdapter(cmd);
                 da.Fill(dsTemporal);
@@ -116,15 +125,13 @@ namespace SiasoftAppExt
             }
         }
 
-
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (Togle1.IsChecked == false && Togle2.IsChecked == false && Togle3.IsChecked == false && Togle4.IsChecked == false)
+            if (Togle1.IsChecked == false && Togle2.IsChecked == false && Togle3.IsChecked == false && Togle4.IsChecked == false && Togle5.IsChecked == false)
             {
                 clean();
             }
         }
-
         public void clean()
         {
             CodAnt.Text = "";
@@ -138,11 +145,13 @@ namespace SiasoftAppExt
                 item.IsChecked = false;
         }
 
-
         private async void BTNreclasificar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+
+                #region validaciones
+
                 if (TipoCBX.SelectedIndex < 0)
                 {
                     MessageBox.Show("seleccione el tipo de reclasificacion");
@@ -179,11 +188,13 @@ namespace SiasoftAppExt
                     return;
                 }
 
+                #endregion
+
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
                 sfBusyIndicator.IsBusy = true;
 
-
+                string tag = BTNreclasificar.Tag.ToString().Trim();
                 string cod_ant = CodAnt.Text.Trim();
                 string cod_nue = CodNue.Text.Trim();
 
@@ -193,12 +204,31 @@ namespace SiasoftAppExt
 
                 if (((int)slowTask.Result) > 0)
                 {
-                    SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, -9, -1, -9, "GENERO RECLASIFICACION DE INVENTARIO DE LA TABLA:"+ Tab_reclas.Text+" cod_anterior:"+cod_ant+" cod_nuevo:"+cod_nue, "");
+
+
+                    if (TipoCBX.SelectedIndex == 1 && (tag == "Referencia" || tag == "Bodega"))
+                    {
+                        string column = tag == "Referencia" ? "cod_ref" : "cod_bod";
+
+                        var OtherslowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "1", column), source.Token);
+                        await OtherslowTask;
+                        if (((DataSet)OtherslowTask.Result).Tables[0].Rows.Count > 0)
+                        {
+                            MessageBox.Show("los saldos fueron pasados exitosamente", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+
+
+                    SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, -9, -1, -9, "GENERO RECLASIFICACION DE INVENTARIO DE LA TABLA:" + Tab_reclas.Text + " cod_anterior:" + cod_ant + " cod_nuevo:" + cod_nue, "");
                     sfBusyIndicator.IsBusy = false;
                     MessageBox.Show("Reclasificacion exitosa - # de registros actualizados:" + ((int)slowTask.Result));
                     clean();
                 }
 
+
+                Card.IsEnabled = false;
+                GridMain.IsEnabled = true;
+                TipoCBX.IsEnabled = true;
                 sfBusyIndicator.IsBusy = false;
             }
             catch (Exception w)
@@ -207,7 +237,6 @@ namespace SiasoftAppExt
                 MessageBox.Show("error en la reclasificacion identifique si los campos que ingreso son los correctos para poder hacer el cambio", "ERROR CONTACTE CON EL ADMINISTRADOR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
 
         private int SlowDude(string cod_ant, string cod_nue, DataTable dt, CancellationToken cancellationToken)
         {
@@ -237,9 +266,6 @@ namespace SiasoftAppExt
             return NumReg;
         }
 
-
-
-
         private void CodNue_LostFocus(object sender, RoutedEventArgs e)
         {
             if ((sender as TextBox).Text == "") return;
@@ -259,16 +285,12 @@ namespace SiasoftAppExt
             {
                 if (existencia() == false)
                 {
-                    MessageBox.Show("el codigo nuevo ingresado no existe");
+                    MessageBox.Show("el codigo nuevo ingresado no existe", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
             }
 
         }
-
-
-
-
 
         public bool existencia()
         {
@@ -316,7 +338,6 @@ namespace SiasoftAppExt
             return bandera;
         }
 
-
         private void CodAnt_LostFocus(object sender, RoutedEventArgs e)
         {
             if ((sender as TextBox).Text == "") return;
@@ -350,23 +371,37 @@ namespace SiasoftAppExt
             }
             else
             {
-                MessageBox.Show("el codigo que ingreso no existe en la maestra de " + tag);
+                MessageBox.Show("el codigo que ingreso no existe en la maestra de " + tag, "Alera", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 CodAnt.Text = "";
                 CodAntName.Text = "";
             }
         }
 
-
         private void TipoCBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (flag == true)
+            if (TipoCBX.SelectedIndex >= 0)
             {
                 CodAnt.Text = "";
                 CodAntName.Text = "";
                 CodNue.Text = "";
                 CodNueName.Text = "";
+
+                string tag = "";
+
+                bool isCuenta = false;
+                foreach (ToggleButton item in GridTogle.Children)
+                {
+                    if (item.IsChecked == true)
+                        tag = item.Tag.ToString().Trim();
+
+                    if (item.IsChecked == true && (item.Name == "Togle1" || item.Name == "Togle5") && TipoCBX.SelectedIndex == 1) isCuenta = true;
+                }
+
+                BTNviewSaldosNormales.IsEnabled = isCuenta;
+                BTNviewSaldosReclasificados.IsEnabled = isCuenta;
+
+                if (!string.IsNullOrEmpty(tag)) cargarTemporal(tag);
             }
-            flag = true;
         }
 
         private DataSet Saldos(string cod_ant, string cod_nue, string passa, string column)
@@ -397,8 +432,6 @@ namespace SiasoftAppExt
             }
         }
 
-
-
         private void BTNviewSaldosNormales_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -413,6 +446,17 @@ namespace SiasoftAppExt
 
                 if (TipoCBX.SelectedIndex == 0)
                 {
+                    if (string.IsNullOrWhiteSpace(CodAnt.Text))
+                    {
+                        MessageBox.Show("llene el campo codigo anterior", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(CodNue.Text))
+                    {
+                        MessageBox.Show("llene el campo codigo nuevo", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+
                     if (existencia() == true)
                     {
                         (sender as TextBox).Text = "";
@@ -423,6 +467,17 @@ namespace SiasoftAppExt
 
                 if (TipoCBX.SelectedIndex == 1)
                 {
+                    if (string.IsNullOrWhiteSpace(CodAnt.Text))
+                    {
+                        MessageBox.Show("llene el campo codigo anterior", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(CodNue.Text))
+                    {
+                        MessageBox.Show("llene el campo codigo nuevo", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+
                     if (existencia() == false)
                     {
                         MessageBox.Show("el codigo nuevo ingresado no existe", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -445,8 +500,8 @@ namespace SiasoftAppExt
                 #endregion
 
                 string tag = BTNreclasificar.Tag.ToString().Trim();
-                string column = tag == "Cuentas" ? "cod_cta" : "cod_ter";
-                string query = "select* From CoSaldos_cta where " + column + "= '" + CodAnt.Text + "' or " + column + " = '" + CodNue.Text + "'; ";
+                string column = tag == "Referencia" ? "cod_ref" : "cod_bod";
+                string query = "select * From " + saldos + " where " + column + "= '" + CodAnt.Text + "' or " + column + " = '" + CodNue.Text + "'; ";
                 DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
                 if (dt.Rows.Count > 0)
                 {
@@ -464,7 +519,7 @@ namespace SiasoftAppExt
             }
         }
 
-        private void BTNviewSaldosReclasificados_Click(object sender, RoutedEventArgs e)
+        private async void BTNviewSaldosReclasificados_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -500,8 +555,7 @@ namespace SiasoftAppExt
                 string tag = BTNreclasificar.Tag.ToString().Trim();
                 string cod_ant = CodAnt.Text.Trim();
                 string cod_nue = CodNue.Text.Trim();
-
-                string column = tag == "Cuentas" ? "cod_cta" : "cod_ter";
+                string column = tag == "Referencia" ? "cod_ref" : "cod_bod";                
                 var slowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "0", column), source.Token);
                 await slowTask;
 
@@ -548,6 +602,66 @@ namespace SiasoftAppExt
 
 
 
+
+        private void Cod_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.F8)
+                {
+
+                    string tag = BTNreclasificar.Tag.ToString();
+                    string tabla = ""; string codigo = ""; string nombre = "";
+                    switch (tag)
+                    {
+                        case "Referencia":
+                            tabla = "inmae_ref"; codigo = "cod_ref"; nombre = "nom_ref";
+                            break;
+                        case "Linea":
+                            tabla = "inmae_tip"; codigo = "cod_tip"; nombre = "nom_tip";
+                            break;
+                        case "Grupo":
+                            tabla = "InMae_gru"; codigo = "cod_gru"; nombre = "nom_gru";
+                            break;
+                        case "SubGrupo":
+                            tabla = "InMae_sgr"; codigo = "Cod_sgr"; nombre = "nom_sgr";
+                            break;
+                        case "Bodega":
+                            tabla = "InMae_bod"; codigo = "cod_bod"; nombre = "nom_bod";
+                            break;
+                    }
+
+                    int idr = 0; string code = ""; string nom = "";
+                    dynamic winb = SiaWin.WindowBuscar(tabla, codigo, nombre, codigo, "idrow", tag, SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
+                    winb.ShowInTaskbar = false;
+                    winb.Owner = Application.Current.MainWindow;
+                    winb.Width = 400;
+                    winb.Height = 400;
+                    winb.ShowDialog();
+                    idr = winb.IdRowReturn;
+                    code = winb.Codigo;
+                    nom = winb.Nombre;
+
+                    if (idr > 0)
+                    {
+                        (sender as TextBox).Text = code.Trim();
+                        CodAntName.Text = nom;
+                    }
+                    else
+                    {
+                        (sender as TextBox).Text = "";
+                        CodAntName.Text = "";
+                    }
+
+
+
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error key:" + w);
+            }
+        }
 
 
 

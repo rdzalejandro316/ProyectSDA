@@ -19,6 +19,10 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.Reporting.WinForms;
 using System.ComponentModel;
+using System.Windows.Markup;
+using System.IO.Packaging;
+using Syncfusion.Windows.Shared.Resources;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace SiasoftAppExt
 {
@@ -37,6 +41,8 @@ namespace SiasoftAppExt
         DataTable DtAuxCtaTer = new DataTable();
         DataTable DtBalance = new DataTable();
         bool loaded = false;
+
+        List<Periodo> per_column = new List<Periodo>();
 
         public Co_Balance(dynamic tabitem1)
         {
@@ -74,6 +80,27 @@ namespace SiasoftAppExt
                 C2.Text = "9";
                 NV1.Text = "1";
                 NV2.Text = "9";
+
+                DataTable dtper = SiaWin.Func.SqlDT("select rtrim(Periodo) as periodo,rtrim(PeriodoNombre) as periodonombre From Periodos where TipoPeriodo=1", "", 0);
+                dtper.Rows.Add("15", "Todos");
+                CbPeriodo.ItemsSource = dtper.DefaultView;
+
+
+                for (int i = 1; i <= 13; i++)
+                {
+                    string per = i < 10 ? "0" + i : i.ToString();
+                    per_column.Add(
+                        new Periodo()
+                        {
+                            sal_anterior = "salant_" + per,
+                            debito = "deb_" + per,
+                            credito = "cre_" + per,
+                            sal_final = "sal_" + per,
+                            periodo = per,
+                            per_num = i
+                        });
+                }
+
             }
             catch (Exception e)
             {
@@ -268,12 +295,19 @@ namespace SiasoftAppExt
                 TxTipo.Text = TipoBalNiif.SelectedIndex == 0 ? "FISCAL" : "NIIF";
                 int tipo = TipoIncluir.SelectedIndex;
 
-
                 CancellationTokenSource source = new CancellationTokenSource();
                 DtBalance.Clear();
                 GridConfiguracion.IsEnabled = false;
                 sfBusyIndicator.IsBusy = true;
                 dataGridConsulta.ItemsSource = null;
+                dataGridConsultaDetalle.ItemsSource = null;
+                GridBalance.ItemsSource = null;
+
+                TxSaldoInicialAño.Text = "0";
+                TxSaldoFinalAño.Text = "0";
+                TxDebitoAño.Text = "0";
+                TxCreditoAño.Text = "0";
+
                 BtnEjecutar.IsEnabled = false;
                 string ffi = fecha_ini.Text.ToString();
                 string fff = fecha_fin.Text.ToString();
@@ -285,30 +319,142 @@ namespace SiasoftAppExt
                 await slowTask;
 
 
+
+
+
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
                     DtBalance = ((DataSet)slowTask.Result).Tables[0];
 
                     int redondeo = CbxRedondeo.SelectedIndex;
 
-                    foreach (System.Data.DataRow item in DtBalance.Rows)
+                    //foreach (System.Data.DataRow item in DtBalance.Rows)
+                    //{
+                    //    switch (redondeo)
+                    //    {
+                    //        case 1:
+                    //            decimal sal_ant = Convert.ToDecimal(item["sal_ant"]);
+                    //            item["sal_ant"] = Math.Round(sal_ant);
+                    //            break;
+                    //    }
+
+                    //}
+
+
+                    dataGridConsulta.ItemsSource = DtBalance;
+                    Total.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
+
+                    dataGridConsultaDetalle.ItemsSource = DtBalance;
+                    TotalAño.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
+
+
+                    //per_column
+                    foreach (Periodo item in per_column)
                     {
-                        switch (redondeo)
+                        string saldo_a = item.sal_anterior.Trim();
+                        string debito = item.debito.Trim();
+                        string credito = item.credito.Trim();
+                        string saldo_f = item.sal_final.Trim();
+
+                        var facets = new Int32Collection();
+                        facets.Add(3);
+
+                        GridNumericColumn colm_salant = new GridNumericColumn()
                         {
-                            case 1:
-                                decimal sal_ant = Convert.ToDecimal(item["sal_ant"]);
-                                item["sal_ant"] = Math.Round(sal_ant);
-                                break;
-                        }
+                            HeaderText = "Saldo Anterior",
+                            MappingName = saldo_a,
+                            IsHidden = true,
+                            NumberDecimalDigits = 2,
+                            NumberDecimalSeparator = ".",
+                            NumberGroupSizes = facets,
+                            NumberGroupSeparator = ","
+                        };
+
+                        GridNumericColumn colm_deb = new GridNumericColumn()
+                        {
+                            HeaderText = "Debitos",
+                            MappingName = debito,
+                            IsHidden = true,
+                            NumberDecimalDigits = 2,
+                            NumberDecimalSeparator = ".",
+                            NumberGroupSizes = facets,
+                            NumberGroupSeparator = ","
+                        };
+
+                        GridNumericColumn colm_cre = new GridNumericColumn()
+                        {
+                            HeaderText = "Creditos",
+                            MappingName = credito,
+                            IsHidden = true,
+                            NumberDecimalDigits = 2,
+                            NumberDecimalSeparator = ".",
+                            NumberGroupSizes = facets,
+                            NumberGroupSeparator = ","
+                        };
+
+                        GridNumericColumn colm_salfin = new GridNumericColumn()
+                        {
+                            HeaderText = "Saldo Final",
+                            MappingName = saldo_f,
+                            IsHidden = true,
+                            NumberDecimalDigits = 2,
+                            NumberDecimalSeparator = ".",
+                            NumberGroupSizes = facets,
+                            NumberGroupSeparator = ","
+                        };
+
+                        dataGridConsulta.Columns.Add(colm_salant);
+                        dataGridConsulta.Columns.Add(colm_deb);
+                        dataGridConsulta.Columns.Add(colm_cre);
+                        dataGridConsulta.Columns.Add(colm_salfin);
+
+                        dataGridConsultaDetalle.Columns.Add(colm_salant);
+                        dataGridConsultaDetalle.Columns.Add(colm_deb);
+                        dataGridConsultaDetalle.Columns.Add(colm_cre);
+                        dataGridConsultaDetalle.Columns.Add(colm_salfin);
 
                     }
 
 
-                    dataGridConsulta.ItemsSource = DtBalance.DefaultView;
-                    Total.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
+                    #region botones grid
 
-                    dataGridConsultaDetalle.ItemsSource = DtBalance.DefaultView;
-                    Total.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
+
+                    CbPeriodo.SelectedValue = "15";
+
+                    List<GridColumn> rem = new List<GridColumn>();
+                    foreach (GridColumn item in dataGridConsulta.Columns)
+                    {
+                        if (item.MappingName == "Detalle") rem.Add(item);
+                        if (item.MappingName == "AcumAño") rem.Add(item);
+                    }
+
+                    foreach (var item in rem) dataGridConsulta.Columns.Remove(item);
+
+
+                    DataTemplate cellTemplate1 = new DataTemplate();
+                    FrameworkElementFactory frameworkElement1 = new FrameworkElementFactory(typeof(Button));
+                    frameworkElement1.SetValue(Button.ContentProperty, "...");
+                    frameworkElement1.SetValue(Button.BackgroundProperty, Brushes.DodgerBlue);
+                    frameworkElement1.SetValue(Button.BorderBrushProperty, Brushes.DodgerBlue);
+                    frameworkElement1.AddHandler(Button.ClickEvent, new RoutedEventHandler(BtnDetalle_Click));
+                    cellTemplate1.VisualTree = frameworkElement1;
+                    dataGridConsulta.Columns.Add(new GridTemplateColumn()
+                    { HeaderText = "Detalle", MappingName = "Detalle", Width = 50, CellTemplate = cellTemplate1, AllowFiltering = false, });
+
+
+                    DataTemplate cellTemplate2 = new DataTemplate();
+                    FrameworkElementFactory frameworkElement2 = new FrameworkElementFactory(typeof(Button));
+                    frameworkElement2.SetValue(Button.ContentProperty, "...");
+                    frameworkElement2.SetValue(Button.BackgroundProperty, Brushes.DodgerBlue);
+                    frameworkElement2.SetValue(Button.BorderBrushProperty, Brushes.DodgerBlue);
+                    frameworkElement2.AddHandler(Button.ClickEvent, new RoutedEventHandler(BtnAcumAno_Click));
+                    cellTemplate2.VisualTree = frameworkElement2;
+                    dataGridConsulta.Columns.Add(new GridTemplateColumn()
+                    { HeaderText = "AcumAño", MappingName = "AcumAño", Width = 50, CellTemplate = cellTemplate2, AllowFiltering = false, });
+
+
+                    #endregion
+
 
                     TabControl1.SelectedIndex = 2;
                     TabControl1.SelectedIndex = 1;
@@ -322,7 +468,7 @@ namespace SiasoftAppExt
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("error al cargar:" + ex);
                 this.Opacity = 1;
             }
         }
@@ -336,7 +482,8 @@ namespace SiasoftAppExt
                 cmd.CommandTimeout = 0;
                 SqlDataAdapter da = new SqlDataAdapter();
                 DataSet ds = new DataSet();
-                cmd = new SqlCommand("_EmpSpCoBalance", con);
+                //cmd = new SqlCommand("_EmpSpCoBalance", con);
+                cmd = new SqlCommand("_EmpSpCoBalanceAnual", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@fechaini", _Fi);
                 cmd.Parameters.AddWithValue("@fechafin", _Ff);
@@ -411,10 +558,16 @@ namespace SiasoftAppExt
             {
                 var options = new Syncfusion.UI.Xaml.Grid.Converter.ExcelExportingOptions();
                 options.ExcelVersion = ExcelVersion.Excel2013;
+                options.ExportMode = ExportMode.Value;
+                options.ExcludeColumns.Add("dir1");
+                options.ExcludeColumns.Add("tel1");
+                options.ExcludeColumns.Add("Detalle");
+                options.ExcludeColumns.Add("AcumAño");
+                options.CellsExportingEventHandler = CellExportingHandler;
                 var excelEngine = dataGridConsulta.ExportToExcel(dataGridConsulta.View, options);
                 var workBook = excelEngine.Excel.Workbooks[0];
-                options.ExportMode = ExportMode.Value;
-                //options.CellsExportingEventHandler = CellExportingHandler;
+
+
                 workBook.ActiveSheet.Columns[0].HorizontalAlignment = ExcelHAlign.HAlignLeft;
                 workBook.ActiveSheet.Columns[5].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[6].NumberFormat = "0.00";
@@ -434,7 +587,6 @@ namespace SiasoftAppExt
                 {
                     using (Stream stream = sfd.OpenFile())
                     {
-                        MessageBox.Show(sfd.FilterIndex.ToString());
                         if (sfd.FilterIndex == 1)
                             workBook.Version = ExcelVersion.Excel97to2003;
                         else if (sfd.FilterIndex == 2)
@@ -458,13 +610,22 @@ namespace SiasoftAppExt
         }
         private void BtnDetalle_Click(object sender, RoutedEventArgs e)
         {
-            DetalleCta();
+            DetalleCta(dataGridConsulta);
         }
-        private void DetalleCta()
+
+        private void BtnDetalleAño_Click(object sender, RoutedEventArgs e)
+        {
+            DetalleCta(dataGridConsultaDetalle);
+        }
+
+        private void DetalleCta(SfDataGrid gr)
         {
             try
             {
-                DataRowView row = (DataRowView)dataGridConsulta.SelectedItems[0];
+                //DataRowView row = (DataRowView)dataGridConsulta.SelectedItems[0];
+                DataRowView row = (DataRowView)gr.SelectedItems[0];
+
+
                 if (row == null)
                 {
                     MessageBox.Show("Registro sin datos");
@@ -480,7 +641,29 @@ namespace SiasoftAppExt
 
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append(" declare @fechaIni as date ; set @fechaIni='" + fecha_ini.SelectedDate.Value.Date.ToShortDateString() + "';declare @fechaFin as date ; set @fechaFin='" + fecha_fin.SelectedDate.Value.Date.ToShortDateString() + "'");
+                if (gr.Name == "dataGridConsulta")
+                {
+                    if (CbPeriodo.SelectedValue.ToString() == "15")
+                    {
+                        sb.Append(" declare @fechaIni as date ; set @fechaIni='" + fecha_ini.SelectedDate.Value.Date.ToShortDateString() + "';declare @fechaFin as date ; set @fechaFin='" + fecha_fin.SelectedDate.Value.Date.ToShortDateString() + "';");
+                    }
+                    else
+                    {
+
+                        DateTime fi = fecha_ini.SelectedDate.Value.Date;
+                        string f_i = "01/" + CbPeriodo.SelectedValue + "/" + fi.Year;
+                        int mes = Convert.ToInt32(CbPeriodo.SelectedValue);
+                        DateTime f_f = new DateTime(fi.Year, mes, 1).AddMonths(1).AddDays(-1);
+
+                        sb.Append(" declare @fechaIni as date ; set @fechaIni='" + f_i + "';declare @fechaFin as date ; set @fechaFin='" + f_f.ToString("dd/MM/yyyy") + "';");
+                    }
+                }
+                else
+                {
+                    sb.Append(" declare @fechaIni as date ; set @fechaIni='" + fecha_ini.SelectedDate.Value.Date.ToShortDateString() + "';declare @fechaFin as date ; set @fechaFin='" + fecha_fin.SelectedDate.Value.Date.ToShortDateString() + "';");
+                }
+
+
                 sb.Append(" SELEct cab_doc.idreg ,cue_doc.idreg as idregcue,cab_doc.cod_trn,cab_doc.num_trn,cab_doc.fec_trn,cue_doc.cod_cta,cue_doc.cod_cco,cue_doc.cod_ter,comae_ter.nom_ter,");
                 sb.Append(" cue_doc.doc_ref,cue_doc.doc_cruc,cue_doc.num_chq,cue_doc.bas_mov,cue_doc.deb_mov,cue_doc.cre_mov, cab_DOC.factura,des_mov ");
                 sb.Append(" FROM coCUE_DOC cue_doc inner join cocab_doc as cab_doc on cab_doc.idreg = cue_doc.idregcab and cue_doc.cod_cta = '" + cod_cta.Trim() + "' and ");
@@ -500,6 +683,7 @@ namespace SiasoftAppExt
                     MessageBox.Show("Sin informacion de cuenta");
                     return;
                 }
+
                 Co_BalanceAux WinDetalle = new Co_BalanceAux(idemp, moduloid);
                 WinDetalle.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 if (string.IsNullOrEmpty(cod_cli.Trim()))
@@ -552,7 +736,6 @@ namespace SiasoftAppExt
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
 
         private void dataGridConsulta_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -637,43 +820,13 @@ namespace SiasoftAppExt
         }
 
 
-        //public string getPntRepor(string code)
-        //{
-        //    string select = "select cod_Screen,code_report,name_report,ruta_report,idrowServer  from ReportPnt  where code_report='"+code+"' ";
-        //    DataTable dt = SiaWin.Func.SqlDT(select, "tabla", idemp);
-        //    return dt.Rows.Count > 0 ? dt.Rows[0]["name_report"].ToString() : string.Empty;
-        //}
-
-        //public Tuple<string, string, string> GetServer()
-        //{
-        //    string query = "select ServerIP,UserServer,UserServerPassword from ReportServer where idrow='1'  ";           
-        //    DataTable dt = SiaWin.Func.SqlDT(query, "Conceptos", idemp);
-        //    string serv_ip = string.Empty;
-        //    string serv_user = string.Empty;
-        //    string serv_pass = string.Empty;
-
-        //    if (dt.Rows.Count > 0)
-        //    {
-        //        serv_ip = dt.Rows[0]["ServerIP"].ToString().Trim();
-        //        serv_user = dt.Rows[0]["UserServer"].ToString().Trim();
-        //        serv_pass = dt.Rows[0]["UserServerPassword"].ToString().Trim();
-        //    }            
-        //    var tuple = new Tuple<string, string, string>(serv_ip, serv_user, serv_pass);
-        //    return tuple;
-        //}
 
 
-
-        private void TabControl1_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void viewer_Print(object sender, ReportPrintEventArgs e)
         {
 
             PrintOk = true;
             viewer.Focus();
-            //AuditoriaDoc(DocumentoIdCab, "Imprimio ", idEmp);
         }
 
         private void LoadReporte()
@@ -798,13 +951,18 @@ namespace SiasoftAppExt
                 if (dataGridConsultaDetalle.SelectedIndex >= 0)
                 {
                     DataRowView row = (DataRowView)dataGridConsultaDetalle.SelectedItems[0];
-                    string fechaba = fecha_ini.Text;
-                    DateTime fechafin = fecha_fin.DisplayDate;
-                    string tercero = row["cod_ter"].ToString().Trim();
-                    string cuenta = row["cod_cta"].ToString();
-                    int tipo = TipoBalNiif.SelectedIndex;
-                    DateTime fec = Convert.ToDateTime(fechaba.ToString());
-                    LoadAño(fec.Year.ToString(), fechafin.ToString(), tercero, cuenta, tipo, codemp);
+                    LoadAño(row);
+
+                    decimal sal_ant = Convert.ToDecimal(row["sal_ant"]);
+                    decimal debito = Convert.ToDecimal(row["debito"]);
+                    decimal credito = Convert.ToDecimal(row["credito"]);
+                    decimal sal_fin = Convert.ToDecimal(row["sal_fin"]);
+
+                    TxSaldoInicialAño.Text = sal_ant.ToString("N");
+                    TxSaldoFinalAño.Text = sal_fin.ToString("N");
+                    TxDebitoAño.Text = debito.ToString("N");
+                    TxCreditoAño.Text = credito.ToString("N");
+
 
                 }
 
@@ -815,7 +973,7 @@ namespace SiasoftAppExt
             }
         }
 
-        public async void LoadAño(string fecha, string fechafin, string ter, string cta, int tipoblc, string cod_empresa)
+        public async void LoadAño(DataRowView row)
         {
             try
             {
@@ -826,19 +984,20 @@ namespace SiasoftAppExt
                 GridBalance.ClearFilters();
                 GridBalance.ItemsSource = null;
                 int cierre = TipoIncluir.SelectedIndex;
+                DateTime fi = fecha_ini.SelectedDate.Value.Date;
 
-                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadDataDetalleAño(fecha, fechafin.ToString(), ter, cta, tipoblc, cod_empresa, cierre), source.Token);
+                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadDataDetalleAño(row, fi.Year, cierre), source.Token);
                 await slowTask;
 
-                if (((DataSet)slowTask.Result) == null)
+                if (((DataTable)slowTask.Result) == null)
                 {
                     this.sfBusyIndicator.IsBusy = false;
-                    //MessageBox.Show("cuenta si movientos", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("cuenta si movientos", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
-                if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
+                if (((DataTable)slowTask.Result).Rows.Count > 0)
                 {
-                    GridBalance.ItemsSource = ((DataSet)slowTask.Result).Tables[0];
+                    GridBalance.ItemsSource = ((DataTable)slowTask.Result);
                 }
 
                 this.sfBusyIndicatorPeriodo.IsBusy = false;
@@ -856,31 +1015,68 @@ namespace SiasoftAppExt
             }
         }
 
-        private DataSet LoadDataDetalleAño(string fecha, string fechafin, string ter, string cta, int tipblc, string empresas, int cierre)
+        private DataTable LoadDataDetalleAño(DataRowView row, int year, int cierre)
         {
             try
             {
-                SqlConnection con = new SqlConnection(SiaWin._cn);
-                SqlCommand cmd = new SqlCommand();
-                SqlDataAdapter da = new SqlDataAdapter();
-                DataSet ds = new DataSet();
-                cmd = new SqlCommand("_EmpSpMovCuenta", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ano", fecha);
-                cmd.Parameters.AddWithValue("@fechafin", Convert.ToDateTime(fechafin));
-                cmd.Parameters.AddWithValue("@ter", ter);
-                cmd.Parameters.AddWithValue("@cta", cta);
-                cmd.Parameters.AddWithValue("@tipoblc", tipblc);
-                cmd.Parameters.AddWithValue("@codemp", empresas);
-                cmd.Parameters.AddWithValue("@IncluirCierre", cierre);
-                da = new SqlDataAdapter(cmd);
-                da.SelectCommand.CommandTimeout = 0;
-                da.Fill(ds);
-                con.Close();
-                return ds;
+                DataTable dt = new DataTable();
+                dt.Columns.Add("cod_cta");
+                dt.Columns.Add("ano");
+                dt.Columns.Add("per_doc");
+                dt.Columns.Add("sal_ini");
+                dt.Columns.Add("debitos");
+                dt.Columns.Add("creditos");
+                dt.Columns.Add("sal_fin");
+
+
+                string cod_cta = row["cod_cta"].ToString();
+
+                foreach (var item in per_column)
+                {
+                    string periodo = item.periodo.ToString();
+                    decimal sal_anterior = Convert.ToDecimal(row[item.sal_anterior]);
+                    decimal debitos = Convert.ToDecimal(row[item.debito]);
+                    decimal creditos = Convert.ToDecimal(row[item.credito]);
+                    decimal sal_final = Convert.ToDecimal(row[item.sal_final]);
+
+                    if (cierre == 0 && item.per_num == 13) continue;
+
+                    dt.Rows.Add(
+                        cod_cta,
+                        year,
+                        periodo,
+                        sal_anterior,
+                        debitos,
+                        creditos,
+                        sal_final
+                        );
+                };
+
+
+                return dt;
+
+                //SqlConnection con = new SqlConnection(SiaWin._cn);
+                //SqlCommand cmd = new SqlCommand();
+                //SqlDataAdapter da = new SqlDataAdapter();
+                //DataSet ds = new DataSet();
+                //cmd = new SqlCommand("_EmpSpMovCuenta", con);
+                //cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.Parameters.AddWithValue("@ano", fecha);
+                //cmd.Parameters.AddWithValue("@fechafin", Convert.ToDateTime(fechafin));
+                //cmd.Parameters.AddWithValue("@ter", ter);
+                //cmd.Parameters.AddWithValue("@cta", cta);
+                //cmd.Parameters.AddWithValue("@tipoblc", tipblc);
+                //cmd.Parameters.AddWithValue("@codemp", empresas);
+                //cmd.Parameters.AddWithValue("@IncluirCierre", cierre);
+                //da = new SqlDataAdapter(cmd);
+                //da.SelectCommand.CommandTimeout = 0;
+                //da.Fill(ds);
+                //con.Close();
+                //return ds;
             }
-            catch (Exception)
+            catch (Exception w)
             {
+                MessageBox.Show("error al cargar:" + w);
                 return null;
             }
         }
@@ -889,6 +1085,8 @@ namespace SiasoftAppExt
         {
             try
             {
+
+
                 string tag = (sender as Button).Tag.ToString().Trim();
                 if (tag == "A")
                 {
@@ -909,7 +1107,7 @@ namespace SiasoftAppExt
             }
         }
 
-        private void BtnDetalleAño_Click(object sender, RoutedEventArgs e)
+        private void BtnDetalleAñoPeriodo_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -1032,7 +1230,88 @@ namespace SiasoftAppExt
             }
         }
 
+        private void CbPeriodo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (CbPeriodo.SelectedIndex >= 0)
+                {
+                    string periodo = CbPeriodo.SelectedValue.ToString().Trim();
+
+                    if (periodo == "15")
+                    {
+                        dataGridConsulta.Columns["sal_ant"].IsHidden = false;
+                        dataGridConsulta.Columns["debito"].IsHidden = false;
+                        dataGridConsulta.Columns["credito"].IsHidden = false;
+                        dataGridConsulta.Columns["sal_fin"].IsHidden = false;
+
+                        foreach (Periodo item in per_column)
+                        {
+                            string debito = item.debito;
+                            string credito = item.credito;
+                            string saldo = item.sal_final;
+
+                            dataGridConsulta.Columns[debito].IsHidden = true;
+                            dataGridConsulta.Columns[credito].IsHidden = true;
+                            dataGridConsulta.Columns[saldo].IsHidden = true;
+                        }
+                    }
+                    else
+                    {
+                        foreach (Periodo item in per_column)
+                        {
+                            string saldo_anterior = item.sal_anterior;
+                            string debito = item.debito;
+                            string credito = item.credito;
+                            string saldo_final = item.sal_final;
+                            string per = item.periodo;
+
+
+                            if (per == periodo)
+                            {
+                                dataGridConsulta.Columns[saldo_anterior].IsHidden = false;
+                                dataGridConsulta.Columns[debito].IsHidden = false;
+                                dataGridConsulta.Columns[credito].IsHidden = false;
+                                dataGridConsulta.Columns[saldo_final].IsHidden = false;
+                            }
+                            else
+                            {
+                                dataGridConsulta.Columns[saldo_anterior].IsHidden = true;
+                                dataGridConsulta.Columns[debito].IsHidden = true;
+                                dataGridConsulta.Columns[credito].IsHidden = true;
+                                dataGridConsulta.Columns[saldo_final].IsHidden = true;
+
+                                dataGridConsulta.Columns["sal_ant"].IsHidden = true;
+                                dataGridConsulta.Columns["debito"].IsHidden = true;
+                                dataGridConsulta.Columns["credito"].IsHidden = true;
+                                dataGridConsulta.Columns["sal_fin"].IsHidden = true;
+                            }
+                        }
+                    }
+
+
+
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al cambiar periodo:" + w);
+            }
+        }
 
 
     }
+
+    public class Periodo
+    {
+        public string sal_anterior { get; set; }
+        public string debito { get; set; }
+        public string credito { get; set; }
+        public string sal_final { get; set; }
+        public string periodo { get; set; }
+        public int per_num { get; set; }
+
+    }
+
+
 }

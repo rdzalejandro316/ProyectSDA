@@ -26,3 +26,17 @@ D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\Reclasificac
 D:\Empresas\SDA\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.pdb
 D:\Empresas\SDA\Library\ReclasificacionInventario.dll
 D:\Empresas\SDA\Library\ReclasificacionInventario.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.g.cs
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario_MarkupCompile.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario_MarkupCompile.lref
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.baml
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.g.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.Properties.Resources.resources
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.csproj.CopyComplete
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\ReclasificacionInventario\obj\Debug\ReclasificacionInventario.pdb
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\ReclasificacionInventario.dll
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\ReclasificacionInventario.pdb

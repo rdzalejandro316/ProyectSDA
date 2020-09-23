@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Empresas\SDA\Library\project\Co_Balance\obj\Debug\
+C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\Co_Balance\obj\Debug\
 Co_Balance
 none
 false
@@ -13,8 +13,8 @@ DEBUG;TRACE
 5-1122115314
 
 8-1534695261
-291591767971
+29-57939212
 BalanceAcumuladoCuenta.xaml;Co_Balance.xaml;Co_BalanceAux.xaml;Detalle.xaml;Reporte.xaml;
 
-True
+False
 

@@ -55,7 +55,6 @@ namespace SiasoftAppExt
             SiaWin = Application.Current.MainWindow;
             idemp = SiaWin._BusinessId;
             tabitem = tabitem1;
-
             LoadConfig();
             dt_errores.Columns.Add("error");
         }
@@ -156,14 +155,28 @@ namespace SiasoftAppExt
 
         public static System.Data.DataTable ConvertExcelToDataTable(string FileName)
         {
-            using (ExcelEngine excelEngine = new ExcelEngine())
+            try
             {
-                IApplication application = excelEngine.Excel;
-                application.DefaultVersion = ExcelVersion.Excel2013;
-                IWorkbook workbook = application.Workbooks.Open(FileName);
-                IWorksheet worksheet = workbook.Worksheets[0];
-                System.Data.DataTable customersTable = worksheet.ExportDataTable(worksheet.UsedRange, ExcelExportDataTableOptions.ColumnNames);
-                return customersTable;
+                using (ExcelEngine excelEngine = new ExcelEngine())
+                {
+                    IApplication application = excelEngine.Excel;
+                    if (!application.IsSupported(FileName))
+                    {
+                        MessageBox.Show("el tipo de extencion .xls no se admite por favor actualizarlo a .xlsx", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return null;
+                    }
+
+                    application.DefaultVersion = ExcelVersion.Excel2013;
+                    IWorkbook workbook = application.Workbooks.Open(FileName);
+                    IWorksheet worksheet = workbook.Worksheets[0];
+                    System.Data.DataTable customersTable = worksheet.ExportDataTable(worksheet.UsedRange, ExcelExportDataTableOptions.ColumnNames);
+                    return customersTable;
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("ConvertExcelToDataTable:" + w);
+                return null;
             }
         }
 
@@ -201,7 +214,6 @@ namespace SiasoftAppExt
 
         public async void impotar()
         {
-
             try
             {
 
@@ -217,6 +229,7 @@ namespace SiasoftAppExt
                 dt.Clear(); dt_errores.Clear();
 
                 dt = ConvertExcelToDataTable(root);
+                if (dt == null) { sfBusyIndicator.IsBusy = false; return; }
 
                 if (validarArchioExcel(dt) == false)
                 {
@@ -225,24 +238,24 @@ namespace SiasoftAppExt
                     return;
                 }
 
-                agruparDocumentos(dt);
-
+                
+                agruparDocumentos(dt);                
                 BtnCrear.IsEnabled = false;
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
                 var slowTask = Task<DataTable>.Factory.StartNew(() => Process(), source.Token);
                 await slowTask;
 
-                if (((DataTable)slowTask.Result).Rows.Count>0)
+                if (((DataTable)slowTask.Result).Rows.Count > 0)
                 {
                     double deb_mov = Convert.ToDouble(((DataTable)slowTask.Result).Compute("Sum(DEB_MOV)", "").ToString());
                     double cre_mov = Convert.ToDouble(((DataTable)slowTask.Result).Compute("Sum(CRE_MOV)", "").ToString());
                     TxTot_deb.Text = deb_mov.ToString("N", CultureInfo.InvariantCulture);
                     TxTot_cre.Text = cre_mov.ToString("N", CultureInfo.InvariantCulture);
                     Txdif.Text = (deb_mov - cre_mov).ToString("N", CultureInfo.InvariantCulture);
-                    dataGridRefe.ItemsSource = ((DataTable)slowTask.Result).DefaultView;                    
+                    dataGridRefe.ItemsSource = ((DataTable)slowTask.Result).DefaultView;
                 }
-                
+
 
                 MessageBox.Show(Application.Current.MainWindow, "Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -250,6 +263,11 @@ namespace SiasoftAppExt
                 Tx_errores.Text = dt_errores.Rows.Count.ToString();
 
                 BtnCrear.IsEnabled = true;
+                sfBusyIndicator.IsBusy = false;
+            }
+            catch (ArgumentException w)
+            {
+                MessageBox.Show("ArgumentException:" + w);
                 sfBusyIndicator.IsBusy = false;
             }
             catch (Exception w)
