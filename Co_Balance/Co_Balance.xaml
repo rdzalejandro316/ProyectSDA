@@ -193,7 +193,10 @@
                     </Style>
                 </Grid.Resources>
 
-                <SiaSf:SfDataGrid  Grid.Row="0" x:Name="dataGridConsulta" AllowSorting="False" AllowGrouping="False" EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False"  AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"   CellStyle="{StaticResource gridStyle}" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Cell" MouseDoubleClick="dataGridConsulta_MouseDoubleClick" ColumnSizer="AutoWithLastColumnFill">
+                <SiaSf:SfDataGrid  Grid.Row="0" x:Name="dataGridConsulta" AllowSorting="False" AllowGrouping="False"  AutoGenerateColumns="False"                                                                       
+                                   ShowGroupDropArea="False"  AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"   CellStyle="{StaticResource gridStyle}" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Cell" MouseDoubleClick="dataGridConsulta_MouseDoubleClick">
+                    
+                    
                     <SiaSf:SfDataGrid.Columns>
                         <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_cta" Width="85" AllowFiltering="True"/>
                         <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />
@@ -202,15 +205,31 @@
                         <SiaSf:GridTextColumn HeaderText="Nivel" MappingName="niv_cta" Width="50"/>
                         <SiaSf:GridTextColumn HeaderText="Nat" MappingName="nat_cta" Width="50" />
 
-                        <SiaSf:GridTextColumn x:Name="sal_ant" HeaderText="Saldo Anterior" Width="120" DisplayBinding="{Binding Path=sal_ant, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                        <SiaSf:GridTextColumn x:Name="debito" HeaderText="Debitos" Width="120"  DisplayBinding="{Binding Path=debito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                        <SiaSf:GridTextColumn x:Name="credito" HeaderText="Creditos" Width="120" DisplayBinding="{Binding Path=credito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                        <SiaSf:GridTextColumn x:Name="sal_fin" HeaderText="Saldo Final" Width="120" DisplayBinding="{Binding Path=sal_fin, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
-                                                
+                        <SiaSf:GridTextColumn x:Name="sal_antCol" HeaderText="Saldo Anterior" Width="120" DisplayBinding="{Binding Path=sal_ant, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
+                        <SiaSf:GridTextColumn x:Name="debitoCol" HeaderText="Debitos" Width="120"  DisplayBinding="{Binding Path=debito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
+                        <SiaSf:GridTextColumn x:Name="creditoCol" HeaderText="Creditos" Width="120" DisplayBinding="{Binding Path=credito, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
+                        <SiaSf:GridTextColumn x:Name="sal_finCol" HeaderText="Saldo Final" Width="120" DisplayBinding="{Binding Path=sal_fin, StringFormat='{}{0:N2}'}" TextAlignment="Right" />
                         <SiaSf:GridTextColumn MappingName="dir1" HeaderText="direccion" IsHidden="True"/>
                         <SiaSf:GridTextColumn MappingName="tel1" HeaderText="Telefono" IsHidden="True"/>
                         <SiaSf:GridTextColumn MappingName="cod_ter" HeaderText="Cod_Ter" IsHidden="True" />
-                   
+
+                        <SiaSf:GridTemplateColumn MappingName="Detalle" Width="50"  AllowFiltering="False">
+                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="BtnDetalle" Content="...." Click="BtnDetalle_Click" Background="#2196F3" Foreground="White" />
+                                </DataTemplate>
+                            </SiaSf:GridTemplateColumn.CellTemplate>
+                        </SiaSf:GridTemplateColumn>
+
+                        <SiaSf:GridTemplateColumn MappingName="AcumAño" Width="50"  AllowFiltering="False" >
+                            <SiaSf:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="BtnAcumAno" Content="...." Click="BtnAcumAno_Click"  Background="#2196F3" Foreground="White"/>
+                                </DataTemplate>
+                            </SiaSf:GridTemplateColumn.CellTemplate>
+                        </SiaSf:GridTemplateColumn>
+
+
                     </SiaSf:SfDataGrid.Columns>
                 </SiaSf:SfDataGrid>
 

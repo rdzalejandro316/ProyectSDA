@@ -92,7 +92,6 @@ namespace SiasoftAppExt
                     per_column.Add(
                         new Periodo()
                         {
-                            sal_anterior = "salant_" + per,
                             debito = "deb_" + per,
                             credito = "cre_" + per,
                             sal_final = "sal_" + per,
@@ -217,6 +216,8 @@ namespace SiasoftAppExt
                 return false;
             }
         }
+
+
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -299,7 +300,7 @@ namespace SiasoftAppExt
                 DtBalance.Clear();
                 GridConfiguracion.IsEnabled = false;
                 sfBusyIndicator.IsBusy = true;
-                dataGridConsulta.ItemsSource = null;
+                //dataGridConsulta.ItemsSource = null;
                 dataGridConsultaDetalle.ItemsSource = null;
                 GridBalance.ItemsSource = null;
 
@@ -313,7 +314,9 @@ namespace SiasoftAppExt
                 string fff = fecha_fin.Text.ToString();
                 string tipoBal = TipoBal.SelectedIndex.ToString();
                 int _TipoBalNiif = TipoBalNiif.SelectedIndex;
-                dataGridConsulta.ClearFilters();
+                //dataGridConsulta.ClearFilters();
+
+
 
                 var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(ffi, fff, c1, c2, N1, N2, tipoBal, _TipoBalNiif, tipo), source.Token);
                 await slowTask;
@@ -321,11 +324,9 @@ namespace SiasoftAppExt
 
 
 
-
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
                     DtBalance = ((DataSet)slowTask.Result).Tables[0];
-
                     int redondeo = CbxRedondeo.SelectedIndex;
 
                     //foreach (System.Data.DataRow item in DtBalance.Rows)
@@ -347,110 +348,10 @@ namespace SiasoftAppExt
                     dataGridConsultaDetalle.ItemsSource = DtBalance;
                     TotalAño.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
 
-
-                    //per_column
-                    foreach (Periodo item in per_column)
-                    {
-                        string saldo_a = item.sal_anterior.Trim();
-                        string debito = item.debito.Trim();
-                        string credito = item.credito.Trim();
-                        string saldo_f = item.sal_final.Trim();
-
-                        var facets = new Int32Collection();
-                        facets.Add(3);
-
-                        GridNumericColumn colm_salant = new GridNumericColumn()
-                        {
-                            HeaderText = "Saldo Anterior",
-                            MappingName = saldo_a,
-                            IsHidden = true,
-                            NumberDecimalDigits = 2,
-                            NumberDecimalSeparator = ".",
-                            NumberGroupSizes = facets,
-                            NumberGroupSeparator = ","
-                        };
-
-                        GridNumericColumn colm_deb = new GridNumericColumn()
-                        {
-                            HeaderText = "Debitos",
-                            MappingName = debito,
-                            IsHidden = true,
-                            NumberDecimalDigits = 2,
-                            NumberDecimalSeparator = ".",
-                            NumberGroupSizes = facets,
-                            NumberGroupSeparator = ","
-                        };
-
-                        GridNumericColumn colm_cre = new GridNumericColumn()
-                        {
-                            HeaderText = "Creditos",
-                            MappingName = credito,
-                            IsHidden = true,
-                            NumberDecimalDigits = 2,
-                            NumberDecimalSeparator = ".",
-                            NumberGroupSizes = facets,
-                            NumberGroupSeparator = ","
-                        };
-
-                        GridNumericColumn colm_salfin = new GridNumericColumn()
-                        {
-                            HeaderText = "Saldo Final",
-                            MappingName = saldo_f,
-                            IsHidden = true,
-                            NumberDecimalDigits = 2,
-                            NumberDecimalSeparator = ".",
-                            NumberGroupSizes = facets,
-                            NumberGroupSeparator = ","
-                        };
-
-                        dataGridConsulta.Columns.Add(colm_salant);
-                        dataGridConsulta.Columns.Add(colm_deb);
-                        dataGridConsulta.Columns.Add(colm_cre);
-                        dataGridConsulta.Columns.Add(colm_salfin);
-
-                        dataGridConsultaDetalle.Columns.Add(colm_salant);
-                        dataGridConsultaDetalle.Columns.Add(colm_deb);
-                        dataGridConsultaDetalle.Columns.Add(colm_cre);
-                        dataGridConsultaDetalle.Columns.Add(colm_salfin);
-
-                    }
-
-
                     #region botones grid
 
 
                     CbPeriodo.SelectedValue = "15";
-
-                    List<GridColumn> rem = new List<GridColumn>();
-                    foreach (GridColumn item in dataGridConsulta.Columns)
-                    {
-                        if (item.MappingName == "Detalle") rem.Add(item);
-                        if (item.MappingName == "AcumAño") rem.Add(item);
-                    }
-
-                    foreach (var item in rem) dataGridConsulta.Columns.Remove(item);
-
-
-                    DataTemplate cellTemplate1 = new DataTemplate();
-                    FrameworkElementFactory frameworkElement1 = new FrameworkElementFactory(typeof(Button));
-                    frameworkElement1.SetValue(Button.ContentProperty, "...");
-                    frameworkElement1.SetValue(Button.BackgroundProperty, Brushes.DodgerBlue);
-                    frameworkElement1.SetValue(Button.BorderBrushProperty, Brushes.DodgerBlue);
-                    frameworkElement1.AddHandler(Button.ClickEvent, new RoutedEventHandler(BtnDetalle_Click));
-                    cellTemplate1.VisualTree = frameworkElement1;
-                    dataGridConsulta.Columns.Add(new GridTemplateColumn()
-                    { HeaderText = "Detalle", MappingName = "Detalle", Width = 50, CellTemplate = cellTemplate1, AllowFiltering = false, });
-
-
-                    DataTemplate cellTemplate2 = new DataTemplate();
-                    FrameworkElementFactory frameworkElement2 = new FrameworkElementFactory(typeof(Button));
-                    frameworkElement2.SetValue(Button.ContentProperty, "...");
-                    frameworkElement2.SetValue(Button.BackgroundProperty, Brushes.DodgerBlue);
-                    frameworkElement2.SetValue(Button.BorderBrushProperty, Brushes.DodgerBlue);
-                    frameworkElement2.AddHandler(Button.ClickEvent, new RoutedEventHandler(BtnAcumAno_Click));
-                    cellTemplate2.VisualTree = frameworkElement2;
-                    dataGridConsulta.Columns.Add(new GridTemplateColumn()
-                    { HeaderText = "AcumAño", MappingName = "AcumAño", Width = 50, CellTemplate = cellTemplate2, AllowFiltering = false, });
 
 
                     #endregion
@@ -472,6 +373,7 @@ namespace SiasoftAppExt
                 this.Opacity = 1;
             }
         }
+
 
         private DataSet LoadData(string _Fi, string _Ff, string _C1, string _C2, string _N1, string _N2, string _tip, int _TipoBalNiif, int tipo)
         {
@@ -1033,18 +935,24 @@ namespace SiasoftAppExt
 
                 foreach (var item in per_column)
                 {
+
+                    int sal_ant = item.per_num - 1;                    
+                    string cod = sal_ant < 10 ? "0" + sal_ant.ToString() : sal_ant.ToString();                    
+                    string c_sal = "sal_" + cod;
+                    if (sal_ant == 0) c_sal = "sal_ant";                    
+
                     string periodo = item.periodo.ToString();
-                    decimal sal_anterior = Convert.ToDecimal(row[item.sal_anterior]);
+                    decimal sal_anterior = Convert.ToDecimal(row[c_sal]);
                     decimal debitos = Convert.ToDecimal(row[item.debito]);
                     decimal creditos = Convert.ToDecimal(row[item.credito]);
                     decimal sal_final = Convert.ToDecimal(row[item.sal_final]);
 
-                    if (cierre == 0 && item.per_num == 13) continue;
+                    if (cierre == 0 && item.per_num == 13) continue; 
 
                     dt.Rows.Add(
                         cod_cta,
                         year,
-                        periodo,
+                        periodo, 
                         sal_anterior,
                         debitos,
                         creditos,
@@ -1052,27 +960,7 @@ namespace SiasoftAppExt
                         );
                 };
 
-
                 return dt;
-
-                //SqlConnection con = new SqlConnection(SiaWin._cn);
-                //SqlCommand cmd = new SqlCommand();
-                //SqlDataAdapter da = new SqlDataAdapter();
-                //DataSet ds = new DataSet();
-                //cmd = new SqlCommand("_EmpSpMovCuenta", con);
-                //cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.Parameters.AddWithValue("@ano", fecha);
-                //cmd.Parameters.AddWithValue("@fechafin", Convert.ToDateTime(fechafin));
-                //cmd.Parameters.AddWithValue("@ter", ter);
-                //cmd.Parameters.AddWithValue("@cta", cta);
-                //cmd.Parameters.AddWithValue("@tipoblc", tipblc);
-                //cmd.Parameters.AddWithValue("@codemp", empresas);
-                //cmd.Parameters.AddWithValue("@IncluirCierre", cierre);
-                //da = new SqlDataAdapter(cmd);
-                //da.SelectCommand.CommandTimeout = 0;
-                //da.Fill(ds);
-                //con.Close();
-                //return ds;
             }
             catch (Exception w)
             {
@@ -1240,56 +1128,37 @@ namespace SiasoftAppExt
 
                     if (periodo == "15")
                     {
-                        dataGridConsulta.Columns["sal_ant"].IsHidden = false;
-                        dataGridConsulta.Columns["debito"].IsHidden = false;
-                        dataGridConsulta.Columns["credito"].IsHidden = false;
-                        dataGridConsulta.Columns["sal_fin"].IsHidden = false;
+                        Binding BindingSalAnt = new Binding("sal_ant") { StringFormat = "N2" };
+                        sal_finCol.DisplayBinding = BindingSalAnt;
 
-                        foreach (Periodo item in per_column)
-                        {
-                            string debito = item.debito;
-                            string credito = item.credito;
-                            string saldo = item.sal_final;
+                        Binding BindingDebito = new Binding("debito") { StringFormat = "N2" };
+                        debitoCol.DisplayBinding = BindingDebito;
 
-                            dataGridConsulta.Columns[debito].IsHidden = true;
-                            dataGridConsulta.Columns[credito].IsHidden = true;
-                            dataGridConsulta.Columns[saldo].IsHidden = true;
-                        }
+                        Binding BindingCredito = new Binding("credito") { StringFormat = "N2" };
+                        creditoCol.DisplayBinding = BindingCredito;
+
+                        Binding BindingSalFin = new Binding("sal_fin") { StringFormat = "N2" };
+                        sal_finCol.DisplayBinding = BindingSalFin;
                     }
                     else
                     {
-                        foreach (Periodo item in per_column)
-                        {
-                            string saldo_anterior = item.sal_anterior;
-                            string debito = item.debito;
-                            string credito = item.credito;
-                            string saldo_final = item.sal_final;
-                            string per = item.periodo;
+                        int sal_ant = Convert.ToInt32(periodo);
+                        string cod = sal_ant < 10 ? "0" + (sal_ant - 1).ToString() : (sal_ant - 1).ToString();
+                        string c_sal = "sal_" + cod;
+                        if ((sal_ant - 1) == 0) c_sal = "sal_ant";
 
+                        Binding BindingSalAnt = new Binding(c_sal) { StringFormat = "N2" };
+                        sal_antCol.DisplayBinding = BindingSalAnt;
 
-                            if (per == periodo)
-                            {
-                                dataGridConsulta.Columns[saldo_anterior].IsHidden = false;
-                                dataGridConsulta.Columns[debito].IsHidden = false;
-                                dataGridConsulta.Columns[credito].IsHidden = false;
-                                dataGridConsulta.Columns[saldo_final].IsHidden = false;
-                            }
-                            else
-                            {
-                                dataGridConsulta.Columns[saldo_anterior].IsHidden = true;
-                                dataGridConsulta.Columns[debito].IsHidden = true;
-                                dataGridConsulta.Columns[credito].IsHidden = true;
-                                dataGridConsulta.Columns[saldo_final].IsHidden = true;
+                        Binding BindingDebito = new Binding("deb_" + periodo) { StringFormat = "N2" };
+                        debitoCol.DisplayBinding = BindingDebito;
 
-                                dataGridConsulta.Columns["sal_ant"].IsHidden = true;
-                                dataGridConsulta.Columns["debito"].IsHidden = true;
-                                dataGridConsulta.Columns["credito"].IsHidden = true;
-                                dataGridConsulta.Columns["sal_fin"].IsHidden = true;
-                            }
-                        }
+                        Binding BindingCredito = new Binding("cre_" + periodo) { StringFormat = "N2" };
+                        creditoCol.DisplayBinding = BindingCredito;
+
+                        Binding BindingSalFin = new Binding("sal_" + periodo) { StringFormat = "N2" };
+                        sal_finCol.DisplayBinding = BindingSalFin;
                     }
-
-
 
                 }
             }
@@ -1304,7 +1173,6 @@ namespace SiasoftAppExt
 
     public class Periodo
     {
-        public string sal_anterior { get; set; }
         public string debito { get; set; }
         public string credito { get; set; }
         public string sal_final { get; set; }

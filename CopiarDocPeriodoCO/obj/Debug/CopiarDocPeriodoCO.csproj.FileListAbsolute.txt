@@ -12,3 +12,17 @@ C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CopiarDocPeriodoCO\obj\Debug\
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.pdb
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\CopiarDocPeriodoCO.dll
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\CopiarDocPeriodoCO.pdb
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.g.cs
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.baml
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.g.resources
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.dll
+D:\Empresas\SDA\Library\project\CopiarDocPeriodoCO\obj\Debug\CopiarDocPeriodoCO.pdb
+D:\Empresas\SDA\Library\CopiarDocPeriodoCO.dll
+D:\Empresas\SDA\Library\CopiarDocPeriodoCO.pdb

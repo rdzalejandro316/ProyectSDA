@@ -27,6 +27,14 @@
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Background" Value="Gray"/>
             </Style>
+            <Style TargetType="syncfusion:GridStackedHeaderCellControl">
+                <Setter Property="Background" Value="Gray"/>
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontSize" Value="10"/>
+            </Style>
             <Style  x:Key="Button">
                 <Setter Property="Control.BorderBrush" Value="{x:Null}"/>
                 <Setter Property="Control.Background" Value="#3498db"/>
@@ -71,7 +79,7 @@
                         <ColumnDefinition Width="140"/>
                         <ColumnDefinition Width="350"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
@@ -88,8 +96,24 @@
                     <TextBlock Grid.Column="0" Grid.Row="2" Text="Bodega:" Margin="0,0,0,5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                     <TextBox x:Name="TextBoxbod" MaxLength="3" Grid.Column="1" Grid.Row="2" Margin="0,0,0,0" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="TextBoxbod_LostFocus" Tag="inmae_bod"></TextBox>
                 <TextBox Name="TxNomBod" Focusable="False" Grid.Column="2" Grid.Row="2" Margin="1,0,0,0"  IsReadOnly="True" BorderBrush="{x:Null}" ></TextBox>
+
+
+                <Grid Grid.Column="4" Grid.ColumnSpan="2" Name="GridCheck">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox Name="k_o" Content="Kardex-oficial" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Foreground="Green" Checked="CheckBox_Checked"  Unchecked="k_o_Unchecked"/>
+                    <CheckBox Name="k_n" Content="Kardex-Niif" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Foreground="Green" Checked="CheckBox_Checked"  Unchecked="k_o_Unchecked"/>
+                </Grid>
                 
                 
+
+                
+
+
+
                 <Button Grid.Row="1" Grid.Column="4" x:Name="BtnConsultar" Click="Button_Click" Content="Consultar" Style="{StaticResource Button}"/>
                 <Button Grid.Row="1" Grid.Column="5" Width="90" Click="ExportaXLS_Click" x:Name="BtnExportarXLS" Content="Excel" Style="{StaticResource Button}"/>
                 <Button Grid.Row="1" Grid.Column="6" IsCancel="True" x:Name="BtnSalir" Click="BtnSalir_Click" Content="Salir" Style="{StaticResource Button}"/>
@@ -110,9 +134,15 @@
                             <syncfusion:StackedHeaderRow.StackedColumns>
                                 <syncfusion:StackedColumn ChildColumns="idreg" MappingName="idreg"/>
                                 <syncfusion:StackedColumn ChildColumns="cod_trn,nom_trn,num_trn,fec_trn,bod_tra" HeaderText="Informacion"  />
-                                <syncfusion:StackedColumn ChildColumns="ent_uni,ent_cost,ent_ctotal" HeaderText="Entradas" />
-                                <syncfusion:StackedColumn ChildColumns="sal_uni,sal_cost,sal_ctotal" HeaderText="Salidas"/>
-                                <syncfusion:StackedColumn ChildColumns="saldo_uni,saldo_cost,saldo_ctotal" HeaderText="Saldo"/>
+                                <syncfusion:StackedColumn ChildColumns="ent_uni,entc_uni,entc_tot" HeaderText="Entradas" />
+                                <syncfusion:StackedColumn ChildColumns="sal_uni,salc_uni,salc_tot" HeaderText="Salidas"/>
+                                <syncfusion:StackedColumn ChildColumns="saldo_uni,saldo_costou,saldo_ctotal" HeaderText="Saldo"/>
+
+
+                                <syncfusion:StackedColumn ChildColumns="ent_unin,entc_unin,entc_totn" HeaderText="Entradas NIIF" />
+                                <syncfusion:StackedColumn ChildColumns="sal_unin,salc_unin,salc_totn" HeaderText="Salidas NIIF"/>
+                                <syncfusion:StackedColumn ChildColumns="saldo_unin,saldo_costoun,saldo_ctotaln" HeaderText="Saldo NIIF"/>
+
                             </syncfusion:StackedHeaderRow.StackedColumns>
                         </syncfusion:StackedHeaderRow>
                     </syncfusion:SfDataGrid.StackedHeaderRows>
@@ -144,12 +174,12 @@
 
                     <syncfusion:SfDataGrid.Columns>
                         <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="40" TextAlignment="Left" CellStyle="{StaticResource celdas}"/>
-                        <syncfusion:GridTextColumn HeaderText="Nombre Trn" MappingName="nom_trn" Width="140" TextAlignment="Left"  CellStyle="{StaticResource celdas}"/>
+                        <syncfusion:GridTextColumn HeaderText="Nombre Trn" MappingName="nom_trn" Width="120" TextAlignment="Left"  CellStyle="{StaticResource celdas}"/>
                         <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="85" TextAlignment="Left" CellStyle="{StaticResource celdas}"/>
-                        <syncfusion:GridDateTimeColumn HeaderText="Fecha" MappingName="fec_trn" Width="100" TextAlignment="Left" Pattern="CustomPattern" CellStyle="{StaticResource celdas}"/>
+                        <syncfusion:GridDateTimeColumn HeaderText="Fecha" MappingName="fec_trn" Width="120" TextAlignment="Left" Pattern="CustomPattern" CellStyle="{StaticResource celdas}" CustomPattern="dd-MM-yyyy HH:mm:ss.fff"/>
                         <syncfusion:GridTextColumn HeaderText="Bod" MappingName="bod_tra" Width="45" TextAlignment="Left" CellStyle="{StaticResource celdas}"/>
 
-                        <syncfusion:GridTextColumn HeaderText="Uni" MappingName="ent_uni" Width="60" TextAlignment="Right" AllowFiltering="False">
+                        <syncfusion:GridTextColumn HeaderText="Uni" MappingName="ent_uni" Width="60" TextAlignment="Right" AllowFiltering="False" x:Name="ent_uni">
                             <syncfusion:GridTextColumn.CellStyle>
                                 <Style TargetType="syncfusion:GridCell">
                                     <Setter Property="Background" Value="#4CF1C40F" />
@@ -158,7 +188,7 @@
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
 
-                        <syncfusion:GridTextColumn x:Name="colent_cost" DisplayBinding="{Binding Path=ent_cost, StringFormat='{}{0:c}'}"  HeaderText="CostUnit" TextAlignment="Right" Width="80"  AllowFiltering="False">
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=entc_uni, StringFormat='{}{0:c}'}"  HeaderText="CostUnit" TextAlignment="Right" Width="80"  AllowFiltering="False" x:Name="entc_uni">
                             <syncfusion:GridTextColumn.CellStyle>
                                 <Style TargetType="syncfusion:GridCell">
                                     <Setter Property="Background" Value="#4CF1C40F" />
@@ -167,7 +197,7 @@
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
 
-                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=ent_ctotal, StringFormat='{}{0:c}'}"  HeaderText="CostTotal" TextAlignment="Right" Width="95" AllowFiltering="False">
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=entc_tot, StringFormat='{}{0:c}'}"  HeaderText="CostTotal" TextAlignment="Right" Width="95" AllowFiltering="False" x:Name="entc_tot">
                             <syncfusion:GridTextColumn.CellStyle>
                                 <Style TargetType="syncfusion:GridCell">
                                     <Setter Property="Background" Value="#4CF1C40F" />
@@ -176,7 +206,7 @@
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
 
-                        <syncfusion:GridTextColumn HeaderText="Uni" MappingName="sal_uni" Width="60" TextAlignment="Right" AllowFiltering="False">
+                        <syncfusion:GridTextColumn HeaderText="Uni" MappingName="sal_uni" Width="60" TextAlignment="Right" AllowFiltering="False" x:Name="sal_uni">
                             <syncfusion:GridTextColumn.CellStyle>
                                 <Style TargetType="syncfusion:GridCell">
                                     <Setter Property="Background" Value="#4C03A9F4" />
@@ -185,7 +215,7 @@
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
 
-                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=sal_cost, StringFormat='{}{0:c}'}"  HeaderText="CostUnit" TextAlignment="Right" Width="80" AllowFiltering="False">
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=salc_uni, StringFormat='{}{0:c}'}"  HeaderText="CostUnit" TextAlignment="Right" Width="80" AllowFiltering="False"  x:Name="salc_uni">
                             <syncfusion:GridTextColumn.CellStyle>
                                 <Style TargetType="syncfusion:GridCell">
                                     <Setter Property="Background" Value="#4C03A9F4" />
@@ -194,7 +224,7 @@
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
 
-                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=sal_ctotal, StringFormat='{}{0:c}'}"  HeaderText="CostTotal" TextAlignment="Right" Width="95" AllowFiltering="False">
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=salc_tot, StringFormat='{}{0:c}'}"  HeaderText="CostTotal" TextAlignment="Right" Width="95" AllowFiltering="False" x:Name="salc_tot">
                             <syncfusion:GridTextColumn.CellStyle>
                                 
                                 <Style TargetType="syncfusion:GridCell">
@@ -204,7 +234,7 @@
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
 
-                        <syncfusion:GridTextColumn HeaderText="Uni" MappingName="saldo_uni" Width="60" TextAlignment="Right" AllowFiltering="False">
+                        <syncfusion:GridTextColumn HeaderText="Uni" MappingName="saldo_uni" Width="60" TextAlignment="Right" AllowFiltering="False" x:Name="saldo_uni">
                             <syncfusion:GridTextColumn.CellStyle>
                                 <Style TargetType="syncfusion:GridCell">
                                     <Setter Property="Background" Value="#4CFF5722" />
@@ -213,7 +243,7 @@
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
 
-                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=saldo_cost, StringFormat='{}{0:c}'}"  HeaderText="CostUnit" TextAlignment="Right" Width="80" AllowFiltering="False">
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=saldo_costou, StringFormat='{}{0:c}'}"  HeaderText="CostUnit" TextAlignment="Right" Width="80" AllowFiltering="False" x:Name="saldo_costou">
                             <syncfusion:GridTextColumn.CellStyle>
                                 <Style TargetType="syncfusion:GridCell">
                                     <Setter Property="Background" Value="#4CFF5722" />
@@ -222,7 +252,7 @@
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
 
-                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=saldo_ctotal, StringFormat='{}{0:c}'}"  HeaderText="CostTotal" TextAlignment="Right" Width="95" AllowFiltering="False">
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=saldo_ctotal, StringFormat='{}{0:c}'}"  HeaderText="CostTotal" TextAlignment="Right" Width="95" AllowFiltering="False" x:Name="saldo_ctotal">
                             <syncfusion:GridTextColumn.CellStyle>
                                 <Style TargetType="syncfusion:GridCell">
                                     <Setter Property="Background" Value="#4CFF5722" />
@@ -230,6 +260,92 @@
                                 </Style>
                             </syncfusion:GridTextColumn.CellStyle>
                         </syncfusion:GridTextColumn>
+                        
+                        <!--   *********************************************  -->
+
+                        <syncfusion:GridTextColumn HeaderText="Uni NIIF" MappingName="ent_unin" Width="60" TextAlignment="Right" AllowFiltering="False" x:Name="ent_unin" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4CF1C40F" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=entc_unin, StringFormat='{}{0:c}'}"  HeaderText="CostUnit NIIF" TextAlignment="Right" Width="80"  AllowFiltering="False" x:Name="entc_unin" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4CF1C40F" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=entc_totn, StringFormat='{}{0:c}'}"  HeaderText="CostTotal NIIF" TextAlignment="Right" Width="95" AllowFiltering="False" x:Name="entc_totn" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4CF1C40F" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
+                        <syncfusion:GridTextColumn HeaderText="Uni NIIF" MappingName="sal_unin" Width="60" TextAlignment="Right" AllowFiltering="False" x:Name="sal_unin" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4C03A9F4" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=salc_unin, StringFormat='{}{0:c}'}"  HeaderText="CostUnit NIIF" TextAlignment="Right" Width="80" AllowFiltering="False"  x:Name="salc_unin" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4C03A9F4" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=salc_totn, StringFormat='{}{0:c}'}"  HeaderText="CostTotal NIIF" TextAlignment="Right" Width="95" AllowFiltering="False" x:Name="salc_totn" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4C03A9F4" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
+
+                        <syncfusion:GridTextColumn HeaderText="Uni NIIF" MappingName="saldo_unin" Width="60" TextAlignment="Right" AllowFiltering="False" x:Name="saldo_unin" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4CFF5722" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=saldo_costoun, StringFormat='{}{0:c}'}"  HeaderText="CostUnit NIIF" TextAlignment="Right" Width="80" AllowFiltering="False" x:Name="saldo_costoun" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4CFF5722" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
+                        <syncfusion:GridTextColumn DisplayBinding="{Binding Path=saldo_ctotaln, StringFormat='{}{0:c}'}"  HeaderText="CostTotal NIIF" TextAlignment="Right" Width="95" AllowFiltering="False" x:Name="saldo_ctotaln" IsHidden="True">
+                            <syncfusion:GridTextColumn.CellStyle>
+                                <Style TargetType="syncfusion:GridCell">
+                                    <Setter Property="Background" Value="#4CFF5722" />
+                                    <Setter Property="BorderBrush" Value="LightGray"/>
+                                </Style>
+                            </syncfusion:GridTextColumn.CellStyle>
+                        </syncfusion:GridTextColumn>
+
 
                     </syncfusion:SfDataGrid.Columns>
                 </syncfusion:SfDataGrid>
