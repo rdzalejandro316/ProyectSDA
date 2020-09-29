@@ -34,10 +34,10 @@ namespace SiasoftAppExt
         string cnEmp = "";
         string cod_empresa = "";
 
-        bool flag = false;
-
         DataSet dsTemporal = new DataSet();
-
+        string tipo = "ACF";
+        string saldos = "af_acum";
+        int idmodulo = 8;
         public ReclasificacionActivosFijos()
         {
             InitializeComponent();
@@ -73,6 +73,13 @@ namespace SiasoftAppExt
         {
             try
             {
+                if (TipoCBX.SelectedIndex < 0)
+                {
+                    MessageBox.Show("seleccione el tipo de reclasificacion", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    (sender as ToggleButton).IsChecked = false;
+                    return;
+                }
+
                 if (((ToggleButton)sender).IsChecked == true) Card.IsEnabled = true;
 
                 string Name = ((ToggleButton)sender).Name.ToString();
@@ -80,6 +87,14 @@ namespace SiasoftAppExt
                 {
                     if (item.Name != Name) item.IsChecked = false;
                 }
+
+                CodAnt.Text = "";
+                CodNue.Text = "";
+                CodAntName.Text = "";
+                CodNueName.Text = "";
+
+                BTNviewSaldosNormales.IsEnabled = TipoCBX.SelectedIndex == 1 && (Name == "Togle1") ? true : false;
+                BTNviewSaldosReclasificados.IsEnabled = TipoCBX.SelectedIndex == 1 && (Name == "Togle1") ? true : false;
 
                 Tab_reclas.Text = ((ToggleButton)sender).Tag.ToString();
                 BTNreclasificar.Tag = ((ToggleButton)sender).Tag.ToString();
@@ -98,7 +113,7 @@ namespace SiasoftAppExt
             try
             {
                 dsTemporal.Clear();
-                string tipo = TipoCBX.SelectedIndex.ToString();
+                string index = TipoCBX.SelectedIndex.ToString();
                 SqlConnection con = new SqlConnection(SiaWin._cn);
                 con.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -106,8 +121,8 @@ namespace SiasoftAppExt
                 cmd = new SqlCommand("_EmpReclasificacion", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Tag", tag);
-                cmd.Parameters.AddWithValue("@tipo", tipo);
-                cmd.Parameters.AddWithValue("@modulo", "ACF");//INV,CON
+                cmd.Parameters.AddWithValue("@tipo", index);
+                cmd.Parameters.AddWithValue("@modulo", tipo);
                 cmd.Parameters.AddWithValue("@codemp", cod_empresa);
                 da = new SqlDataAdapter(cmd);
                 da.Fill(dsTemporal);
@@ -145,8 +160,9 @@ namespace SiasoftAppExt
         {
             try
             {
-                //SiaWin.Browse(dsTemporal.Tables[0]);
 
+                #region validaciones
+                
                 if (TipoCBX.SelectedIndex < 0)
                 {
                     MessageBox.Show("seleccione el tipo de reclasificacion");
@@ -182,31 +198,55 @@ namespace SiasoftAppExt
                     return;
                 }
 
+                #endregion
+
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
                 sfBusyIndicator.IsBusy = true;
+                Card.IsEnabled = false;
+                GridMain.IsEnabled = false;
+                TipoCBX.IsEnabled = false;
+                sfBusyIndicator.IsBusy = true;
 
 
+                string tag = BTNreclasificar.Tag.ToString().Trim();
                 string cod_ant = CodAnt.Text.Trim();
                 string cod_nue = CodNue.Text.Trim();
-                
 
                 var slowTask = Task<int>.Factory.StartNew(() => SlowDude(cod_ant, cod_nue, dsTemporal.Tables[0], source.Token), source.Token);
                 await slowTask;
 
                 if (((int)slowTask.Result) > 0)
                 {
-                    sfBusyIndicator.IsBusy = false;
-                    MessageBox.Show("Reclasificacion exitosa - # de registros actualizados:" + ((int)slowTask.Result));
+
+                    if (TipoCBX.SelectedIndex == 1 && tag == "Activo")
+                    {                        
+                        string column = "cod_act";
+
+                        var OtherslowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "1", column), source.Token);
+                        await OtherslowTask;
+                        if (((DataSet)OtherslowTask.Result).Tables[0].Rows.Count > 0)
+                        {
+                            MessageBox.Show("los saldos fueron pasados exitosamente", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+
+
+                    MessageBox.Show("Reclasificacion exitosa - # de registros actualizados:" + ((int)slowTask.Result), "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    string tx = "Reclasifico " + tag + " - codigo anterior: " + CodAnt.Text + " a codigo nuevo:" + CodNue.Text + " ";
+                    SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, idmodulo, -1, -9, tx, "");
                     clean();
                 }
 
+                Card.IsEnabled = false;
+                GridMain.IsEnabled = true;
+                TipoCBX.IsEnabled = true;
                 sfBusyIndicator.IsBusy = false;
             }
             catch (Exception w)
             {
                 sfBusyIndicator.IsBusy = false;
-                MessageBox.Show("error en la reclasificacion identifique si los campos que ingreso son los correctos para poder hacer el cambio", "ERROR CONTACTE CON EL ADMINISTRADOR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("error en la reclasificacion identifique si los campos que ingreso son los correctos para poder hacer el cambio:"+w, "ERROR CONTACTE CON EL ADMINISTRADOR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -265,7 +305,6 @@ namespace SiasoftAppExt
 
         }
 
-
         public bool existencia()
         {
             bool bandera = false;
@@ -281,7 +320,7 @@ namespace SiasoftAppExt
                     break;
                 case "Grupo":
                     tabla = "Afmae_gru"; codigo = "cod_gru"; nombre = "nom_gru";
-                    break;                         
+                    break;
             }
 
             string query = "select * from " + tabla + " where " + codigo + "='" + texto + "' ";
@@ -301,7 +340,6 @@ namespace SiasoftAppExt
 
             return bandera;
         }
-
 
         private void CodAnt_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -333,22 +371,254 @@ namespace SiasoftAppExt
             }
         }
 
-
         private void TipoCBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (flag == true)
+            if (TipoCBX.SelectedIndex >= 0)
             {
                 CodAnt.Text = "";
                 CodAntName.Text = "";
                 CodNue.Text = "";
                 CodNueName.Text = "";
+
+                string tag = "";
+                bool isSaldos = false;
+
+                foreach (ToggleButton item in GridTogle.Children)
+                {
+                    if (item.IsChecked == true) tag = item.Tag.ToString().Trim();
+                    if (item.IsChecked == true && item.Name == "Togle1" && TipoCBX.SelectedIndex == 1) isSaldos = true;
+                }
+
+                BTNviewSaldosNormales.IsEnabled = isSaldos;
+                BTNviewSaldosReclasificados.IsEnabled = isSaldos;
+
+                if (!string.IsNullOrEmpty(tag)) cargarTemporal(tag);
             }
-            flag = true;
         }
 
+        private void BTNviewSaldosNormales_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                #region validacion
+
+                if (TipoCBX.SelectedIndex < 0)
+                {
+                    MessageBox.Show("seleccione el tipo de reclasificacion", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (TipoCBX.SelectedIndex == 0)
+                {
+                    if (existencia() == true)
+                    {
+                        (sender as TextBox).Text = "";
+                        MessageBox.Show("El codigo nuevo que ingreso existe", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                }
+
+                if (TipoCBX.SelectedIndex == 1)
+                {
+                    if (existencia() == false)
+                    {
+                        MessageBox.Show("el codigo nuevo ingresado no existe", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        return;
+                    }
+                }
+
+                if (CodAnt.Text == "" || string.IsNullOrEmpty(CodAnt.Text))
+                {
+                    MessageBox.Show("el codigo anterior esta vacio", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (CodNue.Text == "" || string.IsNullOrEmpty(CodNue.Text))
+                {
+                    MessageBox.Show("el codigo nuevo esta vacio", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                #endregion
+
+                string tag = BTNreclasificar.Tag.ToString().Trim();
+                string column = "cod_act";
+                string query = "select* From " + saldos + " where " + column + "= '" + CodAnt.Text + "' or " + column + " = '" + CodNue.Text + "'; ";
+                DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
+
+                if (dt.Rows.Count > 0)
+                {
+                    SiaWin.Browse(dt);
+                }
+                else
+                {
+                    MessageBox.Show("Sin Saldos Iniciales", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al cargar:" + w);
+            }
+        }
+
+        private async void BTNviewSaldosReclasificados_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                #region validacion
+
+                if (TipoCBX.SelectedIndex < 0)
+                {
+                    MessageBox.Show("seleccione el tipo de reclasificacion", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(CodAnt.Text))
+                {
+                    MessageBox.Show("el codigo anterior esta vacio", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(CodNue.Text))
+                {
+                    MessageBox.Show("el codigo nuevo esta vacio", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                #endregion
+
+                CancellationTokenSource source = new CancellationTokenSource();
+                Card.IsEnabled = false;
+                GridMain.IsEnabled = false;
+                TipoCBX.IsEnabled = false;
+                sfBusyIndicator.IsBusy = true;
+
+                string tag = BTNreclasificar.Tag.ToString().Trim();
+                string cod_ant = CodAnt.Text.Trim();
+                string cod_nue = CodNue.Text.Trim();
+
+                string column = "cod_act";
+                var slowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "0", column), source.Token);
+                await slowTask;
+
+                if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)                
+                    SiaWin.Browse(((DataSet)slowTask.Result).Tables[0]);                
+                else                
+                    MessageBox.Show("no existe resultado para mostrar", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+               
 
 
+                Card.IsEnabled = true;
+                GridMain.IsEnabled = true;
+                TipoCBX.IsEnabled = true;
+                sfBusyIndicator.IsBusy = false;
 
+            }
+            catch (Exception w)
+            {
+
+                MessageBox.Show("error al cargar saldos:" + w);
+            }
+        }
+
+        private DataSet Saldos(string cod_ant, string cod_nue, string passa, string column)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(SiaWin._cn);
+                SqlCommand cmd = new SqlCommand();
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                cmd = new SqlCommand("_EmpReclasificacionSaldos", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@cod_ant", cod_ant);
+                cmd.Parameters.AddWithValue("@cod_nue", cod_nue);
+                cmd.Parameters.AddWithValue("@modulo", tipo);
+                cmd.Parameters.AddWithValue("@pass", passa);
+                cmd.Parameters.AddWithValue("@columna", column);
+                cmd.Parameters.AddWithValue("@codemp", "010");
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                con.Close();
+                return ds;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("en la consulta:" + e.Message);
+                return null;
+            }
+        }
+
+        private void BTNview_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (dsTemporal.Tables[0].Rows.Count > 0)
+                {
+                    SiaWin.Browse(dsTemporal.Tables[0]);
+                }
+                else
+                {
+                    MessageBox.Show("no tiene ninguna tabla para afectar", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("erro al abrir tablas:" + w);
+            }
+        }
+
+        private void Cod_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.F8)
+                {
+
+                    string tag = BTNreclasificar.Tag.ToString();
+                    string tabla = ""; string codigo = ""; string nombre = "";
+                    switch (tag)
+                    {
+                        case "Activo":
+                            tabla = "Afmae_act"; codigo = "cod_act"; nombre = "nom_act";
+                            break;
+                        case "Grupo":
+                            tabla = "Afmae_gru"; codigo = "cod_gru"; nombre = "nom_gru";
+                            break;
+                    }
+
+                    int idr = 0; string code = ""; string nom = "";
+                    dynamic winb = SiaWin.WindowBuscar(tabla, codigo, nombre, codigo, "idrow", tag, SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
+                    winb.ShowInTaskbar = false;
+                    winb.Owner = Application.Current.MainWindow;
+                    winb.Width = 400;
+                    winb.Height = 400;
+                    winb.ShowDialog();
+                    idr = winb.IdRowReturn;
+                    code = winb.Codigo;
+                    nom = winb.Nombre;
+
+                    if (idr > 0)
+                    {
+                        (sender as TextBox).Text = code.Trim();
+                        CodAntName.Text = nom;
+                    }
+                    else
+                    {
+                        (sender as TextBox).Text = "";
+                        CodAntName.Text = "";
+                    }
+
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error key:" + w);
+            }
+        }
 
     }
 }

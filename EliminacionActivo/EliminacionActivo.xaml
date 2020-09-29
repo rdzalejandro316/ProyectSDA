@@ -9,10 +9,10 @@
 
     <Window.Resources>
         <ResourceDictionary>
+            <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -20,7 +20,7 @@
 
 
     <Grid>
-        <Grid x:Name="GridConfiguracion" Margin="20" Panel.ZIndex="1">
+        <Grid x:Name="GridConfiguracion" Margin="10" Panel.ZIndex="1">
             <Border Background="White">
                 <Border.Effect>
                     <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
@@ -33,21 +33,23 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
-                <Grid Background="#03A9F4">
+                <Grid Background="{StaticResource ColorMain}">
                     <TextBlock Text="Eliminacion de activos fijo" TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" />
                 </Grid>
 
 
-                <Grid Grid.Row="1" Width="400" Height="120">
-                    <StackPanel>
-                        <TextBox x:Name="tx_activo" Grid.Row="1" Width="200" VerticalAlignment="Top" Margin="20 10 20 0" materialDesign:HintAssist.Hint="Codigo Activo" ToolTip="F8 buscar" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="Cuen_LostFocus" CaretBrush="#03A9F4" />       
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <TextBox x:Name="tx_activo" Grid.Row="1"  VerticalAlignment="Top" Margin="20 10 20 0" materialDesign:HintAssist.Hint="Codigo Activo" ToolTip="F8 buscar" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="Cuen_LostFocus" CaretBrush="#03A9F4" />       
                         <TextBox x:Name="tx_name" Grid.Row="1" VerticalAlignment="Top" Margin="20 10 20 0" materialDesign:HintAssist.Hint="Nombre Activo" ToolTip="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="Cuen_LostFocus" CaretBrush="#03A9F4" IsEnabled="False"/>
+                        <TextBox x:Name="tx_grupo" Grid.Row="1" VerticalAlignment="Top" Margin="20 10 20 0" materialDesign:HintAssist.Hint="Grupo" ToolTip="Grupo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="Cuen_LostFocus" CaretBrush="#03A9F4" IsEnabled="False"/>
+                        <TextBox x:Name="tx_fecadq" Grid.Row="1" VerticalAlignment="Top" Margin="20 10 20 0" materialDesign:HintAssist.Hint="Fecha adquisición" ToolTip="Fecha" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="Cuen_LostFocus" CaretBrush="#03A9F4" IsEnabled="False"/>
                     </StackPanel>
                 </Grid>
 
 
                 <Grid Grid.Row="2" Background="#373737">
-                    <Button Name="BtnEliminar" Content="Eliminar" Background="#FF03A9F4" BorderBrush="#FF03A9F4" Width="150" HorizontalAlignment="Center" Margin="0 0 5 0" Click="BtnEliminar_Click"/>
+                    <Button Name="BtnEliminar" Content="Eliminar" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Width="150" HorizontalAlignment="Center" Margin="0 0 5 0" Click="BtnEliminar_Click"/>
                 </Grid>
 
 

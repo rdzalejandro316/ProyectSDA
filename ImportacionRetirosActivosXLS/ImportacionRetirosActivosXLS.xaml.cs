@@ -31,18 +31,17 @@ namespace SiasoftAppExt
 
 
     //   Sia.PublicarPnt(9660,"ImportacionRetirosActivosXLS");
-    //    dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9660,"ImportacionRetirosActivosXLS");
-    //    ww.ShowInTaskbar = false;
-    //    ww.Owner = Application.Current.MainWindow;
-    //    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
-    //    ww.ShowDialog();
-    public partial class ImportacionRetirosActivosXLS : Window
+    //   Sia.TabU(9660);
+
+    public partial class ImportacionRetirosActivosXLS : UserControl 
     {
 
         dynamic SiaWin;
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
+        dynamic tabitem;
+
         string usuario_name = "";
         string cod_trncont = "";
         DataTable dt = new DataTable();
@@ -51,11 +50,12 @@ namespace SiasoftAppExt
 
         DataSet doc_agru = new DataSet();
 
-        public ImportacionRetirosActivosXLS()
+        public ImportacionRetirosActivosXLS(dynamic tabitem1)
         {
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
             idemp = SiaWin._BusinessId;
+            tabitem = tabitem1;
             LoadConfig();
         }
 
@@ -68,7 +68,9 @@ namespace SiasoftAppExt
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                this.Title = "Importacion de Documentos -" + cod_empresa + "-" + nomempresa;
+                int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());
+                tabitem.Title = "Importacion de Documentos -" + cod_empresa + "-" + nomempresa;
+                tabitem.Logo(idLogo, ".png");
 
 
                 DataTable dtemp = SiaWin.Func.SqlDT("select UserName,UserAlias from Seg_User where UserId='" + SiaWin._UserId + "' ", "usuarios", 0);
@@ -219,20 +221,20 @@ namespace SiasoftAppExt
             {
                 if (!string.IsNullOrEmpty(row[0].ToString()))
                 {
-                    rows++;
-                    _DocAfijo.Add(new Documentos(
-                        "999",
-                        row["Num_trn"].ToString(),
-                        Convert.ToDateTime(row["Fec_trn"] == DBNull.Value || DateTime.TryParse(row["Fec_trn"].ToString(), out d) == false ? DateTime.Now.ToString("dd/MM/yyy") : row["Fec_trn"]).ToString("dd/MM/yyyy"),
-                        row["Cod_ter"].ToString(),
-                        row["Cod_act"].ToString(),
-                        row["Doc_int"].ToString(),
-                        row["Cod_gru"].ToString(),
-                        row["Cod_con"].ToString(),
-                        Convert.ToDecimal(row["Vr_act"] == DBNull.Value || decimal.TryParse(row["Vr_act"].ToString(), out n) == false ? 0 : row["Vr_act"]),
-                        Convert.ToDecimal(row["Dep_act"] == DBNull.Value || decimal.TryParse(row["Dep_act"].ToString(), out n) == false ? 0 : row["Dep_act"]),
-                        Convert.ToInt32(row["Mesxdep"] == DBNull.Value || int.TryParse(row["Mesxdep"].ToString(), out e) == false ? 0 : row["Mesxdep"])
-                        ));
+                    //rows++;
+                    //_DocAfijo.Add(new Documentos(
+                    //    "999",
+                    //    row["Num_trn"].ToString(),
+                    //    Convert.ToDateTime(row["Fec_trn"] == DBNull.Value || DateTime.TryParse(row["Fec_trn"].ToString(), out d) == false ? DateTime.Now.ToString("dd/MM/yyy") : row["Fec_trn"]).ToString("dd/MM/yyyy"),
+                    //    row["Cod_ter"].ToString(),
+                    //    row["Cod_act"].ToString(),
+                    //    row["Doc_int"].ToString(),
+                    //    row["Cod_gru"].ToString(),
+                    //    row["Cod_con"].ToString(),
+                    //    Convert.ToDecimal(row["Vr_act"] == DBNull.Value || decimal.TryParse(row["Vr_act"].ToString(), out n) == false ? 0 : row["Vr_act"]),
+                    //    Convert.ToDecimal(row["Dep_act"] == DBNull.Value || decimal.TryParse(row["Dep_act"].ToString(), out n) == false ? 0 : row["Dep_act"]),
+                    //    Convert.ToInt32(row["Mesxdep"] == DBNull.Value || int.TryParse(row["Mesxdep"].ToString(), out e) == false ? 0 : row["Mesxdep"])
+                    //    ));
                 }
             }
 
@@ -242,7 +244,7 @@ namespace SiasoftAppExt
 
 
             #region grilla
-            dataGridRefe.ItemsSource = DocAfijo;
+            //dataGridRefe.ItemsSource = DocAfijo;
             dataGridRefe.View.Refresh();
             dataGridRefe.Columns["Cod_trn"].Width = 70;
             dataGridRefe.Columns["Num_trn"].Width = 100;
@@ -275,10 +277,10 @@ namespace SiasoftAppExt
             Tx_total.Text = rows.ToString();
 
             int tot_erro = 0;
-            foreach (var item in _DocAfijo)
-            {
-                if (!string.IsNullOrEmpty(item.Error)) tot_erro++;
-            }
+            //foreach (var item in _DocAfijo)
+            //{
+            //    if (!string.IsNullOrEmpty(item.Error)) tot_erro++;
+            //}
 
             Tx_errores.Text = tot_erro.ToString();
             Tx_tercero.Text = ""; Tx_activo.Text = "";
@@ -298,9 +300,9 @@ namespace SiasoftAppExt
                     //cod_trn y num_trn
 
                     string cod_trn = dr["COD_TRN"].ToString().Trim();
-                    string num_trn = dr["NUM_TRN"].ToString().Trim();
+                    //string num_trn = dr["NUM_TRN"].ToString().Trim();
 
-                    DataTable dt_bod = SiaWin.Func.SqlDT("select cod_bod,cod_ter from inmae_bod where cod_bod='" + cod_bod + "'  ", "bodegas", idemp);
+                    //DataTable dt_bod = SiaWin.Func.SqlDT("select cod_bod,cod_ter from inmae_bod where cod_bod='" + cod_bod + "'  ", "bodegas", idemp);
 
 
 
@@ -385,16 +387,7 @@ namespace SiasoftAppExt
                     return;
                 }
 
-                foreach (var item in _DocAfijo)
-                {
-                    if (!string.IsNullOrEmpty(item.Error))
-                    {
-                        MessageBox.Show("la importacion contiene errores debe de estar todo correcto", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    };
-
-                }
-                if (documentos() == true) return;
+                //if (documentos() == true) return;
 
                 #endregion
 
@@ -719,18 +712,18 @@ namespace SiasoftAppExt
         public bool documentos()
         {
             bool flag = false;
-            foreach (var item in _DocAfijo)
-            {
-                string num_trn = item.Num_trn.Trim();
-                string query = "select * from afcab_doc where cod_trn='999' and num_trn='" + num_trn + "' ";
-                System.Data.DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
-                if (dt.Rows.Count > 0)
-                {
-                    string fec_trn = dt.Rows[0]["fec_trn"].ToString().Trim();
-                    MessageBox.Show("el documento:" + num_trn + " ya ha sido ingresado en la fecha:" + fec_trn, "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    flag = true;
-                }
-            }
+            //foreach (var item in _DocAfijo)
+            //{
+            //    string num_trn = item.Num_trn.Trim();
+            //    string query = "select * from afcab_doc where cod_trn='999' and num_trn='" + num_trn + "' ";
+            //    System.Data.DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
+            //    if (dt.Rows.Count > 0)
+            //    {
+            //        string fec_trn = dt.Rows[0]["fec_trn"].ToString().Trim();
+            //        MessageBox.Show("el documento:" + num_trn + " ya ha sido ingresado en la fecha:" + fec_trn, "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //        flag = true;
+            //    }
+            //}
             return flag;
         }
 

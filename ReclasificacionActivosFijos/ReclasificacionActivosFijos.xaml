@@ -11,10 +11,10 @@
 
     <Window.Resources>
         <ResourceDictionary>
+            <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
 
 
-        <Grid Background="#FF9800">
+        <Grid Background="{StaticResource ColorMain}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="1*"/>
@@ -34,7 +34,7 @@
             <TextBlock Text="Tipo de reclasificacion : " Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="10 0 0 0"/>
 
             <ComboBox Name="TipoCBX" Grid.Column="1" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="White" Foreground="White" Cursor="Hand" Margin="5 0 0 0" SelectionChanged="TipoCBX_SelectionChanged">
-                <ComboBoxItem IsSelected="True" Content="El codigo nuevo no existe"/>
+                <ComboBoxItem Content="El codigo nuevo no existe"/>
                 <ComboBoxItem Content="El codigo nuevo ya existe"/>
             </ComboBox>
         </Grid>
@@ -87,8 +87,8 @@
                             <RowDefinition Height="53*"/>
                         </Grid.RowDefinitions>
 
-                        <ToggleButton x:Name="Togle1" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Activo" Background="#FF9800"/>
-                        <ToggleButton x:Name="Togle2" Grid.Row="4" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Grupo" Background="#FF9800"/>
+                        <ToggleButton x:Name="Togle1" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Activo" Background="{StaticResource ColorMain}"/>
+                        <ToggleButton x:Name="Togle2" Grid.Row="4" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Grupo" Background="{StaticResource ColorMain}"/>
                     </Grid>
 
 
@@ -99,7 +99,7 @@
 
             <Grid Grid.Column="1" Background="WhiteSmoke">
                 <Grid VerticalAlignment="Center">
-                    <materialDesign:Card x:Name="Card" materialDesign:ShadowAssist.ShadowDepth="Depth4" Width="400" Height="200" IsEnabled="False">
+                    <materialDesign:Card x:Name="Card" materialDesign:ShadowAssist.ShadowDepth="Depth4" Width="450" Height="200" IsEnabled="False">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
@@ -107,7 +107,7 @@
                                 <RowDefinition Height="50"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Name="Tab_reclas" Text="Title" Foreground="#FF9800" FontSize="25" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Name="Tab_reclas" Text="Title" Foreground="{StaticResource ColorMain}" FontSize="25" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Bottom"/>
 
                             <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
@@ -123,19 +123,27 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="Anterior : " Grid.Row="1" VerticalAlignment="Center" Margin="20 0 0 0" FontWeight="Bold" TextAlignment="Right" FontSize="14"/>
-                                <TextBox Name="CodAnt" Grid.Column="1" Grid.Row="1" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" LostFocus="CodAnt_LostFocus"/>
+                                <TextBox Name="CodAnt" Grid.Column="1" Grid.Row="1" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" LostFocus="CodAnt_LostFocus" PreviewKeyDown="Cod_PreviewKeyDown" ToolTip="F8 Buscar"/>
                                 <TextBox Name="CodAntName" Grid.Column="2" Grid.Row="1" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Name" IsReadOnly="True" Focusable="False"/>
 
                                 <TextBlock Text="Nuevo : " Grid.Row="2" VerticalAlignment="Center" Margin="20 0 0 0" FontWeight="Bold" TextAlignment="Right" FontSize="14"/>
-                                <TextBox Name="CodNue" Grid.Column="1" Grid.Row="2" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" LostFocus="CodNue_LostFocus"/>
+                                <TextBox Name="CodNue" Grid.Column="1" Grid.Row="2" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" LostFocus="CodNue_LostFocus" PreviewKeyDown="Cod_PreviewKeyDown" ToolTip="F8 Buscar"/>
                                 <TextBox Name="CodNueName" Grid.Column="2" Grid.Row="2" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Name" IsReadOnly="True" Focusable="False"/>
                             </Grid>
-                            <Button Name="BTNreclasificar" Grid.Row="4" Width="120" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Reclasificar" Margin="0 0 10 0" Click="BTNreclasificar_Click" Background="#FF9800" BorderBrush="#FF9800"/>
+
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+                                <Button Name="BTNviewSaldosNormales" Content="{materialDesign:PackIcon FileDocumentBox}" Height="35" Width="50" HorizontalAlignment="Right" ToolTip="Consultar Saldos Iniciales" Margin="0 0 10 0" Click="BTNviewSaldosNormales_Click" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Foreground="White" Focusable="False"/>
+                                <Button Name="BTNviewSaldosReclasificados" Content="{materialDesign:PackIcon FileDocumentBoxOutline}" Height="35" Width="50" HorizontalAlignment="Right" ToolTip="Consultar Saldos Como Quedarian Reclasificados" Margin="0 0 10 0" Click="BTNviewSaldosReclasificados_Click" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Foreground="White" Focusable="False"/>
+                                <Button Name="BTNview"  Height="35" Width="50" Content="{materialDesign:PackIcon TableColumn}" HorizontalAlignment="Right" ToolTip="Consultar Tablas a reclasificar" Margin="0 0 10 0" Click="BTNview_Click" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Foreground="White" Focusable="False"/>
+                                <Button Name="BTNreclasificar" Grid.Row="4" Width="120" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Reclasificar" Margin="0 0 10 0" Click="BTNreclasificar_Click" Background="{StaticResource ColorMain}" BorderBrush="#FF9800" Foreground="White"/>
+                            </StackPanel>
+                            
                         </Grid>
                     </materialDesign:Card>
                 </Grid>
 
-                <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Actualizando ..." Height="100" IsBusy="False" Panel.ZIndex="2"/>
+                <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Actualizando ..." Height="100" IsBusy="False" Panel.ZIndex="2" Foreground="{StaticResource ColorMain}"/>
             </Grid>
 
 

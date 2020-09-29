@@ -29,33 +29,33 @@ namespace SiasoftAppExt
 {
 
     //   Sia.PublicarPnt(9664,"ImportacionTrasladosXls");
-    //    dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9664,"ImportacionTrasladosXls");
-    //    ww.ShowInTaskbar = false;
-    //    ww.Owner = Application.Current.MainWindow;
-    //    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
-    //    ww.ShowDialog();
+    //   Sia.TabU(9664);
 
-    public partial class ImportacionTrasladosXls : Window
+    public partial class ImportacionTrasladosXls : UserControl
     {
         dynamic SiaWin;
         public int idemp = 0;
         string cnEmp = "";
+        dynamic tabitem;
+
         string cod_empresa = "";
         string usuario_name = "";
         string cod_trncont = "";
         string cod_trn = "900";
+        
 
         DataTable dt = new DataTable();
         DataTable dt_errores = new DataTable();
 
         DataSet doc_agru = new DataSet();
 
-        public ImportacionTrasladosXls()
+        public ImportacionTrasladosXls(dynamic tabitem1)
         {
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
             idemp = SiaWin._BusinessId;
-            LoadConfig();
+            tabitem = tabitem1;
+            LoadConfig();            
             dt_errores.Columns.Add("error");
         }
 
@@ -68,7 +68,9 @@ namespace SiasoftAppExt
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                this.Title = "Importacion de Traslados " + cod_empresa + "-" + nomempresa;
+                int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());
+                tabitem.Title = "Importacion de Traslados " + cod_empresa + "-" + nomempresa;
+                tabitem.Logo(idLogo, ".png");
 
                 DataTable dt_use = SiaWin.Func.SqlDT("select UserName,UserAlias from Seg_User where UserId='" + SiaWin._UserId + "' ", "usuarios", 0);
                 usuario_name = dt_use.Rows.Count > 0 ? dt_use.Rows[0]["username"].ToString().Trim() : "USUARIO INEXISTENTE";
@@ -78,7 +80,7 @@ namespace SiasoftAppExt
             }
             catch (Exception e)
             {
-                MessageBox.Show("error en el load" + e.Message);
+                MessageBox.Show("error en el load:" + e.Message);
             }
         }
 

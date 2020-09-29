@@ -12,3 +12,17 @@ D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\Reclasif
 D:\SiasoftApp_SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.pdb
 D:\SiasoftApp_SDA\Library\ReclasificacionActivosFijos.dll
 D:\SiasoftApp_SDA\Library\ReclasificacionActivosFijos.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ReclasificacionActivosFijos.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ReclasificacionActivosFijos.pdb

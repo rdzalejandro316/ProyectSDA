@@ -30,6 +30,7 @@ namespace SiasoftAppExt
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
+        int idmodulo = 8;
         public EliminacionActivo()
         {
             InitializeComponent();
@@ -62,6 +63,8 @@ namespace SiasoftAppExt
             {
                 int idr = 0; string code = ""; string nom = "";
                 dynamic winb = SiaWin.WindowBuscar("afmae_act", "cod_act", "nom_act", "cod_act", "idrow", "Maestra de Activos", SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
+                winb.Height = 300;
+                winb.Width = 400;
                 winb.ShowInTaskbar = false;
                 winb.Owner = Application.Current.MainWindow;
                 winb.ShowDialog();
@@ -94,6 +97,8 @@ namespace SiasoftAppExt
                 MessageBox.Show("el activo ingresado no existe", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 int idr = 0; string code = ""; string nom = "";
                 dynamic winb = SiaWin.WindowBuscar("afmae_act", "cod_act", "nom_act", "cod_act", "idrow", "Maestra de activos", SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
+                winb.Height = 300;
+                winb.Width = 400;
                 winb.ShowInTaskbar = false;
                 winb.Owner = Application.Current.MainWindow;
                 winb.ShowDialog();
@@ -105,11 +110,15 @@ namespace SiasoftAppExt
                 {
                     (sender as TextBox).Text = code.Trim();
                     tx_name.Text = nom.Trim();
-
+                    valid(code.Trim());
                     var uiElement = e.OriginalSource as UIElement;
                     uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
                 }
-                else { (sender as TextBox).Text = ""; tx_name.Text = ""; };
+                else
+                {
+                    (sender as TextBox).Text = ""; tx_name.Text = "";
+                    tx_grupo.Text = ""; tx_fecadq.Text = "";
+                };
             }
         }
 
@@ -121,6 +130,8 @@ namespace SiasoftAppExt
             {
                 val = true;
                 tx_name.Text = dt.Rows[0]["nom_act"].ToString().Trim();
+                tx_grupo.Text = dt.Rows[0]["cod_gru"].ToString().Trim();
+                tx_fecadq.Text = dt.Rows[0]["fec_adq"].ToString().Trim();
             }
 
             return val;
@@ -149,14 +160,17 @@ namespace SiasoftAppExt
                 }
                 else
                 {
-                    if (MessageBox.Show("Usted desea eliminar el activo:"+ tx_activo.Text, "Alerta eliminacion", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    if (MessageBox.Show("Usted desea eliminar el activo:" + tx_activo.Text, "Alerta eliminacion", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
                         string query = "delete afmae_act where cod_act='" + tx_activo.Text + "' ";
                         if (SiaWin.Func.SqlCRUD(query, idemp) == true)
                         {
+                            SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, idmodulo, -1, -9, "elimino el activo:" + tx_activo.Text, "");
                             MessageBox.Show("la eliminacion del activo fue exitosa exitosa", "proceso", MessageBoxButton.OK, MessageBoxImage.Information);
                             tx_activo.Text = "";
                             tx_name.Text = "";
+                            tx_grupo.Text = "";
+                            tx_fecadq.Text = "";
                         }
                     }
                 }

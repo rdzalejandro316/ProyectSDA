@@ -25,3 +25,17 @@ C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\B
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.pdb
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\BorrarDocumentoAF.dll
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\BorrarDocumentoAF.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoAF\obj\Debug\BorrarDocumentoAF.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\BorrarDocumentoAF.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\BorrarDocumentoAF.pdb
