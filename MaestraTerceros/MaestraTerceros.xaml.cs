@@ -1039,8 +1039,7 @@ public partial class MaestraTerceros : Window
                     IWorksheet sheet = workbook.Worksheets[0];
                     DataTable dataTable = dt;
                     sheet.ImportDataTable(dataTable, true, 1, 1, true);
-                    sheet.UsedRange.AutofitColumns();
-
+                    sheet.UsedRange.AutofitColumns();                        
 
                     SaveFileDialog sfd = new SaveFileDialog
                     {

@@ -94,11 +94,11 @@
                         <DatePicker Grid.Row="1" Grid.Column="4" Margin="5" Grid.ColumnSpan="2" x:Name="fecha_fin" Width="110"  VerticalAlignment="Center" HorizontalAlignment="Left" />
 
                         <TextBlock Text="Cuenta : " Grid.Row="2" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
-                        <TextBox Name="C1" Grid.Column="2" Grid.Row="2" Height="30" Width="110" HorizontalAlignment="Left" Margin="5" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_cta1" GotFocus="Cuen_GotFocus" LostFocus="Cuen_LostFocus"></TextBox>
+                        <TextBox Name="C1" Grid.Column="2" Grid.Row="2" Height="30" Width="110" HorizontalAlignment="Left" Margin="5" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_cta1" GotFocus="Cuen_GotFocus" LostFocus="Cuen_LostFocus"/>
                         <TextBlock Name="F8_1" Text="Press the key F8" Grid.Column="3" Grid.Row="2" Foreground="#2980b9" Width="60" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Center"  Visibility="Hidden" />
 
 
-                        <TextBox Name="C2" Grid.Column="4" Grid.Row="2" Height="30" Width="110" HorizontalAlignment="Left" Margin="5"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_cta2" GotFocus="Cuen_GotFocus" LostFocus="Cuen_LostFocus" ></TextBox>
+                        <TextBox Name="C2" Grid.Column="4" Grid.Row="2" Height="30" Width="110" HorizontalAlignment="Left" Margin="5"  PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_cta2" GotFocus="Cuen_GotFocus" LostFocus="Cuen_LostFocus" />
                         <TextBlock Name="F8_2" Text="Press the key F8" Grid.Column="5" Grid.Row="2" Foreground="#2980b9"  Width="60" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Center"  Visibility="Hidden"/>
 
                         <TextBlock Text="Nivel de Cuenta : " Grid.Row="3" Grid.Column="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="Bold"/>
@@ -229,7 +229,57 @@
                             </SiaSf:GridTemplateColumn.CellTemplate>
                         </SiaSf:GridTemplateColumn>
 
+                        <SiaSf:GridTextColumn MappingName="deb_01" HeaderText="Deb_01" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_01" HeaderText="Cre_01" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_01" HeaderText="Sal_01" IsHidden="True"/>
 
+                        <SiaSf:GridTextColumn MappingName="deb_02" HeaderText="Deb_02" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_02" HeaderText="Cre_02" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_02" HeaderText="Sal_02" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_03" HeaderText="Deb_03" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_03" HeaderText="Cre_03" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_03" HeaderText="Sal_03" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_04" HeaderText="Deb_04" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_04" HeaderText="Cre_04" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_04" HeaderText="Sal_04" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_05" HeaderText="Deb_05" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_05" HeaderText="Cre_05" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_05" HeaderText="Sal_05" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_06" HeaderText="Deb_06" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_06" HeaderText="Cre_06" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_06" HeaderText="Sal_06" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_07" HeaderText="Deb_07" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_07" HeaderText="Cre_07" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_07" HeaderText="Sal_07" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_08" HeaderText="Deb_08" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_08" HeaderText="Cre_08" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_08" HeaderText="Sal_08" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_09" HeaderText="Deb_09" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_09" HeaderText="Cre_09" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_09" HeaderText="Sal_09" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_10" HeaderText="Deb_10" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_10" HeaderText="Cre_10" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_10" HeaderText="Sal_10" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_11" HeaderText="Deb_11" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_11" HeaderText="Cre_11" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_11" HeaderText="Sal_11" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_12" HeaderText="Deb_12" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_12" HeaderText="Cre_12" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_12" HeaderText="Sal_12" IsHidden="True"/>
+
+                        <SiaSf:GridTextColumn MappingName="deb_13" HeaderText="Deb_13" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="cre_13" HeaderText="Cre_13" IsHidden="True"/>
+                        <SiaSf:GridTextColumn MappingName="sal_13" HeaderText="Sal_13" IsHidden="True"/>
                     </SiaSf:SfDataGrid.Columns>
                 </SiaSf:SfDataGrid>
 
