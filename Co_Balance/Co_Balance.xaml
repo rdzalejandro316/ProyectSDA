@@ -194,13 +194,15 @@
                 </Grid.Resources>
 
                 <SiaSf:SfDataGrid  Grid.Row="0" x:Name="dataGridConsulta" AllowSorting="False" AllowGrouping="False"  AutoGenerateColumns="False"                                                                       
-                                   ShowGroupDropArea="False"  AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"   CellStyle="{StaticResource gridStyle}" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Cell" MouseDoubleClick="dataGridConsulta_MouseDoubleClick">
+                                   AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"  
+                                   CellStyle="{StaticResource gridStyle}" SelectionUnit="Row" SelectionMode="Single" NavigationMode="Cell" MouseDoubleClick="dataGridConsulta_MouseDoubleClick">
                     
                     
                     <SiaSf:SfDataGrid.Columns>
                         <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_cta" Width="85" AllowFiltering="True"/>
-                        <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />
-                        <!--<SiaSf:GridTextColumn HeaderText="Nombre Cuenta" Width="350" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />-->
+                        <!--<SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />-->
+                        <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True"/>
+                        <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" MappingName="nomcta" IsHidden="True" ColumnSizer="AutoLastColumnFill"/>
                         <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tip_cta" Width="50"/>
                         <SiaSf:GridTextColumn HeaderText="Nivel" MappingName="niv_cta" Width="50"/>
                         <SiaSf:GridTextColumn HeaderText="Nat" MappingName="nat_cta" Width="50" />
@@ -212,6 +214,7 @@
                         <SiaSf:GridTextColumn MappingName="dir1" HeaderText="direccion" IsHidden="True"/>
                         <SiaSf:GridTextColumn MappingName="tel1" HeaderText="Telefono" IsHidden="True"/>
                         <SiaSf:GridTextColumn MappingName="cod_ter" HeaderText="Cod_Ter" IsHidden="True" />
+                        <SiaSf:GridTextColumn MappingName="nom_ter" HeaderText="Nom_ter" IsHidden="True" />
 
                         <SiaSf:GridTemplateColumn MappingName="Detalle" Width="50"  AllowFiltering="False">
                             <SiaSf:GridTemplateColumn.CellTemplate>
@@ -348,12 +351,12 @@
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="220"/>
-                        <ColumnDefinition Width="180"/>
-                        <ColumnDefinition Width="180"/>
-                        <ColumnDefinition Width="180"/>
-                        <ColumnDefinition Width="180"/>
-                        <ColumnDefinition Width="180"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
@@ -367,9 +370,13 @@
                     <Button Grid.Column="3" Content="Exporatar XLS" Name="BTNexpo" Click="BTNexpo_Click" Margin="3" Background="{StaticResource ColorMain}" Cursor="Hand" Foreground="White"/>
                     <Button Grid.Column="4" Content="Maestra de Cuentas" Name="BTNmaeCta" Click="BTNmaeCta_Click" Margin="3" Background="{StaticResource ColorMain}" Cursor="Hand" Foreground="White"/>
                     <Button Grid.Column="5" Tag="A" Content="Ocultar Filtros"  Name="BTNhidden" Click="BTNhidden_Click" Margin="3" Background="{StaticResource ColorMain}" Cursor="Hand" Foreground="White"/>
+                    <Button Grid.Column="6" Tag="A" Content="Agrupar"  Name="BTNgroup" Click="BTNgroup_Click" Margin="3" Background="{StaticResource ColorMain}" Cursor="Hand" Foreground="White"/>
 
-                    <TextBlock Text="Total del registros : " Grid.Column="6" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                    <TextBlock Name="Total" Grid.Column="7" Foreground="{StaticResource ColorMain}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="7" VerticalAlignment="Center" Orientation="Horizontal" Margin="5,0,0,0">
+                        <TextBlock Text="Total del registros : "  Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Name="Total" Foreground="{StaticResource ColorMain}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    
                 </Grid>
 
 

@@ -328,6 +328,8 @@ namespace SiasoftAppExt
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
                     DtBalance = ((DataSet)slowTask.Result).Tables[0];
+
+
                     int redondeo = CbxRedondeo.SelectedIndex;
 
                     //foreach (System.Data.DataRow item in DtBalance.Rows)
@@ -446,7 +448,7 @@ namespace SiasoftAppExt
             e.Range.CellStyle.Font.Size = 10;
 
             //e.Range.CellStyle.Font.FontName = "Segoe UI";
-            if 
+            if
             (
                 e.ColumnName == "sal_ant" || e.ColumnName == "debito" || e.ColumnName == "credito" || e.ColumnName == "sal_fin" ||
                 e.ColumnName == "deb_01" || e.ColumnName == "cre_01" || e.ColumnName == "sal_01" ||
@@ -461,7 +463,7 @@ namespace SiasoftAppExt
                 e.ColumnName == "deb_10" || e.ColumnName == "cre_10" || e.ColumnName == "sal_10" ||
                 e.ColumnName == "deb_11" || e.ColumnName == "cre_11" || e.ColumnName == "sal_11" ||
                 e.ColumnName == "deb_12" || e.ColumnName == "cre_12" || e.ColumnName == "sal_12" ||
-                e.ColumnName == "deb_13" || e.ColumnName == "cre_13" || e.ColumnName == "sal_13" 
+                e.ColumnName == "deb_13" || e.ColumnName == "cre_13" || e.ColumnName == "sal_13"
             )
             {
                 double value = 0;
@@ -487,10 +489,13 @@ namespace SiasoftAppExt
                 options.ExcludeColumns.Add("tel1");
                 options.ExcludeColumns.Add("Detalle");
                 options.ExcludeColumns.Add("AcumAño");
-                options.CellsExportingEventHandler = CellExportingHandler;                
+                options.ExcludeColumns.Add(TipoBal.SelectedIndex == 0 ? "nomcta" : "nom_cta");
+
+
+
+                options.CellsExportingEventHandler = CellExportingHandler;
                 var excelEngine = dataGridConsulta.ExportToExcel(dataGridConsulta.View, options);
                 var workBook = excelEngine.Excel.Workbooks[0];
-
 
 
 
@@ -498,60 +503,62 @@ namespace SiasoftAppExt
                 workBook.ActiveSheet.Columns[5].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[6].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[7].NumberFormat = "0.00";
+                workBook.ActiveSheet.Columns[8].NumberFormat = "0.00";
 
                 #region debitos creditos por meses
-                
-                workBook.ActiveSheet.Columns[9].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[10].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[11].NumberFormat = "0.00";
 
+                                
+                workBook.ActiveSheet.Columns[11].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[12].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[13].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[14].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[14].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[15].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[16].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[17].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[17].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[18].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[19].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[20].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[20].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[21].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[22].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[23].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[23].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[24].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[25].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[26].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[26].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[27].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[28].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[29].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[29].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[30].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[31].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[32].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[32].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[33].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[34].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[35].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[35].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[36].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[37].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[38].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[38].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[39].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[40].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[41].NumberFormat = "0.00";
 
+                workBook.ActiveSheet.Columns[41].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[42].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[43].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[44].NumberFormat = "0.00";
 
-                workBook.ActiveSheet.Columns[43].NumberFormat = "0.00";
-                workBook.ActiveSheet.Columns[44].NumberFormat = "0.00";
+                workBook.ActiveSheet.Columns[44].NumberFormat = "0.00";                
                 workBook.ActiveSheet.Columns[45].NumberFormat = "0.00";
+                workBook.ActiveSheet.Columns[46].NumberFormat = "0.00";
+
+                workBook.ActiveSheet.Columns[47].NumberFormat = "0.00";
+                workBook.ActiveSheet.Columns[48].NumberFormat = "0.00";
+                workBook.ActiveSheet.Columns[49].NumberFormat = "0.00";
 
 
                 #endregion
@@ -1247,6 +1254,37 @@ namespace SiasoftAppExt
             catch (Exception w)
             {
                 MessageBox.Show("error al cambiar periodo:" + w);
+            }
+        }
+
+        private void BTNgroup_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string tag = (sender as Button).Tag.ToString();                
+
+                if (tag == "A")
+                {
+                    dataGridConsulta.View.BeginInit();
+                    dataGridConsulta.GroupColumnDescriptions.Add(new GroupColumnDescription() { ColumnName = "cod_cta" });                    
+                    dataGridConsulta.AutoExpandGroups = true;
+                    dataGridConsulta.View.EndInit();
+                    (sender as Button).Tag = "B";
+                    (sender as Button).Content = "Desagrupar";
+                }
+                else
+                {
+                    dataGridConsulta.View.BeginInit();
+                    dataGridConsulta.GroupColumnDescriptions.Remove(dataGridConsulta.GroupColumnDescriptions[0]);
+                    dataGridConsulta.View.EndInit();
+                    dataGridConsulta.AutoExpandGroups = false;
+                    (sender as Button).Tag = "A";
+                    (sender as Button).Content = "Agrupar";
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al agrupar:"+w);
             }
         }
 
