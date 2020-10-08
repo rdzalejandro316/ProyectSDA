@@ -26,7 +26,7 @@ namespace SiasoftAppExt
 
     //   Sia.PublicarPnt(9662,"AFdepreciacion");
     //   Sia.TabU(9662);
-    
+
     public partial class AFdepreciacion : UserControl
     {
         dynamic SiaWin;
@@ -44,7 +44,7 @@ namespace SiasoftAppExt
             SiaWin = Application.Current.MainWindow;
             tabitem = tabitem1;
             LoadConfig();
-        }        
+        }
 
         private void LoadConfig()
         {
@@ -85,7 +85,7 @@ namespace SiasoftAppExt
                     return;
                 }
 
-                DataTable dt = SiaWin.Func.SqlDT("select * from Afcab_doc where ano_doc='" + Year + "' and per_doc='" + periodo + "' and cod_trn='"+ codtrn + "' ", "table", idemp);
+                DataTable dt = SiaWin.Func.SqlDT("select * from Afcab_doc where ano_doc='" + Year + "' and per_doc='" + periodo + "' and cod_trn='" + codtrn + "' ", "table", idemp);
                 if (dt.Rows.Count > 0)
                 {
                     MessageBox.Show("ya se genero la depreciacion para el periodo:" + Month + "-" + Year, "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -103,9 +103,18 @@ namespace SiasoftAppExt
 
                     int idmodulo_af = 8;
                     SiaWin.TabTrn(0, idemp, true, id, idmodulo_af, WinModal: true);
+                    SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, idmodulo_af, -1, -9, "GENERO DOCUMENTO DE DEPRECIACION DE ACTIVOS FIJOS :" + id, "");
 
-                    //int idcontable = ContabilizaDepreciacionFISCAL(id);
-                    //SiaWin.TabTrn(0, idemp, true, idcontable, 1, WinModal: true);
+
+                    int idcontable = ContabilizaDepreciacionFISCAL(id);
+                    if (idcontable > 0)
+                    {
+                        int idmodulo_co = 1;
+                        SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, idmodulo_co, -1, -9, "GENERO DOCUMENTO CONTABLE DE DEPRECIACION DE ACTIVOS:" + idcontable, "");
+                        SiaWin.TabTrn(0, idemp, true, idcontable, 1, WinModal: true);
+
+                    }
+
 
                 }
 
@@ -116,7 +125,6 @@ namespace SiasoftAppExt
             }
         }
 
-
         public int documento()
         {
             int Year = Convert.ToDateTime(Tx_ano.Value).Year;
@@ -126,7 +134,7 @@ namespace SiasoftAppExt
             int idreg = 0;
             if (MessageBox.Show("Usted desea generar la depreciacion del año:" + Year + " periodo:" + Month, "Guardar Traslado", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                
+
                 string fecha = "01" + "/" + Month + "/" + Year;
                 DateTime fechaActual = Convert.ToDateTime(fecha);
 
@@ -147,7 +155,7 @@ namespace SiasoftAppExt
 
 
                     string sqlConsecutivo = @"declare @fecdoc as datetime;set @fecdoc = getdate();declare @ini as char(4);declare @num as varchar(12);declare @iConsecutivo char(12)=''
-                    declare @iFolioHost int = 0;SELECT @iFolioHost =num_act,@ini=rtrim(inicial) FROM Afmae_trn WHERE cod_trn='"+codtrn+"' set @num=@iFolioHost;select @iConsecutivo=rtrim(@ini)+'" + mes.ToString("MM") + Year + "' ";
+                    declare @iFolioHost int = 0;SELECT @iFolioHost =num_act,@ini=rtrim(inicial) FROM Afmae_trn WHERE cod_trn='" + codtrn + "' set @num=@iFolioHost;select @iConsecutivo=rtrim(@ini)+'" + mes.ToString("MM") + Year + "' ";
 
 
                     string sqlcab = sqlConsecutivo + @"INSERT INTO Afcab_doc (cod_trn,num_trn,fec_trn,ano_doc,per_doc)
@@ -157,20 +165,18 @@ namespace SiasoftAppExt
                     foreach (DataRow dr in dt_depreciar.Rows)
                     {
                         string cod_act = dr["cod_act"].ToString().Trim();
-                        decimal val_depreciar = Math.Round(Convert.ToDecimal(dr["val_dep"]));                        
-                        int mesxdep = val_depreciar > 0 ? -1 : 0;                        
+                        decimal val_depreciar = Math.Round(Convert.ToDecimal(dr["val_dep"]));
+                        int mesxdep = val_depreciar > 0 ? -1 : 0;
 
                         sqlcue = sqlcue + @"INSERT INTO afcue_doc (idregcab,cod_trn,num_trn,ano_doc,per_doc,cod_act,dep_ac,mesxdep) values (@NewID,'" + codtrn + "',@iConsecutivo,'" + año + "','" + periodo + "','" + cod_act + "'," + val_depreciar.ToString("F", CultureInfo.InvariantCulture) + "," + mesxdep + ");";
                     }
 
                     string actualzaConsecu = "UPDATE Afmae_trn SET num_act= ISNULL(num_act,0)+1  WHERE  cod_trn='" + codtrn + "';";
                     command.CommandText = sqlcab + sqlcue + actualzaConsecu + @"select CAST(@NewId AS int);";
-                    //MessageBox.Show(command.CommandText.ToString());
                     var r = new object();
                     r = command.ExecuteScalar();
                     transaction.Commit();
                     connection.Close();
-                    //MessageBox.Show("documento generado");
                     idreg = Convert.ToInt32(r.ToString());
                 }
 
@@ -178,7 +184,7 @@ namespace SiasoftAppExt
             }
             else
             {
-                MessageBox.Show("no se genero el Documento","alerta",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                MessageBox.Show("no se genero el Documento", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return 0;
             }
         }
@@ -208,11 +214,12 @@ namespace SiasoftAppExt
                 int Year = Convert.ToDateTime(Tx_ano.Value).Year;
                 int Month = Convert.ToDateTime(Tx_periodo.Value).Month;
 
-                string querycue = "select cuerpo.cod_act,activo.sgr_act,cuerpo.dep_ac,subgrupo.cta_dep,subgrupo.cta_gtdep,cuerpo.dep  ";
+                string querycue = "select cuerpo.cod_act,activo.cod_gru,cuerpo.dep_ac,grupo.cta_dep,grupo.cta_gdp ";
                 querycue += "from Afcue_doc as cuerpo ";
                 querycue += "inner join Afmae_act as activo on activo.cod_act = cuerpo.cod_act ";
-                querycue += "inner join Afmae_sgr as subgrupo on subgrupo.cod_sgr = activo.sgr_act ";
+                querycue += "inner join Afmae_gru as grupo on grupo.cod_gru= activo.cod_gru ";
                 querycue += "where cuerpo.idregcab='" + idreg + "' ";
+
 
                 DataTable dt_cuerpo = SiaWin.Func.SqlDT(querycue, "cuerpo", idemp);
 
@@ -220,17 +227,17 @@ namespace SiasoftAppExt
 
                 foreach (System.Data.DataRow item in dt_cuerpo.Rows)
                 {
-                    decimal dep_ac = Convert.ToDecimal(item["dep"]);
+                    decimal dep_ac = Convert.ToDecimal(item["dep_ac"]);
                     string cod_act = item["cod_act"].ToString().Trim();
 
-                    string cta_gtdep = item["cta_gtdep"].ToString().Trim();
+                    string cta_gdp = item["cta_gdp"].ToString().Trim();
                     string cta_dep = item["cta_dep"].ToString().Trim();
 
                     string des_mov = "Depreciacion :" + cod_act + " - Per:" + Month + " - Año:" + Year + "";
 
                     if (dep_ac > 0)
                     {
-                        sqlcuerpo += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_ter,cod_cta,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cod_prv + "','" + cta_gtdep + "','" + des_mov + "'," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                        sqlcuerpo += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_ter,cod_cta,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cod_prv + "','" + cta_gdp + "','" + des_mov + "'," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "); ";
                         sqlcuerpo += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_ter,cod_cta,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cod_prv + "','" + cta_dep + "','" + des_mov + "'," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "); ";
                     }
                 }
@@ -275,7 +282,6 @@ namespace SiasoftAppExt
                 return -1;
             }
         }
-       
 
         private void BtnExportar_Click(object sender, RoutedEventArgs e)
         {
@@ -337,7 +343,7 @@ namespace SiasoftAppExt
                 int mes = Convert.ToDateTime(Tx_periodo.Value).Month;
                 string periodo = mes >= 10 ? mes.ToString() : "0" + mes.ToString();
                 string año = Convert.ToDateTime(Tx_ano.Value).Year.ToString();
-                string fecha = "01/" + periodo + "/" + año;                
+                string fecha = "01/" + periodo + "/" + año;
 
                 string emp = cod_empresa;
 
@@ -398,7 +404,7 @@ namespace SiasoftAppExt
             }
             catch (Exception w)
             {
-                MessageBox.Show("error al cancelar:"+w);
+                MessageBox.Show("error al cancelar:" + w);
             }
         }
 

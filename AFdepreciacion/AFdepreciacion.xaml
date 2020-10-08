@@ -11,11 +11,11 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <SolidColorBrush Color="#FF2196F3" x:Key="ColorMain"/>
+            <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
+            <SolidColorBrush Color="#f1c40f" x:Key="ColorSecond"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -51,10 +51,10 @@
 
                 <Grid Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
                     <StackPanel Grid.Column="6" Orientation="Horizontal">
-                        <Button x:Name="BtnConsultar" Content="Consultar" Margin="10 5 0 10" Width="100" Click="BtnConsultar_Click"/>
-                        <Button x:Name="BtnDepreciar" Content="Depreciar" Margin="10 5 0 10" Width="100" Click="BtnDepreciar_Click"/>
-                        <Button x:Name="BtnExportar" Content="Exportar" Margin="10 5 0 10" Width="100" Click="BtnExportar_Click"/>
-                        <Button x:Name="BtnCancelar" Content="Cancelar" Margin="10 5 0 10" Width="100" Click="BtnCancelar_Click"/>
+                        <Button x:Name="BtnConsultar" Content="Consultar" Margin="10 5 0 10" Width="100" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Click="BtnConsultar_Click"/>
+                        <Button x:Name="BtnDepreciar" Content="Depreciar" Margin="10 5 0 10" Width="100" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Click="BtnDepreciar_Click"/>
+                        <Button x:Name="BtnExportar" Content="Exportar" Margin="10 5 0 10" Width="100" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Click="BtnExportar_Click"/>
+                        <Button x:Name="BtnCancelar" Content="Cancelar" Margin="10 5 0 10" Width="100" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Click="BtnCancelar_Click"/>
                     </StackPanel>
                 </Grid>
 
@@ -79,7 +79,7 @@
                     <Setter Property="Background" Value="#373737"/>
                 </Style>
                 <Style TargetType="syncfusion:GridCell" x:Key="colorcol">
-                    <Setter Property="Background" Value="#4CF1C40F" />
+                    <Setter Property="Background" Value="#7FF1C40F" />
                     <Setter Property="BorderBrush" Value="LightGray"/>
                 </Style>
             </Grid.Resources>
@@ -87,29 +87,22 @@
                 <syncfusion:SfDataGrid.StackedHeaderRows>
                     <syncfusion:StackedHeaderRow>
                         <syncfusion:StackedHeaderRow.StackedColumns>
-                            <syncfusion:StackedColumn  ChildColumns="cod_act,val_dep,val_dep_niif" HeaderText="DEPRECIACION"/>
-                            <syncfusion:StackedColumn  ChildColumns="vr_act,mesxdep,dep_ac,val_resi,redu,adi" HeaderText="FISCAL"/>
-                            <!--<syncfusion:StackedColumn  ChildColumns="dep_niff,vr_residual,sal_niif,mesxdep_niif,adin,redun" HeaderText="NIIF"/>-->
+                            <syncfusion:StackedColumn  ChildColumns="cod_act,val_dep" HeaderText="DEPRECIACION"/>
+                            <syncfusion:StackedColumn  ChildColumns="vr_act,mesxdep,dep_ac,val_resi,redu,adi,valoriza,provis" HeaderText="FISCAL"/>
                         </syncfusion:StackedHeaderRow.StackedColumns>
                     </syncfusion:StackedHeaderRow>
                 </syncfusion:SfDataGrid.StackedHeaderRows>
                 <syncfusion:SfDataGrid.Columns>
-
                     <syncfusion:GridTextColumn HeaderText="Activo" MappingName="cod_act" Width="100" CellStyle="{StaticResource colorcol}"/>
                     <syncfusion:GridTextColumn HeaderText="Val a depreciar Fiscal" DisplayBinding="{Binding Path=val_dep, StringFormat='n2'}" TextAlignment="Right" Width="130" CellStyle="{StaticResource colorcol}"/>
-                    <!--<syncfusion:GridNumericColumn HeaderText="Val a depreciar NIIF" MappingName="val_dep_niif" Width="130" NumberDecimalDigits="2" CellStyle="{StaticResource colorcol}"/>-->
                     <syncfusion:GridTextColumn HeaderText="Valor activo" Width="120" DisplayBinding="{Binding Path=vr_act, StringFormat='n2'}" TextAlignment="Right"/>
                     <syncfusion:GridTextColumn HeaderText="Meses Por depr" MappingName="mesxdep" Width="100"/>
                     <syncfusion:GridTextColumn HeaderText="Deprec acumu" Width="120" DisplayBinding="{Binding Path=dep_ac, StringFormat='n2'}" TextAlignment="Right"/>
                     <syncfusion:GridTextColumn HeaderText="Valor Residual" Width="120" DisplayBinding="{Binding Path=val_resi, StringFormat='n2'}" TextAlignment="Right"/>
                     <syncfusion:GridTextColumn HeaderText="Adicion" Width="120" DisplayBinding="{Binding Path=adi, StringFormat='n2'}" TextAlignment="Right"/>
                     <syncfusion:GridTextColumn HeaderText="Reduccion" Width="120" DisplayBinding="{Binding Path=redu, StringFormat='n2'}" TextAlignment="Right"/>
-                    <!--<syncfusion:GridTextColumn HeaderText="sal_niif" MappingName="sal_niif" Width="100"/>
-                    <syncfusion:GridTextColumn HeaderText="dep_niff" MappingName="dep_niff" Width="100"/>
-                    <syncfusion:GridTextColumn HeaderText="mesxdep_niif" MappingName="mesxdep_niif" Width="100"/>
-                    <syncfusion:GridTextColumn HeaderText="adin" MappingName="adin" Width="100"/>
-                    <syncfusion:GridTextColumn HeaderText="redun" MappingName="redun" Width="100"/>
-                    <syncfusion:GridTextColumn HeaderText="vr_residual" MappingName="vr_residual" Width="100"/>-->
+                    <syncfusion:GridTextColumn HeaderText="valoriza" Width="120" DisplayBinding="{Binding Path=valoriza, StringFormat='n2'}" TextAlignment="Right"/>
+                    <syncfusion:GridTextColumn HeaderText="provis" Width="120" DisplayBinding="{Binding Path=provis, StringFormat='n2'}" TextAlignment="Right"/>
                 </syncfusion:SfDataGrid.Columns>
             </syncfusion:SfDataGrid>
             <syncfusion:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Center" FontSize="12" AnimationSpeed="100" AnimationType="Gear" Header="Cargando ..." Height="200" IsBusy="False" Foreground="Black"/>

@@ -1,0 +1,107 @@
+﻿<Window x:Class="AfResumenActivos.Movimientos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:AfResumenActivos"        
+        Title="Movimientos" Height="450" Width="800" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="SiaSf:FilterToggleButton">
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Width" Value="15" />
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="Title">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="Value">
+            <Setter Property="Margin" Value="5,7,5,7"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ColorMain}"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <SiaSf:SfBusyIndicator  Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="100" IsBusy="False" Foreground="#373737"/>
+            <SiaSf:SfDataGrid x:Name="dataGridMov" AllowResizingColumns="True"  EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="9" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}">
+                <SiaSf:SfDataGrid.Columns>
+                    <SiaSf:GridTemplateColumn MappingName="Doc" Width="50"  AllowFiltering="False">
+                        <SiaSf:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="BtnDocumento" Content="..." Click="BtnDocumento_Click"  Background="{StaticResource ColorMain}" BorderBrush="{x:Null}" Foreground="Black" Cursor="Hand"/>
+                            </DataTemplate>
+                        </SiaSf:GridTemplateColumn.CellTemplate>
+                    </SiaSf:GridTemplateColumn>
+                    <SiaSf:GridTextColumn MappingName="idreg" IsHidden="True"/>
+                    <SiaSf:GridTextColumn HeaderText="cod_trn" MappingName="cod_trn" Width="80"/>
+                    <SiaSf:GridTextColumn HeaderText="num_trn" MappingName="num_trn" Width="100"/>
+                    <SiaSf:GridDateTimeColumn HeaderText="fec_trn" MappingName="fec_trn" Width="90"/>
+                    <SiaSf:GridTextColumn HeaderText="vr_act" DisplayBinding="{Binding Path=vr_act, StringFormat='n2'}" Width="100" TextAlignment="Right"/>
+                    <SiaSf:GridTextColumn HeaderText="dep_ac" DisplayBinding="{Binding Path=dep_ac, StringFormat='n2'}" Width="100" TextAlignment="Right"/>
+                    <SiaSf:GridNumericColumn HeaderText="mesxdep" MappingName="mesxdep" Width="80"/>
+                    <SiaSf:GridTextColumn HeaderText="des_mov" MappingName="des_mov" ColumnSizer="AutoLastColumnFill"/>
+                </SiaSf:SfDataGrid.Columns>
+            </SiaSf:SfDataGrid>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Total:" Foreground="White" VerticalAlignment="Center" FontWeight="Bold" Margin="5,0,0,0"/>
+                <TextBlock Name="TxTotal" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </StackPanel>
+
+            <Grid Grid.Column="1" Width="Auto" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="VR ACT:" Style="{StaticResource Title}"/>
+                <TextBox Text="0" Name="TxVract" Grid.Column="1" Style="{StaticResource Value}"/>
+
+                <TextBlock Grid.Column="2" Text="DEP ACT:" Style="{StaticResource Title}"/>
+                <TextBox Text="0" Name="TxDepAct" Grid.Column="3" Style="{StaticResource Value}"/>
+
+                <TextBlock Grid.Column="4" Text="MES X DEP:" Style="{StaticResource Title}"/>
+                <TextBox Text="0" Name="TxMesXdep" Grid.Column="5" Style="{StaticResource Value}"/>
+
+            </Grid>
+        </Grid>
+
+
+    </Grid>
+</Window>
