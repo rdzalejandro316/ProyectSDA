@@ -13,16 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ImportacionDeteriorosRecuperacion
-{
-    /// <summary>
-    /// Lógica de interacción para UserControl1.xaml
-    /// </summary>
-    public partial class UserControl1 : UserControl
+namespace SiasoftAppExt
+{    
+    public partial class ImportacionDeteriorosRecuperacion : UserControl
     {
-        public UserControl1()
+        public ImportacionDeteriorosRecuperacion()
         {
             InitializeComponent();
         }
+
+
     }
 }

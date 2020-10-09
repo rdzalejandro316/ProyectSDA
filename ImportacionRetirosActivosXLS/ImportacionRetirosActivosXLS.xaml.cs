@@ -1,6 +1,5 @@
 ﻿using ImportacionRetirosActivosXLS;
 using Microsoft.Win32;
-using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.Grid.Helpers;
 using Syncfusion.XlsIO;
 using System;
@@ -27,13 +26,10 @@ using System.Windows.Shapes;
 
 namespace SiasoftAppExt
 {
+    //Sia.PublicarPnt(9660,"ImportacionRetirosActivosXLS");
+    //Sia.TabU(9660);
 
-
-
-    //   Sia.PublicarPnt(9660,"ImportacionRetirosActivosXLS");
-    //   Sia.TabU(9660);
-
-    public partial class ImportacionRetirosActivosXLS : UserControl 
+    public partial class ImportacionRetirosActivosXLS : UserControl
     {
 
         dynamic SiaWin;
@@ -44,10 +40,15 @@ namespace SiasoftAppExt
 
         string usuario_name = "";
         string cod_trncont = "";
+        string cod_trn = "999";
+
+        string cabeza = "afcab_doc";
+        string cuerpo = "afcue_doc";
+        string transaccion = "afmae_trn";
+
+
         DataTable dt = new DataTable();
         DataTable dt_errores = new DataTable();
-
-
         DataSet doc_agru = new DataSet();
 
         public ImportacionRetirosActivosXLS(dynamic tabitem1)
@@ -57,6 +58,7 @@ namespace SiasoftAppExt
             idemp = SiaWin._BusinessId;
             tabitem = tabitem1;
             LoadConfig();
+            dt_errores.Columns.Add("error");
         }
 
         private void LoadConfig()
@@ -69,14 +71,12 @@ namespace SiasoftAppExt
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
                 int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());
-                tabitem.Title = "Importacion de Documentos -" + cod_empresa + "-" + nomempresa;
+                tabitem.Title = "Importacion de Retiros";
                 tabitem.Logo(idLogo, ".png");
 
+                usuario_name = SiaWin._UserName;
 
-                DataTable dtemp = SiaWin.Func.SqlDT("select UserName,UserAlias from Seg_User where UserId='" + SiaWin._UserId + "' ", "usuarios", 0);
-                usuario_name = dtemp.Rows.Count > 0 ? dtemp.Rows[0]["username"].ToString().Trim() : "USUARIO INEXISTENTE";
-
-                DataTable dtcon = SiaWin.Func.SqlDT("select cod_tdo from Afmae_trn where cod_trn='999'", "usuarios", idemp);
+                DataTable dtcon = SiaWin.Func.SqlDT("select cod_tdo from Afmae_trn where cod_trn='" + cod_trn + "'", "usuarios", idemp);
                 cod_trncont = dtcon.Rows.Count > 0 ? dtcon.Rows[0]["cod_tdo"].ToString().Trim() : "";
             }
             catch (Exception e)
@@ -109,25 +109,23 @@ namespace SiasoftAppExt
                     worksheet.Range["A1"].Text = "FEC_TRN";
                     worksheet.Range["B1"].Text = "NUM_TRN";
                     worksheet.Range["C1"].Text = "COD_ACT";
-                    worksheet.Range["D1"].Text = "COD_GRU";
-                    worksheet.Range["E1"].Text = "DOC_INT";
-                    worksheet.Range["F1"].Text = "COD_TER";
-                    worksheet.Range["G1"].Text = "COD_CON";
-                    worksheet.Range["H1"].Text = "VR_ACT";
-                    worksheet.Range["I1"].Text = "DEP_ACT";
-                    worksheet.Range["J1"].Text = "MESXDEP";
-                    worksheet.Range["A1:J1"].CellStyle.Font.Bold = true;
+                    worksheet.Range["D1"].Text = "DOC_INT";
+                    worksheet.Range["E1"].Text = "COD_TER";
+                    worksheet.Range["F1"].Text = "COD_CON";
+                    worksheet.Range["G1"].Text = "VR_ACT";
+                    worksheet.Range["H1"].Text = "DEP_ACT";
+                    worksheet.Range["I1"].Text = "MESXDEP";
+                    worksheet.Range["A1:I1"].CellStyle.Font.Bold = true;
 
                     worksheet.Range["A1:A500"].NumberFormat = "m/d/yyyy";
                     worksheet.Range["B1:B500"].NumberFormat = "@";//formato texto
                     worksheet.Range["C1:C500"].NumberFormat = "@";//formato texto
-                    worksheet.Range["D1:D500"].NumberFormat = "@";//formato texto
-                    worksheet.Range["E1:E500"].NumberFormat = "@";//formato texto
+                    worksheet.Range["D1:D500"].NumberFormat = "@";//formato texto                    
+                    worksheet.Range["E1:F500"].NumberFormat = "@";//formato texto
                     worksheet.Range["F1:F500"].NumberFormat = "@";//formato texto
-                    worksheet.Range["G1:G500"].NumberFormat = "@";//formato texto
+                    worksheet.Range["G1:G500"].NumberFormat = "0.00";//formato numero
                     worksheet.Range["H1:H500"].NumberFormat = "0.00";//formato numero
-                    worksheet.Range["I1:I500"].NumberFormat = "0.00";//formato numero
-                    worksheet.Range["J1:J500"].NumberFormat = "0";//formato numero
+                    worksheet.Range["I1:I500"].NumberFormat = "0";//formato numero                    
 
                     if (string.IsNullOrEmpty(ruta)) MessageBox.Show("Por favor, seleccione una ruta para guardar la plantilla");
                     else
@@ -162,6 +160,11 @@ namespace SiasoftAppExt
             using (ExcelEngine excelEngine = new ExcelEngine())
             {
                 IApplication application = excelEngine.Excel;
+                if (!application.IsSupported(FileName))
+                {
+                    MessageBox.Show("el tipo de extencion .xls no se admite por favor actualizarlo a .xlsx", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return null;
+                }
                 application.DefaultVersion = ExcelVersion.Excel2013;
                 IWorkbook workbook = application.Workbooks.Open(FileName);
                 IWorksheet worksheet = workbook.Worksheets[0];
@@ -176,13 +179,12 @@ namespace SiasoftAppExt
             if (dt.Columns.Contains("Fec_trn") == false || dt.Columns.IndexOf("Fec_trn") != 0) flag = false;
             if (dt.Columns.Contains("Num_trn") == false || dt.Columns.IndexOf("Num_trn") != 1) flag = false;
             if (dt.Columns.Contains("Cod_act") == false || dt.Columns.IndexOf("Cod_act") != 2) flag = false;
-            if (dt.Columns.Contains("Cod_gru") == false || dt.Columns.IndexOf("Cod_gru") != 3) flag = false;
-            if (dt.Columns.Contains("Doc_int") == false || dt.Columns.IndexOf("Doc_int") != 4) flag = false;
-            if (dt.Columns.Contains("Cod_ter") == false || dt.Columns.IndexOf("Cod_ter") != 5) flag = false;
-            if (dt.Columns.Contains("Cod_con") == false || dt.Columns.IndexOf("Cod_con") != 6) flag = false;
-            if (dt.Columns.Contains("Vr_act") == false || dt.Columns.IndexOf("Vr_act") != 7) flag = false;
-            if (dt.Columns.Contains("Dep_act") == false || dt.Columns.IndexOf("Dep_act") != 8) flag = false;
-            if (dt.Columns.Contains("Mesxdep") == false || dt.Columns.IndexOf("Mesxdep") != 9) flag = false;
+            if (dt.Columns.Contains("Doc_int") == false || dt.Columns.IndexOf("Doc_int") != 3) flag = false;
+            if (dt.Columns.Contains("Cod_ter") == false || dt.Columns.IndexOf("Cod_ter") != 4) flag = false;
+            if (dt.Columns.Contains("Cod_con") == false || dt.Columns.IndexOf("Cod_con") != 5) flag = false;
+            if (dt.Columns.Contains("Vr_act") == false || dt.Columns.IndexOf("Vr_act") != 6) flag = false;
+            if (dt.Columns.Contains("Dep_act") == false || dt.Columns.IndexOf("Dep_act") != 7) flag = false;
+            if (dt.Columns.Contains("Mesxdep") == false || dt.Columns.IndexOf("Mesxdep") != 8) flag = false;
             return flag;
         }
 
@@ -194,12 +196,14 @@ namespace SiasoftAppExt
             openfile.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
             var browsefile = openfile.ShowDialog();
             string root = openfile.FileName;
+
             if (string.IsNullOrEmpty(root)) return;
 
             sfBusyIndicator.IsBusy = true;
             dt.Clear(); dt_errores.Clear();
-            dt = ConvertExcelToDataTable(root);
 
+            dt = ConvertExcelToDataTable(root);
+            if (dt == null) { sfBusyIndicator.IsBusy = false; return; }
 
             if (validarArchioExcel(dt) == false)
             {
@@ -209,82 +213,20 @@ namespace SiasoftAppExt
             }
 
 
+            agruparDocumentos(dt);
+
             CancellationTokenSource source = new CancellationTokenSource();
             var slowTask = Task<DataTable>.Factory.StartNew(() => Process(dt), source.Token);
             await slowTask;
 
-
-
-            decimal n; DateTime d; int e;
-            int rows = 0;
-            foreach (System.Data.DataRow row in dt.Rows)
-            {
-                if (!string.IsNullOrEmpty(row[0].ToString()))
-                {
-                    //rows++;
-                    //_DocAfijo.Add(new Documentos(
-                    //    "999",
-                    //    row["Num_trn"].ToString(),
-                    //    Convert.ToDateTime(row["Fec_trn"] == DBNull.Value || DateTime.TryParse(row["Fec_trn"].ToString(), out d) == false ? DateTime.Now.ToString("dd/MM/yyy") : row["Fec_trn"]).ToString("dd/MM/yyyy"),
-                    //    row["Cod_ter"].ToString(),
-                    //    row["Cod_act"].ToString(),
-                    //    row["Doc_int"].ToString(),
-                    //    row["Cod_gru"].ToString(),
-                    //    row["Cod_con"].ToString(),
-                    //    Convert.ToDecimal(row["Vr_act"] == DBNull.Value || decimal.TryParse(row["Vr_act"].ToString(), out n) == false ? 0 : row["Vr_act"]),
-                    //    Convert.ToDecimal(row["Dep_act"] == DBNull.Value || decimal.TryParse(row["Dep_act"].ToString(), out n) == false ? 0 : row["Dep_act"]),
-                    //    Convert.ToInt32(row["Mesxdep"] == DBNull.Value || int.TryParse(row["Mesxdep"].ToString(), out e) == false ? 0 : row["Mesxdep"])
-                    //    ));
-                }
-            }
-
-
-            agruparDocumentos(dt);
-
-
-
-            #region grilla
-            //dataGridRefe.ItemsSource = DocAfijo;
-            dataGridRefe.View.Refresh();
-            dataGridRefe.Columns["Cod_trn"].Width = 70;
-            dataGridRefe.Columns["Num_trn"].Width = 100;
-            dataGridRefe.Columns["Num_trn"].HeaderText = "Documento";
-            dataGridRefe.Columns["Fec_trn"].Width = 80;
-            dataGridRefe.Columns["Fec_trn"].HeaderText = "Fecha";
-            dataGridRefe.Columns["Cod_ter"].Width = 100;
-            dataGridRefe.Columns["Cod_ter"].HeaderText = "NIT/CC";
-            dataGridRefe.Columns["Cod_act"].Width = 80;
-            dataGridRefe.Columns["Cod_act"].HeaderText = "Codigo";
-            dataGridRefe.Columns["Doc_int"].Width = 80;
-            dataGridRefe.Columns["Doc_int"].HeaderText = "Doc Refe";
-            dataGridRefe.Columns["Cod_gru"].Width = 80;
-            dataGridRefe.Columns["Cod_gru"].HeaderText = "Cod grupo";
-            dataGridRefe.Columns["Cod_con"].Width = 70;
-            dataGridRefe.Columns["Cod_con"].HeaderText = "Concepto";
-            dataGridRefe.Columns["Vr_act"].Width = 80;
-            dataGridRefe.Columns["Vr_act"].HeaderText = "Valor";
-            dataGridRefe.Columns["Dep_act"].Width = 80;
-            dataGridRefe.Columns["Dep_act"].HeaderText = "Dep Activo";
-            dataGridRefe.Columns["Mesxdep"].Width = 80;
-            dataGridRefe.Columns["Nom_act"].Width = 0;
-            dataGridRefe.Columns["Nom_ter"].Width = 0;
-            dataGridRefe.Columns["Nom_gru"].Width = 0;
-            dataGridRefe.Columns["Nom_con"].Width = 0;
-
-            #endregion;
+            dataGridRefe.ItemsSource = ((DataTable)slowTask.Result).DefaultView;
             MessageBox.Show("Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            Tx_total.Text = rows.ToString();
+            Tx_total.Text = ((DataTable)slowTask.Result).Rows.Count.ToString();
+            Tx_errores.Text = dt_errores.Rows.Count.ToString();
+            Tx_tercero.Text = ""; Tx_activo.Text = ""; Tx_concepto.Text = "";
 
-            int tot_erro = 0;
-            //foreach (var item in _DocAfijo)
-            //{
-            //    if (!string.IsNullOrEmpty(item.Error)) tot_erro++;
-            //}
-
-            Tx_errores.Text = tot_erro.ToString();
-            Tx_tercero.Text = ""; Tx_activo.Text = "";
-            Tx_grupo.Text = ""; Tx_concepto.Text = "";
+            sfBusyIndicator.IsBusy = false;
 
         }
 
@@ -292,29 +234,175 @@ namespace SiasoftAppExt
         {
             try
             {
-
-                foreach (System.Data.DataRow dr in dt.Rows)
+                //VALIDAR DOCUMENTO si existe
+                foreach (DataTable dtemp in doc_agru.Tables)
                 {
+                    #region validacion documento
 
-                    //---- valida existencias
-                    //cod_trn y num_trn
+                    string num_trn = dtemp.Rows[0]["NUM_TRN"].ToString().Trim();
 
-                    string cod_trn = dr["COD_TRN"].ToString().Trim();
-                    //string num_trn = dr["NUM_TRN"].ToString().Trim();
+                    DataTable dt_trn = SiaWin.Func.SqlDT("select * from " + cabeza + " where cod_trn='" + cod_trn + "' and num_trn='" + num_trn + "' ", "trn", idemp);
+                    if (dt_trn.Rows.Count > 0) { System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el documento " + num_trn + "- COD_TRN:" + cod_trn + " ya existe registrado"; dt_errores.Rows.Add(row); }
 
-                    //DataTable dt_bod = SiaWin.Func.SqlDT("select cod_bod,cod_ter from inmae_bod where cod_bod='" + cod_bod + "'  ", "bodegas", idemp);
+                    #endregion
+
+                    DateTime date;
+                    bool fec_vali = true;
+                    bool act_vali = true;
+                    //validar campo por campo
+                    foreach (System.Data.DataRow dr in dtemp.Rows)
+                    {
+
+                        #region fecha
+                        string fec_trn = dr["FEC_TRN"].ToString().Trim();
+
+                        if (string.IsNullOrEmpty(fec_trn))
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo fecha debe de estar lleno #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                            fec_vali = false;
+                        }
+                        else
+                        {
+                            if (dr["FEC_TRN"] == DBNull.Value || DateTime.TryParse(dr["FEC_TRN"].ToString(), out date) == false)
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la fecha " + fec_trn + " ingresada no cuenta con el formato (dd/MM/yyyy) correcto #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                                fec_vali = false;
+                            }
+                        }
+
+                        #endregion
+
+                        #region activo
+                        string cod_act = dr["COD_ACT"].ToString().Trim();
+
+                        if (string.IsNullOrEmpty(cod_act))
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de activo debe de estar lleno #" + num_trn + "# "; dt_errores.Rows.Add(row);
+                            dr["NOM_ACT"] = "";
+                            act_vali = false;
+                        }
+                        else
+                        {
+                            string query_act = "select act.cod_act,act.nom_act from Afmae_act act where act.cod_act='" + cod_act + "'";
+
+                            DataTable dt_act = SiaWin.Func.SqlDT(query_act, "activo", idemp);
+                            if (dt_act.Rows.Count > 0)
+                            {
+                                dr["NOM_ACT"] = dt_act.Rows[0]["nom_act"].ToString().Trim();
+                            }
+                            else
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el activo  " + cod_act + " no existe #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                                dr["NOM_ACT"] = "";
+                                act_vali = false;
+                            }
+                        }
 
 
+                        #endregion
+
+                        #region tercero
+
+                        string cod_ter = dr["cod_ter"].ToString().Trim();
+
+                        if (!string.IsNullOrEmpty(cod_ter))
+                        {
+                            DataTable dt_ter = SiaWin.Func.SqlDT("select cod_ter,nom_ter from comae_ter where cod_ter='" + cod_ter + "' ", "tercero", idemp);
+                            if (dt_ter.Rows.Count > 0)
+                            {
+                                dr["COD_TER"] = dt_ter.Rows[0]["cod_ter"].ToString().Trim();
+                                dr["NOM_TER"] = dt_ter.Rows[0]["nom_ter"].ToString().Trim();
+                            }
+                            else
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tercero " + cod_ter + " no existe #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                                dr["COD_TER"] = string.IsNullOrEmpty(dr["COD_TER"].ToString().Trim()) ? "" : dr["COD_TER"].ToString().Trim();
+                                dr["NOM_TER"] = "";
+                            }
+                        }
+
+                        #endregion
+
+                        #region concepto
+                        string cod_con = dr["COD_CON"].ToString().Trim();
+
+                        if (string.IsNullOrEmpty(cod_con))
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de concepto debe de estar lleno #" + num_trn + "# "; dt_errores.Rows.Add(row);
+                            dr["NOM_CON"] = "";
+                        }
+                        else
+                        {
+                            string query_con = "select cod_con,nom_con,valid from Afing_ret act where cod_con='" + cod_con + "'";
+
+                            DataTable dt_con = SiaWin.Func.SqlDT(query_con, "concepto", idemp);
+                            if (dt_con.Rows.Count > 0)
+                            {
+                                bool f = Convert.ToBoolean(dt_con.Rows[0]["valid"]);
+                                if (f)
+                                {
+                                    System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el concepto " + cod_con + " no es el valido para las transacciones de retiro #" + num_trn + "# "; dt_errores.Rows.Add(row);
+                                }
+                                dr["NOM_CON"] = dt_con.Rows[0]["nom_con"].ToString();
+                            }
+                            else
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el concepto " + cod_con + " no existe #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                                dr["NOM_CON"] = "";
+                            }
+                        }
 
 
+                        #endregion
+
+                        #region vr_act,dep_ac,mesxdep
 
 
+                        if (string.IsNullOrEmpty(fec_trn))
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo fecha debe de estar lleno para determinar el valor del activo a dicha fecha #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                        }
+
+                        if (string.IsNullOrEmpty(cod_act))
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de activo debe de estar lleno para poder determinar el valor del activo #" + num_trn + "# "; dt_errores.Rows.Add(row);
+                            dr["NOM_ACT"] = "";
+                        }
+
+                        //si es valido la fecha y si es valido el activo
+                        if (fec_vali && act_vali)
+                        {
+                            DateTime _fecdoc = Convert.ToDateTime(fec_trn);
+                            DateTime dia_ant = _fecdoc.AddDays(-1);
+
+                            DataTable dt_saldo = SiaWin.Func.SaldoActivo(cod_act, dia_ant.ToString("dd/MM/yyyy"), 0);
+                            if (dt_saldo.Rows.Count > 0)
+                            {
+                                double vr_act = Convert.ToDouble(dt_saldo.Rows[0]["vr_act"]);
+                                double depreciado = Convert.ToDouble(dt_saldo.Rows[0]["dep_ac"]);
+                                int mesxdep = Convert.ToInt32(dt_saldo.Rows[0]["mesxdep"]);
+
+                                dr["MESXDEP"] = mesxdep * (-1);
+                                dr["VR_ACT"] = vr_act * (-1);
+                                dr["DEP_AC"] = depreciado * (-1);
+                            }
+                        }
+
+
+                        #endregion
+
+                    }
 
                 }
 
 
 
-                return dt;
+                DataTable dtreturn = new DataTable();
+                foreach (DataTable dtemp in doc_agru.Tables)
+                {
+                    dtreturn.Merge(dtemp);
+                }
+                return dtreturn;
             }
             catch (Exception e)
             {
@@ -323,42 +411,86 @@ namespace SiasoftAppExt
             }
         }
 
-
-
         public void agruparDocumentos(DataTable dt)
         {
             try
             {
-                DataTable d = Limpiar(dt);//limpia rows en blanco                
+                DataTable d = Limpiar(dt);
                 DataView dv = d.DefaultView;
                 dv.Sort = "NUM_TRN desc";
                 DataTable sortedDT = dv.ToTable();
-                //SiaWin.Browse(d);
                 doc_agru.Tables.Clear();
 
-                #region algortimo el cual mete en un dataset los documentos separados por datatable
-                string documento = "";
+                #region columnas
                 DataTable dd = new DataTable();
-                dd.Columns.Add("FEC_TRN"); dd.Columns.Add("NUM_TRN"); dd.Columns.Add("COD_ACT"); dd.Columns.Add("COD_GRU");
-                dd.Columns.Add("DOC_INT"); dd.Columns.Add("COD_TER"); dd.Columns.Add("COD_CON"); dd.Columns.Add("VR_ACT"); dd.Columns.Add("DEP_ACT"); dd.Columns.Add("MESXDEP");
+                dd.Columns.Add("FEC_TRN");
+                dd.Columns.Add("COD_TRN");
+                dd.Columns.Add("NUM_TRN");
+                dd.Columns.Add("COD_ACT");
+                dd.Columns.Add("NOM_ACT");
+                dd.Columns.Add("DOC_INT");
+                dd.Columns.Add("COD_TER");
+                dd.Columns.Add("NOM_TER");
+                dd.Columns.Add("COD_CON");
+                dd.Columns.Add("NOM_CON");
+                dd.Columns.Add("VR_ACT");
+                dd.Columns.Add("DEP_AC");
+                dd.Columns.Add("MESXDEP");
+                #endregion
 
-                decimal n; DateTime da; int e; int i = 0;
-                foreach (System.Data.DataRow item in sortedDT.Rows)
+                #region algortimo el cual mete en un dataset los documentos separados por datatable
+
+                #region transaccion agrupada
+
+                DataTable dt_gb = sortedDT.AsEnumerable()
+               .GroupBy(r => new { Col1 = r["NUM_TRN"] })
+               .Select(g =>
+               {
+                   var row = dt.NewRow();
+                   row["NUM_TRN"] = g.Key.Col1;
+                   return row;
+               })
+               .CopyToDataTable();
+
+                #endregion
+
+                if (dt_gb.Rows.Count > 0)
                 {
-                    i++;
-                    if (string.IsNullOrEmpty(documento)) { documento = item["NUM_TRN"].ToString().Trim(); }
-                    if (documento == item["NUM_TRN"].ToString().Trim())
+                    foreach (DataRow dr in dt_gb.Rows)
                     {
-                        dd.Rows.Add(Convert.ToDateTime(item["FEC_TRN"] == DBNull.Value || DateTime.TryParse(item["FEC_TRN"].ToString(), out da) == false ? DateTime.Now.ToString("dd/MM/yyy") : item["FEC_TRN"]).ToString("dd/MM/yyyy"), item["NUM_TRN"].ToString(), item["COD_ACT"].ToString(), item["COD_GRU"].ToString(), item["DOC_INT"].ToString(), item["COD_TER"].ToString(), item["COD_CON"].ToString(), Convert.ToDecimal(item["VR_ACT"] == DBNull.Value || decimal.TryParse(item["VR_ACT"].ToString(), out n) == false ? 0 : item["VR_ACT"]), Convert.ToDecimal(item["DEP_ACT"] == DBNull.Value || decimal.TryParse(item["DEP_ACT"].ToString(), out n) == false ? 0 : item["DEP_ACT"]), Convert.ToInt32(item["MESXDEP"] == DBNull.Value || int.TryParse(item["MESXDEP"].ToString(), out e) == false ? 0 : item["MESXDEP"]));
-                        if (i == sortedDT.Rows.Count) { doc_agru.Tables.Add(dd.Copy()); dd.Clear(); }//ultima columna
+                        string num_trn = dr["NUM_TRN"].ToString();
+
+                        DataRow[] result = sortedDT.Select("NUM_TRN='" + num_trn + "'");
+
+                        foreach (DataRow row in result)
+                        {
+                            string fec_trn = row["FEC_TRN"].ToString();
+                            string cod_act = row["COD_ACT"].ToString();
+                            string doc_int = row["DOC_INT"].ToString();
+                            string cod_ter = row["COD_TER"].ToString();
+                            string cod_con = row["COD_CON"].ToString();
+
+                            dd.Rows.Add(
+                                fec_trn,
+                                cod_trn,
+                                num_trn,
+                                cod_act,
+                                "",//nombre activo                                
+                                doc_int,
+                                cod_ter,
+                                "",//nombre de tercero
+                                cod_con,
+                                "",//nombre de concepto
+                                0, 0, 0// vr_act,dep_ac,mesxdep
+                                );
+                        }
+
+                        doc_agru.Tables.Add(dd.Copy());
+                        dd.Clear();
                     }
-                    else
-                    {
-                        doc_agru.Tables.Add(dd.Copy()); dd.Clear();//agrega el documento completo a un datatable 
-                        dd.Rows.Add(Convert.ToDateTime(item["FEC_TRN"] == DBNull.Value || DateTime.TryParse(item["FEC_TRN"].ToString(), out da) == false ? DateTime.Now.ToString("dd/MM/yyy") : item["FEC_TRN"]).ToString("dd/MM/yyyy"), item["NUM_TRN"].ToString(), item["COD_ACT"].ToString(), item["COD_GRU"].ToString(), item["DOC_INT"].ToString(), item["COD_TER"].ToString(), item["COD_CON"].ToString(), Convert.ToDecimal(item["VR_ACT"] == DBNull.Value || decimal.TryParse(item["VR_ACT"].ToString(), out n) == false ? 0 : item["VR_ACT"]), Convert.ToDecimal(item["DEP_ACT"] == DBNull.Value || decimal.TryParse(item["DEP_ACT"].ToString(), out n) == false ? 0 : item["DEP_ACT"]), Convert.ToInt32(item["MESXDEP"] == DBNull.Value || int.TryParse(item["MESXDEP"].ToString(), out e) == false ? 0 : item["MESXDEP"]));
-                    }
-                    documento = item["NUM_TRN"].ToString().Trim();
                 }
+
+
                 #endregion
 
             }
@@ -375,19 +507,20 @@ namespace SiasoftAppExt
             {
                 #region validacion
 
-                if (dataGridRefe.ItemsSource == null)
+                if (dataGridRefe.ItemsSource == null || dataGridRefe.View.Records.Count <= 0)
                 {
                     MessageBox.Show("no hay datos para importar", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                if (dataGridRefe.View.Records.Count <= 0)
-                {
-                    MessageBox.Show("no hay datos para importar", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
 
-                //if (documentos() == true) return;
+                if (dt_errores.Rows.Count > 0)
+                {
+                    MessageBox.Show("la importacion contiene errores debe de estar todo correcto", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                };
+
+
 
                 #endregion
 
@@ -400,26 +533,23 @@ namespace SiasoftAppExt
 
                     foreach (DataTable dt_cue in doc_agru.Tables)
                     {
-                        string cod_trn_cab = "999";
                         string num_trn_cab = dt_cue.Rows[0]["num_trn"].ToString();
                         string fecha = dt_cue.Rows[0]["fec_trn"].ToString();
                         DateTime date = Convert.ToDateTime(fecha);
 
-                        sql_cab += @"INSERT INTO afcab_doc (cod_trn,fec_trn,num_trn,des_mov,_usu,ano_doc,per_doc) values ('" + cod_trn_cab + "','" + fecha + "','" + num_trn_cab + "','ECHO DESDE EL PROCESO DE IMPORTACION','" + usuario_name + "','" + date.Year + "','" + date.Month + "');DECLARE @NewID INT;SELECT @NewID = SCOPE_IDENTITY();";
+                        sql_cab += @"INSERT INTO afcab_doc (cod_trn,fec_trn,num_trn,des_mov,_usu,ano_doc,per_doc) values ('" + cod_trn + "','" + fecha + "','" + num_trn_cab + "','ECHO DESDE EL PROCESO DE IMPORTACION','" + usuario_name + "','" + date.Year + "','" + date.Month + "');DECLARE @NewID INT;SELECT @NewID = SCOPE_IDENTITY();";
 
                         foreach (System.Data.DataRow dtcue in dt_cue.Rows)
                         {
-                            string num_trn = dtcue["num_trn"].ToString().Trim();
                             string cod_act = dtcue["cod_act"].ToString().Trim();
-                            string cod_gru = dtcue["cod_gru"].ToString().Trim();
                             string doc_int = dtcue["doc_int"].ToString().Trim();
                             string cod_ter = dtcue["cod_ter"].ToString().Trim();
                             string cod_con = dtcue["cod_con"].ToString().Trim();
-                            decimal vr_act = Convert.ToDecimal(dtcue["dep_act"]);
-                            decimal dep_ac = Convert.ToDecimal(dtcue["dep_act"]);
+                            decimal vr_act = Convert.ToDecimal(dtcue["vr_act"]);
+                            decimal dep_ac = Convert.ToDecimal(dtcue["dep_ac"]);
                             int mesxdep = Convert.ToInt32(dtcue["mesxdep"]);
 
-                            sql_cue += @"INSERT INTO afcue_doc (idregcab,cod_trn,num_trn,cod_act,cod_gru,doc_int,cod_ter,cod_con,vr_act,dep_ac,mesxdep) values (@NewID,'" + cod_trn_cab + "','" + num_trn + "','" + cod_act + "','" + cod_gru + "','" + doc_int + "','" + cod_ter + "','" + cod_con + "'," + vr_act.ToString("F", CultureInfo.InvariantCulture) + "," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "," + mesxdep + ");";
+                            sql_cue += @"INSERT INTO afcue_doc (idregcab,cod_trn,num_trn,cod_act,doc_int,cod_ter,cod_con,vr_act,dep_ac,mesxdep) values (@NewID,'" + cod_trn + "','" + num_trn_cab + "','" + cod_act + "','" + doc_int + "','" + cod_ter + "','" + cod_con + "'," + vr_act.ToString("F", CultureInfo.InvariantCulture) + "," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "," + mesxdep + ");";
                         }
 
                         string query = sql_cab + sql_cue;
@@ -442,39 +572,15 @@ namespace SiasoftAppExt
             }
         }
 
-        public Tuple<string, string, string> getGrupo(string acti_tra)
-        {
-            string query = "select cod_act,Afmae_act.cod_gru,afmae_gru.cta_act  ";
-            query += "From Afmae_act ";
-            query += "inner join afmae_gru on afmae_gru.cod_gru = Afmae_act.cod_gru ";
-            query += "where Afmae_act.cod_act='" + acti_tra + "' ";
-
-            DataTable dt = SiaWin.Func.SqlDT(query, "cuerpo", idemp);
-            return new Tuple<string, string, string>(
-            dt.Rows.Count > 0 ? dt.Rows[0]["cod_act"].ToString().Trim() : "",
-            dt.Rows.Count > 0 ? dt.Rows[0]["cod_gru"].ToString().Trim() : "",
-            dt.Rows.Count > 0 ? dt.Rows[0]["cta_act"].ToString().Trim() : ""
-            );
-        }
-
 
         public void contabilizar()
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("cod_trn");
-                dt.Columns.Add("num_trn");
-
-
-                foreach (DataTable doc in doc_agru.Tables)
-                    dt.Rows.Add("999", doc.Rows[0]["num_trn"].ToString());
-
-                foreach (System.Data.DataRow dr in dt.Rows)
-                {
-                    ContabilizaRetiro(dr["num_trn"].ToString().Trim(), dr["cod_trn"].ToString().Trim());
+                foreach (DataTable tabla in doc_agru.Tables)
+                {                    
+                    ContabilizaRetiro(cod_trn, tabla.Rows[0]["NUM_TRN"].ToString().Trim());
                 }
-
             }
             catch (Exception w)
             {
@@ -483,11 +589,12 @@ namespace SiasoftAppExt
         }
 
 
-        private int ContabilizaRetiro(string num_trn, string cod_trn)
+        private int ContabilizaRetiro(string cod_trn, string num_trn)
         {
             int idregreturn = -1;
             try
             {
+
 
                 #region obtiene datos principales                
                 string query = "select Afcab_doc.cod_trn,Afcab_doc.num_trn,Afcab_doc.fec_trn,Afmae_trn.cod_tdo from Afcab_doc  ";
@@ -500,6 +607,7 @@ namespace SiasoftAppExt
                 string cod_trn_co = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["cod_tdo"].ToString().Trim() : "";
                 string num_trn_co = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["num_trn"].ToString().Trim() : "";
                 DateTime _fecdoc = Convert.ToDateTime(dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["fec_trn"].ToString().Trim() : DateTime.Now.ToString("dd/MM/yyyy"));
+                DateTime dia_ant = _fecdoc.AddDays(-1);
 
                 #endregion
 
@@ -507,7 +615,7 @@ namespace SiasoftAppExt
 
                 string cuerpo_contable = "";
 
-                string querycue = "select Afcue_doc.cod_act,Afmae_act.vr_act,Afcue_doc.cod_ter,Afcue_doc.doc_int,Afcue_doc.cod_con,Afcue_doc.act_tras, ";
+                string querycue = "select Afcue_doc.cod_act,Afcue_doc.cod_ter,Afcue_doc.doc_int,Afcue_doc.cod_con,Afcue_doc.act_tras, ";
                 querycue += "Afmae_gru.cta_act,Afmae_gru.cta_dep,";
                 querycue += "Afing_ret.cta_per,Afing_ret.cta_ord,Afing_ret.cta_orc, ";
                 querycue += "Afmae_gru.cta_ordd,Afmae_gru.cta_ordc, ";
@@ -522,12 +630,10 @@ namespace SiasoftAppExt
 
                 DataTable dt_cuerpo = SiaWin.Func.SqlDT(querycue, "cuerpo", idemp);
 
-
+                string update = "";
                 foreach (System.Data.DataRow item in dt_cuerpo.Rows)
                 {
 
-
-                    double valor_act = Convert.ToDouble(item["vr_act"]);
                     string cod_act = item["cod_act"].ToString().Trim();
                     string act_tras = item["act_tras"].ToString().Trim();
                     string cod_con = item["cod_con"].ToString().Trim();
@@ -546,15 +652,14 @@ namespace SiasoftAppExt
 
                     string cta_gdp = item["cta_gdp"].ToString().Trim();
 
+                    update += "update afmae_act set ind_ret=1 where cod_act='" + cod_act + "';";
 
-
-                    DataTable dt_depreciado = SiaWin.Func.SaldoActivo(cod_act, _fecdoc.ToString("dd/MM/yyyy"), idemp);
-
+                    DataTable dt_depreciado = SiaWin.Func.SaldoActivo(cod_act, dia_ant.ToString("dd/MM/yyyy"), 0);
 
                     if (dt_depreciado.Rows.Count > 0)
                     {
                         double vr_act = Convert.ToDouble(dt_depreciado.Rows[0]["vr_act"]);
-                        double depreciado = Convert.ToDouble(dt_depreciado.Rows[0]["depreciacion"]);
+                        double depreciado = Convert.ToDouble(dt_depreciado.Rows[0]["dep_ac"]);
                         double faltante = vr_act - depreciado;
 
                         cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,cod_ter,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_act + "','" + doc_int + "','" + cod_ter + "','Retiro - " + cod_act + " '," + vr_act.ToString("F", CultureInfo.InvariantCulture) + "); ";
@@ -568,7 +673,7 @@ namespace SiasoftAppExt
 
                         if (cod_con == "51")
                         {
-                            double val = faltante > 0 ? faltante : valor_act;
+                            double val = faltante > 0 ? faltante : vr_act;
                             cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_ord + "','" + doc_int + "','Retiro - " + cod_act + "'," + val.ToString("F", CultureInfo.InvariantCulture) + "); ";
                             cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_orc + "','" + doc_int + "','Retiro - " + cod_act + "'," + val.ToString("F", CultureInfo.InvariantCulture) + "); ";
                         }
@@ -619,6 +724,15 @@ namespace SiasoftAppExt
                 }
                 #endregion
 
+
+                #region cambiar indicador de retiro en la maestra             
+
+                SiaWin.Func.SqlCRUD(update, idemp);
+
+                #endregion
+
+
+
                 return idregreturn;
             }
             catch (Exception w)
@@ -628,18 +742,31 @@ namespace SiasoftAppExt
             }
         }
 
+        public Tuple<string, string, string> getGrupo(string acti_tra)
+        {
+            string query = "select cod_act,Afmae_act.cod_gru,afmae_gru.cta_act  ";
+            query += "From Afmae_act ";
+            query += "inner join afmae_gru on afmae_gru.cod_gru = Afmae_act.cod_gru ";
+            query += "where Afmae_act.cod_act='" + acti_tra + "' ";
+
+            DataTable dt = SiaWin.Func.SqlDT(query, "cuerpo", idemp);
+            return new Tuple<string, string, string>(
+            dt.Rows.Count > 0 ? dt.Rows[0]["cod_act"].ToString().Trim() : "",
+            dt.Rows.Count > 0 ? dt.Rows[0]["cod_gru"].ToString().Trim() : "",
+            dt.Rows.Count > 0 ? dt.Rows[0]["cta_act"].ToString().Trim() : ""
+            );
+        }
 
         private void DataGridRefe_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
         {
             try
             {
-                if ((sender as SfDataGrid).SelectedIndex >= 0)
+                if ((sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).SelectedIndex >= 0)
                 {
-                    var reflector = (sender as SfDataGrid).View.GetPropertyAccessProvider();
-                    var rowData = (sender as SfDataGrid).GetRecordAtRowIndex((sender as SfDataGrid).SelectedIndex + 1);
+                    var reflector = (sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).View.GetPropertyAccessProvider();
+                    var rowData = (sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).GetRecordAtRowIndex((sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).SelectedIndex + 1);
                     Tx_tercero.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "Nom_ter").ToString()) ? reflector.GetValue(rowData, "Nom_ter").ToString().ToUpper() : "NO EXISTE";
                     Tx_activo.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "Nom_act").ToString()) ? reflector.GetValue(rowData, "Nom_act").ToString().ToUpper() : "NO EXISTE";
-                    Tx_grupo.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "Nom_gru").ToString()) ? reflector.GetValue(rowData, "Nom_gru").ToString().ToUpper() : "NO EXISTE";
                     Tx_concepto.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "Nom_con").ToString()) ? reflector.GetValue(rowData, "Nom_con").ToString().ToUpper() : "NO EXISTE";
                 }
             }
@@ -661,7 +788,7 @@ namespace SiasoftAppExt
 
                 foreach (DataTable doc in doc_agru.Tables)
                 {
-                    dt.Rows.Add("999", doc.Rows[0]["NUM_TRN"].ToString(), doc.Rows[0]["FEC_TRN"].ToString(), cod_trncont);
+                    dt.Rows.Add(cod_trn, doc.Rows[0]["NUM_TRN"].ToString(), doc.Rows[0]["FEC_TRN"].ToString(), cod_trncont);
                 }
 
 
@@ -676,7 +803,6 @@ namespace SiasoftAppExt
                 MessageBox.Show("erro al abrir:" + w);
             }
         }
-
 
         public DataTable Limpiar(DataTable dt)
         {
@@ -694,19 +820,6 @@ namespace SiasoftAppExt
                 }
             }
             return dt1;
-        }
-
-        private void RemoveEmptyRows(DataTable source)
-        {
-            for (int i = source.Rows.Count; i >= 1; i--)
-            {
-                System.Data.DataRow currentRow = source.Rows[i - 1];
-                foreach (var colValue in currentRow.ItemArray)
-                {
-                    if (!string.IsNullOrEmpty(colValue.ToString())) break;
-                    source.Rows[i - 1].Delete();
-                }
-            }
         }
 
         public bool documentos()
@@ -727,12 +840,17 @@ namespace SiasoftAppExt
             return flag;
         }
 
-
-
-
-
-
-
+        private void BtnErrores_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SiaWin.Browse(dt_errores);
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrir la lista de errores:" + w);
+            }
+        }
 
 
 

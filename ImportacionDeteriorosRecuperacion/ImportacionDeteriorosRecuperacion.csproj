@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -67,7 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="ImportacionDeteriorosRecuperacion.xaml.cs">
+    <Compile Include="ImportacionDeteriorosRecuperacion.cs">
       <DependentUpon>ImportacionDeteriorosRecuperacion.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

@@ -9,11 +9,38 @@
     
     
     <Window.Resources>
+        <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
+        <SolidColorBrush Color="#FFC5A00E" x:Key="ColorSecond"/>
         <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="10"/>
             <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="Background" Value="#373737"/>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnStyle">
+            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Content" Value="..."/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ColorSecond}"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
 
@@ -29,17 +56,17 @@
                 <syncfusion:GridTextColumn HeaderText="Trn Af" MappingName="COD_TRN" Width="65"/>
                 <syncfusion:GridTextColumn HeaderText="Documento" MappingName="NUM_TRN" Width="120"/>
                 <syncfusion:GridDateTimeColumn HeaderText="Fecha" MappingName="FEC_TRN" Width="120"/>
-                <syncfusion:GridTemplateColumn MappingName="Doc AF" Width="80" AllowFiltering="False">
+                <syncfusion:GridTemplateColumn MappingName="Doc AF" Width="60" AllowFiltering="False">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="BtnGetDocument" Click="BtnGetDocument_Click" Background="#2196F3" Cursor="Hand" BorderBrush="{x:Null}" Foreground="White" Content="..." Tag="af"/>
+                            <Button x:Name="BtnGetDocument" Click="BtnGetDocument_Click" Tag="af" Style="{StaticResource BtnStyle}"/>
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>
-                <syncfusion:GridTemplateColumn MappingName="Doc CO" Width="80" AllowFiltering="False">
+                <syncfusion:GridTemplateColumn MappingName="Doc CO" Width="60" AllowFiltering="False">
                     <syncfusion:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="BtnGetDocument" Click="BtnGetDocument_Click" Background="#2196F3" Cursor="Hand" BorderBrush="{x:Null}" Foreground="White" Content="..." Tag="co"/>
+                            <Button x:Name="BtnGetDocument" Click="BtnGetDocument_Click" Tag="co" Style="{StaticResource BtnStyle}"/>
                         </DataTemplate>
                     </syncfusion:GridTemplateColumn.CellTemplate>
                 </syncfusion:GridTemplateColumn>

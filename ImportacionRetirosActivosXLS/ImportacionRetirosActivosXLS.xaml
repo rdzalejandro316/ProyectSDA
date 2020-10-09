@@ -8,7 +8,8 @@
              mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="1500" Background="White">
 
     <UserControl.Resources>
-        <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
+        <SolidColorBrush Color="#F44336" x:Key="ColorMain"/>
+        <SolidColorBrush Color="#FFD33226" x:Key="ColorSecond"/>
         <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="10"/>
@@ -26,44 +27,76 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="Button" x:Key="BtnStyle">
+            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ColorSecond}"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="130"/>
+            <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="#373737">
+        <Grid Background="Black">
+            <TextBlock Text="Importacion Retiro de Activos" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 0">
-                <Button Name="BtnImportar" ToolTip="Importar archivo xls segun el formato de plantilla xls" Width="130" Background="#F44336" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Importa XLS" Cursor="Hand" Click="BtnImportar_Click"/>
-                <Button Name="BtnGenerar" ToolTip="Plantilla con la cual funciona el proceso de importacion de esta pantalla" Width="130" Background="#F44336" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Plantilla XLS" Cursor="Hand" Click="BtnGenerar_Click"/>
-                <Button Name="BtnCrear" ToolTip="Generar documentos de retiros de activos" Width="130" Background="#F44336" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Documentos" Cursor="Hand" Click="BtnGenerarDoc_Click"/>
+                <Button Name="BtnImportar" ToolTip="Importar archivo xls segun el formato de plantilla xls" Content="Importa XLS" Click="BtnImportar_Click" Style="{StaticResource BtnStyle}"/>
+                <Button Name="BtnGenerar" ToolTip="Plantilla con la cual funciona el proceso de importacion de esta pantalla" Content="Generar Plantilla XLS" Click="BtnGenerar_Click" Style="{StaticResource BtnStyle}"/>
+                <Button Name="BtnCrear" ToolTip="Generar documentos de retiros de activos" Content="Generar Documentos" Click="BtnGenerarDoc_Click" Style="{StaticResource BtnStyle}"/>
             </StackPanel>
         </Grid>
 
-        <Border Grid.Row="1" Style="{StaticResource borde}">
-            <Grid>
-                <syncfusion:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Importando Datos" Height="100" IsBusy="False" Foreground="#F44336"/>
-                <syncfusion:SfDataGrid Name="dataGridRefe" Grid.Row="0" Margin="2" EnableDataVirtualization = "True" AllowResizingColumns="True" AutoGenerateColumns="True" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" GridValidationMode="InEdit" SelectionChanged="DataGridRefe_SelectionChanged" ItemsSource="{Binding Path=DocAfijo, Mode=TwoWay}">
-                    <syncfusion:SfDataGrid.Columns>
-                        <syncfusion:GridTextColumn HeaderText="Cod Trn" MappingName="Cod_trn" Width="80"/>
-                        <syncfusion:GridTextColumn HeaderText="Docuemnto" MappingName="Num_trn" Width="120"/>
-                    </syncfusion:SfDataGrid.Columns>
-                </syncfusion:SfDataGrid>
-            </Grid>
-        </Border>
+        <Grid Grid.Row="1">
+            <syncfusion:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Importando Datos" Height="100" IsBusy="False" Foreground="#F44336"/>
+            <syncfusion:SfDataGrid Name="dataGridRefe" Grid.Row="0" EnableDataVirtualization = "True" AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" GridValidationMode="InEdit" SelectionChanged="DataGridRefe_SelectionChanged" ItemsSource="{Binding Path=DocAfijo, Mode=TwoWay}">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderText="COD_TRN" MappingName="COD_TRN" Width="80"/>
+                    <syncfusion:GridTextColumn HeaderText="NUM_TRN" MappingName="NUM_TRN" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="FEC_TRN" MappingName="FEC_TRN" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="COD_ACT" MappingName="COD_ACT" Width="120"/>
+                    <syncfusion:GridTextColumn HeaderText="COD_TER" MappingName="COD_TER" Width="120"/>
+                    <syncfusion:GridTextColumn HeaderText="COD_CON" MappingName="COD_CON" Width="120"/>
+                    <syncfusion:GridTextColumn HeaderText="VR_ACT" DisplayBinding="{Binding Path=VR_ACT, StringFormat='n2'}" Width="100" TextAlignment="Right"/>
+                    <syncfusion:GridTextColumn HeaderText="DEP_AC" DisplayBinding="{Binding Path=DEP_AC, StringFormat='n2'}" Width="100" TextAlignment="Right"/>
+                    <syncfusion:GridTextColumn HeaderText="MESXDEP" DisplayBinding="{Binding Path=MESXDEP, StringFormat='n2'}" Width="100" TextAlignment="Right"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </Grid>
 
-        <Grid Grid.Row="2" Background="#373737">
+        <Grid Grid.Row="2" Background="Black">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <Grid Background="#373737" Margin="5">
+            <Grid Margin="5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -78,15 +111,12 @@
 
                 <TextBlock Grid.Row="1" Text="Activo : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
                 <TextBlock x:Name="Tx_activo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
-
-                <TextBlock Grid.Row="2" Text="Grupo : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
-                <TextBlock x:Name="Tx_grupo" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
-
-                <TextBlock Grid.Row="3" Text="Concepto : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
-                <TextBlock x:Name="Tx_concepto" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
+                
+                <TextBlock Grid.Row="2" Text="Concepto : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
+                <TextBlock x:Name="Tx_concepto" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
             </Grid>
 
-            <Grid Grid.Row="1" Background="Black">
+            <Grid Grid.Row="1" Background="#373737">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -99,6 +129,7 @@
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                     <TextBlock Text="Filas con errores: " Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="5 0 0 0"/>
                     <TextBlock Name="Tx_errores" Text="0" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <Button Name="BtnErrores" Content="lista errores" Click="BtnErrores_Click" Style="{StaticResource BtnStyle}" VerticalAlignment="Center" Height="20" Width="80"/>
                 </StackPanel>
             </Grid>
 

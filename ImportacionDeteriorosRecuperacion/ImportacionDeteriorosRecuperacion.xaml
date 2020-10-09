@@ -7,26 +7,7 @@
              xmlns:local="clr-namespace:SiasoftAppExt"
              Width="1000" Height="500">
     
-    <Window.Resources>
-        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="10"/>
-            <Setter Property="Foreground" Value="LightGray"/>
-            <Setter Property="Background" Value="#373737"/>
-        </Style>
-        <Style TargetType="Border" x:Key="borde">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Height" Value="Auto"/>
-            <Setter Property="BorderThickness" Value="1,1,1,1"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect Direction="0" ShadowDepth="0.5" BlurRadius="5" Color="Black"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
+   
 
     <Grid>
             

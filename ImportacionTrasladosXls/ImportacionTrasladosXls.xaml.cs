@@ -1,6 +1,5 @@
 ﻿using ImportacionTrasladosXls;
 using Microsoft.Win32;
-using Syncfusion.UI.Xaml.Grid;
 using Syncfusion.UI.Xaml.Grid.Helpers;
 using Syncfusion.XlsIO;
 using System;
@@ -11,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -42,7 +42,10 @@ namespace SiasoftAppExt
         string usuario_name = "";
         string cod_trncont = "";
         string cod_trn = "900";
-        
+
+        string cabeza = "afcab_doc";
+        string cuerpo = "afcue_doc";
+        string transaccion = "afmae_trn";
 
         DataTable dt = new DataTable();
         DataTable dt_errores = new DataTable();
@@ -55,7 +58,7 @@ namespace SiasoftAppExt
             SiaWin = Application.Current.MainWindow;
             idemp = SiaWin._BusinessId;
             tabitem = tabitem1;
-            LoadConfig();            
+            LoadConfig();
             dt_errores.Columns.Add("error");
         }
 
@@ -72,8 +75,7 @@ namespace SiasoftAppExt
                 tabitem.Title = "Importacion de Traslados " + cod_empresa + "-" + nomempresa;
                 tabitem.Logo(idLogo, ".png");
 
-                DataTable dt_use = SiaWin.Func.SqlDT("select UserName,UserAlias from Seg_User where UserId='" + SiaWin._UserId + "' ", "usuarios", 0);
-                usuario_name = dt_use.Rows.Count > 0 ? dt_use.Rows[0]["username"].ToString().Trim() : "USUARIO INEXISTENTE";
+                usuario_name = SiaWin._UserName;
 
                 DataTable dt_con = SiaWin.Func.SqlDT("select cod_tdo from Afmae_trn where cod_trn='900'", "usuarios", idemp);
                 cod_trncont = dt_con.Rows.Count > 0 ? dt_con.Rows[0]["cod_tdo"].ToString().Trim() : "";
@@ -83,7 +85,6 @@ namespace SiasoftAppExt
                 MessageBox.Show("error en el load:" + e.Message);
             }
         }
-
 
         private void BtnGenerar_Click(object sender, RoutedEventArgs e)
         {
@@ -139,6 +140,12 @@ namespace SiasoftAppExt
             using (ExcelEngine excelEngine = new ExcelEngine())
             {
                 IApplication application = excelEngine.Excel;
+                if (!application.IsSupported(FileName))
+                {
+                    MessageBox.Show("el tipo de extencion .xls no se admite por favor actualizarlo a .xlsx", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return null;
+                }
+
                 application.DefaultVersion = ExcelVersion.Excel2013;
                 IWorkbook workbook = application.Workbooks.Open(FileName);
                 IWorksheet worksheet = workbook.Worksheets[0];
@@ -176,7 +183,6 @@ namespace SiasoftAppExt
             return dt1;
         }
 
-
         private void BtnImportar_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -205,7 +211,9 @@ namespace SiasoftAppExt
 
                 sfBusyIndicator.IsBusy = true;
                 dt.Clear(); dt_errores.Clear();
+
                 dt = ConvertExcelToDataTable(root);
+                if (dt == null) { sfBusyIndicator.IsBusy = false; return; }
 
                 if (validarArchioExcel(dt) == false)
                 {
@@ -228,7 +236,14 @@ namespace SiasoftAppExt
 
                 Tx_total.Text = ((DataTable)slowTask.Result).Rows.Count.ToString();
                 Tx_errores.Text = dt_errores.Rows.Count.ToString();
+                Tx_gruact.Text = "";
+                Tx_grupoAnt.Text = "";
 
+                sfBusyIndicator.IsBusy = false;
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("cierre el archivo que desea importar para poder continuar con el procesos", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
                 sfBusyIndicator.IsBusy = false;
             }
             catch (Exception w)
@@ -247,51 +262,116 @@ namespace SiasoftAppExt
                 //VALIDAR DOCUMENTO si existe
                 foreach (DataTable dtemp in doc_agru.Tables)
                 {
+                    #region validacion documento
+
                     string num_trn = dtemp.Rows[0]["NUM_TRN"].ToString().Trim();
 
-                    DataTable dt_trn = SiaWin.Func.SqlDT("select * from afcab_doc where cod_trn='" + cod_trn + "' and num_trn='" + num_trn + "' ", "trn", idemp);
+                    DataTable dt_trn = SiaWin.Func.SqlDT("select * from " + cabeza + " where cod_trn='" + cod_trn + "' and num_trn='" + num_trn + "' ", "trn", idemp);
                     if (dt_trn.Rows.Count > 0) { System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el documento " + num_trn + "- COD_TRN:" + cod_trn + " ya existe registrado"; dt_errores.Rows.Add(row); }
 
+                    #endregion
 
+
+                    DateTime date;
+                    bool fec_vali = true;
                     //validar campo por campo
                     foreach (System.Data.DataRow dr in dtemp.Rows)
                     {
-                        //activo
-                        string cod_act = dr["COD_ACT"].ToString().Trim();
 
-                        string query_act = "select act.cod_act,act.nom_act,act.cod_gru,gru.nom_gru from Afmae_act act ";
-                        query_act += "inner join Afmae_gru gru on act.cod_gru = gru.cod_gru ";
-                        query_act += "where act.cod_act='" + cod_act + "'  ";
 
-                        DataTable dt_act = SiaWin.Func.SqlDT(query_act, "activo", idemp);
-                        if (dt_act.Rows.Count > 0)
+                        #region fecha
+                        string fec_trn = dr["FEC_TRN"].ToString().Trim();
+
+                        if (string.IsNullOrEmpty(fec_trn))
                         {
-                            dr["NOM_ACT"] = dt_act.Rows[0]["nom_act"].ToString().Trim();
-                            dr["GRU_ANT"] = dt_act.Rows[0]["cod_gru"].ToString().Trim();
-                            dr["NOM_ANT"] = dt_act.Rows[0]["nom_gru"].ToString().Trim();
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo fecha debe de estar lleno #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                            fec_vali = false;
                         }
                         else
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el activo  " + cod_act + " no existe "; dt_errores.Rows.Add(row);
+                            if (dr["FEC_TRN"] == DBNull.Value || DateTime.TryParse(dr["FEC_TRN"].ToString(), out date) == false)
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la fecha " + fec_trn + " ingresada no cuenta con el formato (dd/MM/yyyy) correcto #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                                fec_vali = false;
+                            }
+                        }
+
+                        #endregion
+
+                        #region activo
+                        string cod_act = dr["COD_ACT"].ToString().Trim();
+
+                        if (string.IsNullOrEmpty(cod_act))
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de activo debe de estar lleno #" + num_trn + "# "; dt_errores.Rows.Add(row);
                             dr["NOM_ACT"] = "";
                             dr["GRU_ANT"] = "";
                             dr["NOM_ANT"] = "";
                         }
-
-                        //grupo nuevo
-                        string cod_gru = dr["COD_GRU"].ToString().Trim();
-                        DataTable dt_gru = SiaWin.Func.SqlDT("select * from afmae_gru where cod_gru='" + cod_gru + "' ", "grupo", idemp);
-                        if (dt_gru.Rows.Count > 0)
-                        {
-                            dr["COD_GRU"] = dt_gru.Rows[0]["cod_gru"].ToString().Trim();
-                            dr["NOM_GRU"] = dt_gru.Rows[0]["nom_gru"].ToString().Trim();
-                        }
                         else
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el grupo " + cod_gru + " no existe "; dt_errores.Rows.Add(row);
+                            string query_act = "select act.cod_act,act.nom_act from Afmae_act act where act.cod_act='" + cod_act + "'";
+
+                            DataTable dt_act = SiaWin.Func.SqlDT(query_act, "activo", idemp);
+                            if (dt_act.Rows.Count > 0)
+                            {
+                                dr["NOM_ACT"] = dt_act.Rows[0]["nom_act"].ToString().Trim();
+
+                                if (fec_vali)
+                                {
+                                    DateTime f = Convert.ToDateTime(fec_trn);
+                                    DataTable dt_ultgru = SiaWin.Func.UltimoActivo(cod_act, f.ToString("dd/MM/yyyy"), 0);
+                                    dr["GRU_ANT"] = dt_ultgru.Rows[0]["cod_gru"].ToString().Trim();
+                                    dr["NOM_ANT"] = dt_ultgru.Rows[0]["nom_gru"].ToString().Trim();
+                                }
+                                else
+                                {
+                                    System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo fecha debe de estar lleno para obtener apartir de dicha fecha el ultimo grupo del activo #" + num_trn + "# "; dt_errores.Rows.Add(row);
+                                    dr["GRU_ANT"] = "";
+                                    dr["NOM_ANT"] = "";
+                                }
+
+                            }
+                            else
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el activo  " + cod_act + " no existe #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                                dr["NOM_ACT"] = "";
+                                dr["GRU_ANT"] = "";
+                                dr["NOM_ANT"] = "";
+                            }
+                        }
+
+
+                        #endregion
+
+                        #region grupo nuevo
+
+                        string cod_gru = dr["COD_GRU"].ToString().Trim();
+
+                        if (string.IsNullOrEmpty(cod_gru))
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo grupo debe de estar lleno #" + num_trn + "#"; dt_errores.Rows.Add(row);
                             dr["COD_GRU"] = string.IsNullOrEmpty(dr["COD_GRU"].ToString().Trim()) ? "" : dr["COD_GRU"].ToString().Trim();
                             dr["NOM_GRU"] = "";
                         }
+                        else
+                        {
+                            DataTable dt_gru = SiaWin.Func.SqlDT("select * from afmae_gru where cod_gru='" + cod_gru + "' ", "grupo", idemp);
+                            if (dt_gru.Rows.Count > 0)
+                            {
+                                dr["COD_GRU"] = dt_gru.Rows[0]["cod_gru"].ToString().Trim();
+                                dr["NOM_GRU"] = dt_gru.Rows[0]["nom_gru"].ToString().Trim();
+                            }
+                            else
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el grupo " + cod_gru + " no existe #" + num_trn + "#"; dt_errores.Rows.Add(row);
+                                dr["COD_GRU"] = string.IsNullOrEmpty(dr["COD_GRU"].ToString().Trim()) ? "" : dr["COD_GRU"].ToString().Trim();
+                                dr["NOM_GRU"] = "";
+                            }
+                        }
+
+                        #endregion
+
                     }
 
                 }
@@ -322,58 +402,79 @@ namespace SiasoftAppExt
                 dv.Sort = "NUM_TRN desc";
                 DataTable sortedDT = dv.ToTable();
                 doc_agru.Tables.Clear();
-                //SiaWin.Browse(sortedDT);
 
 
-                #region algortimo el cual mete en un dataset los documentos separados por datatable
-                string documento = "";
+                #region columnas                
                 DataTable dd = new DataTable();
-                dd.Columns.Add("FEC_TRN"); dd.Columns.Add("COD_TRN"); dd.Columns.Add("NUM_TRN"); dd.Columns.Add("COD_ACT"); dd.Columns.Add("NOM_ACT"); dd.Columns.Add("COD_GRU"); dd.Columns.Add("NOM_GRU"); dd.Columns.Add("DOC_INT"); dd.Columns.Add("GRU_ANT"); dd.Columns.Add("NOM_ANT");
-
-                DateTime da; int i = 0;
-                foreach (System.Data.DataRow item in sortedDT.Rows)
-                {
-                    i++;
-
-                    if (string.IsNullOrEmpty(documento)) { documento = item["NUM_TRN"].ToString().Trim(); }
-
-                    if (documento == item["NUM_TRN"].ToString().Trim().ToUpper())
-                    {
-                        dd.Rows.Add(
-                            Convert.ToDateTime(item["FEC_TRN"] == DBNull.Value || DateTime.TryParse(item["FEC_TRN"].ToString(), out da) == false ? DateTime.Now.ToString("dd/MM/yyy") : item["FEC_TRN"]).ToString("dd/MM/yyyy"),
-                            cod_trn,
-                            item["NUM_TRN"].ToString().ToUpper(),
-                            item["COD_ACT"].ToString(),
-                            "",
-                            item["COD_GRU"].ToString(),
-                            "",//nombre de grupo actual
-                            item["DOC_INT"].ToString(),
-                            "",//grupo anterior
-                            ""//nombre de grupo anterior
-                            );
-                        if (i == sortedDT.Rows.Count) { doc_agru.Tables.Add(dd.Copy()); dd.Clear(); }//ultima columna
-                    }
-                    else
-                    {
-                        doc_agru.Tables.Add(dd.Copy()); dd.Clear();//agrega el documento completo a un datatable 
-                        dd.Rows.Add(Convert.ToDateTime(item["FEC_TRN"] == DBNull.Value || DateTime.TryParse(item["FEC_TRN"].ToString(), out da) == false ? DateTime.Now.ToString("dd/MM/yyy") : item["FEC_TRN"]).ToString("dd/MM/yyyy"),
-                            cod_trn,
-                            item["NUM_TRN"].ToString().ToUpper(),
-                            item["COD_ACT"].ToString(),
-                            "",
-                            item["COD_GRU"].ToString(),
-                            "",//nombre de grupo actual
-                            item["DOC_INT"].ToString(),
-                            "",//grupo anterior
-                            "");//nombre de grupo anterior
-                    }
-                    documento = item["NUM_TRN"].ToString().Trim().ToUpper();
-
-                }
+                dd.Columns.Add("FEC_TRN");
+                dd.Columns.Add("COD_TRN");
+                dd.Columns.Add("NUM_TRN");
+                dd.Columns.Add("COD_ACT");
+                dd.Columns.Add("NOM_ACT");
+                dd.Columns.Add("COD_GRU");
+                dd.Columns.Add("NOM_GRU");
+                dd.Columns.Add("DOC_INT");
+                dd.Columns.Add("GRU_ANT");
+                dd.Columns.Add("NOM_ANT");
                 #endregion
 
+                #region algortimo el cual mete en un dataset los documentos separados por datatable
 
+                #region transaccion agrupada
 
+                DataTable dt_gb = sortedDT.AsEnumerable()
+               .GroupBy(r => new { Col1 = r["NUM_TRN"] })
+               .Select(g =>
+               {
+                   var row = dt.NewRow();
+                   row["NUM_TRN"] = g.Key.Col1;
+                   return row;
+               })
+               .CopyToDataTable();
+
+                #endregion
+
+                if (dt_gb.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt_gb.Rows)
+                    {
+                        string num_trn = dr["NUM_TRN"].ToString();
+
+                        DataRow[] result = sortedDT.Select("NUM_TRN='" + num_trn + "'");
+
+                        foreach (DataRow row in result)
+                        {
+                            string fec_trn = row["FEC_TRN"].ToString();
+                            string cod_act = row["COD_ACT"].ToString();
+                            string cod_gru = row["COD_GRU"].ToString();
+                            string doc_int = row["DOC_INT"].ToString();
+
+                            dd.Rows.Add(
+                                fec_trn,
+                                cod_trn,
+                                num_trn,
+                                cod_act,
+                                "",//nombre activo
+                                cod_gru,
+                                "",//nombre grupo
+                                doc_int,
+                                "",//grupo anterior
+                                ""//nombre grupo anterior
+                                );
+                        }
+
+                        doc_agru.Tables.Add(dd.Copy());
+                        dd.Clear();
+                    }
+                }
+
+                #endregion
+
+                //MessageBox.Show("FFF");
+                //foreach (DataTable item in doc_agru.Tables)
+                //{
+                //    SiaWin.Browse(item);
+                //}
             }
             catch (Exception w)
             {
@@ -385,10 +486,11 @@ namespace SiasoftAppExt
         {
             try
             {
-                if ((sender as SfDataGrid).SelectedIndex >= 0)
+                if ((sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).SelectedIndex >= 0)
                 {
-                    var reflector = (sender as SfDataGrid).View.GetPropertyAccessProvider();
-                    var rowData = (sender as SfDataGrid).GetRecordAtRowIndex((sender as SfDataGrid).SelectedIndex + 1);
+                    var reflector = (sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).View.GetPropertyAccessProvider();
+                    var rowData = (sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).GetRecordAtRowIndex((sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).SelectedIndex + 1);
+
                     Tx_gruact.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "Nom_gru").ToString()) ? reflector.GetValue(rowData, "Nom_gru").ToString().ToUpper() : "NO EXISTE";
                     Tx_grupoAnt.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "Nom_ant").ToString()) ? reflector.GetValue(rowData, "Nom_ant").ToString().ToUpper() : "NO EXISTE";
                 }
@@ -398,8 +500,6 @@ namespace SiasoftAppExt
                 MessageBox.Show("errro al seleccionar:" + w);
             }
         }
-
-
 
         private void BtnGenerarDoc_Click(object sender, RoutedEventArgs e)
         {
@@ -431,7 +531,7 @@ namespace SiasoftAppExt
 
                     foreach (DataTable dt_cue in doc_agru.Tables)
                     {
-                        
+
                         string num_trn_cab = dt_cue.Rows[0]["num_trn"].ToString();
                         string fecha = dt_cue.Rows[0]["fec_trn"].ToString();
                         DateTime date = Convert.ToDateTime(fecha);
@@ -462,8 +562,8 @@ namespace SiasoftAppExt
 
                     dataGridRefe.ItemsSource = null;
                     doc_agru.Tables.Clear();
-
-
+                    Tx_total.Text = "0";
+                    Tx_errores.Text = "0";
                     #endregion
 
                 }
@@ -479,12 +579,10 @@ namespace SiasoftAppExt
         public void contabilizar()
         {
             try
-            {
-                //var gb_numtrn = _DocAfijo.GroupBy(x => x.Num_trn);
-
+            {                
                 foreach (DataTable tabla in doc_agru.Tables)
-                {                    
-                    ContabilizaTrasladoGrupo(cod_trn, tabla.Rows[0]["NUM_TRN"].ToString().Trim());
+                {
+                   ContabilizaTrasladoGrupo(cod_trn, tabla.Rows[0]["NUM_TRN"].ToString().Trim());
                 }
             }
             catch (Exception w)
@@ -508,7 +606,7 @@ namespace SiasoftAppExt
                 DataTable dt_trn = SiaWin.Func.SqlDT(query, "cuerpo", idemp);
 
                 string cod_trn_af = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["cod_trn"].ToString().Trim() : "";
-                string cod_trn_co = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["cod_tdo"].ToString().Trim() : "";
+                string cod_trn_co = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["cod_tdo"].ToString().Trim() : cod_trncont;
                 string num_trn_co = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["num_trn"].ToString().Trim() : "";
                 DateTime _fecdoc = dt_trn.Rows.Count > 0 ? Convert.ToDateTime(dt_trn.Rows[0]["fec_trn"]) : DateTime.Now;
 
@@ -519,7 +617,8 @@ namespace SiasoftAppExt
                 string cuerpo_contable = "";
 
                 string querycue = "select cuerpo.cod_act,activo.vr_act,cuerpo.vr_mc,cuerpo.doc_int, ";
-                querycue += "cuerpo.cod_gru,grupo.cta_act as g_cta,cuerpo.gru_ant,grupo_ant.cta_act as gan_cta,grupo_ant.cta_dep,grupo_ant.cta_depant ";
+                querycue += "cuerpo.cod_gru,grupo.cta_act as cta_act_act,grupo.cta_dep as cta_dep_act, ";
+                querycue += "cuerpo.gru_ant,grupo_ant.cta_act as cta_act_ant,grupo_ant.cta_dep as cta_dep_ant ";
                 querycue += "from Afcab_doc as cabeza  ";
                 querycue += "inner join Afcue_doc as cuerpo on cuerpo.idregcab = cabeza.idreg  ";
                 querycue += "inner join Afmae_act as activo on cuerpo.cod_act = activo.cod_act ";
@@ -529,39 +628,44 @@ namespace SiasoftAppExt
 
                 DataTable dt_cuerpo = SiaWin.Func.SqlDT(querycue, "cuerpo", idemp);
 
+                string update = " ";
+
                 foreach (System.Data.DataRow item in dt_cuerpo.Rows)
                 {
-                    decimal valor_act = Convert.ToDecimal(item["vr_act"]);
                     string cod_act = item["cod_act"].ToString().Trim();
-
-                    string cod_gru = item["cod_gru"].ToString().Trim();
-                    string gru_ant = item["gru_ant"].ToString().Trim();
-
-                    string ctagru_nu = item["g_cta"].ToString().Trim();
-                    string ctagru_an = item["gan_cta"].ToString().Trim();
                     string doc_int = item["doc_int"].ToString().Trim();
 
-                    string cta_dep = item["cta_dep"].ToString().Trim();
-                    string cta_depant = item["cta_depant"].ToString().Trim();
+                    string cod_gru = item["cod_gru"].ToString().Trim();
+                    string cta_act_act = item["cta_act_act"].ToString().Trim();
+                    string cta_dep_act = item["cta_dep_act"].ToString().Trim();
 
-                    cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + ctagru_nu + "','" + doc_int + "','TRASLADO ACTIVO :" + cod_act + "'," + valor_act.ToString("F", CultureInfo.InvariantCulture) + "); ";
-                    cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + ctagru_an + "','" + doc_int + "','GRUPO ANTIGUO/" + gru_ant + " GRUPO NUEVO/" + cod_gru + "'," + valor_act.ToString("F", CultureInfo.InvariantCulture) + "); ";
 
-                    DataTable dt_depreciado = SiaWin.Func.SaldoActivo(cod_act, _fecdoc.ToString("dd/MM/yyyy"), idemp);
+                    string gru_ant = item["gru_ant"].ToString().Trim();
+                    string cta_act_ant = item["cta_act_ant"].ToString().Trim();
+                    string cta_dep_ant = item["cta_dep_ant"].ToString().Trim();
 
-                    if (dt_depreciado.Rows.Count > 0)
+                    update += "update afmae_act set cod_gru='" + cod_gru + "' where cod_act ='" + cod_act + "';";
+                    
+                    DataTable dt_saldo = SiaWin.Func.SaldoActivo(cod_act, _fecdoc.ToString("dd/MM/yyyy"), 0);
+
+                    if (dt_saldo.Rows.Count > 0)
                     {
-                        double depreciado = Convert.ToDouble(dt_depreciado.Rows[0]["depreciacion"]);
+                        double valor_act = Convert.ToDouble(dt_saldo.Rows[0]["vr_act"]);
+
+                        cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_act_act + "','" + doc_int + "','TRASLADO ACTIVO :" + cod_act + "'," + valor_act.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                        cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_act_ant + "','" + doc_int + "','GRUPO ANTIGUO/" + gru_ant + " GRUPO NUEVO/" + cod_gru + "'," + valor_act.ToString("F", CultureInfo.InvariantCulture) + "); ";
+
+
+                        double depreciado = Convert.ToDouble(dt_saldo.Rows[0]["dep_ac"]);
                         if (depreciado > 0)
                         {
-                            cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,cod_ter,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_dep + "','" + doc_int + "','1','TRASLADO DEPRECIACION " + cod_act + "'," + depreciado.ToString("F", CultureInfo.InvariantCulture) + "); ";
-                            cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,cod_ter,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_depant + "','" + doc_int + "','1','TRASLADO DEPRECIACION " + cod_act + "'," + depreciado.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                            cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,cod_ter,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_dep_act + "','" + doc_int + "','1','TRASLADO DEPRECIACION " + cod_act + "'," + depreciado.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                            cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,cod_ter,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_dep_ant + "','" + doc_int + "','1','TRASLADO DEPRECIACION " + cod_act + "'," + depreciado.ToString("F", CultureInfo.InvariantCulture) + "); ";
                         }
                     }
 
                 }
                 #endregion
-
 
                 #region generar el documento contable
                 using (SqlConnection connection = new SqlConnection(cnEmp))
@@ -590,6 +694,12 @@ namespace SiasoftAppExt
                     connection.Close();
                     idregreturn = Convert.ToInt32(r.ToString());
                 }
+                #endregion
+
+                #region update grupo
+
+                SiaWin.Func.SqlCRUD(update, idemp);
+
                 #endregion
 
                 return idregreturn;

@@ -9,6 +9,7 @@
 
     <UserControl.Resources>
         <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
+        <SolidColorBrush Color="#FFC5A00E" x:Key="ColorSecond"/>
         <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="10"/>
@@ -26,6 +27,33 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="Button" x:Key="BtnStyle">
+            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ColorSecond}"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
 
@@ -37,17 +65,17 @@
         </Grid.RowDefinitions>
 
         <Grid Background="Black">
-            <TextBlock Text="Importacion Traslados Grupo" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16"/>
+            <TextBlock Text="Importacion Traslados Grupo" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 0">
-                <Button Name="BtnImportar" ToolTip="Importar archivo xls segun el formato de plantilla xls" Width="130" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="5" Content="Importa XLS" Cursor="Hand" Click="BtnImportar_Click"/>
-                <Button Name="BtnGenerar" ToolTip="Plantilla con la cual funciona el proceso de importacion de esta pantalla" Width="130" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="5" Content="Generar Plantilla XLS" Cursor="Hand" Click="BtnGenerar_Click"/>
-                <Button Name="BtnCrear" ToolTip="Generar documentos de retiros de activos" Width="130" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="5" Content="Generar Documentos" Cursor="Hand" Click="BtnGenerarDoc_Click"/>
+                <Button Name="BtnImportar" ToolTip="Importar archivo xls segun el formato de plantilla xls" Content="Importa XLS" Click="BtnImportar_Click" Style="{StaticResource BtnStyle}"/>
+                <Button Name="BtnGenerar" ToolTip="Plantilla con la cual funciona el proceso de importacion de esta pantalla" Content="Generar Plantilla XLS" Click="BtnGenerar_Click" Style="{StaticResource BtnStyle}"/>
+                <Button Name="BtnCrear" ToolTip="Generar documentos de retiros de activos" Content="Generar Documentos" Click="BtnGenerarDoc_Click" Style="{StaticResource BtnStyle}"/>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1">
-            <syncfusion:SfBusyIndicator Grid.Row="1" Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Importando Datos" Height="100" IsBusy="False" Foreground="#2196F3"/>
+            <syncfusion:SfBusyIndicator Grid.Row="1" Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Importando Datos" Height="100" IsBusy="False" Foreground="{StaticResource ColorMain}"/>
             <syncfusion:SfDataGrid Name="dataGridRefe" Grid.Row="0" Margin="2" EnableDataVirtualization = "True" AllowResizingColumns="True" AutoGenerateColumns="True" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" GridValidationMode="InEdit" SelectionChanged="DataGridRefe_SelectionChanged" ItemsSource="{Binding Path=DocAfijo, Mode=TwoWay}">
                 <syncfusion:SfDataGrid.Columns>
                     <syncfusion:GridTextColumn HeaderText="COD_TRN" MappingName="COD_TRN" Width="70"/>
@@ -102,7 +130,7 @@
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                     <TextBlock Text="Filas con errores: " Foreground="White" FontWeight="Bold" VerticalAlignment="Center" Margin="5 0 0 0"/>
                     <TextBlock Name="Tx_errores" Text="0" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    <Button Name="BtnErrores" Content="lista errores" VerticalAlignment="Center" Margin="10,0,0,0" Padding="5,2,5,2" Foreground="White" Background="{StaticResource ColorMain}" BorderBrush="{x:Null}" Click="BtnErrores_Click"/>
+                    <Button Name="BtnErrores" Content="lista errores" Click="BtnErrores_Click" Style="{StaticResource BtnStyle}" VerticalAlignment="Center" Height="20" Width="80"/>
                 </StackPanel>
             </Grid>
 
