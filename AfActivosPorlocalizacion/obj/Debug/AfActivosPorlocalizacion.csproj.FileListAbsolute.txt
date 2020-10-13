@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.g.cs
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.baml
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.g.resources
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.dll
+D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.pdb
+D:\Empresas\SDA\Library\AfActivosPorlocalizacion.dll
+D:\Empresas\SDA\Library\AfActivosPorlocalizacion.pdb

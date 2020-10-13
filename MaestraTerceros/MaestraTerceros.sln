@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfResumenActivos", "..\AfRe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportacionDeteriorosRecuperacion", "..\ImportacionDeteriorosRecuperacion\ImportacionDeteriorosRecuperacion.csproj", "{8F08A17A-C8E5-4C9F-9E85-6D2D6EFB2222}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfActivosPorlocalizacion", "..\AfActivosPorlocalizacion\AfActivosPorlocalizacion.csproj", "{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{8F08A17A-C8E5-4C9F-9E85-6D2D6EFB2222}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F08A17A-C8E5-4C9F-9E85-6D2D6EFB2222}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F08A17A-C8E5-4C9F-9E85-6D2D6EFB2222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
