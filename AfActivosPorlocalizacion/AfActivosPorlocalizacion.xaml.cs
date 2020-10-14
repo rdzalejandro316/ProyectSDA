@@ -111,6 +111,8 @@ namespace SiasoftAppExt
 
                 this.sfBusyIndicator.IsBusy = false;
                 GridConfiguracion.IsEnabled = true;
+
+                
             }
             catch (Exception ex)
             {

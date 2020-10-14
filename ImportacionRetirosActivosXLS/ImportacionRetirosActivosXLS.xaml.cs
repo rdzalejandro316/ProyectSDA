@@ -686,9 +686,15 @@ namespace SiasoftAppExt
 
                         if (cod_con == "60")
                         {
-                            var t = getGrupo(act_tras);
-                            cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + t.Item3 + "','" + doc_int + "','Adicion a: " + act_tras + " - Placa:" + cod_act + "'," + vr_act.ToString("F", CultureInfo.InvariantCulture) + "); ";
-                            cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cta_gdp + "','" + doc_int + "','Adicion a: " + act_tras + " - Placa:" + cod_act + "'," + depreciado.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                            DataTable dt_g = SiaWin.Func.UltimoActivo(act_tras, _fecdoc.ToString("dd/MM/yyyy"), 0);
+                            if (dt_g.Rows.Count > 0)
+                            {
+                                string ctaact = dt_g.Rows[0]["cta_act"].ToString().Trim();
+                                string ctadep = dt_g.Rows[0]["cta_dep"].ToString().Trim();
+                                cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + ctaact + "','" + doc_int + "','Adicion a: " + act_tras + " - Placa:" + cod_act + "'," + vr_act.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                                cuerpo_contable += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_cta,num_chq,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + ctadep + "','" + doc_int + "','Adicion a: " + act_tras + " - Placa:" + cod_act + "'," + depreciado.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                            }
+
                         }
                     }
                 }
@@ -742,21 +748,7 @@ namespace SiasoftAppExt
             }
         }
 
-        public Tuple<string, string, string> getGrupo(string acti_tra)
-        {
-            string query = "select cod_act,Afmae_act.cod_gru,afmae_gru.cta_act  ";
-            query += "From Afmae_act ";
-            query += "inner join afmae_gru on afmae_gru.cod_gru = Afmae_act.cod_gru ";
-            query += "where Afmae_act.cod_act='" + acti_tra + "' ";
-
-            DataTable dt = SiaWin.Func.SqlDT(query, "cuerpo", idemp);
-            return new Tuple<string, string, string>(
-            dt.Rows.Count > 0 ? dt.Rows[0]["cod_act"].ToString().Trim() : "",
-            dt.Rows.Count > 0 ? dt.Rows[0]["cod_gru"].ToString().Trim() : "",
-            dt.Rows.Count > 0 ? dt.Rows[0]["cta_act"].ToString().Trim() : ""
-            );
-        }
-
+        
         private void DataGridRefe_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
         {
             try
@@ -821,25 +813,7 @@ namespace SiasoftAppExt
             }
             return dt1;
         }
-
-        public bool documentos()
-        {
-            bool flag = false;
-            //foreach (var item in _DocAfijo)
-            //{
-            //    string num_trn = item.Num_trn.Trim();
-            //    string query = "select * from afcab_doc where cod_trn='999' and num_trn='" + num_trn + "' ";
-            //    System.Data.DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
-            //    if (dt.Rows.Count > 0)
-            //    {
-            //        string fec_trn = dt.Rows[0]["fec_trn"].ToString().Trim();
-            //        MessageBox.Show("el documento:" + num_trn + " ya ha sido ingresado en la fecha:" + fec_trn, "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //        flag = true;
-            //    }
-            //}
-            return flag;
-        }
-
+        
         private void BtnErrores_Click(object sender, RoutedEventArgs e)
         {
             try

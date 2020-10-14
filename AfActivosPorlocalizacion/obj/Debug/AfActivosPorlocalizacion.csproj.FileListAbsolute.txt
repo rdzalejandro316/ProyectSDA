@@ -12,3 +12,17 @@ D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorl
 D:\Empresas\SDA\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.pdb
 D:\Empresas\SDA\Library\AfActivosPorlocalizacion.dll
 D:\Empresas\SDA\Library\AfActivosPorlocalizacion.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AfActivosPorlocalizacion\obj\Debug\AfActivosPorlocalizacion.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\AfActivosPorlocalizacion.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\AfActivosPorlocalizacion.pdb
