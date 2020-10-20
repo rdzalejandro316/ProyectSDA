@@ -201,7 +201,7 @@
                     <SiaSf:SfDataGrid.Columns>
                         <SiaSf:GridTextColumn HeaderText="Codigo" MappingName="cod_cta" Width="85" AllowFiltering="True"/>
                         <!--<SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True" />-->
-                        <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" ColumnSizer="AutoLastColumnFill" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True"/>
+                        <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" Width="400" MappingName="nom_cta" AllowFiltering="True" AllowResizing="True"/>
                         <SiaSf:GridTextColumn HeaderText="Nombre Cuenta" MappingName="nomcta" IsHidden="True" ColumnSizer="AutoLastColumnFill"/>
                         <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tip_cta" Width="50"/>
                         <SiaSf:GridTextColumn HeaderText="Nivel" MappingName="niv_cta" Width="50"/>
@@ -486,7 +486,6 @@
                                 <SiaSf:GridNumericColumn HeaderText="Saldo Final" Width="120" MappingName="sal_fin" TextAlignment="Right" NumberDecimalDigits="2" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
                             </SiaSf:SfDataGrid.Columns>
                         </SiaSf:SfDataGrid>
-
                         <Grid Grid.Row="1" Margin="10">
                             <Border Style="{StaticResource ShadowGrid}"/>
                             <Grid Margin="10,0,10,0">
@@ -503,28 +502,28 @@
                                 <Grid.Resources>
                                     <Style TargetType="TextBlock" x:Key="title">
                                         <Setter Property="VerticalAlignment" Value="Center"/>
-                                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
                                         <Setter Property="FontWeight" Value="Bold"/>
                                     </Style>
                                     <Style TargetType="TextBlock" x:Key="value">
                                         <Setter Property="VerticalAlignment" Value="Center"/>
-                                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
                                         <Setter Property="Margin" Value="10,0,0,0"/>
                                         <Setter Property="Foreground" Value="{StaticResource ColorMain}"/>
                                     </Style>
                                 </Grid.Resources>
 
-                                <TextBlock Text="Saldo Anterior :" Grid.Column="0" Grid.Row="0" Style="{StaticResource title}"/>
-                                <TextBlock Name="TxSaldoInicialAño" Text="0" Grid.Column="1" Grid.Row="0" Style="{StaticResource value}"/>
+                                <TextBlock Text="Saldo Anterior" Grid.Column="0" Grid.Row="0" Style="{StaticResource title}"/>
+                                <TextBlock Name="TxSaldoInicialAño" Text="0" Grid.Column="0" Grid.Row="1" Style="{StaticResource value}"/>
 
-                                <TextBlock Text="Saldo Final :" Grid.Column="2" Grid.Row="0" Style="{StaticResource title}"/>
-                                <TextBlock Name="TxSaldoFinalAño" Text="0" Grid.Column="3" Grid.Row="0" Style="{StaticResource value}"/>
+                                <TextBlock Text="Saldo Final" Grid.Column="3" Grid.Row="0" Style="{StaticResource title}"/>
+                                <TextBlock Name="TxSaldoFinalAño" Text="0" Grid.Column="3" Grid.Row="1" Style="{StaticResource value}"/>
 
-                                <TextBlock Text="Debito :" Grid.Column="0" Grid.Row="1" Style="{StaticResource title}"/>
+                                <TextBlock Text="Debitos" Grid.Column="1" Grid.Row="0" Style="{StaticResource title}"/>
                                 <TextBlock Name="TxDebitoAño" Text="0" Grid.Column="1" Grid.Row="1" Style="{StaticResource value}"/>
 
-                                <TextBlock Text="Credito :" Grid.Column="2" Grid.Row="1" Style="{StaticResource title}"/>
-                                <TextBlock Name="TxCreditoAño" Text="0" Grid.Column="3" Grid.Row="1" Style="{StaticResource value}"/>
+                                <TextBlock Text="Creditos" Grid.Column="2" Grid.Row="0" Style="{StaticResource title}"/>
+                                <TextBlock Name="TxCreditoAño" Text="0" Grid.Column="2" Grid.Row="1" Style="{StaticResource value}"/>
 
                             </Grid>
                         </Grid>

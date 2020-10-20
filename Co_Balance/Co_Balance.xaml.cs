@@ -1232,9 +1232,13 @@ namespace SiasoftAppExt
                     else
                     {
                         int sal_ant = Convert.ToInt32(periodo);
-                        string cod = sal_ant < 10 ? "0" + (sal_ant - 1).ToString() : (sal_ant - 1).ToString();
+
+                        //MessageBox.Show("periodo:"+ periodo);
+
+                        string cod = sal_ant <= 10 ? "0" + (sal_ant - 1).ToString() : (sal_ant - 1).ToString();
                         string c_sal = "sal_" + cod;
                         if ((sal_ant - 1) == 0) c_sal = "sal_ant";
+                        
 
                         Binding BindingSalAnt = new Binding(c_sal) { StringFormat = "N2" };
                         sal_antCol.DisplayBinding = BindingSalAnt;

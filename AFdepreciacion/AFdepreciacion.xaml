@@ -12,11 +12,34 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <SolidColorBrush Color="#f1c40f" x:Key="ColorMain"/>
-            <SolidColorBrush Color="#f1c40f" x:Key="ColorSecond"/>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush Color="#FFC5A00E" x:Key="ColorSecond"/>
+            <Style TargetType="Button" x:Key="StyleBtn">
+                <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Width" Value="120"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{x:Null}" BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource ColorSecond}"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Trigger>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -49,12 +72,12 @@
                 <TextBlock Grid.Column="2" Text="Periodo : " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold" Foreground="White"/>
                 <syncfusion:SfDatePicker x:Name="Tx_periodo" Grid.Column="3" Margin="5" Width="100" HorizontalAlignment="Left" SelectorFormatString="MM" FormatString="MM" BorderThickness="0 0 0 1.2" BorderBrush="Black" AccentBrush="{StaticResource ColorMain}"/>
 
-                <Grid Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
-                    <StackPanel Grid.Column="6" Orientation="Horizontal">
-                        <Button x:Name="BtnConsultar" Content="Consultar" Margin="10 5 0 10" Width="100" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Click="BtnConsultar_Click"/>
-                        <Button x:Name="BtnDepreciar" Content="Depreciar" Margin="10 5 0 10" Width="100" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Click="BtnDepreciar_Click"/>
-                        <Button x:Name="BtnExportar" Content="Exportar" Margin="10 5 0 10" Width="100" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Click="BtnExportar_Click"/>
-                        <Button x:Name="BtnCancelar" Content="Cancelar" Margin="10 5 0 10" Width="100" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Click="BtnCancelar_Click"/>
+                <Grid Grid.Column="5"  Margin="10 0 0 0">
+                    <StackPanel Grid.Column="6" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Button x:Name="BtnConsultar" Content="Consultar" Click="BtnConsultar_Click" Style="{StaticResource StyleBtn}"/>
+                        <Button x:Name="BtnDepreciar" Content="Depreciar" Click="BtnDepreciar_Click" Style="{StaticResource StyleBtn}"/>
+                        <Button x:Name="BtnExportar" Content="Exportar" Click="BtnExportar_Click" Style="{StaticResource StyleBtn}"/>
+                        <Button x:Name="BtnCancelar" Content="Cancelar" Click="BtnCancelar_Click" Style="{StaticResource StyleBtn}"/>
                     </StackPanel>
                 </Grid>
 
@@ -83,7 +106,7 @@
                     <Setter Property="BorderBrush" Value="LightGray"/>
                 </Style>
             </Grid.Resources>
-            <syncfusion:SfDataGrid Name="dataGrid" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}">
+            <syncfusion:SfDataGrid Name="dataGrid" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" FilterChanged="dataGrid_FilterChanged">
                 <syncfusion:SfDataGrid.StackedHeaderRows>
                     <syncfusion:StackedHeaderRow>
                         <syncfusion:StackedHeaderRow.StackedColumns>

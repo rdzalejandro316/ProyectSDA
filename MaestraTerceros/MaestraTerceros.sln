@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportacionDeteriorosRecupe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfActivosPorlocalizacion", "..\AfActivosPorlocalizacion\AfActivosPorlocalizacion.csproj", "{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuReporte", "..\MenuReporte\MenuReporte.csproj", "{DE86D211-0683-4BBC-B11E-675014772059}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DEB20A7-09F8-43E1-AE56-1B3AE951B3E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE86D211-0683-4BBC-B11E-675014772059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE86D211-0683-4BBC-B11E-675014772059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE86D211-0683-4BBC-B11E-675014772059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE86D211-0683-4BBC-B11E-675014772059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

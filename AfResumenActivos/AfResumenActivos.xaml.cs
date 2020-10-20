@@ -50,6 +50,7 @@ namespace SiasoftAppExt
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
             tabitem = tabitem1;
+            tabitem.CerrarConEscape = false;
             LoadConfig();
         }
 

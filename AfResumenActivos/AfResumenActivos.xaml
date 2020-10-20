@@ -151,7 +151,6 @@
                         </Grid.Resources>
 
                         <SiaSf:SfDataGrid x:Name="dataGridAutomatico" AllowResizingColumns="True"  EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="9" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}">
-
                             <SiaSf:SfDataGrid.Columns>
                                 <SiaSf:GridTextColumn HeaderText="Activo" MappingName="cod_act" Width="120" CellStyle="{StaticResource colorcol}"/>
                                 <SiaSf:GridDateTimeColumn HeaderText="Fec_adq" MappingName="fec_adq" Width="90"/>

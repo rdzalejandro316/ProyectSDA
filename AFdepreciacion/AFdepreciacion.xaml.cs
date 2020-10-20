@@ -43,6 +43,7 @@ namespace SiasoftAppExt
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
             tabitem = tabitem1;
+            tabitem.CerrarConEscape = false;
             LoadConfig();
         }
 
@@ -165,7 +166,7 @@ namespace SiasoftAppExt
                     foreach (DataRow dr in dt_depreciar.Rows)
                     {
                         string cod_act = dr["cod_act"].ToString().Trim();
-                        decimal val_depreciar = Math.Round(Convert.ToDecimal(dr["val_dep"]));
+                        decimal val_depreciar = Convert.ToDecimal(dr["val_dep"]);
                         int mesxdep = val_depreciar > 0 ? -1 : 0;
 
                         sqlcue = sqlcue + @"INSERT INTO afcue_doc (idregcab,cod_trn,num_trn,ano_doc,per_doc,cod_act,dep_ac,mesxdep) values (@NewID,'" + codtrn + "',@iConsecutivo,'" + año + "','" + periodo + "','" + cod_act + "'," + val_depreciar.ToString("F", CultureInfo.InvariantCulture) + "," + mesxdep + ");";
@@ -196,13 +197,13 @@ namespace SiasoftAppExt
             {
 
                 #region obtiene datos principales                
-                string query = "select Afcab_doc.cod_prv,Afcab_doc.cod_trn,Afcab_doc.num_trn,Afmae_trn.cod_tdo from Afcab_doc  ";
+                string query = "select Afcab_doc.cod_ter,Afcab_doc.cod_trn,Afcab_doc.num_trn,Afmae_trn.cod_tdo from Afcab_doc  ";
                 query += "inner join Afmae_trn on Afmae_trn.cod_trn = Afcab_doc.cod_trn ";
                 query += "where idreg ='" + idreg + "' ";
 
                 DataTable dt_trn = SiaWin.Func.SqlDT(query, "cuerpo", idemp);
 
-                string cod_prv = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["cod_prv"].ToString().Trim() : "";
+                string cod_ter = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["cod_ter"].ToString().Trim() : "";
                 string cod_trn_af = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["cod_trn"].ToString().Trim() : "";
                 string cod_trn_co = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["cod_tdo"].ToString().Trim() : "";
                 string num_trn_co = dt_trn.Rows.Count > 0 ? dt_trn.Rows[0]["num_trn"].ToString().Trim() : "";
@@ -237,8 +238,8 @@ namespace SiasoftAppExt
 
                     if (dep_ac > 0)
                     {
-                        sqlcuerpo += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_ter,cod_cta,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cod_prv + "','" + cta_gdp + "','" + des_mov + "'," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "); ";
-                        sqlcuerpo += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_ter,cod_cta,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cod_prv + "','" + cta_dep + "','" + des_mov + "'," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                        sqlcuerpo += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_ter,cod_cta,des_mov,deb_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cod_ter + "','" + cta_gdp + "','" + des_mov + "'," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "); ";
+                        sqlcuerpo += @" insert into cocue_doc (idregcab,cod_trn,num_trn,cod_ter,cod_cta,des_mov,cre_mov) values (@NewTrn,'" + cod_trn_co + "','" + num_trn_co + "','" + cod_ter + "','" + cta_dep + "','" + des_mov + "'," + dep_ac.ToString("F", CultureInfo.InvariantCulture) + "); ";
                     }
                 }
 
@@ -408,6 +409,17 @@ namespace SiasoftAppExt
             }
         }
 
-
+        private void dataGrid_FilterChanged(object sender, Syncfusion.UI.Xaml.Grid.GridFilterEventArgs e)
+        {
+            try
+            {                
+                int tot = (sender as Syncfusion.UI.Xaml.Grid.SfDataGrid).View.Records.Count;
+                Tx_toact.Text = tot.ToString();                
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error-f" + w);
+            }
+        }
     }
 }
