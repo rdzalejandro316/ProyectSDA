@@ -147,7 +147,8 @@
                     <Label Grid.Row="3" Content="Telefono :" Style="{StaticResource tit}"/>
 
                     <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding tel1,Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True}"
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding tel1,
+                                Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True}"
                                 Width="150" Style="{StaticResource Tx}"/>
 
                         <Label Content="Celular:" Style="{StaticResource tit}"/>
@@ -343,7 +344,7 @@
                             <Label Content="Direccion :" Style="{StaticResource tit}"/>
                             <TextBox Text="{Binding dir,
                                 Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True}"
-                                Width="160" Style="{StaticResource Tx}" Margin="0,8,0,3"/>
+                                Width="160" Style="{StaticResource Tx}"/>
                         </StackPanel>
                     </Grid>
                 </Grid>

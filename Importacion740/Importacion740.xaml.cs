@@ -27,13 +27,7 @@ namespace SiasoftAppExt
     //   Sia.PublicarPnt(9668,"Importacion740");
     //   Sia.TabU(9668);
 
-    //   Sia.PublicarPnt(9668,"Importacion740");
-    //    dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9668,"Importacion740");
-    //    ww.ShowInTaskbar = false;
-    //    ww.Owner = Application.Current.MainWindow;
-    //    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
-    //    ww.ShowDialog();
-
+    
     public partial class Importacion740 : UserControl
     {
 
@@ -201,14 +195,13 @@ namespace SiasoftAppExt
             if (dt.Columns.Contains("Fec_venc") == false || dt.Columns.IndexOf("Fec_venc") != 13) flag = false;
             if (dt.Columns.Contains("Reg") == false || dt.Columns.IndexOf("Reg") != 14) flag = false;
             if (dt.Columns.Contains("Num_chq") == false || dt.Columns.IndexOf("Num_chq") != 15) flag = false;
-            if (dt.Columns.Contains("Factura") == false || dt.Columns.IndexOf("Factura") != 16) flag = false;
-            if (dt.Columns.Contains("Fec_ven") == false || dt.Columns.IndexOf("Fec_ven") != 17) flag = false;
-            if (dt.Columns.Contains("Cod_ven") == false || dt.Columns.IndexOf("Cod_ven") != 18) flag = false;
-            if (dt.Columns.Contains("Cod_ciu") == false || dt.Columns.IndexOf("Cod_ciu") != 19) flag = false;
-            if (dt.Columns.Contains("Cod_suc") == false || dt.Columns.IndexOf("Cod_suc") != 20) flag = false;
-            if (dt.Columns.Contains("Cod_cco") == false || dt.Columns.IndexOf("Cod_cco") != 21) flag = false;
-            if (dt.Columns.Contains("Doc_ref") == false || dt.Columns.IndexOf("Doc_ref") != 22) flag = false;
-            if (dt.Columns.Contains("Fec_susc") == false || dt.Columns.IndexOf("Fec_susc") != 23) flag = false;
+            if (dt.Columns.Contains("Factura") == false || dt.Columns.IndexOf("Factura") != 16) flag = false;            
+            if (dt.Columns.Contains("Cod_ven") == false || dt.Columns.IndexOf("Cod_ven") != 17) flag = false;
+            if (dt.Columns.Contains("Cod_ciu") == false || dt.Columns.IndexOf("Cod_ciu") != 18) flag = false;
+            if (dt.Columns.Contains("Cod_suc") == false || dt.Columns.IndexOf("Cod_suc") != 19) flag = false;
+            if (dt.Columns.Contains("Cod_cco") == false || dt.Columns.IndexOf("Cod_cco") != 20) flag = false;
+            if (dt.Columns.Contains("Doc_ref") == false || dt.Columns.IndexOf("Doc_ref") != 21) flag = false;
+            if (dt.Columns.Contains("Fec_susc") == false || dt.Columns.IndexOf("Fec_susc") != 22) flag = false;
             return flag;
         }
 

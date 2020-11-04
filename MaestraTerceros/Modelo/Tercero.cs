@@ -154,30 +154,30 @@ namespace MaestraTerceros
                     case "nom_ter":
                         errorMessage = this.ValidationNomTer();
                         break;
-                    //case "repres":
-                    //    errorMessage = ValidationRepres();
-                    //    break;
-                    //case "dir1":
-                    //    errorMessage = ValidationDir1();
-                    //    break;                    
-                    //case "tel1":
-                    //    errorMessage = ValidationTel1();
-                    //    break;
-                    //case "cel":
-                    //    errorMessage = ValidationCel();
-                    //    break;
-                    //case "email":
-                    //    errorMessage = ValidationEmail();
-                    //    break;
-                    //case "ciudad":
-                    //    errorMessage = ValidationCiudad();
-                    //    break;                    
-                    //case "cod_ciu":
-                    //    errorMessage = ValidationCodCiu();
-                    //    break;
-                    //case "cod_pais":
-                    //    errorMessage = ValidationCodPais();
-                    //    break;                    
+                    case "repres":
+                        errorMessage = ValidationRepres();
+                        break;
+                    case "dir1":
+                        errorMessage = ValidationDir1();
+                        break;
+                    case "tel1":
+                        errorMessage = ValidationTel1();
+                        break;
+                    case "cel1":
+                        errorMessage = ValidationCel();
+                        break;
+                    case "email":
+                        errorMessage = ValidationEmail();
+                        break;
+                    case "ciudad":
+                        errorMessage = ValidationCiudad();
+                        break;
+                    case "cod_ciu":
+                        errorMessage = ValidationCodCiu();
+                        break;
+                    case "cod_pais":
+                        errorMessage = ValidationCodPais();
+                        break;
                 }
                 return errorMessage;
             }
@@ -278,12 +278,7 @@ namespace MaestraTerceros
 
         string _cod_recip;
         public string cod_recip { get { return _cod_recip; } set { _cod_recip = value; OnPropertyChanged("cod_recip"); } }
-
-        string _cod_ciiu;
-        public string cod_ciiu { get { return _cod_ciiu; } set { _cod_ciiu = value; OnPropertyChanged("cod_ciiu"); } }
-
-        double _por_ciiu;
-        public double por_ciiu { get { return _por_ciiu; } set { _por_ciiu = value; OnPropertyChanged("por_ciiu"); } }
+        
 
 
 
