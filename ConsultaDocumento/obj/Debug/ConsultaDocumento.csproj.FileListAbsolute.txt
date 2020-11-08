@@ -1,0 +1,14 @@
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ConsultaDocumento.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ConsultaDocumento.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaDocumento\obj\Debug\ConsultaDocumento.csproj.CopyComplete

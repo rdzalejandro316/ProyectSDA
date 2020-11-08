@@ -26,13 +26,6 @@ namespace SiasoftAppExt
     //Sia.PublicarPnt(9667,"Importacion741");
     //Sia.TabU(9667);
 
-    //Sia.PublicarPnt(9667,"Importacion741");
-    //dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9667,"Importacion741");
-    //ww.ShowInTaskbar = false;
-    //ww.Owner = Application.Current.MainWindow;
-    //ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
-    //ww.ShowDialog();
-
     public partial class Importacion741 : UserControl
     {
         dynamic SiaWin;
@@ -112,6 +105,24 @@ namespace SiasoftAppExt
             }
         }
 
+        
+        public bool validarArchioExcel(DataTable dt)
+        {
+            bool flag = true;
+            if (dt.Columns.Contains("TRN") == false || dt.Columns.IndexOf("TRN") != 0) flag = false;
+            if (dt.Columns.Contains("CONSE") == false || dt.Columns.IndexOf("CONSE") != 1) flag = false;
+            if (dt.Columns.Contains("AÑO") == false || dt.Columns.IndexOf("AÑO") != 2) flag = false;
+            if (dt.Columns.Contains("MES") == false || dt.Columns.IndexOf("MES") != 3) flag = false;
+            if (dt.Columns.Contains("DIA") == false || dt.Columns.IndexOf("DIA") != 4) flag = false;
+            if (dt.Columns.Contains("ORD") == false || dt.Columns.IndexOf("ORD") != 5) flag = false;
+            if (dt.Columns.Contains("NIT") == false || dt.Columns.IndexOf("NIT") != 6) flag = false;
+            if (dt.Columns.Contains("RAZON SOCIAL") == false || dt.Columns.IndexOf("RAZON SOCIAL") != 7) flag = false;
+            if (dt.Columns.Contains("CONTRATO") == false || dt.Columns.IndexOf("CONTRATO") != 8) flag = false;
+            if (dt.Columns.Contains("objeto") == false || dt.Columns.IndexOf("objeto") != 9) flag = false;
+            if (dt.Columns.Contains("CCO") == false || dt.Columns.IndexOf("CCO") != 10) flag = false;
+            if (dt.Columns.Contains("INVERSION") == false || dt.Columns.IndexOf("INVERSION") != 11) flag = false;
+            return flag;
+        }
 
         public async void impotar()
         {
@@ -119,16 +130,18 @@ namespace SiasoftAppExt
             try
             {
 
+                string root = "";
                 OpenFileDialog openfile = new OpenFileDialog();
                 openfile.DefaultExt = ".xlsx";
                 openfile.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
                 var browsefile = openfile.ShowDialog();
-                string root = openfile.FileName;
+                root = openfile.FileName;
 
                 if (string.IsNullOrEmpty(root)) return;
 
                 sfBusyIndicator.IsBusy = true;
-                dt.Clear(); dt_errores.Clear();
+                dt.Clear();
+                dt_errores.Clear();
 
                 dt = ConvertExcelToDataTable(root);
                 if (dt == null) { sfBusyIndicator.IsBusy = false; return; }
@@ -137,9 +150,20 @@ namespace SiasoftAppExt
                 {
                     MessageBox.Show("La plantilla importada no corresponde a la que permite el sistema por favor verifique con la plantilla que genera esta pantalla", "alerta", MessageBoxButton.OK, MessageBoxImage.Error);
                     sfBusyIndicator.IsBusy = false;
+                    dataGridRefe.ItemsSource = null;
+                    dt.Clear(); dt_errores.Clear();
+                    Tx_ter.Text = "";
+                    Tx_cuen.Text = "";
+                    TxTot_deb.Text = "-";
+                    TxTot_cre.Text = "-";
+                    Txdif.Text = "-";
+                    Tx_total.Text = "0";
+                    Tx_errores.Text = "0";
                     return;
                 }
 
+                BtnImportar.IsEnabled = false;
+                BtnCrear.IsEnabled = false;
 
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
@@ -171,14 +195,13 @@ namespace SiasoftAppExt
 
                 }
 
-
-
-                //foreach (DataTable dtable in doc_agru.Tables)                
-                //  SiaWin.Browse(dtable);
-
+                
                 MessageBox.Show(Application.Current.MainWindow, "Importacion Exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
                 Tx_errores.Text = dt_errores.Rows.Count.ToString();
                 sfBusyIndicator.IsBusy = false;
+                BtnImportar.IsEnabled = true;
+                BtnCrear.IsEnabled = true;
+
             }
             catch (Exception w)
             {
@@ -449,7 +472,6 @@ namespace SiasoftAppExt
             }
         }
 
-
         private DataTable Process()
         {
             try
@@ -561,20 +583,6 @@ namespace SiasoftAppExt
         }
 
 
-
-
-        public bool validarArchioExcel(DataTable dt)
-        {
-            bool flag = true;
-            //if (dt.Columns.Contains("Fec_trn") == false || dt.Columns.IndexOf("Fec_trn") != 0) flag = false;
-            //if (dt.Columns.Contains("Num_trn") == false || dt.Columns.IndexOf("Num_trn") != 1) flag = false;
-            //if (dt.Columns.Contains("Cod_act") == false || dt.Columns.IndexOf("Cod_act") != 2) flag = false;
-            //if (dt.Columns.Contains("Cod_gru") == false || dt.Columns.IndexOf("Cod_gru") != 3) flag = false;
-            //if (dt.Columns.Contains("Doc_int") == false || dt.Columns.IndexOf("Doc_int") != 4) flag = false;
-            return flag;
-        }
-
-
         private void BtnGenerarDoc_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -645,7 +653,7 @@ namespace SiasoftAppExt
                     Tx_ter.Text = "";
                     Tx_ter.Text = "";
                     Tx_total.Text = "";
-                    
+
                 }
                 #endregion
 

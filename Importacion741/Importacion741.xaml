@@ -54,7 +54,7 @@
                         <syncfusion:GridTextColumn HeaderText="FEC_TRN" MappingName="FEC_TRN" Width="80"/>
                         <syncfusion:GridTextColumn HeaderText="COD_CTA" MappingName="COD_CTA" Width="80"/>
                         <syncfusion:GridTextColumn HeaderText="COD_TER" MappingName="COD_TER" Width="80"/>
-                        <syncfusion:GridTextColumn HeaderText="DES_MOV" MappingName="DES_MOV" Width="200"/>
+                        <syncfusion:GridTextColumn HeaderText="DES_MOV" MappingName="DES_MOV" Width="350"/>
                         <syncfusion:GridNumericColumn HeaderText="BAS_MOV" MappingName="BAS_MOV" Width="90" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
                         <syncfusion:GridNumericColumn HeaderText="DEB_MOV" MappingName="DEB_MOV" Width="90" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
                         <syncfusion:GridNumericColumn HeaderText="CRE_MOV" MappingName="CRE_MOV" Width="90" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
@@ -108,13 +108,13 @@
 
                     <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
                         <TextBlock Grid.Row="0" Text="DEBITOS: " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold" Width="100" TextAlignment="Right"/>
-                        <TextBox x:Name="TxTot_deb" VerticalAlignment="Center" Foreground="{StaticResource ColorMain}" Margin="5 0 0 0" Width="150" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                        <TextBlock Text="-" x:Name="TxTot_deb" VerticalAlignment="Center" Foreground="{StaticResource ColorMain}" Margin="5 0 0 0" Width="150"/>
                         <TextBlock Grid.Row="0" Text="CREDITOS: " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold" Margin="10 0 0 0"/>
-                        <TextBox x:Name="TxTot_cre" VerticalAlignment="Center" Foreground="{StaticResource ColorMain}" Margin="5 0 0 0" Width="150" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                        <TextBlock Text="-" x:Name="TxTot_cre" VerticalAlignment="Center" Foreground="{StaticResource ColorMain}" Margin="5 0 0 0" Width="150"/>
                     </StackPanel>
 
                     <TextBlock Grid.Row="2"  Text="DIFERENCIA: " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
-                    <TextBox x:Name="Txdif" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{StaticResource ColorMain}" Margin="5 0 0 0" Width="150" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                    <TextBlock Text="-" x:Name="Txdif" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{StaticResource ColorMain}" Margin="5 0 0 0" Width="150"/>
                 </Grid>
 
 

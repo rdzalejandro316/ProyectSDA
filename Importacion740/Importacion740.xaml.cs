@@ -27,7 +27,7 @@ namespace SiasoftAppExt
     //   Sia.PublicarPnt(9668,"Importacion740");
     //   Sia.TabU(9668);
 
-    
+
     public partial class Importacion740 : UserControl
     {
 
@@ -113,13 +113,14 @@ namespace SiasoftAppExt
                     worksheet.Range["O1"].Text = "REG";
                     worksheet.Range["P1"].Text = "NUM_CHQ";
                     worksheet.Range["Q1"].Text = "FACTURA";
-                    worksheet.Range["R1"].Text = "COD_VEN";
-                    worksheet.Range["S1"].Text = "COD_CIU";
-                    worksheet.Range["T1"].Text = "COD_SUC";
-                    worksheet.Range["U1"].Text = "COD_CCO";
-                    worksheet.Range["V1"].Text = "DOC_REF";
-                    worksheet.Range["W1"].Text = "FEC_SUSC";
-                    worksheet.Range["A1:W1"].CellStyle.Font.Bold = true;
+                    worksheet.Range["R1"].Text = "FEC_VEN";
+                    worksheet.Range["S1"].Text = "COD_VEN";
+                    worksheet.Range["T1"].Text = "COD_CIU";
+                    worksheet.Range["U1"].Text = "COD_SUC";
+                    worksheet.Range["V1"].Text = "COD_CCO";
+                    worksheet.Range["W1"].Text = "DOC_REF";
+                    worksheet.Range["X1"].Text = "FEC_SUSC";
+                    worksheet.Range["A1:X1"].CellStyle.Font.Bold = true;
 
                     if (string.IsNullOrEmpty(ruta)) MessageBox.Show("Por favor, seleccione una ruta para guardar la plantilla");
                     else
@@ -179,29 +180,30 @@ namespace SiasoftAppExt
             bool flag = true;
 
 
-            if (dt.Columns.Contains("Cod_trn") == false || dt.Columns.IndexOf("Cod_trn") != 0) flag = false;
-            if (dt.Columns.Contains("Num_trn") == false || dt.Columns.IndexOf("Num_trn") != 1) flag = false;
-            if (dt.Columns.Contains("Fec_trn") == false || dt.Columns.IndexOf("Fec_trn") != 2) flag = false;
-            if (dt.Columns.Contains("Cod_cta") == false || dt.Columns.IndexOf("Cod_cta") != 3) flag = false;
-            if (dt.Columns.Contains("Cod_ter") == false || dt.Columns.IndexOf("Cod_ter") != 4) flag = false;
-            if (dt.Columns.Contains("Des_mov") == false || dt.Columns.IndexOf("Des_mov") != 5) flag = false;
-            if (dt.Columns.Contains("Doc_mov") == false || dt.Columns.IndexOf("Doc_mov") != 6) flag = false;
-            if (dt.Columns.Contains("Bas_mov") == false || dt.Columns.IndexOf("Bas_mov") != 7) flag = false;
-            if (dt.Columns.Contains("Deb_mov") == false || dt.Columns.IndexOf("Deb_mov") != 8) flag = false;
-            if (dt.Columns.Contains("Cre_mov") == false || dt.Columns.IndexOf("Cre_mov") != 9) flag = false;
-            if (dt.Columns.Contains("Doc_cruc") == false || dt.Columns.IndexOf("Doc_cruc") != 10) flag = false;
-            if (dt.Columns.Contains("Ord_pag") == false || dt.Columns.IndexOf("Ord_pag") != 11) flag = false;
-            if (dt.Columns.Contains("Cod_banc") == false || dt.Columns.IndexOf("Cod_banc") != 12) flag = false;
-            if (dt.Columns.Contains("Fec_venc") == false || dt.Columns.IndexOf("Fec_venc") != 13) flag = false;
-            if (dt.Columns.Contains("Reg") == false || dt.Columns.IndexOf("Reg") != 14) flag = false;
-            if (dt.Columns.Contains("Num_chq") == false || dt.Columns.IndexOf("Num_chq") != 15) flag = false;
-            if (dt.Columns.Contains("Factura") == false || dt.Columns.IndexOf("Factura") != 16) flag = false;            
-            if (dt.Columns.Contains("Cod_ven") == false || dt.Columns.IndexOf("Cod_ven") != 17) flag = false;
-            if (dt.Columns.Contains("Cod_ciu") == false || dt.Columns.IndexOf("Cod_ciu") != 18) flag = false;
-            if (dt.Columns.Contains("Cod_suc") == false || dt.Columns.IndexOf("Cod_suc") != 19) flag = false;
-            if (dt.Columns.Contains("Cod_cco") == false || dt.Columns.IndexOf("Cod_cco") != 20) flag = false;
-            if (dt.Columns.Contains("Doc_ref") == false || dt.Columns.IndexOf("Doc_ref") != 21) flag = false;
-            if (dt.Columns.Contains("Fec_susc") == false || dt.Columns.IndexOf("Fec_susc") != 22) flag = false;
+            if (dt.Columns.Contains("COD_TRN") == false || dt.Columns.IndexOf("COD_TRN") != 0) flag = false;
+            if (dt.Columns.Contains("NUM_TRN") == false || dt.Columns.IndexOf("NUM_TRN") != 1) flag = false;
+            if (dt.Columns.Contains("FEC_TRN") == false || dt.Columns.IndexOf("FEC_TRN") != 2) flag = false;
+            if (dt.Columns.Contains("COD_CTA") == false || dt.Columns.IndexOf("COD_CTA") != 3) flag = false;
+            if (dt.Columns.Contains("COD_TER") == false || dt.Columns.IndexOf("COD_TER") != 4) flag = false;
+            if (dt.Columns.Contains("DES_MOV") == false || dt.Columns.IndexOf("DES_MOV") != 5) flag = false;
+            if (dt.Columns.Contains("DOC_MOV") == false || dt.Columns.IndexOf("DOC_MOV") != 6) flag = false;
+            if (dt.Columns.Contains("BAS_MOV") == false || dt.Columns.IndexOf("BAS_MOV") != 7) flag = false;
+            if (dt.Columns.Contains("DEB_MOV") == false || dt.Columns.IndexOf("DEB_MOV") != 8) flag = false;
+            if (dt.Columns.Contains("CRE_MOV") == false || dt.Columns.IndexOf("CRE_MOV") != 9) flag = false;
+            if (dt.Columns.Contains("DOC_CRUC") == false || dt.Columns.IndexOf("DOC_CRUC") != 10) flag = false;
+            if (dt.Columns.Contains("ORD_PAG") == false || dt.Columns.IndexOf("ORD_PAG") != 11) flag = false;
+            if (dt.Columns.Contains("COD_BANC") == false || dt.Columns.IndexOf("COD_BANC") != 12) flag = false;
+            if (dt.Columns.Contains("FEC_VENC") == false || dt.Columns.IndexOf("FEC_VENC") != 13) flag = false;
+            if (dt.Columns.Contains("REG") == false || dt.Columns.IndexOf("REG") != 14) flag = false;
+            if (dt.Columns.Contains("NUM_CHQ") == false || dt.Columns.IndexOf("NUM_CHQ") != 15) flag = false;
+            if (dt.Columns.Contains("FACTURA") == false || dt.Columns.IndexOf("FACTURA") != 16) flag = false;
+            if (dt.Columns.Contains("FEC_VEN") == false || dt.Columns.IndexOf("FEC_VEN") != 17) flag = false;
+            if (dt.Columns.Contains("COD_VEN") == false || dt.Columns.IndexOf("COD_VEN") != 18) flag = false;
+            if (dt.Columns.Contains("COD_CIU") == false || dt.Columns.IndexOf("COD_CIU") != 19) flag = false;
+            if (dt.Columns.Contains("COD_SUC") == false || dt.Columns.IndexOf("COD_SUC") != 20) flag = false;
+            if (dt.Columns.Contains("COD_CCO") == false || dt.Columns.IndexOf("COD_CCO") != 21) flag = false;
+            if (dt.Columns.Contains("DOC_REF") == false || dt.Columns.IndexOf("DOC_REF") != 22) flag = false;
+            if (dt.Columns.Contains("FEC_SUSC") == false || dt.Columns.IndexOf("FEC_SUSC") != 23) flag = false;
             return flag;
         }
 
@@ -228,12 +230,25 @@ namespace SiasoftAppExt
                 {
                     MessageBox.Show("La plantilla importada no corresponde a la que permite el sistema por favor verifique con la plantilla que genera esta pantalla", "alerta", MessageBoxButton.OK, MessageBoxImage.Error);
                     sfBusyIndicator.IsBusy = false;
+                    dataGridRefe.ItemsSource = null;
+                    dt.Clear(); dt_errores.Clear();
+                    Tx_ter.Text = "";
+                    Tx_cuen.Text = "";
+                    TxTot_deb.Text = "-";
+                    TxTot_cre.Text = "-";
+                    Txdif.Text = "-";
+                    Tx_total.Text = "0";
+                    Tx_errores.Text = "0";
                     return;
                 }
 
-                
-                agruparDocumentos(dt);                
+
+                agruparDocumentos(dt);
+                BtnImportar.IsEnabled = false;
+                BtnGenerar.IsEnabled = false;
                 BtnCrear.IsEnabled = false;
+
+
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
                 var slowTask = Task<DataTable>.Factory.StartNew(() => Process(), source.Token);
@@ -255,6 +270,8 @@ namespace SiasoftAppExt
                 Tx_total.Text = ((DataTable)slowTask.Result).Rows.Count.ToString();
                 Tx_errores.Text = dt_errores.Rows.Count.ToString();
 
+                BtnImportar.IsEnabled = true;
+                BtnGenerar.IsEnabled = true;
                 BtnCrear.IsEnabled = true;
                 sfBusyIndicator.IsBusy = false;
             }
@@ -680,11 +697,11 @@ namespace SiasoftAppExt
                     dataGridRefe.ItemsSource = null;
                     doc_agru.Tables.Clear();
                     dt_errores.Clear();
-                    Tx_total.Text = "";
-                    Tx_errores.Text = "";
-                    TxTot_deb.Text = "";
-                    TxTot_cre.Text = "";
-                    Txdif.Text = "";
+                    Tx_total.Text = "0";
+                    Tx_errores.Text = "0";
+                    TxTot_deb.Text = "-";
+                    TxTot_cre.Text = "-";
+                    Txdif.Text = "-";
                     Tx_ter.Text = "";
                     Tx_cuen.Text = "";
 

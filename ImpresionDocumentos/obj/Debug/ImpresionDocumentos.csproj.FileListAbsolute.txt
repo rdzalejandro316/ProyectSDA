@@ -12,3 +12,17 @@ D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumento
 D:\Empresas\SDA\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.pdb
 D:\Empresas\SDA\Library\ImpresionDocumentos.dll
 D:\Empresas\SDA\Library\ImpresionDocumentos.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImpresionDocumentos\obj\Debug\ImpresionDocumentos.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ImpresionDocumentos.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ImpresionDocumentos.pdb

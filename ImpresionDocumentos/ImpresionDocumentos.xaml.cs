@@ -93,6 +93,10 @@ namespace SiasoftAppExt
 
                     List<ReportParameter> parameters = new List<ReportParameter>();
                     parameters.Add(new ReportParameter("idreg", idreg.ToString()));
+                    parameters.Add(new ReportParameter("usuario", SiaWin._UserName));
+
+                    if (CbTipo.SelectedIndex == 3) parameters.Add(new ReportParameter("valorpesos", SiaWin._UserName));
+
 
                     WindowsFormsHost winFormsHost = new WindowsFormsHost();
                     ReportViewer viewer = new ReportViewer();
@@ -104,7 +108,7 @@ namespace SiasoftAppExt
                         case 2: viewer.ZoomMode = ZoomMode.Percent; viewer.ZoomPercent = 100; break;
                     }
 
-                    
+
                     switch (CbShowParm.SelectedIndex)
                     {
                         case 0: viewer.ShowParameterPrompts = false; break;
@@ -113,7 +117,7 @@ namespace SiasoftAppExt
 
 
                     viewer.ServerReport.ReportServerUrl = new Uri(server);
-                    viewer.ServerReport.ReportPath = path;                    
+                    viewer.ServerReport.ReportPath = path;
                     viewer.ProcessingMode = ProcessingMode.Remote;
                     viewer.ServerReport.SetParameters(parameters);
                     viewer.RefreshReport();
