@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:SiasoftAppExt"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
-             Width="1000" Height="500" Background="White"
-             syncfusionskin:SfSkinManager.VisualStyle="Metro">
+             Width="1100" Height="500" Background="White"
+             syncfusionskin:SfSkinManager.VisualStyle="Metro" >
 
     <Window.Resources>
         <SolidColorBrush Color="#3498db" x:Key="ColorMain"/>
@@ -22,6 +22,25 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TxTitle">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TxValue">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+            <Setter Property="FontSize" Value="10"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -33,12 +52,11 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="450"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-
-            <Grid Style="{StaticResource Card}">
+            <Grid Style="{StaticResource Card}" >
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -58,32 +76,85 @@
                 </Grid.Resources>
 
                 <TextBlock Text="Trn:" Style="{StaticResource TxTitle}" ToolTip="Transaccion"/>
-                <ComboBox Grid.Row="0" Grid.Column="1" DisplayMemberPath="nom_tdo" SelectedValuePath="cod_tdo" Foreground="Black"  Width="250" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                <ComboBox Name="CBtrn" Grid.Row="0" Grid.Column="1" DisplayMemberPath="nom_trn" SelectedValuePath="cod_trn" Foreground="Black"  Width="320" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="10" SelectionChanged="CBtrn_SelectionChanged"/>
                 
                 <TextBlock Grid.Row="1" Text="Año:" Style="{StaticResource TxTitle}"/>
-                <syncfusion:SfDatePicker Grid.Column="1" Grid.Row="1" x:Name="Fec" HorizontalAlignment="Left" FormatString="yyyy" SelectorFormatString="y" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="0.6" AccentBrush="{StaticResource ColorMain}"/>
+                <syncfusion:SfDatePicker Grid.Column="1" Grid.Row="1" x:Name="Tx_ano" HorizontalAlignment="Left" FormatString="yyyy" SelectorFormatString="y" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="0.6" AccentBrush="{StaticResource ColorMain}" ValueChanged="Fecha_ValueChanged"/>
                 
                 <TextBlock Grid.Row="2" Text="Periodo:" Style="{StaticResource TxTitle}"/>
-                <syncfusion:SfDatePicker Grid.Column="1" Grid.Row="2" x:Name="Periodo" HorizontalAlignment="Left"  FormatString="MM" SelectorFormatString="MM" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="0.6" AccentBrush="{StaticResource ColorMain}"/>
+                <syncfusion:SfDatePicker Grid.Column="1" Grid.Row="2" x:Name="Tx_periodo" HorizontalAlignment="Left"  FormatString="MM" SelectorFormatString="MM" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="0.6" AccentBrush="{StaticResource ColorMain}" ValueChanged="Fecha_ValueChanged"/>
 
-
-                <Button Content="Ver Documento" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BtnStyle}" Width="300"/>
+                <Button Name="BtnDocument" Content="Ver Documento" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BtnStyle}" Width="300" Click="BtnDocument_Click"/>
             </Grid>
 
-
-            <Grid Grid.Column="1" Style="{StaticResource Card}">
-
+            <Grid  Grid.Column="1" Style="{StaticResource Card}">
+                <syncfusion:SfDataGrid x:Name="DataGridCabeza" AllowResizingColumns="True" EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="9" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="DataGridCabeza_SelectionChanged">
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="Numero" MappingName="num_trn" ColumnSizer="AutoLastColumnFill"/>
+                        <syncfusion:GridTextColumn HeaderText="Año" MappingName="ano_doc" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="Periodo" MappingName="per_doc" Width="100"/>
+                        <syncfusion:GridDateTimeColumn HeaderText="Fecha" MappingName="fec_trn" Width="100" />
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
             </Grid>
-
 
         </Grid>
 
         <Grid Grid.Row="1" Style="{StaticResource Card}">
-            
+
+            <syncfusion:SfDataGrid x:Name="DataGridCuerpo" AllowResizingColumns="True"  EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="9" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="DataGridCuerpo_SelectionChanged">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="100"/>
+                    <syncfusion:GridTextColumn MappingName="nom_cta" IsHidden="True"/>
+                    <syncfusion:GridTextColumn HeaderText="Ciu" MappingName="cod_ciu" Width="60"/>
+                    <syncfusion:GridTextColumn HeaderText="Tercero" MappingName="cod_ter" Width="100"/>
+                    <syncfusion:GridTextColumn MappingName="nom_ter" IsHidden="True"/>
+                    <syncfusion:GridTextColumn HeaderText="Detalle" MappingName="des_mov" ColumnSizer="AutoWithLastColumnFill"/>
+                    <syncfusion:GridTextColumn HeaderText="Base" DisplayBinding="{Binding Path=bas_mov, StringFormat='n2'}" Width="100" TextAlignment="Right"/>
+                    <syncfusion:GridTextColumn HeaderText="Debito" DisplayBinding="{Binding Path=deb_mov, StringFormat='n2'}" Width="100" TextAlignment="Right"/>
+                    <syncfusion:GridTextColumn HeaderText="Credito" DisplayBinding="{Binding Path=cre_mov, StringFormat='n2'}" Width="100" TextAlignment="Right"/>
+                    <syncfusion:GridTextColumn HeaderText="Doc_ref" MappingName="doc_ref" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="Suc" MappingName="cod_suc" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="Cco" MappingName="cod_cco" Width="100"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+
         </Grid>
 
         <Grid Grid.Row="2" Style="{StaticResource Card}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Cuenta :" Style="{StaticResource TxTitle}"/>
+            <TextBlock Name="TxCuenta" Grid.Row="0" Grid.Column="1" Text="--------" Style="{StaticResource TxValue}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Tercero :" Style="{StaticResource TxTitle}"/>
+            <TextBlock Name="TxTercero" Grid.Row="1" Grid.Column="1" Text="--------" Style="{StaticResource TxValue}"/>
+            
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="Total Debito :" Style="{StaticResource TxTitle}"/>
+            <TextBlock Name="TxDebito" Grid.Row="0" Grid.Column="3" Text="0" Style="{StaticResource TxValue}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Total Credito :" Style="{StaticResource TxTitle}"/>
+            <TextBlock Name="TxCredito" Grid.Row="1" Grid.Column="3" Text="0" Style="{StaticResource TxValue}"/>
+            
+            <TextBlock Grid.Row="0" Grid.Column="4" Text="Regitros Cabeza:" Style="{StaticResource TxTitle}"/>
+            <TextBlock Name="TxRegCab" Grid.Row="0" Grid.Column="5" Text="0" Style="{StaticResource TxValue}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="4" Text="Registros Cuerpo :" Style="{StaticResource TxTitle}"/>
+            <TextBlock Name="TxRegCue" Grid.Row="1" Grid.Column="5" Text="0" Style="{StaticResource TxValue}"/>
+
         </Grid>
         
     </Grid>

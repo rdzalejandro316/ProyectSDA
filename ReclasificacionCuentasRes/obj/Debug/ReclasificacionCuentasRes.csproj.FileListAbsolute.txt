@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.g.cs
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.baml
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.g.resources
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.dll
+D:\Empresas\SDA\Library\project\ReclasificacionCuentasRes\obj\Debug\ReclasificacionCuentasRes.pdb
+D:\Empresas\SDA\Library\ReclasificacionCuentasRes.dll
+D:\Empresas\SDA\Library\ReclasificacionCuentasRes.pdb

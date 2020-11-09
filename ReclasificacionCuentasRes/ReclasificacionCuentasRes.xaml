@@ -1,0 +1,149 @@
+﻿<Window x:Class="SiasoftAppExt.ReclasificacionCuentasRes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             Width="1200" Height="500">
+
+    <Window.Resources>
+        <SolidColorBrush Color="#3498db" x:Key="ColorMain"/>
+        <Style TargetType="Grid" x:Key="Card">
+            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TxTitle">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnStyle">
+            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TxTotalTitle">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TxTotalValue">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="2,0,0,0"/>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Style="{StaticResource Card}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Año :" Style="{StaticResource TxTitle}"/>
+            <syncfusion:SfDatePicker Grid.Column="1" Grid.Row="1" x:Name="Tx_ano" HorizontalAlignment="Left" FormatString="yyyy" SelectorFormatString="y" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="0.6" AccentBrush="{StaticResource ColorMain}"/>
+
+            <TextBlock Grid.Column="2" Text="Periodo:" Style="{StaticResource TxTitle}"/>
+            <syncfusion:SfDatePicker Grid.Column="3" x:Name="Tx_periodo" HorizontalAlignment="Left"  FormatString="MM" SelectorFormatString="MM" Margin="5 0 0 0" BorderBrush="Gray" BorderThickness="0.6" AccentBrush="{StaticResource ColorMain}"/>
+
+
+            <StackPanel Grid.Column="4" Orientation="Horizontal">
+                <Button Content="Consultar" Style="{StaticResource BtnStyle}"/>
+                <Button Content="Ajuste" Style="{StaticResource BtnStyle}"/>
+            </StackPanel>
+
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="800"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                
+                <syncfusion:SfDataGrid x:Name="DataGridCabeza" AllowResizingColumns="True" EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="9" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}">
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_trn" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="Tercero" MappingName="ano_doc" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="Nombre" MappingName="per_doc" ColumnSizer="AutoLastColumnFill"/>
+                        <syncfusion:GridTextColumn HeaderText="Saldo Contable" MappingName="fec_trn" Width="100" />
+                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="fec_trn" Width="100" />
+                        <syncfusion:GridTextColumn HeaderText="Cuenta" MappingName="fec_trn" Width="100" />
+                        <syncfusion:GridTextColumn HeaderText="Reclasificar" MappingName="fec_trn" Width="60" />
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+
+                <StackPanel Grid.Row="1" Background="Black" Orientation="Horizontal">
+                    <TextBlock Text="Total :" Style="{StaticResource TxTotalTitle}"/>
+                    <TextBlock Text="0" Style="{StaticResource TxTotalValue}"/>
+                </StackPanel>
+            </Grid>
+
+
+            <Grid Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+
+                <syncfusion:SfDataGrid x:Name="DataGrid" AllowResizingColumns="True" EnableDataVirtualization="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="9" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}">
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn HeaderText="Codigo" MappingName="cod_trn" Width="110"/>
+                        <syncfusion:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="110"/>
+                        <syncfusion:GridTextColumn HeaderText="Cuenta 620/15" MappingName="ano_doc" Width="110"/>
+                        <syncfusion:GridTextColumn HeaderText="Marcar" MappingName="ano_doc" Width="70"/>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+
+                <StackPanel Grid.Row="1" Background="Black" Orientation="Horizontal">
+                    <TextBlock Text="Total :" Style="{StaticResource TxTotalTitle}"/>
+                    <TextBlock Text="0" Style="{StaticResource TxTotalValue}"/>
+                </StackPanel>
+            </Grid>
+
+
+
+        </Grid>
+        
+
+
+    </Grid>
+
+
+</Window>

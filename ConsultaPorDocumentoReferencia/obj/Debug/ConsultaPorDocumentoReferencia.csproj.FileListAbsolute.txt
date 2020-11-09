@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.g.cs
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.baml
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.g.resources
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.dll
+D:\Empresas\SDA\Library\project\ConsultaPorDocumentoReferencia\obj\Debug\ConsultaPorDocumentoReferencia.pdb
+D:\Empresas\SDA\Library\ConsultaPorDocumentoReferencia.dll
+D:\Empresas\SDA\Library\ConsultaPorDocumentoReferencia.pdb
