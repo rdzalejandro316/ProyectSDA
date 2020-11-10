@@ -102,8 +102,9 @@
                                 <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven01, StringFormat='{}{0:N2}'}" Width="80" HeaderText="1-30" TextAlignment="Right" AllowFiltering="False"/>
                                 <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven02, StringFormat='{}{0:N2}'}" Width="80" HeaderText="31-60" TextAlignment="Right" AllowFiltering="False"/>
                                 <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven03, StringFormat='{}{0:N2}'}" Width="80" HeaderText="61-90" TextAlignment="Right" AllowFiltering="False"/>
-                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven04, StringFormat='{}{0:N2}'}" Width="80" HeaderText="91-120" TextAlignment="Right" AllowFiltering="False"/>
-                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven05, StringFormat='{}{0:N2}'}" Width="80" HeaderText="+121" TextAlignment="Right" AllowFiltering="False"/>
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven04, StringFormat='{}{0:N2}'}" Width="80" HeaderText="91-180" TextAlignment="Right" AllowFiltering="False"/>
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven05, StringFormat='{}{0:N2}'}" Width="80" HeaderText="181-360" TextAlignment="Right" AllowFiltering="False"/>
+                                <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven06, StringFormat='{}{0:N2}'}" Width="80" HeaderText="+360" TextAlignment="Right" AllowFiltering="False"/>
                                 <SiaSf:GridTextColumn DisplayBinding="{Binding Path=saldo, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Saldo" TextAlignment="Right" AllowFiltering="False" />
                                 <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
                                     <SiaSf:GridTemplateColumn.CellTemplate>
@@ -134,6 +135,14 @@
                                     <SiaSf:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Button x:Name="BtnDetalleD" Content="...." Click="BtnDetalleD_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}"/>
+                                        </DataTemplate>
+                                    </SiaSf:GridTemplateColumn.CellTemplate>
+                                </SiaSf:GridTemplateColumn>
+
+                                <SiaSf:GridTemplateColumn MappingName="Auxiliar" Width="56"  AllowFiltering="False">
+                                    <SiaSf:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtnAuxliar" Content="...." Click="BtnAuxliar_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}"/>
                                         </DataTemplate>
                                     </SiaSf:GridTemplateColumn.CellTemplate>
                                 </SiaSf:GridTemplateColumn>

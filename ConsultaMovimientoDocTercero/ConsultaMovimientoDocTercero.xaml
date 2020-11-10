@@ -5,51 +5,86 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
              xmlns:local="clr-namespace:SiasoftAppExt"
-             Width="1000" Height="500">
+             Width="1100" Height="500">
 
     <Window.Resources>
         <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="10"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Background" Value="#FFC107"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Black"/>
         </Style>
-
+        <Style TargetType="TextBlock" x:Key="TxTitle">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="TxValue">
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="TxName">
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnStlyle">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#03A9F4"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="#373737">
+        <Grid x:Name="FilterConsulta" Grid.Row="0" Background="#373737">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="110"/>
             </Grid.ColumnDefinitions>
-
-            <TextBlock Text="# Doc Referencia:" Foreground="White" VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="Bold"/>
-            <TextBox Name="Tx_Doc"  Grid.Column="1" Margin="8"/>
-
-            <TextBlock Grid.Column="2" Text="Tercero :" Foreground="White" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="Bold"/>
-            <TextBox Name="Tx_tercero" Grid.Column="3" Margin="8" PreviewKeyDown="TextBox_PreviewKeyDown" ToolTip="F8 buscar" LostFocus="TextBox_LostFocus"/>
-
-            <TextBlock Grid.Column="4" Text="Cuenta :" Foreground="White" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="Bold"/>
-            <TextBox Name="Tx_cuenta" Grid.Column="5" Margin="8" PreviewKeyDown="TextBox_PreviewKeyDown" ToolTip="F8 buscar" LostFocus="TextBox_LostFocus"/>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
 
-            <Button x:Name="BtnConsultar" Grid.Column="7" Width="100" Margin="5" Content="Consultar" Foreground="White" Background="#03A9F4" BorderBrush="#03A9F4" Cursor="Hand" HorizontalAlignment="Left" Click="BtnConsultar_Click"/>
-            <Button x:Name="BtnExportar" Grid.Column="8" Width="100" Margin="5" Content="Exportar" Foreground="White" Background="#03A9F4" BorderBrush="#03A9F4" Cursor="Hand" HorizontalAlignment="Left" Click="BtnExportar_Click"/>
+            <TextBlock Text="# Doc Referencia:" Style="{StaticResource TxTitle}"/>
+            <TextBox Name="Tx_Doc"  Grid.Column="1" Style="{StaticResource TxValue}"/>
+
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Tercero :" Style="{StaticResource TxTitle}"/>
+            <TextBox Name="Tx_tercero" Grid.Row="1" Grid.Column="1" PreviewKeyDown="TextBox_PreviewKeyDown" ToolTip="F8 buscar" LostFocus="TextBox_LostFocus" Style="{StaticResource TxValue}"/>
+            <TextBox Name="TxNameTer" Grid.Row="1" Grid.Column="2" Style="{StaticResource TxName}"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Cuenta :" Style="{StaticResource TxTitle}" />
+            <TextBox Name="Tx_cuenta" Grid.Row="2" Grid.Column="1" PreviewKeyDown="TextBox_PreviewKeyDown" ToolTip="F8 buscar" LostFocus="TextBox_LostFocus" Style="{StaticResource TxValue}"/>
+            <TextBox Name="TxNameCta" Grid.Row="2" Grid.Column="2" Style="{StaticResource TxName}"/>
+
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="6">
+                <Button x:Name="BtnConsultar" Content="Consultar" Click="BtnConsultar_Click" Style="{StaticResource BtnStlyle}"/>
+                <Button x:Name="BtnView" Content="Documeto" Click="BtnView_Click" Style="{StaticResource BtnStlyle}"/>
+                <Button x:Name="BtnExportar" Content="Exportar" Click="BtnExportar_Click" Style="{StaticResource BtnStlyle}"/>
+            </StackPanel>
+
+
+            <TextBlock Text="F8 buscar en la maestra" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="10" Foreground="#03A9F4" Margin="5"/>
 
         </Grid>
 
@@ -65,12 +100,13 @@
 
                     <SiaSf:SfDataGrid Name="GridConsulta" Grid.Row="1" AutoGenerateColumns="False" AllowResizingColumns="True"  ShowGroupDropArea="False" FontSize="10" AllowFiltering="True"  HeaderStyle="{StaticResource headerStyle}"  Margin="5">
                         <SiaSf:SfDataGrid.Columns>
-                            <SiaSf:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50"/>
+                            <SiaSf:GridTextColumn MappingName="idreg" IsHidden="True"/>
+                            <SiaSf:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="40"/>
                             <SiaSf:GridTextColumn HeaderText="Numero" MappingName="num_trn" Width="100"/>
-                            <SiaSf:GridTextColumn HeaderText="Fecha" MappingName="fec_trn" Width="80"/>
+                            <SiaSf:GridDateTimeColumn HeaderText="Fecha" MappingName="fec_trn" Width="80"/>
                             <SiaSf:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="Nit-cc" MappingName="cod_ter" Width="100"/>
-                            <SiaSf:GridTextColumn HeaderText="Detalle" MappingName="des_mov" Width="100"/>
+                            <SiaSf:GridTextColumn HeaderText="Detalle" MappingName="des_mov" ColumnSizer="AutoLastColumnFill"/>
                             <SiaSf:GridTextColumn HeaderText="doc_ref" MappingName="doc_ref" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="doc_cruc" MappingName="doc_cruc" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="Debito" MappingName="deb_mov" Width="100"/>
@@ -104,10 +140,6 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="120"/>
                 </Grid.ColumnDefinitions>
-
-
-                <TextBlock Text="Totales :" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Right" FontWeight="Bold"/>
-                <TextBox x:Name="Tx_tot" Grid.Column="1" Margin="8" BorderBrush="{x:Null}" Foreground="Green" IsReadOnly="True"/>
 
 
                 <TextBlock Text="Debito :" Grid.Column="2" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Right" FontWeight="Bold"/>

@@ -13,8 +13,8 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="10"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Background" Value="#FFC107"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Black"/>
         </Style>
 
     </Window.Resources>

@@ -507,7 +507,7 @@ namespace SiasoftAppExt
 
                 #region debitos creditos por meses
 
-                                
+
                 workBook.ActiveSheet.Columns[11].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[12].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[13].NumberFormat = "0.00";
@@ -552,7 +552,7 @@ namespace SiasoftAppExt
                 workBook.ActiveSheet.Columns[42].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[43].NumberFormat = "0.00";
 
-                workBook.ActiveSheet.Columns[44].NumberFormat = "0.00";                
+                workBook.ActiveSheet.Columns[44].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[45].NumberFormat = "0.00";
                 workBook.ActiveSheet.Columns[46].NumberFormat = "0.00";
 
@@ -718,6 +718,7 @@ namespace SiasoftAppExt
                 WinDetalle.TextAcumDebito.Text = Convert.ToDouble(row["debito"].ToString()).ToString("C");
                 WinDetalle.TextAcumCredito.Text = Convert.ToDouble(row["credito"].ToString()).ToString("C");
                 WinDetalle.TextSaldoFin.Text = Convert.ToDouble(row["sal_fin"].ToString()).ToString("C");
+                WinDetalle.incluircierre = TipoIncluir.SelectedIndex == 0 ? false : true;
                 WinDetalle.Owner = SiaWin;
                 WinDetalle.ShowDialog();
                 WinDetalle = null;
@@ -1238,7 +1239,7 @@ namespace SiasoftAppExt
                         string cod = sal_ant <= 10 ? "0" + (sal_ant - 1).ToString() : (sal_ant - 1).ToString();
                         string c_sal = "sal_" + cod;
                         if ((sal_ant - 1) == 0) c_sal = "sal_ant";
-                        
+
 
                         Binding BindingSalAnt = new Binding(c_sal) { StringFormat = "N2" };
                         sal_antCol.DisplayBinding = BindingSalAnt;
@@ -1265,12 +1266,12 @@ namespace SiasoftAppExt
         {
             try
             {
-                string tag = (sender as Button).Tag.ToString();                
+                string tag = (sender as Button).Tag.ToString();
 
                 if (tag == "A")
                 {
                     dataGridConsulta.View.BeginInit();
-                    dataGridConsulta.GroupColumnDescriptions.Add(new GroupColumnDescription() { ColumnName = "cod_cta" });                    
+                    dataGridConsulta.GroupColumnDescriptions.Add(new GroupColumnDescription() { ColumnName = "cod_cta" });
                     dataGridConsulta.AutoExpandGroups = true;
                     dataGridConsulta.View.EndInit();
                     (sender as Button).Tag = "B";
@@ -1288,7 +1289,7 @@ namespace SiasoftAppExt
             }
             catch (Exception w)
             {
-                MessageBox.Show("error al agrupar:"+w);
+                MessageBox.Show("error al agrupar:" + w);
             }
         }
 

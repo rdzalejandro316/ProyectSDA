@@ -28,11 +28,13 @@ namespace Co_Balance
         // parametros
         public string fecha_ini = string.Empty;
         public string fecha_fin = string.Empty;
+        public bool incluircierre = true;
 
-        public Co_BalanceAux(int IdEmp,int modid)
+
+        public Co_BalanceAux(int IdEmp, int modid)
         {
             InitializeComponent();
-            SiaWin =System.Windows.Application.Current.MainWindow;
+            SiaWin = System.Windows.Application.Current.MainWindow;
             idemp = IdEmp;
             moduloid = modid;
         }
@@ -57,7 +59,7 @@ namespace Co_Balance
                 DataRowView row = (DataRowView)dataGrid.SelectedItems[0];
                 if (row == null) return;
                 int idreg = Convert.ToInt32(row["idreg"]);
-                
+
                 if (idreg <= 0) return;
                 //public void TabTrn(int Pnt, int idemp, bool IntoWindows = false, int idregcab = 0, int idmodulo = 0, bool WinModal = true)
                 SiaWin.TabTrn(0, idemp, true, idreg, moduloid, WinModal: true);
@@ -72,14 +74,17 @@ namespace Co_Balance
             try
             {
                 List<ReportParameter> parameters = new List<ReportParameter>();
+
                 ReportParameter paramcodemp = new ReportParameter();
                 paramcodemp.Values.Add(codemp);
                 paramcodemp.Name = "codEmp";
                 parameters.Add(paramcodemp);
+
                 ReportParameter paramfechaini = new ReportParameter();
                 paramfechaini.Values.Add(fecha_ini);
                 paramfechaini.Name = "fechaini";
                 parameters.Add(paramfechaini);
+
                 ReportParameter paramfechafin = new ReportParameter();
                 paramfechafin.Values.Add(fecha_fin);
                 paramfechafin.Name = "fechafin";
@@ -89,14 +94,26 @@ namespace Co_Balance
                 paramCtaIni.Values.Add(TextCodigoCta.Text.Trim());
                 paramCtaIni.Name = "ctas";
                 parameters.Add(paramCtaIni);
+                
                 ReportParameter paramTers = new ReportParameter();
                 paramTers.Values.Add(TextCodigoTer.Text.Trim());
                 paramTers.Name = "ters";
                 parameters.Add(paramTers);
+
+                ReportParameter paramCierre = new ReportParameter();
+                paramCierre.Values.Add(incluircierre.ToString());
+                paramCierre.Name = "IncluirCierre";
+                parameters.Add(paramCierre);
+
+                
+
+
                 string repnom = string.Empty;
                 if (TextCodigoTer.Text.Trim() == "") repnom = @"/Contabilidad/Balances/AuxiliarCuenta";
                 if (TextCodigoTer.Text.Trim() != "") repnom = @"/Contabilidad/Balances/AuxiliarCuentaTercero";
-                //MessageBox.Show(repnom);
+
+                //System.Windows.MessageBox.Show("repnom:"+repnom);
+
                 string TituloReport = "Auxiliar de Cuenta -";
                 if (TextCodigoTer.Text.Trim() != "") TituloReport = "Auxiliar de Cuenta - Tercero -";
 
@@ -124,7 +141,7 @@ namespace Co_Balance
             e.Range.CellStyle.Font.Size = 12;
             e.Range.CellStyle.Font.FontName = "Segoe UI";
 
-            if (e.ColumnName == "bas_mov" || e.ColumnName == "deb_mov" || e.ColumnName == "cre_mov" )
+            if (e.ColumnName == "bas_mov" || e.ColumnName == "deb_mov" || e.ColumnName == "cre_mov")
             {
                 double value = 0;
                 if (double.TryParse(e.CellValue.ToString(), out value))

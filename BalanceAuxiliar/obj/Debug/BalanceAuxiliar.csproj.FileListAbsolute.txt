@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.g.cs
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.baml
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.g.resources
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.dll
+D:\Empresas\SDA\Library\project\BalanceAuxiliar\obj\Debug\BalanceAuxiliar.pdb
+D:\Empresas\SDA\Library\BalanceAuxiliar.dll
+D:\Empresas\SDA\Library\BalanceAuxiliar.pdb

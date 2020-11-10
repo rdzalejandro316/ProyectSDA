@@ -22,12 +22,12 @@ using System.Windows.Shapes;
 
 namespace SiasoftAppExt
 {
-    //    Sia.PublicarPnt(9633,"ConsultaMovimientoDocTercero");
-    //    dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9633,"ConsultaMovimientoDocTercero");
-    //    ww.ShowInTaskbar = false;
-    //    ww.Owner = Application.Current.MainWindow;
-    //    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
-    //    ww.ShowDialog();
+    //Sia.PublicarPnt(9633,"ConsultaMovimientoDocTercero");
+    //dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9633, "ConsultaMovimientoDocTercero");
+    //ww.ShowInTaskbar = false;
+    //ww.Owner = Application.Current.MainWindow;
+    //ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
+    //ww.ShowDialog();
 
     public partial class ConsultaMovimientoDocTercero : Window
     {
@@ -35,6 +35,8 @@ namespace SiasoftAppExt
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
+        int modulo = 1;
+
         public ConsultaMovimientoDocTercero()
         {
             InitializeComponent();
@@ -83,6 +85,7 @@ namespace SiasoftAppExt
                 dynamic winb = SiaWin.WindowBuscar(cmptabla, cmpcodigo, cmpnombre, cmporden, cmpidrow, cmptitulo, SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
                 winb.ShowInTaskbar = false;
                 winb.Owner = Application.Current.MainWindow;
+                winb.Height = 300;
                 winb.ShowDialog();
                 idr = winb.IdRowReturn;
                 code = winb.Codigo;
@@ -90,7 +93,18 @@ namespace SiasoftAppExt
                 winb = null;
                 if (idr > 0)
                 {
-                    (sender as TextBox).Text = code.Trim();
+                    switch ((sender as TextBox).Name)
+                    {
+                        case "Tx_tercero":
+                            Tx_tercero.Text = code.Trim();
+                            TxNameTer.Text = nom.Trim();
+                            break;
+                        case "Tx_cuenta":
+                            Tx_cuenta.Text = code.Trim();
+                            TxNameCta.Text = nom.Trim();
+                            break;
+                    }
+
                     var uiElement = e.OriginalSource as UIElement;
                     uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
                 }
@@ -119,8 +133,8 @@ namespace SiasoftAppExt
 
             switch ((sender as TextBox).Name)
             {
-                case "Tx_tercero": tabla = "comae_ter"; campo = "cod_ter"; break;
-                case "Tx_cuenta": tabla = "comae_cta"; campo = "cod_cta"; break;
+                case "Tx_tercero": tabla = "comae_ter"; campo = "cod_ter"; TxNameTer.Text = ""; break;
+                case "Tx_cuenta": tabla = "comae_cta"; campo = "cod_cta"; TxNameCta.Text = ""; break;
             }
 
             System.Data.DataTable dt = SiaWin.Func.SqlDT("select * from " + tabla + "  where " + campo + "='" + (sender as TextBox).Text + "' ", "tabla", idemp);
@@ -128,7 +142,6 @@ namespace SiasoftAppExt
             {
 
                 MessageBox.Show((sender as TextBox).Name == "Tx_tercero" ? "el tercero no existe seleccione uno de la lista" : "la cuenta ingresada no existe seleccione una cuanta de la lista");
-
 
                 int idr = 0; string code = ""; string nom = "";
                 string cmptabla = ""; string cmpcodigo = ""; string cmpnombre = ""; string cmporden = ""; string cmpidrow = ""; string cmptitulo = "";
@@ -145,6 +158,7 @@ namespace SiasoftAppExt
                 dynamic winb = SiaWin.WindowBuscar(cmptabla, cmpcodigo, cmpnombre, cmporden, cmpidrow, cmptitulo, SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
                 winb.ShowInTaskbar = false;
                 winb.Owner = Application.Current.MainWindow;
+                winb.Height = 300;
                 winb.ShowDialog();
                 idr = winb.IdRowReturn;
                 code = winb.Codigo;
@@ -152,41 +166,72 @@ namespace SiasoftAppExt
                 winb = null;
                 if (idr > 0)
                 {
-                    (sender as TextBox).Text = code.Trim();
+                    switch ((sender as TextBox).Name)
+                    {
+                        case "Tx_tercero":
+                            Tx_tercero.Text = code.Trim();
+                            TxNameTer.Text = nom.Trim();
+                            break;
+                        case "Tx_cuenta":
+                            Tx_cuenta.Text = code.Trim();
+                            TxNameCta.Text = nom.Trim();
+                            break;
+                    }
                     var uiElement = e.OriginalSource as UIElement;
                     uiElement.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
                 }
                 else
-                    (sender as TextBox).Text = "";
+                {
+
+                    switch ((sender as TextBox).Name)
+                    {
+                        case "Tx_tercero":
+                            Tx_tercero.Text = "";
+                            TxNameTer.Text = "";
+                            break;
+                        case "Tx_cuenta":
+                            Tx_cuenta.Text = "";
+                            TxNameCta.Text = "";
+                            break;
+                    }
+                }
+
+            }
+            else
+            {
+                switch ((sender as TextBox).Name)
+                {
+                    case "Tx_tercero": TxNameTer.Text = dt.Rows[0]["nom_ter"].ToString().Trim(); break;
+                    case "Tx_cuenta": TxNameCta.Text = dt.Rows[0]["nom_cta"].ToString().Trim(); break;
+                }
+
             }
 
         }
 
 
-
-
-
-
         private async void BtnConsultar_Click(object sender, RoutedEventArgs e)
         {
 
-            if (string.IsNullOrEmpty(Tx_Doc.Text) || string.IsNullOrEmpty(Tx_tercero.Text))
+            if (string.IsNullOrEmpty(Tx_tercero.Text))
             {
-                MessageBox.Show(string.IsNullOrEmpty(Tx_Doc.Text) ? "el campo doc referencia esta vacio ingrese un documento": " el campo tercero esta vacio ingrese un tercero ");
+                MessageBox.Show("el campo tercero debe de estar lleno", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
+
 
             CancellationTokenSource source = new CancellationTokenSource();
 
             CancellationToken token = source.Token;
 
             sfBusyIndicator.IsBusy = true;
+            FilterConsulta.IsEnabled = false;
 
             string doc_mov = Tx_Doc.Text;
             string tercero = Tx_tercero.Text;
             string cuenta = Tx_cuenta.Text;
 
-            var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(doc_mov, tercero, cuenta, source.Token), source.Token);
+            var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(tercero, doc_mov, cuenta));
             await slowTask;
 
             if (((DataTable)slowTask.Result).Rows.Count > 0)
@@ -197,11 +242,9 @@ namespace SiasoftAppExt
 
                 double deb = Convert.ToDouble(((DataTable)slowTask.Result).Compute("Sum(deb_mov)", ""));
                 double cre = Convert.ToDouble(((DataTable)slowTask.Result).Compute("Sum(cre_mov)", ""));
-                double dif = deb - cre;
 
                 Tx_deb.Text = deb.ToString("N", CultureInfo.CreateSpecificCulture("es-ES"));
                 Tx_cre.Text = cre.ToString("N", CultureInfo.CreateSpecificCulture("es-ES"));
-                Tx_tot.Text = dif.ToString("N", CultureInfo.CreateSpecificCulture("es-ES"));
 
             }
             else
@@ -210,19 +253,29 @@ namespace SiasoftAppExt
                 TX_total.Text = "0";
                 Tx_deb.Text = "-";
                 Tx_cre.Text = "-";
-                Tx_tot.Text = "-";
+
             }
 
             sfBusyIndicator.IsBusy = false;
+            FilterConsulta.IsEnabled = true;
         }
 
 
-        private DataTable LoadData(string doc_mov, string cod_ter, string cod_cta, CancellationToken cancellationToken)
+        private DataTable LoadData(string codter, string docmov, string codcta)
         {
             try
             {
-                string where = string.IsNullOrEmpty(cod_cta) ? " and  cod_ter='"+cod_ter+ "' " : " and  cod_ter='" + cod_ter + "' and  cod_cta='" + cod_cta + "' ";
-                System.Data.DataTable dt = SiaWin.Func.SqlDT("select * from Cocue_doc WHERE doc_mov='" + doc_mov + "'  "+where+" ;", "tabla", idemp);
+                string where = "";
+                if (!string.IsNullOrEmpty(codcta)) where += " and cue.cod_cta='" + codcta + "'  ";
+                if (!string.IsNullOrEmpty(docmov)) where += " and cue.doc_mov='" + docmov + "'  ";
+
+
+                string query = "select cab.idreg,cue.idregcab,cue.cod_trn,cue.num_trn,cab.fec_trn,cue.cod_cta,cue.cod_ter,cue.des_mov,cue.doc_ref,cue.doc_cruc,cue.deb_mov,cue.cre_mov ";
+                query += "from Cocue_doc cue ";
+                query += "inner join cocab_doc cab on cab.idreg = cue.idregcab ";
+                query += "WHERE cue.cod_ter='" + codter + "'  " + where + " ;";
+
+                System.Data.DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
                 return dt;
             }
             catch (Exception e)
@@ -274,12 +327,27 @@ namespace SiasoftAppExt
             }
         }
 
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
 
-
-
-
-
-
+            try
+            {
+                if (GridConsulta.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)GridConsulta.SelectedItems[0];
+                    int idreg = Convert.ToInt32(row["idreg"]);
+                    SiaWin.TabTrn(0, idemp, true, idreg, modulo, WinModal: true);
+                }
+                else
+                {
+                    MessageBox.Show("seleccione un documento de la grilla","alerta",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrri el documento:" + w);
+            }
+        }
 
 
 

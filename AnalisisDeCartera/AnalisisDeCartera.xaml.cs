@@ -17,6 +17,7 @@ using System.Linq;
 using Microsoft.Reporting.WinForms;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 
 namespace SiasoftAppExt
 {
@@ -90,12 +91,12 @@ namespace SiasoftAppExt
                 {
                     string tag = ((TextBox)sender).Tag.ToString();
                     string cmptabla = ""; string cmpcodigo = ""; string cmpnombre = ""; string cmporden = ""; string cmpidrow = ""; string cmptitulo = ""; string cmpconexion = ""; bool mostrartodo = false; string cmpwhere = "";
-                    if (string.IsNullOrEmpty(tag)) return;                   
+                    if (string.IsNullOrEmpty(tag)) return;
                     if (tag == "comae_ter")
                     {
                         cmptabla = tag; cmpcodigo = "cod_ter"; cmpnombre = "nom_ter"; cmporden = "cod_ter"; cmpidrow = "idrow"; cmptitulo = "Maestra de Tercero"; cmpconexion = cnEmp; mostrartodo = false; cmpwhere = "";
-                    }                    
-                    int idr = 0; string code = ""; string nom = "";                    
+                    }
+                    int idr = 0; string code = ""; string nom = "";
                     dynamic winb = SiaWin.WindowBuscar(cmptabla, cmpcodigo, cmpnombre, cmporden, cmpidrow, cmptitulo, SiaWin.Func.DatosEmp(idemp), mostrartodo, cmpwhere, idEmp: idemp);
                     winb.ShowInTaskbar = false;
                     winb.Owner = Application.Current.MainWindow;
@@ -441,9 +442,13 @@ namespace SiasoftAppExt
                 var options = new Syncfusion.UI.Xaml.Grid.Converter.ExcelExportingOptions();
                 options.ExcelVersion = ExcelVersion.Excel2013;
 
-                var excelEngine = dataGridCxCD.ExportToExcel(dataGridCxCD.View, options);
+
+                SfDataGrid grid = dataGridCxC.Visibility == Visibility.Visible ?
+                                    dataGridCxC : dataGridCxCD;
+
+                var excelEngine = grid.ExportToExcel(grid.View, options);
                 var workBook = excelEngine.Excel.Workbooks[0];
-                //workBook.Worksheets[0].AutoFilters.FilterRange = workBook.Worksheets[0].UsedRange;
+
 
                 SaveFileDialog sfd = new SaveFileDialog
                 {
@@ -584,7 +589,7 @@ namespace SiasoftAppExt
             //TextTotalDoc.Text = (valordoc-valordocA).ToString("C");
             //TextSaldo.Text = (saldodoc-saldodocA).ToString("C");
         }
-        
+
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
         {
@@ -634,15 +639,15 @@ namespace SiasoftAppExt
                 if (comboBoxCuentas.SelectedIndex >= 0)
                 {
                     foreach (DataRowView ob in comboBoxCuentas.SelectedItems)
-                    {                        
+                    {
                         String valueCta = ob["cod_cta"].ToString().Trim();
-                        Cta += valueCta + ",";                     
+                        Cta += valueCta + ",";
                     }
                     string ss = Cta.Trim().Substring(Cta.Trim().Length - 1);
                     if (ss == ",") Cta = Cta.Substring(0, Cta.Trim().Length - 1);
                 }
                 if (Cta == "") return;
-                string Ven = "";                
+                string Ven = "";
 
                 #endregion
 
@@ -651,9 +656,9 @@ namespace SiasoftAppExt
                 paramcodemp.Values.Add(codemp);
                 paramcodemp.Name = "codemp";
                 parameters.Add(paramcodemp);
-                ReportParameter paramfechaini = new ReportParameter();                
-                paramfechaini.Values.Add(FechaIni.SelectedDate.Value.ToShortDateString());                
-                
+                ReportParameter paramfechaini = new ReportParameter();
+                paramfechaini.Values.Add(FechaIni.SelectedDate.Value.ToShortDateString());
+
                 paramfechaini.Values.Add(FechaIni.SelectedDate.Value.ToShortDateString());
                 paramfechaini.Name = "Fecha";
                 parameters.Add(paramfechaini);
@@ -744,7 +749,7 @@ namespace SiasoftAppExt
                 if (CmbTipoDoc.SelectedIndex == 1) TituloReport = "Cuentas por Cobrar Detallada -";
                 //if (CmbTipoDoc.SelectedIndex == 2) TituloReport = "Cuentas por Cobrar Detallada - Vendedor";
                 //if (CmbTipoDoc.SelectedIndex == 3) TituloReport = "Cuentas por Cobrar Altura - Vendedor";
-                
+
                 SiaWin.Reportes(parameters, TipoReporte, TituloReporte: TituloReport, Modal: true, idemp: idemp);
 
             }
@@ -808,12 +813,15 @@ namespace SiasoftAppExt
                     return;
                 }
 
-                if (dataGridCxC.SelectedIndex < 0) return;
+                SfDataGrid grid = dataGridCxC.Visibility == Visibility.Visible ?
+                dataGridCxC : dataGridCxCD;
+
+                if (grid.SelectedIndex < 0) return;
 
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
 
-                dataGridCxC.Opacity = 0.5;
+                grid.Opacity = 0.5;
                 sfBusyIndicator.IsBusy = true;
 
 
@@ -827,21 +835,20 @@ namespace SiasoftAppExt
 
                 if (((DataTable)slowTask.Result).Rows.Count > 0)
                 {
-                    dataGridCxC.Opacity = 1;
+                    grid.Opacity = 1;
                     sfBusyIndicator.IsBusy = false;
                     BrowMini w = new BrowMini();
                     w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                     w.ShowInTaskbar = false;
                     w.Owner = Application.Current.MainWindow;
                     w.dt = ((DataTable)slowTask.Result);
-
                     w.ShowDialog();
 
                 }
                 else
                 {
                     MessageBox.Show("No existen diferencias entre modulo contable y cxc");
-                    dataGridCxC.Opacity = 1;
+                    grid.Opacity = 1;
                     sfBusyIndicator.IsBusy = false;
 
                 }
@@ -1001,10 +1008,13 @@ namespace SiasoftAppExt
         {
             try
             {
-                if (dataGridCxCD.SelectedIndex >= 0)
+
+                SfDataGrid grid = dataGridCxC.Visibility == Visibility.Visible ?
+                dataGridCxC : dataGridCxCD;
+
+                if (grid.SelectedIndex >= 0)
                 {
-                    //dynamic view = SiaWin.WindowExt(9659, "AbonoDocumentos");                 
-                    AbonoDocumentos view = new AbonoDocumentos(idemp);                     
+                    AbonoDocumentos view = new AbonoDocumentos(idemp);
                     DataRowView row = (DataRowView)dataGridCxCD.SelectedItems[0];
                     view.num_trn = row["num_trn"].ToString();
                     view.cod_ter = row["cod_ter"].ToString();
@@ -1031,6 +1041,131 @@ namespace SiasoftAppExt
         {
 
         }
+
+
+        public string getvalue(string cod_cta)
+        {
+            DataTable dt = SiaWin.Func.SqlDT("select * From comae_cta where cod_cta='" + cod_cta + "'", "temp", idemp);
+            return dt.Rows.Count > 0 ? dt.Rows[0]["nom_cta"].ToString().Trim() : "";
+        }
+
+
+        private void BtnAuxliar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                SfDataGrid grid = dataGridCxC.Visibility == Visibility.Visible ?
+                dataGridCxC : dataGridCxCD;
+
+                if (grid.SelectedIndex >= 0)
+                {
+
+                    DataRowView row = (DataRowView)grid.SelectedItems[0];
+
+                    StringBuilder sb = new StringBuilder();
+
+                    string cod_cli = row["cod_ter"].ToString().Trim();
+                    string cod_cta = row["cod_cta"].ToString().Trim();
+
+                    DateTime fecfin = Convert.ToDateTime(FechaIni.Text);
+                    string fecini = "01/01/" + fecfin.Year;
+
+
+                    sb.Append(" declare @fechaIni as date ; set @fechaIni='" + fecini + "';declare @fechaFin as date ; set @fechaFin='" + fecfin.ToString("dd/MM/yyyy") + "';");
+
+                    sb.Append(" SELEct cab_doc.idreg ,cue_doc.idreg as idregcue,cab_doc.cod_trn,cab_doc.num_trn,cab_doc.fec_trn,cue_doc.cod_cta,cue_doc.cod_cco,cue_doc.cod_ter,comae_ter.nom_ter,");
+                    sb.Append(" cue_doc.doc_ref,cue_doc.doc_cruc,cue_doc.num_chq,cue_doc.bas_mov,cue_doc.deb_mov,cue_doc.cre_mov, cab_DOC.factura,des_mov ");
+                    sb.Append(" FROM coCUE_DOC cue_doc inner join cocab_doc as cab_doc on cab_doc.idreg = cue_doc.idregcab and cue_doc.cod_cta = '" + cod_cta.Trim() + "' and ");
+                    if (cod_cli != "") sb.Append(" cue_doc.cod_ter='" + cod_cli.Trim() + "' and  ");
+                    sb.Append(" convert(int,cab_doc.per_doc)<13 and  ");
+
+                    sb.Append(" year(cab_doc.fec_trn) = year(@fechaIni) and convert(date, cab_doc.fec_trn) between  @FechaIni and @FechaFin inner join comae_trn as mae_trn on mae_trn.cod_trn = cab_doc.cod_trn ");
+                    sb.Append(" and (mae_trn.tip_blc=0 or mae_trn.tip_blc=1)");
+                    sb.Append(" left join comae_ter on comae_ter.cod_ter = cue_doc.cod_ter  inner join comae_cta as comae_cta on comae_cta.cod_cta = cue_doc.cod_cta ");
+                    sb.Append(" and (comae_cta.tip_blc=0 or comae_cta.tip_blc=1)");
+                    sb.Append(" ORDER BY cod_cta,cab_doc.fec_trn ");
+
+
+                    DataTable DtAuxCtaTer = SiaWin.DB.SqlDT(sb.ToString(), "Dt", idemp);
+                    if (DtAuxCtaTer.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Sin informacion de cuenta");
+                        return;
+                    }
+
+
+                    dynamic WinDetalle = SiaWin.WindowExt(9687, "BalanceAuxiliar");
+                    WinDetalle.idemp = idemp;
+                    WinDetalle.moduloid = 1;
+
+                    WinDetalle.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                    if (string.IsNullOrEmpty(cod_cli.Trim()))
+                    {
+                        WinDetalle.LabelTercero.Visibility = Visibility.Hidden;
+                        WinDetalle.TextCodigoTer.Visibility = Visibility.Hidden;
+                        WinDetalle.TextNombreTer.Visibility = Visibility.Hidden;
+                        WinDetalle.TextCodigoTer.Text = cod_cli;
+                        WinDetalle.TextNombreTer.Text = row["nom_ter"].ToString(); ;
+                        WinDetalle.TextNombreTipoAux.Text = "Fiscal";
+                    }
+                    else
+                    {
+                        WinDetalle.LabelTercero.Visibility = Visibility.Visible;
+                        WinDetalle.TextCodigoTer.Visibility = Visibility.Visible;
+                        WinDetalle.TextNombreTer.Visibility = Visibility.Visible;
+                        WinDetalle.TextCodigoTer.Text = cod_cli;
+                        WinDetalle.TextNombreTer.Text = row["nom_ter"].ToString(); ;
+                    }
+
+
+                    WinDetalle.TextCodigoCta.Text = cod_cta;
+                    WinDetalle.TextNombreCta.Text = getvalue(cod_cta);
+                    WinDetalle.Title = "Auxiliar de Cuenta - Fecha De Corte:" + fecini.ToString() + " / " + fecfin.ToString("dd/MM/yyyy");
+                    WinDetalle.dataGrid.ItemsSource = DtAuxCtaTer.DefaultView;
+
+                    WinDetalle.fecha_ini = fecini.ToString();
+                    WinDetalle.fecha_fin = fecfin.ToString("dd/MM/yyyy");
+                    WinDetalle.codemp = codemp;
+                    // TOTALIZA 
+                    double valorBase;
+                    //double valorCxCAnt = 0;
+                    double valorDeb = 0;
+                    double valorCre = 0;
+                    double.TryParse(DtAuxCtaTer.Compute("Sum(bas_mov)", "").ToString(), out valorBase);
+                    double.TryParse(DtAuxCtaTer.Compute("Sum(deb_mov)", "").ToString(), out valorDeb);
+                    double.TryParse(DtAuxCtaTer.Compute("Sum(cre_mov)", "").ToString(), out valorCre);
+                    WinDetalle.TextBase.Text = valorBase.ToString("C");
+                    WinDetalle.TextDeb.Text = valorDeb.ToString("C");
+                    WinDetalle.TextCre.Text = valorCre.ToString("C");
+                    WinDetalle.TextSaldoAnterior.Text = "0";
+                    WinDetalle.TextAcumDebito.Text = "0";
+                    WinDetalle.TextAcumCredito.Text = "0";
+                    WinDetalle.TextSaldoFin.Text = "0";
+                    WinDetalle.incluircierre = true;
+                    WinDetalle.Owner = SiaWin;
+                    WinDetalle.ShowDialog();
+                    WinDetalle = null;
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("seleccione un registro", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrir el auxliar de contabilidad:" + w, "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+
+
+
+
+
     }
 
 }
