@@ -41,7 +41,6 @@ namespace SiasoftAppExt
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
-        string usuario_name = "";
         dynamic tabitem;
 
         string cabeza = "incab_doc";
@@ -178,18 +177,7 @@ namespace SiasoftAppExt
 
                     application.DefaultVersion = ExcelVersion.Excel2013;
                     IWorkbook workbook = application.Workbooks.Open(FileName);
-
-                    //foreach (var sheetObj in workbook.Worksheets) (sheetObj as IWorksheet).EnableSheetCalculations();
-                    //foreach (var sheetObj in workbook.Worksheets)
-                    //{
-                    //    var sheet = sheetObj as IWorksheet;
-                    //    foreach (var cell in sheet.Cells.Where(c => c.HasFormula))
-                    //    {                            
-                    //        var frml = cell.Formula;                            
-                    //        cell.Value = null;
-                    //        cell.Formula = frml;
-                    //    }
-                    //}
+                   
 
                     IWorksheet worksheet = workbook.Worksheets[0];
                     System.Data.DataTable customersTable = worksheet.ExportDataTable(worksheet.UsedRange, ExcelExportDataTableOptions.ColumnNames);
@@ -218,12 +206,11 @@ namespace SiasoftAppExt
             if (dt.Columns.Contains("Fec_trn") == false || dt.Columns.IndexOf("Fec_trn") != 2) flag = false;
             if (dt.Columns.Contains("Cod_ter") == false || dt.Columns.IndexOf("Cod_ter") != 3) flag = false;
             if (dt.Columns.Contains("Cod_ref") == false || dt.Columns.IndexOf("Cod_ref") != 4) flag = false;
-            if (dt.Columns.Contains("Nom_ref") == false || dt.Columns.IndexOf("Nom_ref") != 5) flag = false;
-            if (dt.Columns.Contains("Factura") == false || dt.Columns.IndexOf("Factura") != 6) flag = false;
-            if (dt.Columns.Contains("Cantidad") == false || dt.Columns.IndexOf("Cantidad") != 7) flag = false;
-            if (dt.Columns.Contains("Cos_uni") == false || dt.Columns.IndexOf("Cos_uni") != 8) flag = false;
-            if (dt.Columns.Contains("Cos_tot") == false || dt.Columns.IndexOf("Cos_tot") != 9) flag = false;
-            if (dt.Columns.Contains("Cod_bod") == false || dt.Columns.IndexOf("Cod_bod") != 10) flag = false;
+            if (dt.Columns.Contains("Factura") == false || dt.Columns.IndexOf("Factura") != 5) flag = false;
+            if (dt.Columns.Contains("Cantidad") == false || dt.Columns.IndexOf("Cantidad") != 6) flag = false;
+            if (dt.Columns.Contains("Cos_uni") == false || dt.Columns.IndexOf("Cos_uni") != 7) flag = false;
+            if (dt.Columns.Contains("Cos_tot") == false || dt.Columns.IndexOf("Cos_tot") != 8) flag = false;
+            if (dt.Columns.Contains("Cod_bod") == false || dt.Columns.IndexOf("Cod_bod") != 9) flag = false;
             return flag;
         }
 
@@ -255,7 +242,7 @@ namespace SiasoftAppExt
                 dv.Sort = "NUM_TRN desc";
                 DataTable sortedDT = dv.ToTable();
                 doc_agru.Tables.Clear();
-                //SiaWin.Browse(sortedDT);
+
 
                 #region algortimo el cual mete en un dataset los documentos separados por datatable                
                 DataTable dd = new DataTable();
@@ -305,7 +292,6 @@ namespace SiasoftAppExt
                             string fec_trn = row["FEC_TRN"].ToString();
                             string cod_ter = row["COD_TER"].ToString();
                             string cod_ref = row["COD_REF"].ToString();
-                            string nom_ref = row["NOM_REF"].ToString();
                             string factura = row["FACTURA"].ToString();
                             string cod_bod = row["COD_BOD"].ToString();
                             string cantidad = row["CANTIDAD"].ToString();
@@ -317,9 +303,9 @@ namespace SiasoftAppExt
                                        num_trn,
                                        fec_trn,
                                        cod_ter,
-                                       "",//nombre de referencia
+                                       "",//nombre de tercero
                                        cod_ref,
-                                       nom_ref,
+                                       "",// nombre de referencia
                                        factura,
                                        cantidad,
                                        cos_uni,
@@ -373,7 +359,6 @@ namespace SiasoftAppExt
 
                     #endregion
 
-
                     double dou;
                     //validar campo por campo
                     foreach (System.Data.DataRow dr in dtemp.Rows)
@@ -392,6 +377,23 @@ namespace SiasoftAppExt
                                 dt_errores.Rows.Add("el tercero  " + cod_ter + " no existe ");
                             }
                         }
+                        #endregion
+
+                        #region fechas 
+
+                        string fectrn = dr["FEC_TRN"].ToString().Trim();
+                        DateTime dt;
+                        if (string.IsNullOrEmpty(fectrn))
+                        {
+                            dt_errores.Rows.Add("el campo fecha de transaccion debe de estar lleno:" + num_trn);
+                        }
+                        else
+                        {
+                            if (DateTime.TryParse(fectrn, out dt) == false)
+                                dt_errores.Rows.Add("el campo fec_trn debe de ser una fecha:" + num_trn);
+                        }
+
+
                         #endregion
 
                         #region referencia
@@ -420,7 +422,23 @@ namespace SiasoftAppExt
                             dt_errores.Rows.Add("la bodega " + cod_bod + " no existe ");
                         }
 
-                        #endregion                        
+                        #endregion
+
+                        #region cantidad
+
+                        string cntxls = dr["CANTIDAD"].ToString().Trim();
+                        decimal cnt;
+
+                        if (!string.IsNullOrEmpty(cntxls))
+                        {
+                            if (decimal.TryParse(cntxls, out cnt))
+                                dt_errores.Rows.Add("el campo cantidad debe de ser numerico:" + num_trn);
+                        }
+                        else dt_errores.Rows.Add("el campo cantidad debe de estar lleno:" + num_trn);
+
+
+                        #endregion
+
 
                         #region cos_uni - cos_tot
 
@@ -538,9 +556,9 @@ namespace SiasoftAppExt
                     Tx_ref.Text = "";
                     Tx_bod.Text = "";
 
-                    #endregion
 
                 }
+                #endregion
 
             }
             catch (Exception w)
@@ -603,14 +621,13 @@ namespace SiasoftAppExt
                     worksheet.Range["C1"].Text = "FEC_TRN";
                     worksheet.Range["D1"].Text = "COD_TER";
                     worksheet.Range["E1"].Text = "COD_REF";
-                    worksheet.Range["F1"].Text = "NOM_REF";
-                    worksheet.Range["G1"].Text = "FACTURA";
-                    worksheet.Range["H1"].Text = "CANTIDAD";
-                    worksheet.Range["I1"].Text = "COS_UNI";
-                    worksheet.Range["J1"].Text = "COS_TOT";
-                    worksheet.Range["K1"].Text = "COD_BOD";
+                    worksheet.Range["F1"].Text = "FACTURA";
+                    worksheet.Range["G1"].Text = "CANTIDAD";
+                    worksheet.Range["H1"].Text = "COS_UNI";
+                    worksheet.Range["I1"].Text = "COS_TOT";
+                    worksheet.Range["J1"].Text = "COD_BOD";
 
-                    worksheet.Range["A1:K1"].CellStyle.Font.Bold = true;
+                    worksheet.Range["A1:J1"].CellStyle.Font.Bold = true;
 
                     if (string.IsNullOrEmpty(ruta))
                         MessageBox.Show("Por favor, seleccione una ruta para guardar la plantilla");

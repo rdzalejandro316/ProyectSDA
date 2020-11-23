@@ -25,7 +25,7 @@ using System.Windows.Shapes;
 namespace SiasoftAppExt
 {
     //Sia.PublicarPnt(9678,"CreacionLinGruSubGrProducto");
-    //dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9678,"CreacionLinGruSubGrProducto");    
+    //dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9678, "CreacionLinGruSubGrProducto");
     //ww.ShowInTaskbar = false;
     //ww.Owner = Application.Current.MainWindow;
     //ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;    
@@ -64,25 +64,25 @@ namespace SiasoftAppExt
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
                 this.Title = "Creacion de lineas,grupos,sub grupos,referencias -" + cod_empresa + "-" + nomempresa;
 
-                ////ParamAcc 1=lRun,2=lNew,3=lEdit,4=lDelete,5=lSearch,5=Renum,6=lPrint,7=lExport,8=lOpc1,9=lOpc2,10=lOpc3
-                int idmaelinea = 75;
-                BtnAddLinea.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaelinea, idemp, moduloid, "lNew") == true ? true : false;
-                BtnEditLinea.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaelinea, idemp, moduloid, "lEdit") == true ? true : false;
-                BtnEliminarLinea.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaelinea, idemp, moduloid, "lDelete") == true ? true : false;
+                //////ParamAcc 1=lRun,2=lNew,3=lEdit,4=lDelete,5=lSearch,5=Renum,6=lPrint,7=lExport,8=lOpc1,9=lOpc2,10=lOpc3
+                //int idmaelinea = 75;
+                //BtnAddLinea.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaelinea, idemp, moduloid, "lNew") == true ? true : false;
+                //BtnEditLinea.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaelinea, idemp, moduloid, "lEdit") == true ? true : false;
+                //BtnEliminarLinea.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaelinea, idemp, moduloid, "lDelete") == true ? true : false;
 
-                int idmaegrupo = 73;
-                BtnAddGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaegrupo, idemp, moduloid, "lNew") == true ? true : false;
-                BtnEditGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaegrupo, idemp, moduloid, "lEdit") == true ? true : false;
-                BtnEliminarGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaegrupo, idemp, moduloid, "lDelete") == true ? true : false;
+                //int idmaegrupo = 73;
+                //BtnAddGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaegrupo, idemp, moduloid, "lNew") == true ? true : false;
+                //BtnEditGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaegrupo, idemp, moduloid, "lEdit") == true ? true : false;
+                //BtnEliminarGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaegrupo, idemp, moduloid, "lDelete") == true ? true : false;
 
-                int idmaesubgrupo = 80;
-                BtnAddSubGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaesubgrupo, idemp, moduloid, "lNew") == true ? true : false;
-                BtnEditSubGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaesubgrupo, idemp, moduloid, "lEdit") == true ? true : false;
-                BtnEliminarSubGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaesubgrupo, idemp, moduloid, "lDelete") == true ? true : false;
+                //int idmaesubgrupo = 80;
+                //BtnAddSubGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaesubgrupo, idemp, moduloid, "lNew") == true ? true : false;
+                //BtnEditSubGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaesubgrupo, idemp, moduloid, "lEdit") == true ? true : false;
+                //BtnEliminarSubGrupo.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaesubgrupo, idemp, moduloid, "lDelete") == true ? true : false;
 
-                int idmaereferencia = 79;
-                BtnAddRef.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaereferencia, idemp, moduloid, "lNew") == true ? true : false;
-                BtnAddEdit.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaereferencia, idemp, moduloid, "lEdit") == true ? true : false;
+                //int idmaereferencia = 79;
+                //BtnAddRef.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaereferencia, idemp, moduloid, "lNew") == true ? true : false;
+                //BtnAddEdit.IsEnabled = SiaWin.Func.Acceso(SiaWin._UserGroup, SiaWin._ProyectId, idmaereferencia, idemp, moduloid, "lEdit") == true ? true : false;
             }
             catch (Exception e)
             {
@@ -97,9 +97,7 @@ namespace SiasoftAppExt
                 Tx_linea.Text = "";
                 Tx_grupo.Text = "";
                 Tx_subgrupo.Text = "";
-                TxCodRef.Text = "";
-                TxCodAnt.Text = "";
-
+                TxCodRef.Text = "";                
 
                 dataGridGrupo.ItemsSource = null;
                 dataGridSubGrupo.ItemsSource = null;
@@ -508,9 +506,9 @@ namespace SiasoftAppExt
             {
                 #region validaciones
 
-                if (string.IsNullOrEmpty(TxCodRef.Text) || string.IsNullOrEmpty(TxCodAnt.Text))
+                if (string.IsNullOrEmpty(TxCodRef.Text))
                 {
-                    MessageBox.Show("el campo referencia y codigo anterior deben de esta llenos para poder crear la referencia", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("el campo referencia deben de esta llenos para poder crear la referencia", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
 
@@ -531,7 +529,7 @@ namespace SiasoftAppExt
                 MessageBoxResult result = MessageBox.Show("usted desea crear la referencia:" + TxCodRef.Text, "Confirmacion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    string query = "insert into inmae_ref (cod_ref,nom_ref,cod_ant,cod_tip,cod_gru,cod_sgr) values ('" + TxCodRef.Text + "','" + TxCodAnt.Text + "','" + TxCodAnt.Text + "','" + Tx_linea.Text + "','" + Tx_grupo.Text + "','" + Tx_subgrupo.Text + "');";
+                    string query = "insert into inmae_ref (cod_ref,nom_ref,cod_tip,cod_gru,cod_sgr) values ('" + TxCodRef.Text + "','" + TxCodRef.Text + "','" + Tx_linea.Text + "','" + Tx_grupo.Text + "','" + Tx_subgrupo.Text + "');";
                     if (SiaWin.Func.SqlCRUD(query, idemp) == true)
                     {
                         SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, moduloid, -1, -9, "se inserto la referencia exitosamente :" + TxCodRef.Text + "", "");

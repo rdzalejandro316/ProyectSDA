@@ -43,14 +43,14 @@
                     <syncfusion:SfDataGrid.Columns>
                         <syncfusion:GridTextColumn HeaderText="TRN" MappingName="COD_TRN" Width="60"/>
                         <syncfusion:GridTextColumn HeaderText="NUM_TRN" MappingName="NUM_TRN" Width="100"/>
-                        <syncfusion:GridTextColumn HeaderText="FEC_TRN" MappingName="FEC_TRN" Width="80"/>
-                        <syncfusion:GridTextColumn HeaderText="COD_TER" MappingName="COD_TER" Width="80"/>
-                        <syncfusion:GridTextColumn HeaderText="COD_REF" MappingName="COD_REF" Width="80"/>
-                        <syncfusion:GridTextColumn HeaderText="FACTURA" MappingName="FACTURA" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="FEC_TRN" MappingName="FEC_TRN" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="COD_TER" MappingName="COD_TER" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="COD_REF" MappingName="COD_REF" Width="100"/>
+                        <syncfusion:GridTextColumn HeaderText="FACTURA" MappingName="FACTURA" Width="100"/>
                         <syncfusion:GridTextColumn HeaderText="CANTIDAD" MappingName="CANTIDAD" Width="80"/>
-                        <syncfusion:GridNumericColumn HeaderText="COS_UNI" MappingName="COS_UNI" Width="90" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
-                        <syncfusion:GridNumericColumn HeaderText="COS_TOT" MappingName="COS_TOT" Width="90" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
-                        <syncfusion:GridTextColumn HeaderText="COD_BOD" MappingName="COD_BOD" Width="90"/>
+                        <syncfusion:GridNumericColumn HeaderText="COS_UNI" MappingName="COS_UNI" Width="120" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
+                        <syncfusion:GridNumericColumn HeaderText="COS_TOT" MappingName="COS_TOT" Width="120" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
+                        <syncfusion:GridTextColumn HeaderText="COD_BOD" MappingName="COD_BOD" Width="100"/>
                     </syncfusion:SfDataGrid.Columns>
                 </syncfusion:SfDataGrid>
             </Grid>

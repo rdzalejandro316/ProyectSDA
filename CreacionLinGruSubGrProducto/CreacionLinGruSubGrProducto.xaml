@@ -272,11 +272,9 @@
                         <TextBlock  Grid.Column="2" Text="Sub Grupo" Style="{StaticResource title}"/>
                         <TextBox IsEnabled="False" Name="Tx_subgrupo" Grid.Row="1" Grid.Column="2" Style="{StaticResource value}"/>
 
-                        <TextBlock  Grid.Column="3" Text="Cod Referencia" Style="{StaticResource title}"/>
-                        <TextBox Name="TxCodRef" MaxLength="15" Grid.Row="1" Grid.Column="3" Style="{StaticResource value}" Background="White"/>
-
-                        <TextBlock  Grid.Column="4" Text="Cod Anterior" Style="{StaticResource title}"/>
-                        <TextBox Name="TxCodAnt" MaxLength="45" Grid.Row="1" Grid.Column="4" Style="{StaticResource value}" Background="White"/>
+                        <TextBlock  Grid.Column="3" Grid.ColumnSpan="2" Text="Cod Referencia" Style="{StaticResource title}"/>
+                        <TextBox Name="TxCodRef" MaxLength="15" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource value}" Background="White"/>
+                        
 
                         <TextBlock  Grid.Column="5" Text="Opciones" Style="{StaticResource title}"/>
                         <StackPanel Grid.Column="5" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
@@ -301,9 +299,8 @@
                         <syncfusion:SfBusyIndicator  Name="sfBusyIndicator"  Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="20" ViewboxHeight="50" ViewboxWidth="50"  AnimationSpeed="100" AnimationType="Snow" Header="Cargando..." Height="200" IsBusy="False" Focusable="False" Panel.ZIndex="3" Foreground="Black" FontWeight="Bold"/>
                         <syncfusion:SfDataGrid Name="dataGridReferencia" Style="{StaticResource GridStlyle}" HeaderStyle="{StaticResource headerStyle}" Panel.ZIndex="1">
                             <syncfusion:SfDataGrid.Columns>
-                                <syncfusion:GridTextColumn HeaderText="CODIGO" MappingName="cod_ref" Width="100"/>
-                                <syncfusion:GridTextColumn HeaderText="CODIGO ANTERIOR" MappingName="cod_ant" Width="240"/>
-                                <syncfusion:GridTextColumn HeaderText="REFERENCIA" MappingName="nom_ref" Width="220"/>
+                                <syncfusion:GridTextColumn HeaderText="CODIGO REF" MappingName="cod_ref" Width="200"/>
+                                <syncfusion:GridTextColumn HeaderText="REFERENCIA" MappingName="nom_ref" ColumnSizer="AutoLastColumnFill"/>
                             </syncfusion:SfDataGrid.Columns>
                         </syncfusion:SfDataGrid>
                         <Grid Grid.Row="1" Background="#373737">
