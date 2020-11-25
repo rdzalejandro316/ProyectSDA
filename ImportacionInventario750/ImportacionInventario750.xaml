@@ -24,7 +24,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 0">
                 <Button Name="BtnImportar" ToolTip="Importar archivo xls segun el formato de plantilla xls" Width="130" Height="40" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="5" Content="Importa XLS" Cursor="Hand" Click="BtnImportar_Click"/>
                 <Button Name="BtnGenerar" ToolTip="Plantilla con la cual funciona el proceso de importacion de esta pantalla" Width="130" Height="40" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Plantilla XLS" Cursor="Hand" Click="BtnGenerar_Click"/>
-                <Button Name="BtnCrear" ToolTip="Generar documentos de retiros de activos" Width="130" Height="40" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Documentos" Cursor="Hand" Click="BtnGenerarDoc_Click"/>
+                <Button Name="BtnCrear" ToolTip="Generar documentos" Width="130" Height="40" Background="{StaticResource ColorMain}" Foreground="White" BorderBrush="{x:Null}" Margin="3" Content="Generar Documentos" Cursor="Hand" Click="BtnGenerarDoc_Click"/>
             </StackPanel>
         </Grid>
 

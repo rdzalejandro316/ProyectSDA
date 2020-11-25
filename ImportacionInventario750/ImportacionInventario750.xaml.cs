@@ -127,14 +127,14 @@ namespace SiasoftAppExt
                 BtnCrear.IsEnabled = false;
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
-                var slowTask = Task<(DataTable, double, double)>.Factory.StartNew(() => Process(), source.Token);
+                var slowTask = Task<(DataTable, decimal, decimal)>.Factory.StartNew(() => Process(), source.Token);
                 await slowTask;
 
 
                 if ((slowTask.Result).Item1.Rows.Count > 0)
                 {
-                    double cos_uni = Convert.ToDouble((slowTask.Result).Item2);
-                    double cos_tot = Convert.ToDouble((slowTask.Result).Item3);
+                    decimal cos_uni = Convert.ToDecimal((slowTask.Result).Item2);
+                    decimal cos_tot = Convert.ToDecimal((slowTask.Result).Item3);
                     TxTot_cosuni.Text = cos_uni.ToString("N", CultureInfo.InvariantCulture);
                     TxTot_costot.Text = cos_tot.ToString("N", CultureInfo.InvariantCulture);
                     dataGridRefe.ItemsSource = (slowTask.Result).Item1.DefaultView;
@@ -177,7 +177,7 @@ namespace SiasoftAppExt
 
                     application.DefaultVersion = ExcelVersion.Excel2013;
                     IWorkbook workbook = application.Workbooks.Open(FileName);
-                   
+
 
                     IWorksheet worksheet = workbook.Worksheets[0];
                     System.Data.DataTable customersTable = worksheet.ExportDataTable(worksheet.UsedRange, ExcelExportDataTableOptions.ColumnNames);
@@ -337,12 +337,12 @@ namespace SiasoftAppExt
             }
         }
 
-        private (DataTable, double, double) Process()
+        private (DataTable, decimal, decimal) Process()
         {
             try
             {
-                double ttuni = 0;
-                double tttot = 0;
+                decimal ttuni = 0;
+                decimal tttot = 0;
                 //VALIDAR DOCUMENTO si existe
                 foreach (DataTable dtemp in doc_agru.Tables)
                 {
@@ -427,41 +427,52 @@ namespace SiasoftAppExt
                         #region cantidad
 
                         string cntxls = dr["CANTIDAD"].ToString().Trim();
-                        decimal cnt;
+                        decimal cantidad = 0;
 
                         if (!string.IsNullOrEmpty(cntxls))
                         {
-                            if (decimal.TryParse(cntxls, out cnt))
+                            if (decimal.TryParse(cntxls, out cantidad) == false)
                                 dt_errores.Rows.Add("el campo cantidad debe de ser numerico:" + num_trn);
                         }
                         else dt_errores.Rows.Add("el campo cantidad debe de estar lleno:" + num_trn);
 
-
                         #endregion
-
 
                         #region cos_uni - cos_tot
 
-                        //double cos_uni = Convert.ToDouble(dr["COS_UNI"]);                        
+                        string cosuni = dr["COS_UNI"].ToString().Trim();
+                        decimal cos_uni = 0;
 
-                        double cos_uni = dr["COS_UNI"] == DBNull.Value || double.TryParse(dr["COS_UNI"].ToString(), out dou) == false ?
-                            0 : Convert.ToDouble(dr["COS_UNI"]);
+                        if (!string.IsNullOrEmpty(cosuni))
+                        {
+                            if (decimal.TryParse(cosuni, out cos_uni) == true)
+                                cos_uni = Convert.ToDecimal(dr["COS_UNI"]);
+                            else
+                                dt_errores.Rows.Add("el campo costo unitario debe de ser numerico:" + num_trn);
+                        }
+                        else dt_errores.Rows.Add("el campo costo unitario debe de estar lleno:" + num_trn);
 
-                        dr["COS_UNI"] = cos_uni;
 
-                        double cos_tot = dr["COS_TOT"] == DBNull.Value || double.TryParse(dr["COS_TOT"].ToString(), out dou) == false ?
-                            0 : Convert.ToDouble(dr["COS_TOT"]);
-                        dr["COS_TOT"] = cos_tot;
 
-                        double cantidad = dr["CANTIDAD"] == DBNull.Value || double.TryParse(dr["CANTIDAD"].ToString(), out dou) == false ?
-                            0 : Convert.ToDouble(dr["CANTIDAD"]);
+                        string costot = dr["COS_TOT"].ToString().Trim();
+                        decimal cos_tot = 0;
 
-                        dr["CANTIDAD"] = cantidad;
+                        if (!string.IsNullOrEmpty(costot))
+                        {
+                            if (decimal.TryParse(costot, out cos_tot) == true)
+                                cos_tot = Convert.ToDecimal(dr["COS_TOT"]);
+                            else
+                                dt_errores.Rows.Add("el campo costo total debe de ser numerico:" + num_trn);
+
+                        }
+                        else dt_errores.Rows.Add("el campo costo total debe de estar lleno:" + num_trn);
+
+                        
 
                         ttuni += cos_uni;
                         tttot += cos_tot;
 
-                        double operation = cos_uni * cantidad;
+                        decimal operation = cos_uni * cantidad;
 
                         if (operation != cos_tot)
                         {
@@ -527,18 +538,21 @@ namespace SiasoftAppExt
 
                         foreach (System.Data.DataRow dt in dt_cue.Rows)
                         {
+                            
                             string cod_ref = dt["cod_ref"].ToString().Trim();
                             string cod_bod = dt["cod_bod"].ToString().Trim();
-                            double cos_uni = Convert.ToDouble(dt["cos_uni"]);
-                            double cantidad = Convert.ToDouble(dt["cantidad"]);
-                            double cos_tot = Convert.ToDouble(dt["cos_tot"]);
+                            
+                            decimal cos_uni = Convert.ToDecimal(dt["cos_uni"]);
+
+                            decimal cantidad = Convert.ToDecimal(dt["cantidad"]);
+                            decimal cos_tot = Convert.ToDecimal(dt["cos_tot"]);
 
 
                             sql_cue += @"INSERT INTO " + cuerpo + " (idregcab,cod_trn,num_trn,cod_ref,cod_bod,cantidad,cos_uni,cos_tot,cod_sub) values (@NewID,'" + cod_trn_cab + "','" + num_trn_cab + "','" + cod_ref + "','" + cod_bod + "'," + cantidad.ToString("F", CultureInfo.InvariantCulture) + "," + cos_uni.ToString("F", CultureInfo.InvariantCulture) + "," + cos_tot.ToString("F", CultureInfo.InvariantCulture) + ",'050');";
                         }
 
                         string query = sql_cab + sql_cue;
-                        //MessageBox.Show(query);
+                        
 
                         if (SiaWin.Func.SqlCRUD(query, idemp) == false) { MessageBox.Show("se genero un error en un documento por favor consulte"); }
                         sql_cab = ""; sql_cue = "";
