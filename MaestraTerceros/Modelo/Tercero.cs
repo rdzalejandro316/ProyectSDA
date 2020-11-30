@@ -68,16 +68,7 @@ namespace MaestraTerceros
             else if (this.tel1.Length > 50)
                 result = "el campo (Telefono) no puede ser mayor a 50";
             return result;
-        }
-        private string ValidationCel()
-        {
-            string result = null;
-            if (string.IsNullOrEmpty(this.cel1))
-                result = "el campo (Celular) es requerido";
-            else if (this.cel1.Length > 50)
-                result = "el campo (Celular) no puede ser mayor a 50";
-            return result;
-        }
+        }        
         private string ValidationEmail()
         {
             string result = null;
@@ -120,8 +111,7 @@ namespace MaestraTerceros
             var _nom_ter = this.ValidationNomTer();
             var _repres = ValidationRepres();
             var _dir1 = ValidationDir1();            
-            var _tel1 = ValidationTel1(); 
-            var _cel = ValidationCel();
+            var _tel1 = ValidationTel1();             
             var _email = ValidationEmail();
             var _ciudad = ValidationCiudad();            
             var _cod_ciu = ValidationCodCiu();           
@@ -132,8 +122,7 @@ namespace MaestraTerceros
                 _nom_ter == null &&
                 _repres == null &&
                 _dir1 == null &&                
-                _tel1 == null &&
-                _cel == null &&
+                _tel1 == null &&                
                 _email == null &&
                 _ciudad == null &&                
                 _cod_ciu == null &&
@@ -162,10 +151,7 @@ namespace MaestraTerceros
                         break;
                     case "tel1":
                         errorMessage = ValidationTel1();
-                        break;
-                    case "cel1":
-                        errorMessage = ValidationCel();
-                        break;
+                        break;                    
                     case "email":
                         errorMessage = ValidationEmail();
                         break;
