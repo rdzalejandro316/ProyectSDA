@@ -26,3 +26,17 @@ D:\Empresas\SDA\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimien
 D:\Empresas\SDA\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.pdb
 D:\Empresas\SDA\Library\ConsultaMovimientoDoc.dll
 D:\Empresas\SDA\Library\ConsultaMovimientoDoc.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ConsultaMovimientoDoc\obj\Debug\ConsultaMovimientoDoc.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ConsultaMovimientoDoc.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ConsultaMovimientoDoc.pdb

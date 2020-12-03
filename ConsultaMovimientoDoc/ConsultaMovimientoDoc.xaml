@@ -38,7 +38,8 @@
             <TextBlock Text="# Doc Referencia:" Foreground="White" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="Bold"/>
             <TextBox Name="Tx_text"  Grid.Column="1" Margin="8"/>
             <Button x:Name="BtnConsultar" Grid.Column="2" Width="100" Margin="5" Content="Consultar" Foreground="White" Background="#03A9F4" BorderBrush="#03A9F4" Cursor="Hand" HorizontalAlignment="Left" Click="BtnConsultar_Click"/>
-            <Button x:Name="BtnExportar" Grid.Column="3" Width="100" Margin="5" Content="Exportar" Foreground="White" Background="#03A9F4" BorderBrush="#03A9F4" Cursor="Hand" HorizontalAlignment="Left" Click="BtnExportar_Click"/>
+            <Button x:Name="BtnView" Grid.Column="3" Content="Documeto" Width="100" Margin="5" Click="BtnView_Click" Foreground="White" Background="#03A9F4" BorderBrush="#03A9F4" Cursor="Hand" HorizontalAlignment="Left"/>
+            <Button x:Name="BtnExportar" Grid.Column="4" Width="100" Margin="5" Content="Exportar" Foreground="White" Background="#03A9F4" BorderBrush="#03A9F4" Cursor="Hand" HorizontalAlignment="Left" Click="BtnExportar_Click"/>
 
         </Grid>
 
@@ -54,6 +55,7 @@
                     
                     <SiaSf:SfDataGrid Name="GridConsulta" Grid.Row="1" AutoGenerateColumns="False" AllowResizingColumns="True"  ShowGroupDropArea="False" FontSize="10" AllowFiltering="True"  HeaderStyle="{StaticResource headerStyle}"  Margin="5">
                         <SiaSf:SfDataGrid.Columns>
+                            <SiaSf:GridTextColumn MappingName="idreg" IsHidden="True"/>
                             <SiaSf:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50"/>
                             <SiaSf:GridTextColumn HeaderText="Numero" MappingName="num_trn" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="Fecha" MappingName="fec_trn" Width="80"/>

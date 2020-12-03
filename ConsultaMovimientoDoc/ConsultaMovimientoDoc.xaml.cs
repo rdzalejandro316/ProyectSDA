@@ -35,6 +35,8 @@ namespace SiasoftAppExt
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
+        int modulo = 1;
+
         public ConsultaMovimientoDoc()
         {
             InitializeComponent();
@@ -111,7 +113,13 @@ namespace SiasoftAppExt
         {
             try
             {
-                System.Data.DataTable dt = SiaWin.Func.SqlDT("select * from Cocue_doc WHERE doc_mov='" + doc_mov + "'", "tabla", idemp);
+                string query = "select cab.idreg,cab.cod_trn,cab.num_trn,cab.fec_trn,cue.cod_cta,cue.cod_ter,cue.des_mov, ";
+                query += "cue.doc_ref,cue.doc_cruc,cue.deb_mov,cue.cre_mov ";
+                query += "from Cocue_doc as cue ";
+                query += "inner join cocab_doc as cab on cab.idreg = cue.idregcab ";
+                query += "WHERE cue.doc_mov='" + doc_mov + "' ";
+
+                System.Data.DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
                 return dt;
             }
             catch (Exception e)
@@ -163,9 +171,26 @@ namespace SiasoftAppExt
             }
         }
 
-
-
-
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (GridConsulta.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)GridConsulta.SelectedItems[0];
+                    int idreg = Convert.ToInt32(row["idreg"]);
+                    SiaWin.TabTrn(0, idemp, true, idreg, modulo, WinModal: true);
+                }
+                else
+                {
+                    MessageBox.Show("seleccione un documento de la grilla", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrri el documento:" + w);
+            }
+        }
 
     }
 }
