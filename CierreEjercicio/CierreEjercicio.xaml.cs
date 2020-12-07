@@ -33,7 +33,7 @@ namespace SiasoftAppExt
         string cnEmp = "";
         string cod_empresa = "";
         dynamic tabitem;
-
+        public int idmodulo = 1;
         public CierreEjercicio(dynamic tabitem1)
         {
             InitializeComponent();
@@ -62,11 +62,22 @@ namespace SiasoftAppExt
                 TxFecDoc.Text = DateTime.Now.ToString();
 
                 DataTable dt = SiaWin.Func.SqlDT("select periodo,periodonombre from Periodos where TipoPeriodo='1' ", "tabla", 0);
-
                 CBperiodos.ItemsSource = dt.DefaultView;
 
                 DataTable dt_trn = SiaWin.Func.SqlDT("select rtrim(cod_trn) as cod_trn,rtrim(cod_trn)+'-'+rtrim(nom_trn) as nom_trn from comae_trn order by cod_trn", "tabla", idemp);
                 CBtipotrn.ItemsSource = dt_trn.DefaultView;
+
+
+                #region valores por defecto
+
+                CBperiodos.SelectedValue = "13";
+                CBtipotrn.SelectedValue = "98";
+
+                DateTime tiempo = Convert.ToDateTime(Tx_ano.Value.ToString());
+                string año = tiempo.ToString("yyyy");
+                TxDocumento.Text = "CIE-" + año;
+                TxFecDoc.Text = "31/12/" + año;
+                #endregion
 
 
             }
@@ -74,6 +85,22 @@ namespace SiasoftAppExt
             {
                 MessageBox.Show("error en el load:" + e);
             }
+        }
+
+        private void Tx_ano_ValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+            try
+            {
+                DateTime tiempo = Convert.ToDateTime(Tx_ano.Value.ToString());
+                string año = tiempo.ToString("yyyy");
+                TxDocumento.Text = "CIE-" + año;
+                TxFecDoc.Text = "31/12/" + año;
+            }
+            catch (Exception)
+            {
+            }
+
         }
 
         private async void BtnConsultar_Click(object sender, RoutedEventArgs e)
@@ -91,20 +118,32 @@ namespace SiasoftAppExt
 
                 DateTime tiempo = Convert.ToDateTime(Tx_ano.Value.ToString());
                 string empresa = "010";
-                string periodo = CBperiodos.SelectedValue.ToString();
-                string trn = CBtipotrn.SelectedValue.ToString();
-                string document = TxDocumento.Text;
-                string fecha = TxFecDoc.Text;
+                string año = tiempo.ToString("yyyy");
+                int isExecute = CbCierre.SelectedIndex;
 
-                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(tiempo.ToString("yyyy"), empresa), source.Token);
+
+                var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(año, isExecute, empresa), source.Token);
                 await slowTask;
-                
+
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)
                 {
-                    //SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "PASARON LOS SALDOS DE CONTABILIDAD:" + tiempo.ToString("yyyy"), "");
+                    if (isExecute == 1)
+                    {
+                        SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, idemp, 0, 0, 0, "PASARON LOS SALDOS DE CONTABILIDAD:" + tiempo.ToString("yyyy"), "");
+                    }
+
+                    double debito = 0;
+                    double.TryParse(((DataSet)slowTask.Result).Tables[0].Compute("Sum(deb_mov)", "").ToString(), out debito);
+
+                    double credito = 0;
+                    double.TryParse(((DataSet)slowTask.Result).Tables[0].Compute("Sum(cre_mov)", "").ToString(), out credito);
 
                     dataGridConsulta.ItemsSource = ((DataSet)slowTask.Result).Tables[0];
                     Total.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
+
+                    TxDebito.Text = debito.ToString("N");
+                    TxCredito.Text = credito.ToString("N");
+
                     TabControl1.SelectedIndex = 2;
                     TabControl1.SelectedIndex = 1;
                 }
@@ -125,7 +164,7 @@ namespace SiasoftAppExt
         }
 
 
-        private DataSet LoadData(string ano, string empresa)
+        private DataSet LoadData(string ano, int isexecute, string empresa)
         {
             try
             {
@@ -133,10 +172,11 @@ namespace SiasoftAppExt
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
                 DataSet ds = new DataSet();
-                //cmd = new SqlCommand("_EmpCoSaldo_ini", con);
+                cmd = new SqlCommand("_EmpSpCierreAnual", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Ano", ano);                
-                cmd.Parameters.AddWithValue("@codemp", empresa);
+                cmd.Parameters.AddWithValue("@anno", ano);
+                cmd.Parameters.AddWithValue("@isExecute", isexecute);
+                cmd.Parameters.AddWithValue("@codEmpresa", empresa);
                 da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
                 con.Close();
@@ -188,6 +228,33 @@ namespace SiasoftAppExt
             }
 
         }
+
+        private void BtnViewDoc_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string numtrn = TxDocumento.Text.Trim();
+                string codtrn = CBtipotrn.SelectedValue.ToString();
+
+                string query = "select * From cocab_doc where cod_trn='" + codtrn + "' and num_trn='" + numtrn + "' ";
+                DataTable dt = SiaWin.Func.SqlDT(query, "cabeza", idemp);
+                if (dt.Rows.Count > 0)
+                {
+                    int idreg = Convert.ToInt32(dt.Rows[0]["idreg"]);
+                    SiaWin.TabTrn(0, idemp, true, idreg, idmodulo, WinModal: true);
+                }
+                else
+                {
+                    MessageBox.Show("el documento " + numtrn + " no se encuentra", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al ver el documento:" + w);
+            }
+        }
+
 
 
     }

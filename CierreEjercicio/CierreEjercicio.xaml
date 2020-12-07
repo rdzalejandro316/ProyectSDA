@@ -27,13 +27,14 @@
 
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1.5*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -43,22 +44,29 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Row="1"  Grid.Column="1" Text="Año Cierre: " VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <SiaSf:SfDatePicker x:Name="Tx_ano" Grid.Row="1"  Grid.Column="2" Margin="2" Width="100" HorizontalAlignment="Left" SelectorFormatString="yyyy" FormatString="yyyy" BorderThickness="1" BorderBrush="Gray" AccentBrush="{StaticResource ColorMain}"/>
+                            <SiaSf:SfDatePicker x:Name="Tx_ano" Grid.Row="1"  Grid.Column="2" Margin="0,2,2,2" Width="100" HorizontalAlignment="Left" SelectorFormatString="yyyy" FormatString="yyyy" BorderThickness="1" BorderBrush="Gray" AccentBrush="{StaticResource ColorMain}" ValueChanged="Tx_ano_ValueChanged"/>
 
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="Mes Cierre: " VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <ComboBox Name="CBperiodos"  DisplayMemberPath="periodonombre" SelectedValuePath="periodo" Grid.Row="2" Grid.Column="2" Margin="0,7,5,7" BorderBrush="Gray"/>
+                            <ComboBox Name="CBperiodos"  DisplayMemberPath="periodonombre" SelectedValuePath="periodo" Grid.Row="2" Grid.Column="2" Margin="0,7,5,7" BorderBrush="Gray" IsEnabled="False"/>
 
                             <TextBlock Grid.Row="3" Grid.Column="1" Text="Tipo Documento: " VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <ComboBox Name="CBtipotrn" FontSize="10" DisplayMemberPath="nom_trn" SelectedValuePath="cod_trn" Grid.Row="3" Grid.Column="2"  Margin="0,7,5,7" BorderBrush="Gray"/>
+                            <ComboBox Name="CBtipotrn" FontSize="10" DisplayMemberPath="nom_trn" SelectedValuePath="cod_trn" Grid.Row="3" Grid.Column="2"  Margin="0,7,5,7" BorderBrush="Gray" IsEnabled="False"/>
 
                             <TextBlock Grid.Row="4" Grid.Column="1" Text="No Documento: " VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <TextBox Name="TxDocumento" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" BorderBrush="Gray"/>
+                            <TextBox Name="TxDocumento" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" BorderBrush="Gray" IsEnabled="False"/>
 
                             <TextBlock Grid.Row="5" Grid.Column="1" Text="Fecha Documento: " VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <DatePicker Name="TxFecDoc" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120" BorderBrush="Gray"/>
+                            <DatePicker Name="TxFecDoc" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120" BorderBrush="Gray" IsEnabled="False"/>
 
-                            <StackPanel Grid.Row="6" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button Name="BtnConsultar" Background="#373737" Content="Consulta" Foreground="White" BorderBrush="{x:Null}" Margin="5" Width="120" Height="35" Cursor="Hand" Click="BtnConsultar_Click"/>
+                            <TextBlock Grid.Row="6" Grid.Column="1" Text="Cerrar: " VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
+                            <ComboBox Name="CbCierre" Grid.Row="6" Grid.Column="2" Margin="0,7,5,7">
+                                <ComboBoxItem IsSelected="True" Content="Solo Consultar"/>
+                                <ComboBoxItem Content="Generar Cierre"/>
+                            </ComboBox>
+
+
+                            <StackPanel Grid.Row="7" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Name="BtnConsultar" Background="#373737" Content="Cierre" Foreground="White" BorderBrush="{x:Null}" Margin="5" Width="120" Height="35" Cursor="Hand" Click="BtnConsultar_Click"/>
                                 <Button Name="BtnCancelar" Background="#373737" Content="Cancelar" Foreground="White" BorderBrush="{x:Null}" Margin="5" Width="120" Height="35" Cursor="Hand" Click="BtnCancelar_Click"/>
                             </StackPanel>
 
@@ -78,10 +86,14 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Background="Black">
-                        <Button Name="Exportar" Width="Auto" Margin="5" Padding="10 0 10 0" HorizontalAlignment="Right" Content="Exportar a Excel" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Click="Exportar_Click"/>
-                    </Grid>
+                    <Grid Grid.Row="0" Background="Black" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                            <Button Name="BtnViewDoc" Width="Auto" Margin="5" Padding="10 0 10 0" HorizontalAlignment="Right" Content="Ver Documento" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Click="BtnViewDoc_Click"/>
+                            <Button Name="Exportar" Width="Auto" Margin="5" Padding="10 0 10 0" HorizontalAlignment="Right" Content="Exportar a Excel" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Click="Exportar_Click"/>
+                        </StackPanel>
 
+                    </Grid>
+                    
                     <Grid Grid.Row="1">
                         <Grid.Resources>
                             <Style TargetType="SiaSf:FilterToggleButton">
@@ -106,11 +118,19 @@
                     <Grid Grid.Row="2" Background="#373737">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Total de Regstros : " Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold"/>
+                        <TextBlock Text="Total de Registros : " Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold"/>
                         <TextBlock Name="Total" Grid.Column="1" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <TextBlock Text="DEBITO :" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock Name="TxDebito" Text="..." Width="200" Foreground="White" Margin="5,0,0,0" FontSize="10"/>
+                            <TextBlock Text="CREDITO :" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock Name="TxCredito" Text="..." Width="250" Foreground="White" Margin="5,0,0,0" FontSize="10"/>
+                        </StackPanel>
                     </Grid>
                 </Grid>
             </SiaSf:TabItemExt>
