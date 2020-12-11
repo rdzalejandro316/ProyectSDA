@@ -21,7 +21,6 @@ namespace SiasoftAppExt
     //Sia.PublicarPnt(9688,"ReclasificacionCuentasXLS");
     //Sia.TabU(9688,"ReclasificacionCuentasXLS");
 
-
     public partial class ReclasificacionCuentasXLS : UserControl
     {
         dynamic SiaWin;

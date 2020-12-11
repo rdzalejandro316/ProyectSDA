@@ -35,8 +35,6 @@ namespace SiasoftAppExt
     //ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
     //ww.ShowDialog();
 
-
-
     public partial class MaestraDiferidos : Window
     {
 
