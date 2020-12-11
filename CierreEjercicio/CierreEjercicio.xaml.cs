@@ -197,36 +197,43 @@ namespace SiasoftAppExt
 
         private void Exportar_Click(object sender, RoutedEventArgs e)
         {
-            var options = new Syncfusion.UI.Xaml.Grid.Converter.ExcelExportingOptions();
-            options.ExcelVersion = ExcelVersion.Excel2013;
-            var excelEngine = dataGridConsulta.ExportToExcel(dataGridConsulta.View, options);
-            var workBook = excelEngine.Excel.Workbooks[0];
-
-            SaveFileDialog sfd = new SaveFileDialog
+            try
             {
-                FilterIndex = 2,
-                Filter = "Excel 97 to 2003 Files(*.xls)|*.xls|Excel 2007 to 2010 Files(*.xlsx)|*.xlsx|Excel 2013 File(*.xlsx)|*.xlsx"
-            };
+                var options = new Syncfusion.UI.Xaml.Grid.Converter.ExcelExportingOptions();
+                options.ExcelVersion = ExcelVersion.Excel2013;
+                var excelEngine = dataGridConsulta.ExportToExcel(dataGridConsulta.View, options);
+                var workBook = excelEngine.Excel.Workbooks[0];
 
-            if (sfd.ShowDialog() == true)
-            {
-                using (Stream stream = sfd.OpenFile())
+                SaveFileDialog sfd = new SaveFileDialog
                 {
-                    if (sfd.FilterIndex == 1)
-                        workBook.Version = ExcelVersion.Excel97to2003;
-                    else if (sfd.FilterIndex == 2)
-                        workBook.Version = ExcelVersion.Excel2010;
-                    else
-                        workBook.Version = ExcelVersion.Excel2013;
-                    workBook.SaveAs(stream);
+                    FilterIndex = 2,
+                    Filter = "Excel 97 to 2003 Files(*.xls)|*.xls|Excel 2007 to 2010 Files(*.xlsx)|*.xlsx|Excel 2013 File(*.xlsx)|*.xlsx"
+                };
+
+                if (sfd.ShowDialog() == true)
+                {
+                    using (Stream stream = sfd.OpenFile())
+                    {
+                        if (sfd.FilterIndex == 1)
+                            workBook.Version = ExcelVersion.Excel97to2003;
+                        else if (sfd.FilterIndex == 2)
+                            workBook.Version = ExcelVersion.Excel2010;
+                        else
+                            workBook.Version = ExcelVersion.Excel2013;
+                        workBook.SaveAs(stream);
+                    }
+
+                    if (MessageBox.Show("Usted quiere abrir el archivo en excel?", "Ver archvo", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start(sfd.FileName);
+                    }
                 }
 
-                if (MessageBox.Show("Usted quiere abrir el archivo en excel?", "Ver archvo", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
-                {
-                    System.Diagnostics.Process.Start(sfd.FileName);
-                }
             }
-
+            catch (Exception w)
+            {
+                MessageBox.Show("error al exportar:" + w);
+            }
         }
 
         private void BtnViewDoc_Click(object sender, RoutedEventArgs e)

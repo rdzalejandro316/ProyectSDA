@@ -26,3 +26,17 @@ D:\SiasoftApp_SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.dll
 D:\SiasoftApp_SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.pdb
 D:\SiasoftApp_SDA\Library\CierreTerceros.dll
 D:\SiasoftApp_SDA\Library\CierreTerceros.pdb
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.g.cs
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.dll
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.pdb
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.baml
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.g.resources
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\CierreTerceros\obj\Debug\CierreTerceros.csproj.CopyComplete
+D:\Empresas\SDA\Library\CierreTerceros.dll
+D:\Empresas\SDA\Library\CierreTerceros.pdb

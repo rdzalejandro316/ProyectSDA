@@ -704,10 +704,9 @@ namespace SiasoftAppExt
                     Txdif.Text = "-";
                     Tx_ter.Text = "";
                     Tx_cuen.Text = "";
-
-                    #endregion
-
                 }
+
+                #endregion
 
             }
             catch (Exception w)

@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="SiasoftAppExt.DeterioroCuentasPorCobrar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="1500"
+             SiaSf:SkinStorage.VisualStyle="Metro"  Background="White">
+
+    <UserControl.Resources>
+        <SolidColorBrush Color="#2196F3" x:Key="ColorMain"/>
+        <SolidColorBrush Color="#373737" x:Key="ColorSecond"/>
+        <Style TargetType="TextBlock" x:Key="title">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="values">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnStlye">
+            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+        <Style TargetType="SiaSf:GridCell">
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+        </Style>
+        <Style TargetType="SiaSf:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="Background" Value="{StaticResource ColorSecond}"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+    </UserControl.Resources>
+
+    <SiaSf:TabControlExt Name="TabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True"  >
+        <SiaSf:TabItemExt Name="tabItemExt1"  Header="Estado de Cartera" FontSize="12" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Fecha Corte:  "  Grid.Row="0" Grid.Column="0" Style="{StaticResource title}"/>
+                    <DatePicker x:Name="FechaIni" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" ></DatePicker>
+                    
+                                       
+                    <TextBlock Text="Cliente:  " Grid.Row="1" Grid.Column="0" Style="{StaticResource title}"/>
+                    <TextBox x:Name="TxCodTer" Grid.Row="1" Grid.Column="1" Style="{StaticResource values}" Tag="comae_ter" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="TextCod_Ter_LostFocus" ToolTip="F8 buscar"/>
+
+                    <TextBlock Text="Cuenta Inicial: " Grid.Row="0" Grid.Column="2" Style="{StaticResource title}"/>
+                    <TextBox x:Name="TxCtaIni" Grid.Row="0" Grid.Column="3" Style="{StaticResource values}" Tag="comae_cta" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="TextCod_Ter_LostFocus" ToolTip="F8 buscar"/>
+
+                    <TextBlock Text="Cuenta Final: " Grid.Row="1" Grid.Column="2" Style="{StaticResource title}"/>
+                    <TextBox x:Name="TxCtaFin" Grid.Row="1" Grid.Column="3" Style="{StaticResource values}" Tag="comae_cta" PreviewKeyDown="TextBox_PreviewKeyDown" LostFocus="TextCod_Ter_LostFocus" ToolTip="F8 buscar"/>
+
+                    <!--<StackPanel Grid.Column="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <Button x:Name="BtnEjecutar" Content="Ejecutar" Click="ButtonRefresh_Click" Style="{StaticResource BtnStlye}" Height="30" Margin="5"/>
+                        <Button x:Name="BtnSalir" Content="Salir" Click="BtnSalir_Click" Style="{StaticResource BtnStlye}" Height="30" Margin="5"/>
+                    </StackPanel>-->
+                </Grid>
+                <Grid Grid.Row="1">
+
+                    <SiaSf:SfDataGrid  x:Name="dataGridCxC"   Visibility="Hidden"     EnableDataVirtualization = "True"  FrozenColumnCount="2"
+                        AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" FontFamily="Times New Roman" AllowFiltering="True" FilterChanged="dataGridCxC_FilterChanged" 
+                        ItemsSource="{Binding }"  HeaderStyle="{StaticResource headerStyle}" >
+
+                        <SiaSf:SfDataGrid.Columns>
+                            <SiaSf:GridTextColumn HeaderText="Nit/cc" MappingName="cod_ter" Width="80"/>
+                            <SiaSf:GridTextColumn HeaderText="Nombre cliente"  MappingName="nom_ter" Width="220"/>
+                            <SiaSf:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="70" />
+                            <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tipo" Width="50" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=valor,StringFormat='{}{0:N2}'}"   Width="85" HeaderText="Valor Doc" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=sinvenc, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Sin Vencer" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven01, StringFormat='{}{0:N2}'}" Width="80" HeaderText="1-30" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven02, StringFormat='{}{0:N2}'}" Width="80" HeaderText="31-60" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven03, StringFormat='{}{0:N2}'}" Width="80" HeaderText="61-90" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven04, StringFormat='{}{0:N2}'}" Width="80" HeaderText="91-180" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven05, StringFormat='{}{0:N2}'}" Width="80" HeaderText="181-360" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=ven06, StringFormat='{}{0:N2}'}" Width="80" HeaderText="+360" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=saldo, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Saldo" TextAlignment="Right" AllowFiltering="False" />
+                            <SiaSf:GridTemplateColumn MappingName="Detalle" Width="56"  AllowFiltering="False">
+                                <SiaSf:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="BtnDetalle" Content="...." Click="BtnDetalle_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}"/>
+                                    </DataTemplate>
+                                </SiaSf:GridTemplateColumn.CellTemplate>
+                            </SiaSf:GridTemplateColumn>
+
+                        </SiaSf:SfDataGrid.Columns>
+                    </SiaSf:SfDataGrid>
+
+                    <SiaSf:SfDataGrid  x:Name="dataGridCxCD"  EnableDataVirtualization = "True"  FrozenColumnCount="2" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" FontFamily="Times New Roman" AllowFiltering="True" FilterChanged="dataGridCxC_FilterChanged" ItemsSource="{Binding }"  HeaderStyle="{StaticResource headerStyle}">
+
+                        <SiaSf:SfDataGrid.Columns>
+                            <SiaSf:GridTextColumn HeaderText="Nit/cc" MappingName="cod_ter" Width="80"/>
+                            <SiaSf:GridTextColumn HeaderText="Nombre cliente"  MappingName="nom_ter" Width="220"/>
+                            <SiaSf:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="70" />
+                            <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tipo" Width="50" />
+                            <SiaSf:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50" />
+                            <SiaSf:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="90" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=fec_trn, StringFormat={}{0:dd/MM/yyyy}}"  Width="90" HeaderText="FechaDoc" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=fec_ven, StringFormat={}{0:dd/MM/yyyy}}"  Width="90" HeaderText="FechaVenc" />
+                            <SiaSf:GridTextColumn HeaderText="Dias" MappingName="dias" Width="90" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=valor,StringFormat='{}{0:N2}'}"   Width="85" HeaderText="Valor Doc" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=saldo, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Saldo" TextAlignment="Right" AllowFiltering="False"/>
+                            <SiaSf:GridTemplateColumn MappingName="Doc" Width="56"  AllowFiltering="False">
+                                <SiaSf:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="BtnDetalleD" Content="...." Click="BtnDetalleD_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}"/>
+                                    </DataTemplate>
+                                </SiaSf:GridTemplateColumn.CellTemplate>
+                            </SiaSf:GridTemplateColumn>
+
+                            <SiaSf:GridTemplateColumn MappingName="Auxiliar" Width="56"  AllowFiltering="False">
+                                <SiaSf:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="BtnAuxliar" Content="...." Click="BtnAuxliar_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}"/>
+                                    </DataTemplate>
+                                </SiaSf:GridTemplateColumn.CellTemplate>
+                            </SiaSf:GridTemplateColumn>
+
+                        </SiaSf:SfDataGrid.Columns>
+                    </SiaSf:SfDataGrid>
+
+                    <SiaSf:SfBusyIndicator Name="sfBusyIndicator" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100"  AnimationType="Rainy" Header="Cargando Datos ..." Height="200" IsBusy="False"/>
+                </Grid>
+                
+                <Border Grid.Row="2" BorderBrush="DodgerBlue" BorderThickness="0.5" Grid.Column="2">
+                    <Grid>
+                        
+                    </Grid>
+                </Border>
+            </Grid>
+
+        </SiaSf:TabItemExt>
+    </SiaSf:TabControlExt>
+
+</UserControl>
