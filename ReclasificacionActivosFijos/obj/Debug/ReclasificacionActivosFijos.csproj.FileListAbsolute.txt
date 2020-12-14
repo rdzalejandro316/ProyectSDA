@@ -26,3 +26,17 @@ C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActiv
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.pdb
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ReclasificacionActivosFijos.dll
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ReclasificacionActivosFijos.pdb
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.g.cs
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.baml
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.g.resources
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.dll
+D:\Empresas\SDA\Library\project\ReclasificacionActivosFijos\obj\Debug\ReclasificacionActivosFijos.pdb
+D:\Empresas\SDA\Library\ReclasificacionActivosFijos.dll
+D:\Empresas\SDA\Library\ReclasificacionActivosFijos.pdb

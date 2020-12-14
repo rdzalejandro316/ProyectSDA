@@ -12,3 +12,17 @@ C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferido
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.pdb
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ArmotizacionDiferidos.dll
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ArmotizacionDiferidos.pdb
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.g.cs
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.baml
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.g.resources
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.dll
+D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.pdb
+D:\Empresas\SDA\Library\ArmotizacionDiferidos.dll
+D:\Empresas\SDA\Library\ArmotizacionDiferidos.pdb

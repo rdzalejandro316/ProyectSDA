@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\SiasoftApp_SDA\Library\project\AnalisisDeVenta\obj\Debug\
+D:\Empresas\SDA\Library\project\AnalisisDeVenta\obj\Debug\
 AnalisisDeVenta
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 2-2896811
 
-6-1038515425
-291606259061
+6123968
+291627549732
 AnalisisDeVenta.xaml;Detalle.xaml;
 
-False
+True
 

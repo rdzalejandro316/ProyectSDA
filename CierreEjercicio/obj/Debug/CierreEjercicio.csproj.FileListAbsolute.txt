@@ -12,3 +12,17 @@ C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CierreEjercicio\obj\
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.pdb
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\CierreEjercicio.dll
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\CierreEjercicio.pdb
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.g.cs
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.baml
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.g.resources
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.dll
+D:\Empresas\SDA\Library\project\CierreEjercicio\obj\Debug\CierreEjercicio.pdb
+D:\Empresas\SDA\Library\CierreEjercicio.dll
+D:\Empresas\SDA\Library\CierreEjercicio.pdb

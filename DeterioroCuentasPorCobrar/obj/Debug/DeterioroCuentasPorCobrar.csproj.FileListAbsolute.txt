@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.g.cs
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.baml
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.g.resources
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.dll
+D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.pdb
+D:\Empresas\SDA\Library\DeterioroCuentasPorCobrar.dll
+D:\Empresas\SDA\Library\DeterioroCuentasPorCobrar.pdb

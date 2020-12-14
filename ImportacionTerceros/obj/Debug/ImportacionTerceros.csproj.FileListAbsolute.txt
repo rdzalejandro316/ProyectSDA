@@ -26,3 +26,17 @@ C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionTerceros\
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csproj.CopyComplete
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ImportacionTerceros.dll
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ImportacionTerceros.pdb
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.g.cs
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.dll
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.pdb
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.baml
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.g.resources
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\ImportacionTerceros\obj\Debug\ImportacionTerceros.csproj.CopyComplete
+D:\Empresas\SDA\Library\ImportacionTerceros.dll
+D:\Empresas\SDA\Library\ImportacionTerceros.pdb

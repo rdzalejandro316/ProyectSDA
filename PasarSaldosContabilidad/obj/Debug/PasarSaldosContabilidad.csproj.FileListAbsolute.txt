@@ -12,3 +12,17 @@ C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosContabilidad\obj\D
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.pdb
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\PasarSaldosContabilidad.dll
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\PasarSaldosContabilidad.pdb
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.g.cs
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.baml
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.g.resources
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.dll
+D:\Empresas\SDA\Library\project\PasarSaldosContabilidad\obj\Debug\PasarSaldosContabilidad.pdb
+D:\Empresas\SDA\Library\PasarSaldosContabilidad.dll
+D:\Empresas\SDA\Library\PasarSaldosContabilidad.pdb

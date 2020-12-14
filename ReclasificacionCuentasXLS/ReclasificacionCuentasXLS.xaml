@@ -59,7 +59,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
@@ -71,12 +71,12 @@
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="RECLASIFICACION DE CUENTAS XLS" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="16" FontWeight="DemiBold"/>
 
-            <TextBlock Text="Reclasificacion de cuentas XLS" VerticalAlignment="Center" Foreground="White" Margin="5" FontSize="14"/>
-
-            <Button x:Name="BtnImport" Grid.Column="1" Margin="5" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Content="Importar Plantilla" Cursor="Hand" Click="BtnImport_Click"/>
-            <Button x:Name="BtnPlantilla" Grid.Column="2" Margin="5" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Content="Generar Plantilla" Cursor="Hand" Click="BtnPlantilla_Click"/>
-            <Button x:Name="BtnEjecuter" Grid.Column="3" Margin="5" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Content="Ejecutar Reclasificacion" Cursor="Hand" Click="BtnEjecuter_Click"/>
+            <Button x:Name="BtnImport" Grid.Column="1" Margin="5" Height="40" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Content="Importar Plantilla" Cursor="Hand" Click="BtnImport_Click"/>
+            <Button x:Name="BtnPlantilla" Grid.Column="2" Margin="5" Height="40" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Content="Generar Plantilla" Cursor="Hand" Click="BtnPlantilla_Click"/>
+            <Button x:Name="BtnEjecuter" Grid.Column="3" Margin="5" Height="40" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Content="Ejecutar Reclasificacion" Cursor="Hand" Click="BtnEjecuter_Click"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="5">

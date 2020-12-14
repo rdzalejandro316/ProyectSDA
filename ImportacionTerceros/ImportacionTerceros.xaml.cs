@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using Syncfusion.UI.Xaml.Grid;
+using Syncfusion.UI.Xaml.Grid.Helpers;
 using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
@@ -56,7 +58,7 @@ namespace SiasoftAppExt
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                tabitem.Title = "Importacion 740 - " + nomempresa;
+                tabitem.Title = "Importacion de terceros - " + nomempresa;
                 tabitem.Logo(idLogo, ".png");
             }
             catch (Exception e)
@@ -213,7 +215,7 @@ namespace SiasoftAppExt
                     dataGridExcel.ItemsSource = null;
                     dt.Clear(); dt_errores.Clear();
 
-                    Tx_ter.Text = "";
+                    Tx_prv.Text = "";
                     Tx_exist.Text = "";
                     Tx_ciudad.Text = "";
                     Tx_pais.Text = "-";
@@ -260,6 +262,10 @@ namespace SiasoftAppExt
             {
 
                 dt.Columns.Add("TER_EXIST", typeof(bool));
+                dt.Columns.Add("TIP_PRV_NOM", typeof(string));
+                dt.Columns.Add("NOM_TDO", typeof(string));
+                dt.Columns.Add("NOM_MUNI", typeof(string));
+                dt.Columns.Add("NOM_PAIS", typeof(string));
 
                 //validar campo por campo
                 foreach (System.Data.DataRow dr in dt.Rows)
@@ -270,12 +276,29 @@ namespace SiasoftAppExt
                     string cod_ter = dr["COD_TER"].ToString().Trim();
                     if (!string.IsNullOrEmpty(cod_ter))
                     {
-                        DataTable dt_ter = SiaWin.Func.SqlDT("select cod_ter,nom_ter from comae_ter where cod_ter='" + cod_ter + "'  ", "tercero", idemp);
+                        DataTable dt_ter = SiaWin.Func.SqlDT("select cod_ter,nom_ter from comae_ter where cod_ter='" + cod_ter + "';", "tercero", idemp);
                         dr["TER_EXIST"] = dt_ter.Rows.Count > 0 ? true : false;
                     }
                     else
                     {
                         System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region nombre
+
+                    string nom_ter = dr["NOM_TER"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(nom_ter))
+                    {
+                        if (nom_ter.Length > 100)
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre de tercero debe ser menor de 100 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
                     }
 
                     #endregion
@@ -287,12 +310,12 @@ namespace SiasoftAppExt
                     {
                         if (dir1.Length > 120)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de direccion debe ser menor de 120 caracteristicas"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de direccion debe ser menor de 120 caracteristicas (" + cod_ter + ") "; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de direccion debe de estar lleno"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de direccion debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                     }
 
 
@@ -305,12 +328,12 @@ namespace SiasoftAppExt
                     {
                         if (tel1.Length > 50)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de telefono debe ser menor de 50 caracteristicas"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de telefono debe ser menor de 50 caracteristicas (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de telefono debe de estar lleno"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de telefono debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                     }
 
 
@@ -323,12 +346,12 @@ namespace SiasoftAppExt
                     {
                         if (email.Length > 100)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de email debe ser menor de 100 caracteristicas"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de email debe ser menor de 100 caracteristicas (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de email debe de estar lleno"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de email debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                     }
 
 
@@ -342,12 +365,12 @@ namespace SiasoftAppExt
                     {
                         if (DateTime.TryParse(fec_ing, out fecing) == false)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de fecha debe ser de tipo fecha (dd/MM/yyyy)"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de fecha de ingreso debe ser de tipo fecha (dd/MM/yyyy) (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de fecha debe de estar lleno"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de fecha de ingreso debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                     }
 
 
@@ -361,16 +384,34 @@ namespace SiasoftAppExt
                     {
                         if (int.TryParse(tip_prv, out tipprv))
                         {
-                            if (!(tipprv > 0 && tipprv <= 3))
+                            if (!(tipprv >= 0 && tipprv <= 3))
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tipo de provedor debe de ser el siguiente (0)-Regimen Comun (1)-Simplificado (2)-Gran Contribuyente (3)-Entidad Oficial "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tipo de provedor debe de ser el siguiente (0)-Regimen Comun (1)-Simplificado (2)-Gran Contribuyente (3)-Entidad Oficial (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                                dr["TIP_PRV_NOM"] = "";
+                            }
+                            else
+                            {
+                                switch (tipprv)
+                                {
+                                    case 0: dr["TIP_PRV_NOM"] = "Regimen Comun"; break;
+                                    case 1: dr["TIP_PRV_NOM"] = "Simplificado"; break;
+                                    case 2: dr["TIP_PRV_NOM"] = "Gran Contribuyente"; break;
+                                    case 3: dr["TIP_PRV_NOM"] = "Entidad Oficial"; break;
+                                }
+
                             }
                         }
                         else
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de provedor debe de ser numerico"; dt_errores.Rows.Add(row);
+                            dr["TIP_PRV_NOM"] = "";
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de provedor debe de ser numerico (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                         }
                     }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de provedor debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                    }
+
                     #endregion
 
                     #region estado
@@ -381,19 +422,246 @@ namespace SiasoftAppExt
                     {
                         if (int.TryParse(estado, out est))
                         {
-                            if (!(est == 0 && est == 1))
+                            if (!(est >= 0 && est <= 1))
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo estado debe de ser (0)-inactivo (1)-activo"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo estado debe de ser (0)-inactivo (1)-activo (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                             }
                         }
                         else
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de estado debe ser numerico"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de estado debe ser numerico (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de estado debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region clasific
+
+                    string clasific = dr["CLASIFIC"].ToString().Trim();
+                    int clasi;
+                    if (!string.IsNullOrEmpty(clasific))
+                    {
+                        if (int.TryParse(clasific, out clasi))
+                        {
+                            if (!(clasi >= 0 && clasi <= 5))
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo clasific debe de ser (0)-Todos (1)-Cliente (2)-Proveedor (3)-Empleado (4)-Socio (5)-Estado (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            }
+                        }
+                        else
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de clasific debe ser numerico (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo clasific debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region tdoc
+
+                    string tdoc = dr["TDOC"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(tdoc))
+                    {
+                        DataTable dt_doc = SiaWin.Func.SqlDT("select cod_tdo,nom_tdo from InMae_tdoc where cod_tdo='" + tdoc + "' ;", "tdoc", idemp);
+                        if (dt_doc.Rows.Count > 0)
+                        {
+                            dr["NOM_TDO"] = dt_doc.Rows[0]["nom_tdo"].ToString().Trim();
+                        }
+                        else
+                        {
+                            dr["NOM_TDO"] = "";
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tdoc debe de tener los codigos de la maestra de tipo de documentos"; dt_errores.Rows.Add(row);
+                        }
+
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tdoc debe de estar lleno"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region apl1
+
+                    string apl1 = dr["APL1"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(apl1))
+                    {
+                        if (apl1.Length > 60)
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo apellido de tercero debe ser menor de 60 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo apellido 1 de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region apl2
+
+                    string apl2 = dr["APL2"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(apl2))
+                    {
+                        if (apl2.Length > 60)
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo apellido 2 de tercero debe ser menor de 60 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo apellido 2 de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region nom1
+
+                    string nom1 = dr["NOM1"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(nom1))
+                    {
+                        if (nom1.Length > 60)
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre 1 de tercero debe ser menor de 60 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre 1 de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region nom2
+
+                    string nom2 = dr["NOM2"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(nom2))
+                    {
+                        if (nom2.Length > 60)
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre 2 de tercero debe ser menor de 60 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre 2 de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region raz
+
+                    string raz = dr["RAZ"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(raz))
+                    {
+                        if (raz.Length > 150)
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo razon social debe ser menor de 150 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
                         }
                     }
 
                     #endregion
 
+                    #region dir
+
+                    string dir = dr["DIR"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(dir))
+                    {
+                        if (dir.Length > 200)
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo dir debe ser menor de 200 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+
+                    #endregion
+
+                    #region tipo persona
+
+                    string tip_pers = dr["TIP_PERS"].ToString().Trim();
+                    int tippers;
+                    if (!string.IsNullOrEmpty(tip_pers))
+                    {
+                        if (int.TryParse(tip_pers, out tippers))
+                        {
+                            if (!(tippers >= 0 && tippers <= 1))
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de ser (0)-Natural (1)-Juridica (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            }
+                        }
+                        else
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de ser numerico (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+                    else
+                    {
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                    }
+
+                    #endregion
+
+                    #region dv
+
+                    string dv = dr["DV"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(dv))
+                    {
+                        if (dv.Length > 1)
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo digito de verificacion debe ser menor de 1 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+                    }
+
+                    #endregion
+
+                    #region codigo ciudad
+
+                    string cod_ciu = dr["COD_CIU"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(cod_ciu))
+                    {
+                        string query = "select cod_muni,nom_muni from MmMae_muni where cod_muni='" + cod_ciu + "' ;";
+
+                        DataTable dt_ciu = SiaWin.Func.SqlDT(query, "ciudad", idemp);
+
+                        if (dt_ciu.Rows.Count > 0)
+                        {
+                            dr["NOM_MUNI"] = dt_ciu.Rows[0]["nom_muni"].ToString().Trim();
+                        }
+                        else
+                        {
+                            dr["NOM_MUNI"] = "";
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo codigo de ciudad debe de tener los codigos de la maestra de ciudades  (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+
+                    }
+
+                    #endregion
+
+                    #region codigo pais
+
+                    string cod_pais = dr["COD_PAIS"].ToString().Trim();
+                    if (!string.IsNullOrEmpty(cod_pais))
+                    {
+                        DataTable dt_pais = SiaWin.Func.SqlDT("select cod_pais,nom_pais from MmMae_pais where cod_pais='" + cod_pais + "' ;", "pais", idemp);
+                        if (dt_pais.Rows.Count > 0)
+                        {
+                            dr["NOM_PAIS"] = dt_pais.Rows[0]["nom_pais"].ToString().Trim();
+                        }
+                        else
+                        {
+                            dr["NOM_PAIS"] = "";
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo codigo de pais debe de tener los codigos de la maestra de paises  (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        }
+
+                    }
+
+                    #endregion
 
                 }
 
@@ -410,82 +678,137 @@ namespace SiasoftAppExt
 
         private void BtnEjecutar_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    string query = "";
-            //    foreach (var item in _ter)
-            //    {
+            try
+            {
+                #region validacion
 
-            //        string cod_ter = item.Cod_ter;
-            //        string nom_ter = item.Nom_ter;
-            //        string dir1 = item.Dir1;
-            //        string tel1 = item.Tel1;
-            //        string email = item.Email;
-            //        string fec_ing = item.Fec_ing;
-
-            //        int temp_tip_prv;
-            //        string tip_prv = int.TryParse(item.Tip_prv, out temp_tip_prv) ? item.Tip_prv : "0";
-
-            //        int temp_estado;
-            //        string estado = int.TryParse(item.Estado, out temp_estado) ? item.Estado : "0";
-
-            //        int temp_clasi;
-            //        string clasific = int.TryParse(item.Clasific, out temp_clasi) ? item.Clasific : "0";
-
-            //        string tdoc = item.Tdoc;
-            //        string apl1 = item.Apl1;
-            //        string apl2 = item.Apl2;
-            //        string nom1 = item.Nom1;
-            //        string nom2 = item.Nom2;
-            //        string raz = item.Raz;
-            //        string dir = item.Dir;
-
-            //        int temp_tip_pers;
-            //        string tip_pers = int.TryParse(item.Tip_pers, out temp_tip_pers) ? item.Tip_pers : "0";
-
-            //        string Dv = item.Dv;
-            //        string cod_ciu = item.Cod_ciu;
-            //        string cod_pais = item.Cod_pais;
+                if (dataGridExcel.ItemsSource == null || dataGridExcel.View.Records.Count <= 0)
+                {
+                    MessageBox.Show("no hay datos para importar", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
 
-            //        if (string.IsNullOrEmpty(item.Error))
-            //        {
-            //            query += "update Comae_ter set nom_ter='" + nom_ter + "',dir1='" + dir + "',tel1='" + tel1 + "',email='" + email + "',fec_ing='" + fec_ing + "',tip_prv=" + tip_prv + ",estado=" + estado + ",clasific=" + clasific + ",tdoc='" + tdoc + "'," +
-            //                "apl1='" + apl1 + "',apl2='" + apl2 + "',nom1='" + nom1 + "',nom2='" + nom2 + "',RAZ='" + raz + "',dir='" + dir + "',tip_pers='" + tip_pers + "',dv='" + Dv + "',cod_ciu='" + cod_ciu + "',cod_pais='" + cod_pais + "' where cod_ter='" + cod_ter + "';";
-            //        }
-            //        else
-            //        {
-            //            query += "insert into Comae_ter (cod_ter,nom_ter,dir1,tel1,email,fec_ing,tip_prv,estado,clasific,tdoc,apl1,apl2,nom1,nom2,RAZ,dir,tip_pers,dv,cod_ciu,cod_pais) " +
-            //                "values ('" + cod_ter + "', '" + nom_ter + "','" + dir1 + "','" + tel1 + "','" + email + "','" + fec_ing + "','" + tip_prv + "','" + estado + "'," +
-            //                "'" + clasific + "','" + tdoc + "','" + apl1 + "','" + apl2 + "','" + nom1 + "','" + nom2 + "','" + raz + "','" + dir + "','" + tip_pers + "'," +
-            //                "'" + Dv + "','" + cod_ciu + "','" + cod_pais + "');";
-            //        }
-            //    }
+                if (dt_errores.Rows.Count > 0)
+                {
+                    MessageBox.Show("la importacion contiene errores debe de estar todo correcto", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                };
 
 
-            //    //MessageBox.Show(query);
-
-            //    if (SiaWin.Func.SqlCRUD(query, idemp) == true)
-            //    {
-            //        MessageBox.Show("el proceso se ejecuto exitosamente");
-            //        dataGridExcel.ItemsSource = null;
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("fallo el proceso por favor verifique los campos");
-            //    }
+                #endregion
 
 
-            //}
-            //catch (Exception w)
-            //{
-            //    MessageBox.Show("ERROR AL EJECUTAR EL PROCESO:" + w);
-            //}
+                #region insercion
+
+                if (MessageBox.Show("Usted desea generar importacion y/o verificacion de terceros?", "Importacion", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        string query = "";
+                        foreach (System.Data.DataRow item in dt.Rows)
+                        {
+                            bool existe = Convert.ToBoolean(item["TER_EXIST"]);
+
+                            string cod_ter = item["COD_TER"].ToString().Trim();
+                            string nom_ter = item["NOM_TER"].ToString().Trim();
+                            string dir1 = item["DIR1"].ToString().Trim();
+                            string tel1 = item["TEL1"].ToString().Trim();
+                            string email = item["EMAIL"].ToString().Trim();
+                            string fec_ing = item["FEC_ING"].ToString().Trim();
+                            string tip_prv = item["TIP_PRV"].ToString().Trim();
+                            string estado = item["ESTADO"].ToString().Trim();
+                            string clasific = item["CLASIFIC"].ToString().Trim();
+                            string tdoc = item["TDOC"].ToString().Trim();
+                            string apl1 = item["APL1"].ToString().Trim();
+                            string apl2 = item["APL2"].ToString().Trim();
+                            string nom1 = item["NOM1"].ToString().Trim();
+                            string nom2 = item["NOM2"].ToString().Trim();
+                            string raz = item["RAZ"].ToString().Trim();
+                            string dir = item["DIR"].ToString().Trim();
+                            string tip_pers = item["TIP_PERS"].ToString().Trim();
+                            string dv = item["DV"].ToString().Trim();
+                            string cod_ciu = item["cod_ciu"].ToString().Trim();
+                            string cod_pais = item["cod_pais"].ToString().Trim();
+
+                            if (existe)
+                            {
+                                query += "update Comae_ter set nom_ter='" + nom_ter + "',dir1='" + dir1 + "',tel1='" + tel1 + "',email='" + email + "',fec_ing='" + fec_ing + "',tip_prv='" + tip_prv + "',estado=" + estado + ",clasific=" + clasific + ",tdoc='" + tdoc + "'," +
+                                                         "apl1='" + apl1 + "',apl2='" + apl2 + "',nom1='" + nom1 + "',nom2='" + nom2 + "',RAZ='" + raz + "',dir='" + dir + "',tip_pers='" + tip_pers + "',dv='" + dv + "',cod_ciu='" + cod_ciu + "',cod_pais='" + cod_pais + "' where cod_ter='" + cod_ter + "';";
+                            }
+                            else
+                            {
+                                query += "insert into Comae_ter (cod_ter,nom_ter,dir1,tel1,email,fec_ing,tip_prv,estado,clasific,tdoc,apl1,apl2,nom1,nom2,RAZ,dir,tip_pers,dv,cod_ciu,cod_pais) " +
+                           "values ('" + cod_ter + "', '" + nom_ter + "','" + dir1 + "','" + tel1 + "','" + email + "','" + fec_ing + "','" + tip_prv + "','" + estado + "'," +
+                           "'" + clasific + "','" + tdoc + "','" + apl1 + "','" + apl2 + "','" + nom1 + "','" + nom2 + "','" + raz + "','" + dir + "','" + tip_pers + "'," +
+                           "'" + dv + "','" + cod_ciu + "','" + cod_pais + "');";
+                            }
+                        }
+
+                        if (SiaWin.Func.SqlCRUD(query, idemp) == true) { MessageBox.Show("la importacion fue exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation); }
+                    }
+
+                    dataGridExcel.ItemsSource = null;
+                    dt.Clear();
+                    dt_errores.Clear();
+                    Tx_total.Text = "0";
+                    Tx_errores.Text = "0";
+                    Tx_prv.Text = "-";
+                    Tx_exist.Text = "";
+                    Tx_ciudad.Text = "";
+                    Tx_pais.Text = "";
+                    Tx_doc.Text = "";
+                }
+
+                #endregion
+
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("ERROR AL EJECUTAR EL PROCESO:" + w);
+            }
         }
 
         private void BtnErrores_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                SiaWin.Browse(dt_errores);
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrir la lista de errores:" + w);
+            }
+        }
 
+        private void dataGridExcel_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            try
+            {
+                if ((sender as SfDataGrid).SelectedIndex >= 0)
+                {
+                    var reflector = (sender as SfDataGrid).View.GetPropertyAccessProvider();
+                    var rowData = (sender as SfDataGrid).GetRecordAtRowIndex((sender as SfDataGrid).SelectedIndex + 1);
+                    Tx_prv.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "TIP_PRV_NOM").ToString()) ? reflector.GetValue(rowData, "TIP_PRV_NOM").ToString().ToUpper() : "---";
+                    Tx_ciudad.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "NOM_MUNI").ToString()) ? reflector.GetValue(rowData, "NOM_MUNI").ToString().ToUpper() : "---";
+                    Tx_pais.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "NOM_PAIS").ToString()) ? reflector.GetValue(rowData, "NOM_PAIS").ToString().ToUpper() : "---";
+                    Tx_doc.Text = !string.IsNullOrEmpty(reflector.GetValue(rowData, "NOM_TDO").ToString()) ? reflector.GetValue(rowData, "NOM_TDO").ToString().ToUpper() : "---";
+
+                    if (!string.IsNullOrEmpty(reflector.GetValue(rowData, "TER_EXIST").ToString()))
+                    {
+                        bool f = Convert.ToBoolean(reflector.GetValue(rowData, "TER_EXIST"));
+                        Tx_exist.Text = f ? "SI" : "NO";
+                    }
+
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("errro al seleccionar:" + w);
+            }
         }
 
 
