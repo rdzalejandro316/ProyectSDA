@@ -12,3 +12,17 @@ D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCue
 D:\Empresas\SDA\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.pdb
 D:\Empresas\SDA\Library\DeterioroCuentasPorCobrar.dll
 D:\Empresas\SDA\Library\DeterioroCuentasPorCobrar.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\DeterioroCuentasPorCobrar\obj\Debug\DeterioroCuentasPorCobrar.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\DeterioroCuentasPorCobrar.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\DeterioroCuentasPorCobrar.pdb

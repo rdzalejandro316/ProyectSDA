@@ -50,6 +50,7 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Foreground" Value="{StaticResource ColorMain}"/>
             <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
         </Style>
     </UserControl.Resources>
 
@@ -110,29 +111,22 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <SiaSf:SfDataGrid  x:Name="dataGridCxC"  FrozenColumnCount="2" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" FontFamily="Times New Roman" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}">
+                    <SiaSf:SfDataGrid  x:Name="dataGridCxC"  FrozenColumnCount="2" AutoGenerateColumns="False" AllowResizingColumns="True"  ShowGroupDropArea="False" FontSize="10" FontFamily="Times New Roman" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="dataGridCxC_SelectionChanged">
                         <SiaSf:SfDataGrid.Columns>
                             <SiaSf:GridTextColumn HeaderText="Nit/cc" MappingName="cod_ter" Width="80"/>
-                            <SiaSf:GridTextColumn HeaderText="Nombre cliente"  MappingName="nom_ter" Width="220"/>
-                            <SiaSf:GridTextColumn HeaderText="Doc Conta" MappingName="num_trn" Width="90" />
-                            <SiaSf:GridTextColumn HeaderText="Doc Ref" MappingName="doc_ref" Width="90" />
+                            <SiaSf:GridTextColumn HeaderText="Nombre cliente"  MappingName="nom_ter" Width="150"/>
+                            <SiaSf:GridTextColumn HeaderText="Doc Conta" MappingName="doc_ref" Width="90" />
+                            <SiaSf:GridTextColumn HeaderText="Doc Ref" MappingName="doc_mov" Width="90" />
                             <SiaSf:GridTextColumn MappingName="cod_cta" IsHidden="True"/>
                             <SiaSf:GridTextColumn MappingName="nom_cta" IsHidden="True"/>
-                            <SiaSf:GridTextColumn HeaderText="Dias Venc" MappingName="dias" Width="90"/>
-                            <SiaSf:GridTextColumn HeaderText="Sin Vencer" MappingName="dias" Width="90"/>
-                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=valor,StringFormat='{}{0:N2}'}"  Width="85" HeaderText="Vencido" TextAlignment="Right" AllowFiltering="False"/>
-                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=saldo, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Saldo" TextAlignment="Right" AllowFiltering="False"/>
-                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=deterioro, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Det Causado" TextAlignment="Right" AllowFiltering="False"/>
-                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=valarch, StringFormat='{}{0:N2}'}" Width="100" HeaderText="Valor Pres Archivo" TextAlignment="Right" AllowFiltering="False"/>
-                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=det_arch, StringFormat='{}{0:N2}'}" Width="100" HeaderText="Deterioro Archivo" TextAlignment="Right" AllowFiltering="False"/>
-                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=difer, StringFormat='{}{0:N2}'}" Width="100" HeaderText="Ajuste" TextAlignment="Right" AllowFiltering="False"/>
-                            <!--<SiaSf:GridTemplateColumn MappingName="Doc" Width="56"  AllowFiltering="False">
-                                <SiaSf:GridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button x:Name="BtnViewDoc" Content="...." Click="BtnViewDoc_Click" Background="{StaticResource ColorMain}" Cursor="Hand" BorderBrush="{x:Null}"/>
-                                    </DataTemplate>
-                                </SiaSf:GridTemplateColumn.CellTemplate>
-                            </SiaSf:GridTemplateColumn>-->
+                            <SiaSf:GridTextColumn HeaderText="Dias Venc" MappingName="vencido" Width="80"/>
+                            <SiaSf:GridTextColumn HeaderText="Sin Vencer" MappingName="sin_ven" Width="80"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=valor,StringFormat='{}{0:N2}'}"  Width="85" HeaderText="Vencido" TextAlignment="Right"/>
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=saldo, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Saldo" TextAlignment="Right" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=deterioro, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Det Causado" TextAlignment="Right" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=valarch, StringFormat='{}{0:N2}'}" Width="100" HeaderText="Valor Pres Archivo" TextAlignment="Right" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=det_arch, StringFormat='{}{0:N2}'}" Width="100" HeaderText="Deterioro Archivo" TextAlignment="Right" />
+                            <SiaSf:GridTextColumn DisplayBinding="{Binding Path=difer, StringFormat='{}{0:N2}'}" Width="100" HeaderText="Ajuste" TextAlignment="Right" />
                         </SiaSf:SfDataGrid.Columns>
                     </SiaSf:SfDataGrid>
 

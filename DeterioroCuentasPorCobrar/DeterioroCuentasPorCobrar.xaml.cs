@@ -205,7 +205,7 @@ namespace SiasoftAppExt
                     {
                         dt_consulta = slowTask.Result;
                         dataGridCxC.ItemsSource = dt_consulta.DefaultView;
-                        TxRegistros.Text = dt_consulta.Rows.Count.ToString();                        
+                        TxRegistros.Text = dt_consulta.Rows.Count.ToString();
                     }
                     else
                     {
@@ -233,18 +233,12 @@ namespace SiasoftAppExt
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
                 DataTable dt = new DataTable();
-                cmd = new SqlCommand("_empSpCoAnalisisCxc", con);
+                cmd = new SqlCommand("_empSpCoAnalisisCxcDeterioroCartera", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Ter", cter);
-                cmd.Parameters.AddWithValue("@Cta", ctas);
-                cmd.Parameters.AddWithValue("@TipoApli", 1);
-                cmd.Parameters.AddWithValue("@Resumen", 1);
-                cmd.Parameters.AddWithValue("@Fecha", Fi);
-                cmd.Parameters.AddWithValue("@TrnCo", "");
-                cmd.Parameters.AddWithValue("@NumCo", "");
-                cmd.Parameters.AddWithValue("@Cco", "");
-                cmd.Parameters.AddWithValue("@Ven", "");
-                cmd.Parameters.AddWithValue("@codemp", codemp);
+                cmd.Parameters.AddWithValue("@cod_cta", ctas);
+                cmd.Parameters.AddWithValue("@cod_ter", cter);
+                cmd.Parameters.AddWithValue("@fec_con", Fi);
+                cmd.Parameters.AddWithValue("@codemp", "010");
                 da = new SqlDataAdapter(cmd);
                 da.SelectCommand.CommandTimeout = 0;
                 da.Fill(dt);
@@ -255,10 +249,9 @@ namespace SiasoftAppExt
                     dt.Columns.Add("valarch", typeof(decimal));
                     dt.Columns.Add("det_arch", typeof(decimal));
                     dt.Columns.Add("difer", typeof(decimal));
-                    dt.Columns.Add("deterioro", typeof(decimal));
+
                     foreach (DataRow item in dt.Rows)
                     {
-                        item["deterioro"] = 0;
                         item["valarch"] = 0;
                         item["det_arch"] = 0;
                         item["difer"] = 0;
@@ -276,10 +269,6 @@ namespace SiasoftAppExt
         }
 
 
-        private void BtnViewDoc_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void BtnExportar_Click(object sender, RoutedEventArgs e)
         {
@@ -486,7 +475,7 @@ namespace SiasoftAppExt
                             string cod_cta = dr["COD_CTA"].ToString().Trim();
                             string doc_mov = dr["DOC_MOV"].ToString().Trim();
 
-                            DataRow dr_find = dt_consulta.Select("cod_ter='" + cod_ter + "' and cod_cta='" + cod_cta + "' ").FirstOrDefault();
+                            DataRow dr_find = dt_consulta.Select("cod_ter='" + cod_ter + "' and cod_cta='" + cod_cta + "' and doc_ref='" + doc_mov + "' ").FirstOrDefault();
                             if (dr_find != null)
                             {
 
@@ -533,6 +522,12 @@ namespace SiasoftAppExt
                 };
 
 
+                if (dt_importar.Rows.Count <= 0)
+                {
+                    MessageBox.Show("debe de importar por lo menos un deterioro a realizar", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                };
+
                 #endregion
 
 
@@ -545,12 +540,22 @@ namespace SiasoftAppExt
 
                     dataGridCxC.ItemsSource = null;
                     dt_consulta.Clear();
+                    dt_importar.Clear();
                     dt_errores.Clear();
                     TxRegistros.Text = "0";
                     TxImportados.Text = "0";
                     Tx_errores.Text = "0";
                     TxCodCta.Text = "";
                     TxNomCta.Text = "";
+
+                    Tx30.Text = "---";
+                    Tx60.Text = "---";
+                    Tx90.Text = "---";
+                    Tx120.Text = "---";
+                    Tx150.Text = "---";
+                    Tx180.Text = "---";
+                    Tx360.Text = "---";
+                    Txm360.Text = "---";
                 }
 
                 #endregion
@@ -589,7 +594,8 @@ namespace SiasoftAppExt
                         string fec_trn = DateTime.Now.ToString();
 
 
-                        string sqlConsecutivo = "declare @fecdoc as datetime;";
+                        string sqlConsecutivo = "declare @fecdoc as datetime;";                        
+                        sqlConsecutivo += "update Comae_trn set num_act=num_act+1 where cod_trn='"+cod_trn+"';";
                         sqlConsecutivo += "set @fecdoc = getdate();declare @ini as char(4);declare @num as varchar(12);declare @iConsecutivo char(12)='';";
                         sqlConsecutivo += "declare @iFolioHost int = 0;";
                         sqlConsecutivo += "SELECT @iFolioHost=num_act,@ini=rtrim(inicial) FROM comae_trn WHERE cod_trn='" + cod_trn + "' set @num=@iFolioHost;";
@@ -603,17 +609,17 @@ namespace SiasoftAppExt
                         {
                             string cod_cta = dt["cod_cta"].ToString().Trim();
 
-                            string cta_gdet = "5347140101";//dt["cta_gdet"].ToString().Trim();
-                            string cta_det = "1386140101";//dt["cta_det"].ToString().Trim();
+                            string cta_gdet = dt["cta_gdet"].ToString().Trim();
+                            string cta_det = dt["cta_det"].ToString().Trim();
 
                             string cod_ter = dt["cod_ter"].ToString().Trim();
-                            string doc_mov = "";
+                            string doc_mov = dt["doc_mov"].ToString().Trim();
                             string des_mov = "Deterioro Cartera - " + doc_mov;
 
                             double difer = Convert.ToDouble(dt["difer"]);
                             double valor = Convert.ToDouble(dt["det_arch"]) < 0 ? difer * -1 : difer;
 
-                            if (difer > 0)
+                            if (valor > 0)
                             {
                                 sql_cue += @"INSERT INTO cocue_doc (idregcab,cod_trn,num_trn,cod_cta,cod_ter,des_mov,bas_mov,deb_mov,cre_mov) values (@NewID,'" + cod_trn + "',@iConsecutivo,'" + cta_gdet + "','" + cod_ter + "','" + des_mov + "',0," + valor.ToString("F", CultureInfo.InvariantCulture) + ",0);";
 
@@ -648,6 +654,38 @@ namespace SiasoftAppExt
                 MessageBox.Show("error al abrir la lista de errores:" + w);
             }
         }
+
+        private void dataGridCxC_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (dataGridCxC.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)dataGridCxC.SelectedItems[0];
+                    TxCodCta.Text = row["cod_cta"].ToString().Trim();
+                    TxNomCta.Text = row["nom_cta"].ToString().Trim();
+
+                    Tx30.Text = row["A1_30"].ToString().Trim();
+                    Tx60.Text = row["A31_60"].ToString().Trim();
+                    Tx90.Text = row["A61_90"].ToString().Trim();
+                    Tx120.Text = row["A91_120"].ToString().Trim();
+                    Tx150.Text = row["A120_150"].ToString().Trim();
+                    Tx180.Text = row["A150_180"].ToString().Trim();
+                    Tx360.Text = row["A181_360"].ToString().Trim();
+                    Txm360.Text = row["mas_360"].ToString().Trim();
+
+
+
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al seleccionar:" + w);
+            }
+        }
+
+
 
 
     }
