@@ -108,10 +108,14 @@
                         <syncfusion:GridTextColumn HeaderText="NUM_TRN" MappingName="num_trn" Width="100"/>
                         <syncfusion:GridDateTimeColumn HeaderText="FEC_TRN" MappingName="fec_trn" Width="100"/>
                         <syncfusion:GridTextColumn HeaderText="COD_CTA" MappingName="cod_cta" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="COD_TER" MappingName="cod_ter" Width="80"/>
                         <syncfusion:GridNumericColumn HeaderText="BAS_MOV" MappingName="bas_mov" Width="90" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
                         <syncfusion:GridNumericColumn HeaderText="DEB_MOV" MappingName="deb_mov" Width="90" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
                         <syncfusion:GridNumericColumn HeaderText="CRE_MOV" MappingName="cre_mov" Width="90" NumberDecimalDigits="0" NumberDecimalSeparator="." NumberGroupSizes="3" NumberGroupSeparator=","/>
                         <syncfusion:GridTextColumn HeaderText="DES_MOV" MappingName="des_mov" Width="250"/>
+                        <syncfusion:GridTextColumn HeaderText="DOC_CRUC" MappingName="doc_cruc" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="DOC_REF" MappingName="doc_ref" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="FEC_VENC" MappingName="fec_venc" Width="80"/>
                     </syncfusion:SfDataGrid.Columns>
                 </syncfusion:SfDataGrid>
             </Grid>

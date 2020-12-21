@@ -216,54 +216,55 @@ namespace SiasoftAppExt
         {
             try
             {
-                if (string.IsNullOrEmpty(Tx_cuenta.Text))
-                {
-                    MessageBox.Show("el campo cuenta debe de estar lleno", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(Tx_tercero.Text))
-                {
-                    MessageBox.Show("el campo tercero debe de estar lleno", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    return;
-                }
 
                 string name = (sender as Button).Name;
+                
 
-                CancellationTokenSource source = new CancellationTokenSource();
-                sfBusyIndicator.IsBusy = true;
-                dataGridRefe.ItemsSource = null;
-                PanelBlock.IsEnabled = false;
+                string tercero = ""; bool flag_ter = false;
+                string cuenta = ""; bool flag_cta = false;
 
-
-
-                //string tercero = name == "BtnTercero" ? Tx_tercero.Text : "";
-                //string cuenta = Tx_cuenta.Text;
-
-                string tercero = "";
-                string cuenta = "";
                 switch (name)
                 {
                     case "BtnCuenta":
                         tercero = "";
                         cuenta = Tx_cuenta.Text.Trim();
+                        flag_cta = true;
                         break;
                     case "BtnTercero":
                         tercero = Tx_tercero.Text.Trim();
                         cuenta = "";
-                        break;                    
+                        flag_ter = true;
+                        break;
                     case "BtnTerCta":
                         tercero = Tx_tercero.Text.Trim();
                         cuenta = Tx_cuenta.Text.Trim();
+                        flag_cta = true;
+                        flag_ter = true;
                         break;
                 }
+
+                if (string.IsNullOrEmpty(Tx_cuenta.Text) && flag_cta)
+                {
+                    MessageBox.Show("el campo cuenta debe de estar lleno", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Tx_tercero.Text) && flag_ter)
+                {
+                    MessageBox.Show("el campo tercero debe de estar lleno", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                sfBusyIndicator.IsBusy = true;
+                dataGridRefe.ItemsSource = null;
+                PanelBlock.IsEnabled = false;
 
 
                 string fecini = TxFecIni.Text;
                 string fecfin = TxFecFin.Text;
 
 
-                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(tercero, cuenta, fecini, fecfin), source.Token);
+                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(tercero, cuenta, fecini, fecfin));
                 await slowTask;
 
                 if (((DataTable)slowTask.Result).Rows.Count > 0)
@@ -306,7 +307,7 @@ namespace SiasoftAppExt
 
                 if (!string.IsNullOrEmpty(cod_ter) && string.IsNullOrEmpty(cod_cta))
                 {
-                    where += " cue.cod_ter='" + cod_ter+ "' ";
+                    where += " cue.cod_ter='" + cod_ter + "' ";
                 }
 
                 if (!string.IsNullOrEmpty(cod_ter) && !string.IsNullOrEmpty(cod_cta))
@@ -316,7 +317,7 @@ namespace SiasoftAppExt
 
 
 
-                string query = "select cab.idreg,cue.per_doc,cue.ano_doc,cue.cod_ter,cue.cod_cta,cta.nom_cta,cue.cod_ciu,ciu.nom_ciu,cue.cod_trn,trn.nom_trn,cue.num_trn,cab.fec_trn,cue.des_mov,cue.bas_mov,cue.deb_mov,cue.cre_mov ";
+                string query = "select cab.idreg,cue.per_doc,cue.ano_doc,cue.cod_ter,cue.cod_cta,cta.nom_cta,cue.cod_ciu,ciu.nom_ciu,cue.cod_trn,trn.nom_trn,cue.num_trn,cab.fec_trn,cue.des_mov,cue.bas_mov,cue.deb_mov,cue.cre_mov,cue.doc_cruc,cue.doc_ref,cue.fec_venc ";
                 query += "from Cocue_doc cue ";
                 query += "inner join cocab_doc cab on cab.idreg = cue.idregcab ";
                 query += "inner join comae_trn trn on trn.cod_trn = cab.cod_trn ";
@@ -325,7 +326,7 @@ namespace SiasoftAppExt
                 query += "WHERE  " + where + " ";
                 query += "AND convert(date,cab.fec_trn,105) between '" + fec_ini + "' and '" + fec_fin + "'; ";
 
-                               
+
                 System.Data.DataTable dt = SiaWin.Func.SqlDT(query, "tabla", idemp);
                 return dt;
             }
