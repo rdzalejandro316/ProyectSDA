@@ -338,24 +338,7 @@ namespace SiasoftAppExt
 
 
                     #endregion
-
-                    #region email
-
-                    string email = dr["EMAIL"].ToString().Trim();
-                    if (!string.IsNullOrEmpty(email))
-                    {
-                        if (email.Length > 100)
-                        {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de email debe ser menor de 100 caracteristicas (" + cod_ter + ")"; dt_errores.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de email debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
-                    }
-
-
-                    #endregion
+                    
 
                     #region  fecha de ingreso
 
@@ -487,75 +470,7 @@ namespace SiasoftAppExt
                     }
 
                     #endregion
-
-                    #region apl1
-
-                    string apl1 = dr["APL1"].ToString().Trim();
-                    if (!string.IsNullOrEmpty(apl1))
-                    {
-                        if (apl1.Length > 60)
-                        {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo apellido de tercero debe ser menor de 60 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo apellido 1 de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
-                    }
-
-                    #endregion
-
-                    #region apl2
-
-                    string apl2 = dr["APL2"].ToString().Trim();
-                    if (!string.IsNullOrEmpty(apl2))
-                    {
-                        if (apl2.Length > 60)
-                        {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo apellido 2 de tercero debe ser menor de 60 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo apellido 2 de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
-                    }
-
-                    #endregion
-
-                    #region nom1
-
-                    string nom1 = dr["NOM1"].ToString().Trim();
-                    if (!string.IsNullOrEmpty(nom1))
-                    {
-                        if (nom1.Length > 60)
-                        {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre 1 de tercero debe ser menor de 60 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre 1 de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
-                    }
-
-                    #endregion
-
-                    #region nom2
-
-                    string nom2 = dr["NOM2"].ToString().Trim();
-                    if (!string.IsNullOrEmpty(nom2))
-                    {
-                        if (nom2.Length > 60)
-                        {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre 2 de tercero debe ser menor de 60 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre 2 de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
-                    }
-
-                    #endregion
-
+                 
                     #region raz
 
                     string raz = dr["RAZ"].ToString().Trim();

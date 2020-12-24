@@ -87,7 +87,7 @@
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
 
-                        <ToggleButton x:Name="Togle1" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Cuentas" Background="{StaticResource ColorMain}"/>
+                        <ToggleButton x:Name="Togle1" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Cuentas" Background="{StaticResource ColorMain}" Margin="0,2,0,50" Grid.RowSpan="2"/>
                         <ToggleButton x:Name="Togle2" Grid.Row="1" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Ciudad" Background="{StaticResource ColorMain}"/>
                         <ToggleButton x:Name="Togle3" Grid.Row="2" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="Sucursal" Background="{StaticResource ColorMain}"/>
                         <ToggleButton x:Name="Togle4" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchToggleButton}" Focusable="False" Cursor="Hand" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Tag="CCosto" Background="{StaticResource ColorMain}"/>

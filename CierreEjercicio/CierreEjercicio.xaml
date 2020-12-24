@@ -126,10 +126,10 @@
                         <TextBlock Name="Total" Grid.Column="1" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" />
 
                         <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                            <TextBlock Text="DEBITO :" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock Name="TxDebito" Text="..." Width="200" Foreground="White" Margin="5,0,0,0" FontSize="10"/>
-                            <TextBlock Text="CREDITO :" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock Name="TxCredito" Text="..." Width="250" Foreground="White" Margin="5,0,0,0" FontSize="10"/>
+                            <TextBlock Text="DEBITO :" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" FontSize="12"/>
+                            <TextBlock Name="TxDebito" Text="..." Width="200" Foreground="White" Margin="5,0,0,0" FontSize="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="CREDITO :" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" FontSize="12"/>
+                            <TextBlock Name="TxCredito" Text="..." Width="250" Foreground="White" Margin="5,0,0,0" FontSize="10" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
                 </Grid>

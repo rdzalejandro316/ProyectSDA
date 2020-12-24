@@ -13,6 +13,7 @@ using System.Windows.Markup;
 using System.Windows.Media.Animation;
 using System.Xml.Schema;
 
+
 namespace SiasoftAppExt
 {
 
@@ -91,7 +92,19 @@ namespace SiasoftAppExt
 
                 BTNviewSaldosNormales.IsEnabled = TipoCBX.SelectedIndex == 1 && (Name == "Togle1" || Name == "Togle5") ? true : false;
                 BTNviewSaldosReclasificados.IsEnabled = TipoCBX.SelectedIndex == 1 && (Name == "Togle1" || Name == "Togle5") ? true : false;
+                
+                switch (Name)
+                {
+                    case "Togle1": CodNue.MaxLength = 15; CodAnt.MaxLength = 15; break;
+                    case "Togle2": CodNue.MaxLength = 5; CodAnt.MaxLength = 5; break;
+                    case "Togle3": CodNue.MaxLength = 3; CodAnt.MaxLength = 3; break;
+                    case "Togle4": CodNue.MaxLength = 6; CodAnt.MaxLength = 6; break;
+                    case "Togle5": CodNue.MaxLength = 15; CodAnt.MaxLength = 15; break;
+                    case "Togle6": CodNue.MaxLength = 15; CodAnt.MaxLength = 15; break;
+                }
 
+                BTNviewSaldosNormales.IsEnabled = TipoCBX.SelectedIndex == 1 && (Name == "Togle1" || Name == "Togle5") ? true : false;
+                BTNviewSaldosReclasificados.IsEnabled = TipoCBX.SelectedIndex == 1 && (Name == "Togle1" || Name == "Togle5") ? true : false;
 
                 Tab_reclas.Text = ((ToggleButton)sender).Tag.ToString();
                 BTNreclasificar.Tag = ((ToggleButton)sender).Tag.ToString();
@@ -180,6 +193,9 @@ namespace SiasoftAppExt
                 case "Tercero":
                     tabla = "Comae_ter"; codigo = "cod_ter"; nombre = "nom_ter";
                     break;
+                case "TDocmt":
+                    tabla = "comae_trn"; codigo = "cod_trn"; nombre = "nom_trn";
+                    break;
 
             }
 
@@ -225,6 +241,9 @@ namespace SiasoftAppExt
                         break;
                     case "Tercero":
                         tabla = "Comae_ter"; codigo = "cod_ter"; nombre = "nom_ter";
+                        break;
+                    case "TDocmt":
+                        tabla = "comae_trn"; codigo = "cod_trn"; nombre = "nom_trn";
                         break;
                 }
 
@@ -633,6 +652,9 @@ namespace SiasoftAppExt
                             break;
                         case "Tercero":
                             tabla = "Comae_ter"; codigo = "cod_ter"; nombre = "nom_ter";
+                            break;
+                        case "TDocmt":
+                            tabla = "comae_trn"; codigo = "cod_trn"; nombre = "nom_trn";
                             break;
                     }
 
