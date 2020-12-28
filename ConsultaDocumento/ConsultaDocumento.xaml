@@ -56,7 +56,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid Style="{StaticResource Card}" >
+            <Grid Style="{StaticResource Card}">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>

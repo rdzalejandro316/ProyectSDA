@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.g.cs
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.baml
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.g.resources
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.dll
+D:\Empresas\SDA\Library\project\AcumuladoCuentaTercero\obj\Debug\AcumuladoCuentaTercero.pdb
+D:\Empresas\SDA\Library\AcumuladoCuentaTercero.dll
+D:\Empresas\SDA\Library\AcumuladoCuentaTercero.pdb

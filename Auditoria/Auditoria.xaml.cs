@@ -31,13 +31,14 @@ namespace SiasoftAppExt
     //WinDescto.WindowStartupLocation = WindowStartupLocation.CenterScreen;
     //WinDescto.ShowDialog(); 
 
-    public partial class Auditoria : Window
+    public partial class Auditoria : UserControl
     {
         dynamic SiaWin;
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
         public string eventBuscar = "";
+        
 
         public Auditoria()
         {

@@ -1,0 +1,14 @@
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.g.cs
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.baml
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.g.resources
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.dll
+D:\Empresas\SDA\Library\project\CreacionActualizacionCuentasXLS\obj\Debug\CreacionActualizacionCuentasXLS.pdb
+D:\Empresas\SDA\Library\CreacionActualizacionCuentasXLS.dll
+D:\Empresas\SDA\Library\CreacionActualizacionCuentasXLS.pdb

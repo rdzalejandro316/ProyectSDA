@@ -40,7 +40,7 @@
                         </Border.Effect>
                     </Border>
                     <SiaSf:SfBusyIndicator  Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="100" Panel.ZIndex="2" IsBusy="False" FontWeight="Bold" Foreground="{StaticResource ColorMain}"/>
-                    <Grid Name="GridConfig" Margin="10">
+                    <Grid Name="GridConfig" Margin="15">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>

@@ -127,6 +127,7 @@ namespace SiasoftAppExt
                 cmd.Parameters.AddWithValue("@PasarSaldos", saldo);
                 cmd.Parameters.AddWithValue("@codemp", empresa);
                 da = new SqlDataAdapter(cmd);
+                da.SelectCommand.CommandTimeout = 0;
                 da.Fill(ds);
                 con.Close();
                 return ds;
