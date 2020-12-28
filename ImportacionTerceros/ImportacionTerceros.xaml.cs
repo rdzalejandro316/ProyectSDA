@@ -267,6 +267,8 @@ namespace SiasoftAppExt
                 dt.Columns.Add("NOM_MUNI", typeof(string));
                 dt.Columns.Add("NOM_PAIS", typeof(string));
 
+
+                int linea = 1;
                 //validar campo por campo
                 foreach (System.Data.DataRow dr in dt.Rows)
                 {
@@ -281,7 +283,7 @@ namespace SiasoftAppExt
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo de tercero debe de estar lleno"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo de tercero debe de estar lleno (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                     }
 
                     #endregion
@@ -293,7 +295,7 @@ namespace SiasoftAppExt
                     {
                         if (nom_ter.Length > 100)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre de tercero debe ser menor de 100 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo nombre de tercero debe ser menor de 100 caracteres (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
                     }
                     else
@@ -310,12 +312,12 @@ namespace SiasoftAppExt
                     {
                         if (dir1.Length > 120)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de direccion debe ser menor de 120 caracteristicas (" + cod_ter + ") "; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de direccion debe ser menor de 120 caracteristicas (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de direccion debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de direccion debe de estar lleno (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                     }
 
 
@@ -328,17 +330,16 @@ namespace SiasoftAppExt
                     {
                         if (tel1.Length > 50)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de telefono debe ser menor de 50 caracteristicas (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de telefono debe ser menor de 50 caracteristicas (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de telefono debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de telefono debe de estar lleno (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                     }
 
 
                     #endregion
-                    
 
                     #region  fecha de ingreso
 
@@ -348,12 +349,12 @@ namespace SiasoftAppExt
                     {
                         if (DateTime.TryParse(fec_ing, out fecing) == false)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de fecha de ingreso debe ser de tipo fecha (dd/MM/yyyy) (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de fecha de ingreso debe ser de tipo fecha (dd/MM/yyyy) (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de fecha de ingreso debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de fecha de ingreso debe de estar lleno (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                     }
 
 
@@ -369,7 +370,7 @@ namespace SiasoftAppExt
                         {
                             if (!(tipprv >= 0 && tipprv <= 3))
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tipo de provedor debe de ser el siguiente (0)-Regimen Comun (1)-Simplificado (2)-Gran Contribuyente (3)-Entidad Oficial (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tipo de provedor debe de ser el siguiente (0)-Regimen Comun (1)-Simplificado (2)-Gran Contribuyente (3)-Entidad Oficial (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                                 dr["TIP_PRV_NOM"] = "";
                             }
                             else
@@ -387,12 +388,12 @@ namespace SiasoftAppExt
                         else
                         {
                             dr["TIP_PRV_NOM"] = "";
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de provedor debe de ser numerico (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de provedor debe de ser numerico (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de provedor debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de provedor debe de estar lleno (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                     }
 
                     #endregion
@@ -407,17 +408,17 @@ namespace SiasoftAppExt
                         {
                             if (!(est >= 0 && est <= 1))
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo estado debe de ser (0)-inactivo (1)-activo (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo estado debe de ser (0)-inactivo (1)-activo (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                             }
                         }
                         else
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de estado debe ser numerico (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de estado debe ser numerico (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de estado debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de estado debe de estar lleno (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                     }
 
                     #endregion
@@ -432,17 +433,17 @@ namespace SiasoftAppExt
                         {
                             if (!(clasi >= 0 && clasi <= 5))
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo clasific debe de ser (0)-Todos (1)-Cliente (2)-Proveedor (3)-Empleado (4)-Socio (5)-Estado (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo clasific debe de ser (0)-Todos (1)-Cliente (2)-Proveedor (3)-Empleado (4)-Socio (5)-Estado (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                             }
                         }
                         else
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de clasific debe ser numerico (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo de clasific debe ser numerico (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo clasific debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo clasific debe de estar lleno (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                     }
 
                     #endregion
@@ -460,17 +461,17 @@ namespace SiasoftAppExt
                         else
                         {
                             dr["NOM_TDO"] = "";
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tdoc debe de tener los codigos de la maestra de tipo de documentos"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tdoc debe de tener los codigos de la maestra de tipo de documentos (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
 
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tdoc debe de estar lleno"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tdoc debe de estar lleno (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                     }
 
                     #endregion
-                 
+
                     #region raz
 
                     string raz = dr["RAZ"].ToString().Trim();
@@ -478,7 +479,7 @@ namespace SiasoftAppExt
                     {
                         if (raz.Length > 150)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo razon social debe ser menor de 150 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo razon social debe ser menor de 150 caracteres (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
                     }
 
@@ -491,7 +492,7 @@ namespace SiasoftAppExt
                     {
                         if (dir.Length > 200)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo dir debe ser menor de 200 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo dir debe ser menor de 200 caracteres (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
                     }
 
@@ -507,17 +508,17 @@ namespace SiasoftAppExt
                         {
                             if (!(tippers >= 0 && tippers <= 1))
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de ser (0)-Natural (1)-Juridica (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de ser (0)-Natural (1)-Juridica (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                             }
                         }
                         else
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de ser numerico (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de ser numerico (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
                     }
                     else
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de estar lleno (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo tipo de persona debe de estar lleno (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                     }
 
                     #endregion
@@ -529,7 +530,7 @@ namespace SiasoftAppExt
                     {
                         if (dv.Length > 1)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo digito de verificacion debe ser menor de 1 caracteres (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo digito de verificacion debe ser menor de 1 caracteres (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
                     }
 
@@ -551,7 +552,7 @@ namespace SiasoftAppExt
                         else
                         {
                             dr["NOM_MUNI"] = "";
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo codigo de ciudad debe de tener los codigos de la maestra de ciudades  (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo codigo de ciudad debe de tener los codigos de la maestra de ciudades  (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
 
                     }
@@ -571,13 +572,14 @@ namespace SiasoftAppExt
                         else
                         {
                             dr["NOM_PAIS"] = "";
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo codigo de pais debe de tener los codigos de la maestra de paises  (" + cod_ter + ")"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo codigo de pais debe de tener los codigos de la maestra de paises  (" + cod_ter + ") (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                         }
 
                     }
 
                     #endregion
 
+                    linea++;
                 }
 
                 return dt;

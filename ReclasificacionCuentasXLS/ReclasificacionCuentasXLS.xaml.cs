@@ -50,7 +50,7 @@ namespace SiasoftAppExt
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                tabitem.Title = "Reclasificacion Cuentas " + cod_empresa + "-" + nomempresa;
+                tabitem.Title = "Creacion y actualizacion de  Cuentas " + cod_empresa + "-" + nomempresa;
                 tabitem.Logo(idLogo, ".png");
                 dt_errores.Columns.Add("error");
             }
@@ -101,6 +101,7 @@ namespace SiasoftAppExt
             if (dt.Columns.Contains("NOM_NIIF") == false || dt.Columns.IndexOf("NOM_NIIF") != 3) flag = false;
             if (dt.Columns.Contains("IND_RECLA") == false || dt.Columns.IndexOf("IND_RECLA") != 4) flag = false;
             if (dt.Columns.Contains("ACCION") == false || dt.Columns.IndexOf("ACCION") != 5) flag = false;
+            if (dt.Columns.Contains("NAT_CTA") == false || dt.Columns.IndexOf("NAT_CTA") != 6) flag = false;
             return flag;
         }
 
@@ -178,7 +179,7 @@ namespace SiasoftAppExt
                 {
 
                     dt.Columns.Add("CTA_EXIST", typeof(bool));
-
+                    int linea = 1;
                     foreach (System.Data.DataRow dr in dt.Rows)
                     {
 
@@ -190,12 +191,12 @@ namespace SiasoftAppExt
                         {
                             if (cod_cta.Length > 15)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " es mayor a 15 caracteres"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " es mayor a 15 caracteres (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
 
                             if (int.TryParse(cod_cta, out cta) == false)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la column cuenta (" + cod_cta + ") debe de ser de tipo numerica"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la column cuenta (" + cod_cta + ") debe de ser de tipo numerica (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
 
                         }
@@ -212,7 +213,7 @@ namespace SiasoftAppExt
 
                         if (nom_cta.Length > 60)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el nombre de la cuenta " + cod_cta + " es mayor a 60 caracteres"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el nombre de la cuenta " + cod_cta + " es mayor a 60 caracteres (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
                         #endregion
 
@@ -222,7 +223,7 @@ namespace SiasoftAppExt
 
                         if (cta_niif.Length > 15)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta NIIF " + cta_niif + " es mayor a 15 caracteres"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta NIIF " + cta_niif + " es mayor a 15 caracteres (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
 
                         #endregion
@@ -233,7 +234,7 @@ namespace SiasoftAppExt
 
                         if (nom_niif.Length > 100)
                         {
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el nombre de la cuenta NIIF " + cta_niif + " es mayor a 60 caracteres"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el nombre de la cuenta NIIF " + cta_niif + " es mayor a 60 caracteres (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
                         #endregion
 
@@ -246,7 +247,7 @@ namespace SiasoftAppExt
                         {
                             if (int.TryParse(ind_recla, out i) == false)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la columna ind_recla debe ser numerica valor:" + ind_recla + " (0)-ninguna (1)-si (2)-no "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la columna ind_recla debe ser numerica valor:" + ind_recla + " (0)-ninguna (1)-si (2)-no (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
                         }
 
@@ -259,6 +260,26 @@ namespace SiasoftAppExt
                         }
                         #endregion
 
+                        #region naturaleza
+
+                        string nat_cta = dr["NAT_CTA"].ToString().Trim();
+                        if (!string.IsNullOrEmpty(nat_cta))
+                        {
+
+                            if (!(nat_cta == "D" || nat_cta == "C"))
+                            {
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo NAT_CTA naturaleza cuenta debe de ser D o C (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
+                            }
+                        }
+                        else
+                        {
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el campo NAT_CTA debe de estar lleno (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
+                        }
+
+
+                        #endregion
+
+                        linea++;
                     }
                 }
 
@@ -301,8 +322,9 @@ namespace SiasoftAppExt
                     worksheet.Range["D1"].Text = "NOM_NIIF";
                     worksheet.Range["E1"].Text = "IND_RECLA";
                     worksheet.Range["F1"].Text = "ACCION";
+                    worksheet.Range["G1"].Text = "NAT_CTA";
 
-                    worksheet.Range["A1:F1"].CellStyle.Font.Bold = true;
+                    worksheet.Range["A1:G1"].CellStyle.Font.Bold = true;
 
                     if (string.IsNullOrEmpty(ruta))
                         MessageBox.Show("Por favor, seleccione una ruta para guardar la plantilla");
@@ -357,19 +379,21 @@ namespace SiasoftAppExt
                         string nom_niif = dr["NOM_NIIF"].ToString().Trim();
                         string ind_recla = dr["IND_RECLA"].ToString().Trim();
                         string accion = dr["ACCION"].ToString().Trim();
+                        string nat_cta = dr["NAT_CTA"].ToString().Trim();
 
                         if (exist)
                         {
                             if (!string.IsNullOrEmpty(cta_niif))
                             {
-                                query += "update comae_cta set cta_niif='" + cta_niif + "',nom_niif='" + nom_niif + "',ind_recla=" + ind_recla + ",cod_cta='" + cod_cta + "',nom_ant='" + nom_cta + "',nom_cta='" + nom_cta + "',accion=" + accion + "  where cod_cta='" + cod_cta + "';";
+                                
+                                query += "update comae_cta set cta_niif='" + cta_niif + "',nom_niif='" + nom_niif + "',ind_recla='" + ind_recla + "',cod_cta='" + cod_cta + "',nom_ant='" + nom_cta + "',nom_cta='" + nom_cta + "',accion='" + accion + "',nat_cta='" + nat_cta + "'  where cod_cta='" + cod_cta + "';";
                             }
                         }
                         else
                         {
-                            string ini = cod_cta.Substring(0, 1).Trim();
-                            string naturaleza = ini == "1" || ini == "5" || ini == "6" || ini == "7" ? "D" : "C";
-                            query += "insert into comae_cta (cod_cta,nom_cta,ind_act,nat_cta,ind_ter,ind_bal,accion) values ('" + cod_cta + "','" + nom_cta + "',1,'" + naturaleza + "',1,1," + accion + ");";
+                            //string ini = cod_cta.Substring(0, 1).Trim();
+                            //string naturaleza = ini == "1" || ini == "5" || ini == "6" || ini == "7" ? "D" : "C";
+                            query += "insert into comae_cta (cod_cta,nom_cta,ind_act,nat_cta,ind_ter,ind_bal,accion,ind_recla,cta_niif,nom_niif) values ('" + cod_cta + "','" + nom_cta + "',1,'" + nat_cta + "',1,1,'" + accion + "','" + ind_recla + "','" + cta_niif + "','" + nom_niif + "');";
                         }
                     }
 

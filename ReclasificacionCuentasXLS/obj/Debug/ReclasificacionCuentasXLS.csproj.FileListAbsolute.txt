@@ -26,3 +26,17 @@ D:\Empresas\SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\Reclasificac
 D:\Empresas\SDA\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.pdb
 D:\Empresas\SDA\Library\ReclasificacionCuentasXLS.dll
 D:\Empresas\SDA\Library\ReclasificacionCuentasXLS.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ReclasificacionCuentasXLS\obj\Debug\ReclasificacionCuentasXLS.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ReclasificacionCuentasXLS.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ReclasificacionCuentasXLS.pdb

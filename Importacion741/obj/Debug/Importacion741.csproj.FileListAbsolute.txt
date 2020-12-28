@@ -45,3 +45,4 @@ C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\Importacion741\obj\D
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\Importacion741\obj\Debug\Importacion741.pdb
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\Importacion741.dll
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\Importacion741.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\Importacion741\obj\Debug\Importacion741.csprojAssemblyReference.cache

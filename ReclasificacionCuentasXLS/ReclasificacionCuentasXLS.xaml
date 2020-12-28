@@ -9,7 +9,7 @@
 
     <UserControl.Resources>
         <SolidColorBrush Color="DodgerBlue" x:Key="ColorMain"/>
-        <SolidColorBrush Color="#FFC5A00E" x:Key="ColorSecond"/>
+        <SolidColorBrush Color="DodgerBlue" x:Key="ColorSecond"/>
         <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="10"/>
@@ -54,6 +54,25 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="syncfusion:GridRowHeaderCell">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="syncfusion:GridRowHeaderCell">
+                        <Border x:Name="PART_RowHeaderCellBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding RowIndex,RelativeSource={RelativeSource TemplatedParent}}"
+                                   TextAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
 
 
@@ -71,8 +90,8 @@
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBlock Text="RECLASIFICACION DE CUENTAS XLS" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="16" FontWeight="DemiBold"/>
+
+            <TextBlock Text="ACTUALIZACION O CREACION DE CUENTAS XLS" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="16" FontWeight="DemiBold"/>
 
             <Button x:Name="BtnImport" Grid.Column="1" Margin="5" Height="40" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Content="Importar Plantilla" Cursor="Hand" Click="BtnImport_Click"/>
             <Button x:Name="BtnPlantilla" Grid.Column="2" Margin="5" Height="40" BorderBrush="{x:Null}" Background="{StaticResource ColorMain}" Foreground="White" Content="Generar Plantilla" Cursor="Hand" Click="BtnPlantilla_Click"/>
@@ -89,8 +108,19 @@
                 </Style>
             </Grid.Resources>
             <syncfusion:SfBusyIndicator Grid.Row="1" Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Importando Datos" Height="100" IsBusy="False" Foreground="{StaticResource ColorMain}"/>
-            
-            <syncfusion:SfDataGrid Name="dataGridExcel"  AllowResizingColumns="True" EnableDataVirtualization = "True" AutoGenerateColumns="True" ShowGroupDropArea="False" FontSize="12" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}"  GridValidationMode="InEdit" ItemsSource="{Binding Path=Cuerpo, Mode=TwoWay}"/>
+
+            <syncfusion:SfDataGrid Name="dataGridExcel"  ShowRowHeader="True" AllowResizingColumns="True" EnableDataVirtualization = "True" AutoGenerateColumns="True" ShowGroupDropArea="False" FontSize="12" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}"  GridValidationMode="InEdit" ItemsSource="{Binding Path=Cuerpo, Mode=TwoWay}">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderText="COD_CTA" MappingName="COD_CTA" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="NOM_CTA" MappingName="NOM_CTA" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="CTA_NIIF" MappingName="CTA_NIIF" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="NOM_NIIF" MappingName="NOM_NIIF" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="IND_RECLA" MappingName="IND_RECLA" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="ACCION" MappingName="ACCION" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="NAT_CTA" MappingName="NAT_CTA" Width="100"/>
+                    <syncfusion:GridCheckBoxColumn HeaderText="CTA_EXIST" MappingName="CTA_EXIST" Width="100"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
 
         </Grid>
 

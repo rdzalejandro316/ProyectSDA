@@ -464,6 +464,8 @@ namespace SiasoftAppExt
                     double debito = 0;
                     double credito = 0;
 
+                    
+                    int linea = 1;
                     //validar campo por campo
                     foreach (System.Data.DataRow dr in dtemp.Rows)
                     {
@@ -480,7 +482,7 @@ namespace SiasoftAppExt
                             else
                             {
                                 dr["NOM_TER"] = "";
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tercero  " + cod_ter + " no existe "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tercero  " + cod_ter + " no existe (ERROR EN LA LINEA "+linea+")"; dt_errores.Rows.Add(row);
                             }
                         }
 
@@ -501,13 +503,13 @@ namespace SiasoftAppExt
                             else
                             {
                                 dr["NOM_CTA"] = "";
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " si existe pero no es auxiliar"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " si existe pero no es auxiliar (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
                         }
                         else
                         {
                             dr["NOM_CTA"] = "";
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " no existe"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " no existe (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
 
                         #endregion
@@ -521,7 +523,7 @@ namespace SiasoftAppExt
                             DataTable dt_banc = SiaWin.Func.SqlDT("select * from Comae_ban where cod_ban='" + cod_ban + "'  ", "bancos", idemp);
                             if (dt_banc.Rows.Count <= 0)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo del banco " + cod_ban + " no existe "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo del banco " + cod_ban + " no existe (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
                         }
                         #endregion
@@ -535,7 +537,7 @@ namespace SiasoftAppExt
                             DataTable dt_ciu = SiaWin.Func.SqlDT("select * from Comae_ciu where cod_ciu='" + cod_ciu + "'  ", "ciudad", idemp);
                             if (dt_ciu.Rows.Count <= 0)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo de la ciudad " + cod_ciu + " no existe "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo de la ciudad " + cod_ciu + " no existe (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
                         }
                         #endregion
@@ -549,7 +551,7 @@ namespace SiasoftAppExt
                             DataTable dt_suc = SiaWin.Func.SqlDT("select * from Comae_suc where cod_suc='" + cod_suc + "'  ", "sucursal", idemp);
                             if (dt_suc.Rows.Count <= 0)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo de la sucursal " + cod_suc + " no existe "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo de la sucursal " + cod_suc + " no existe (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
                         }
                         #endregion
@@ -563,7 +565,7 @@ namespace SiasoftAppExt
                             DataTable dt_cco = SiaWin.Func.SqlDT("select * from Comae_cco where cod_cco='" + cod_cco + "'  ", "ccosto", idemp);
                             if (dt_cco.Rows.Count <= 0)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo del centro de costo " + cod_cco + " no existe "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el codigo del centro de costo " + cod_cco + " no existe (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
                         }
                         #endregion
@@ -575,7 +577,7 @@ namespace SiasoftAppExt
                             string des_mov = dr["DES_MOV"].ToString();
                             if (des_mov.Length > 300)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la descripcion no puede ser mayor a 300 caracteres : " + cod_trn + "-" + num_trn + "  "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la descripcion no puede ser mayor a 300 caracteres : " + cod_trn + "-" + num_trn + "  (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                             }
                         }
 
@@ -588,11 +590,13 @@ namespace SiasoftAppExt
                         debito += Convert.ToDouble(dr["DEB_MOV"]);
                         credito += Convert.ToDouble(dr["CRE_MOV"]);
                         #endregion
+
+                        linea++;
                     }
 
                     if (debito != credito)
                     {
-                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el debito o el credito se encuentran descuadrados:" + cod_trn + "-" + num_trn + "  "; dt_errores.Rows.Add(row);
+                        System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el debito o el credito se encuentran descuadrados:" + cod_trn + "-" + num_trn + " (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                     }
 
                 }

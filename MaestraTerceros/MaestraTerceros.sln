@@ -47,6 +47,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InactivarCuentasPorRango", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReclasificacionMovimientoCuentas", "..\ReclasificacionMovimientoCuentas\ReclasificacionMovimientoCuentas.csproj", "{508DBF5D-3FBC-416C-8C47-F44C9605572A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Importacion741", "..\Importacion741\Importacion741.csproj", "{1685C914-57E1-4D08-8924-069B4B4A0880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BorrarDocumentoCO", "..\BorrarDocumentoCO\BorrarDocumentoCO.csproj", "{84A31958-41CE-44C5-914F-89745BC87013}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +145,14 @@ Global
 		{508DBF5D-3FBC-416C-8C47-F44C9605572A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{508DBF5D-3FBC-416C-8C47-F44C9605572A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{508DBF5D-3FBC-416C-8C47-F44C9605572A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1685C914-57E1-4D08-8924-069B4B4A0880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1685C914-57E1-4D08-8924-069B4B4A0880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1685C914-57E1-4D08-8924-069B4B4A0880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1685C914-57E1-4D08-8924-069B4B4A0880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84A31958-41CE-44C5-914F-89745BC87013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A31958-41CE-44C5-914F-89745BC87013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84A31958-41CE-44C5-914F-89745BC87013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84A31958-41CE-44C5-914F-89745BC87013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

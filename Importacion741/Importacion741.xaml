@@ -26,6 +26,25 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="syncfusion:GridRowHeaderCell">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="syncfusion:GridRowHeaderCell">
+                        <Border x:Name="PART_RowHeaderCellBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding RowIndex,RelativeSource={RelativeSource TemplatedParent}}"
+                                   TextAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
 
 
@@ -47,7 +66,7 @@
         <Border Grid.Row="1" Style="{StaticResource borde}">
             <Grid>
                 <syncfusion:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Importando Datos" Height="100" IsBusy="False" Foreground="{StaticResource ColorMain}"/>
-                <syncfusion:SfDataGrid Name="dataGridRefe" AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="DataGridRefe_SelectionChanged">
+                <syncfusion:SfDataGrid Name="dataGridRefe" ShowRowHeader="True"  AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="DataGridRefe_SelectionChanged">
                     <syncfusion:SfDataGrid.Columns>
                         <syncfusion:GridTextColumn HeaderText="TRN" MappingName="COD_TRN" Width="70"/>
                         <syncfusion:GridTextColumn HeaderText="NUM_TRN" MappingName="NUM_TRN" Width="80"/>

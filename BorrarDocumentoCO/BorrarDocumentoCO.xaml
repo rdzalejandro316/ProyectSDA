@@ -6,11 +6,11 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
              xmlns:local="clr-namespace:SiasoftAppExt"
-             Width="500" Height="400">
+             Width="600" Height="400">
 
     <Window.Resources>
         <ResourceDictionary>
-            <SolidColorBrush Color="#064063" x:Key="ColorMain"/>
+            <SolidColorBrush Color="DodgerBlue" x:Key="ColorMain"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
@@ -20,70 +20,71 @@
     </Window.Resources>
 
     <Grid>
-        <materialDesign:Card VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
-            <SiaSf:TabControlExt Name="TabControl1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="300" SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="False" TabItemSelectedBackground="{StaticResource ColorMain}"  EnableLabelEdit="False" CloseButtonType="Hide" TabScrollButtonVisibility="Hidden" ShowTabItemContextMenu="False" ShowTabListContextMenu="False">
-                <SiaSf:TabItemExt Name="tabItemExt1"  Header="Eliminacion Individual" Width="170" HeaderMargin="10 0 10 0 " FontSize="14">
-                    <Grid Width="250" Height="200">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="TextBlock" x:Key="title">
+                <Setter Property="Foreground" Value="{StaticResource ColorMain}" />
+                <Setter Property="VerticalAlignment" Value="Bottom"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+            <Style TargetType="DatePicker" x:Key="StyleDate">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Width" Value="130"/>
+                <Setter Property="Height" Value="25"/>
+            </Style>
+        </Grid.Resources>
 
-                        <TextBox Name="Tx_trns" materialDesign:HintAssist.Hint="Transaccion" Grid.ColumnSpan="2"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyDown="TextBox_PreviewKeyDown"/>
-                        <TextBox Name="Tx_doc" Grid.Row="1"  materialDesign:HintAssist.Hint="Documento" Grid.ColumnSpan="2"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <materialDesign:Card VerticalAlignment="Center" HorizontalAlignment="Center" Width="550">
+            <Grid Height="300">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button Name="BtnEliminar"  Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Margin="5" ToolTip="Eliminar" Content="Eliminar" Click="BtnEliminar_Click"/>
-                            <Button Name="BtnSalir"  Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Margin="5" ToolTip="Salir" Content="Salir" Click="BtnSalir_Click"/>
-                        </StackPanel>
+                <TextBlock Text="Borrar documentos por fecha tipo y numero" Style="{StaticResource title}"/>
 
-                    </Grid>
-                </SiaSf:TabItemExt>
-                <SiaSf:TabItemExt Name="tabItemExt2"  Header="Eliminacion Rango" Width="180" HeaderMargin="10 0 10 0 " FontSize="14">
-                    <Grid Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="1.2*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock" x:Key="Title">
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="HorizontalAlignment" Value="Right"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </Grid.Resources>
+                <Grid Grid.Row="1" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    
+                    <TextBlock Grid.Column="1" Text="DESDE" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="2" Text="HASTA" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    
+                    <TextBlock Grid.Row="1" Text="FECHA: " FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <DatePicker Grid.Row="1" Grid.Column="1" x:Name="TxFecIni" VerticalAlignment="Center" Style="{StaticResource StyleDate}"/>
+                    <DatePicker Grid.Row="1" Grid.Column="2" x:Name="TxFecFin" VerticalAlignment="Center" Style="{StaticResource StyleDate}"/>
 
-                        <TextBlock Grid.Row="1" Text="Fecha Inicial :" Style="{StaticResource Title}"/>
-                        <DatePicker Name="TxFecIni" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    <TextBlock Grid.Row="2" Text="TIPO: " FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" />
 
-                        <TextBlock Grid.Row="2" Text="Fecha Final :" Style="{StaticResource Title}"/>
-                        <DatePicker Name="TxFecFin" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    <TextBlock Grid.Row="3" Text="NUMERO: " FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    
 
-                        <TextBlock Grid.Row="3" Text="Tipo :" Style="{StaticResource Title}"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Name="Tx_Rangotrns" materialDesign:HintAssist.Hint="Transaccion" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Width="150" HorizontalAlignment="Left"  PreviewKeyDown="TextBox_PreviewKeyDown" Margin="5,0,0,0"/>
+                </Grid>
+                
+                <Grid Grid.Row="2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Button Content="Consultar" Width="100" Height="35" Margin="5" ToolTip="Consultar documentos que eliminara"/>
+                        <Button Content="Eliminar" Width="100" Height="35" Margin="5" ToolTip="Ejecutar el proceso de eliminacion de documentos"/>
+                        <Button Content="Salir" Width="100" Height="35" Margin="5" ToolTip="Salir de la pantalla"/>
+                    </StackPanel>
+                </Grid>
 
-                        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button Name="BtnEliminarRange" Content="Eliminar" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Margin="5" Click="BtnEliminarRange_Click"/>
-                            <Button Content="Salir" Background="{StaticResource ColorMain}" BorderBrush="{StaticResource ColorMain}" Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Margin="5" Click="BtnSalir_Click"/>
-                        </StackPanel>
-
-                    </Grid>
-                </SiaSf:TabItemExt>
-            </SiaSf:TabControlExt>
+            </Grid>
         </materialDesign:Card>
 
     </Grid>

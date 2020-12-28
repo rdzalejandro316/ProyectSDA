@@ -492,6 +492,7 @@ namespace SiasoftAppExt
                     double credito = 0;
 
                     //validar campo por campo
+                    int linea = 1;
                     foreach (System.Data.DataRow dr in dtemp.Rows)
                     {
                         #region tercero
@@ -507,7 +508,7 @@ namespace SiasoftAppExt
                             else
                             {
                                 dr["NOM_TER"] = "";
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tercero  " + cod_ter + " no existe "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "el tercero  " + cod_ter + " no existe (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
                         }
 
@@ -528,13 +529,13 @@ namespace SiasoftAppExt
                             else
                             {
                                 dr["NOM_CTA"] = "";
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " si existe pero no es auxiliar"; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " si existe pero no es auxiliar (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                             }
                         }
                         else
                         {
                             dr["NOM_CTA"] = "";
-                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " no existe"; dt_errores.Rows.Add(row);
+                            System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la cuenta " + cod_cta + " no existe (ERROR EN LA LINEA " + linea + ")"; dt_errores.Rows.Add(row);
                         }
 
                         #endregion
@@ -546,7 +547,7 @@ namespace SiasoftAppExt
                             string des_mov = dr["DES_MOV"].ToString();
                             if (des_mov.Length > 300)
                             {
-                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la descripcion no puede ser mayor a 300 caracteres : " + cod_trn + "-" + num_trn + "  "; dt_errores.Rows.Add(row);
+                                System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la descripcion no puede ser mayor a 300 caracteres : " + cod_trn + "-" + num_trn + " (ERROR EN LA LINEA " + linea + ") "; dt_errores.Rows.Add(row);
                             }
                         }
 
@@ -559,6 +560,8 @@ namespace SiasoftAppExt
                         debito += Convert.ToDouble(dr["DEB_MOV"]);
                         credito += Convert.ToDouble(dr["CRE_MOV"]);
                         #endregion
+
+                        linea++;
                     }
 
                     if (debito != credito)
