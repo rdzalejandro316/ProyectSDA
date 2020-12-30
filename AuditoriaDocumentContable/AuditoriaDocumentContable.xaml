@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SiasoftAppExt"
              xmlns:SiaSf="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="1500">
-    
+
     <Grid>
 
         <SiaSf:TabControlExt Name="TabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="False" EnableLabelEdit="False">
@@ -40,7 +40,7 @@
                             <TextBlock Grid.Row="2" Text="Fecha Final : " VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold"/>
                             <DatePicker Name="Tx_fecfin" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="150" Margin="5"/>
 
-                            <CheckBox Name="CheGridGeneral" Content="Ver en Grilla" Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
+                            <CheckBox Name="CheGridGeneral" IsChecked="True" Content="Ver en Grilla" Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
 
                             <Grid Grid.Row="5" Grid.ColumnSpan="2">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -81,7 +81,17 @@
                         <Image Name="ImgProducto"   Source="{Binding  ConfigCSource.PathImgProducto}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
 
                         <SiaSf:SfBusyIndicator  Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Gear" Header="Cargando Datos - SiasoftApp" Height="100" IsBusy="False" />
-                        <SiaSf:SfDataGrid x:Name="dataGridAutomatico" AllowResizingColumns="True"  EnableDataVirtualization="True" AutoGenerateColumns="True" ShowGroupDropArea="False" FontSize="9" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}"/>
+                        <SiaSf:SfDataGrid x:Name="dataGridAutomatico" AllowResizingColumns="True"  EnableDataVirtualization="True" AutoGenerateColumns="True" ShowGroupDropArea="False" FontSize="9" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}">
+                            <SiaSf:SfDataGrid.Columns>
+                                <SiaSf:GridTextColumn HeaderText="Tipo" MappingName="tipo" Width="150"/>
+                                <SiaSf:GridTextColumn HeaderText="Año" MappingName="ano_doc" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Mes" MappingName="per_doc" Width="80"/>
+                                <SiaSf:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="100"/>
+                                <SiaSf:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="100"/>
+                                <SiaSf:GridDateTimeColumn CustomPattern="dd-MM-yyyy hh:mm:ss" Pattern="CustomPattern" HeaderText="Fecha" MappingName="fec_trn" Width="120"/>
+                                <SiaSf:GridTextColumn HeaderText="Descripcion" MappingName="titulo" Width="400"/>
+                            </SiaSf:SfDataGrid.Columns>
+                        </SiaSf:SfDataGrid>
                     </Grid>
 
                     <Grid Grid.Row="1" Background="#373737">

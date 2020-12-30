@@ -23,13 +23,9 @@ namespace SiasoftAppExt
 {
 
     //Sia.PublicarPnt(9686,"ConsultaPorDocumentoReferencia");
-    //dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9686, "ConsultaPorDocumentoReferencia");
-    //ww.ShowInTaskbar = false;
-    //ww.Owner = Application.Current.MainWindow;
-    //ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;    
-    //ww.ShowDialog();   
+    //Sia.TabU(9686);
 
-    public partial class ConsultaPorDocumentoReferencia : Window
+    public partial class ConsultaPorDocumentoReferencia : UserControl
     {
 
         dynamic SiaWin;
@@ -37,12 +33,14 @@ namespace SiasoftAppExt
         string cnEmp = "";
         string cod_empresa = "";
         int modulo = 1;
+        dynamic tabitem;
 
-        public ConsultaPorDocumentoReferencia()
+        public ConsultaPorDocumentoReferencia(dynamic tabitem1)
         {
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
             idemp = SiaWin._BusinessId;
+            tabitem = tabitem1;
             LoadConfig();
         }
 
@@ -54,8 +52,10 @@ namespace SiasoftAppExt
                 idemp = Convert.ToInt32(foundRow["BusinessId"].ToString().Trim());
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
+                int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                this.Title = "Consulta Documento Contable";        
+                tabitem.Title = "Consulta Documento Contable";
+                tabitem.Logo(idLogo, ".png");                
             }
             catch (Exception e)
             {
@@ -71,9 +71,9 @@ namespace SiasoftAppExt
                 if (!string.IsNullOrEmpty(TxCheque.Text))
                 {
 
-                    this.IsEnabled = false;
+                    sfBusyIndicator.IsBusy = true;
 
-                    string cue = "select * from cocue_doc where num_chq='" + TxCheque.Text + "'; ";
+                    string cue = "select * from cocue_doc where DOC_MOV='" + TxCheque.Text + "'; ";
 
 
                     var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(cue));
@@ -82,15 +82,15 @@ namespace SiasoftAppExt
                     if (((DataTable)slowTask.Result).Rows.Count > 0)
                     {
                         DataGridCuerpo.ItemsSource = ((DataTable)slowTask.Result).DefaultView;
-                        TxTotal.Text = ((DataTable)slowTask.Result).Rows.Count.ToString();                        
+                        TxTotal.Text = ((DataTable)slowTask.Result).Rows.Count.ToString();
                     }
                     else
                     {
                         DataGridCuerpo.ItemsSource = null;
-                        TxTotal.Text = "0";                        
+                        TxTotal.Text = "0";
                     }
 
-                    this.IsEnabled = true;
+                    sfBusyIndicator.IsBusy = false;
 
                 }
                 else
@@ -133,7 +133,6 @@ namespace SiasoftAppExt
         }
 
 
-
         private void BtnExportar_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -162,9 +161,9 @@ namespace SiasoftAppExt
                             workBook.Version = ExcelVersion.Excel2013;
                         workBook.SaveAs(stream);
                     }
-                    
+
                     if (MessageBox.Show("Usted quiere abrir el archivo en excel?", "Ver archvo", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
-                    {                     
+                    {
                         System.Diagnostics.Process.Start(sfd.FileName);
                     }
                 }
@@ -175,6 +174,27 @@ namespace SiasoftAppExt
             }
         }
 
+        private void DataGridCuerpo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+                if (DataGridCuerpo.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)DataGridCuerpo.SelectedItems[0];
+                    int idreg = Convert.ToInt32(row["idregcab"]);
+                    SiaWin.TabTrn(0, idemp, true, idreg, modulo, WinModal: true);
+                }
+                else
+                {
+                    MessageBox.Show("seleccione un documento de la grilla", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrir lo documentos:" + w);
+            }
+        }
 
 
     }

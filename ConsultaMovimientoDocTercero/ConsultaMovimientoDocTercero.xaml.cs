@@ -270,7 +270,8 @@ namespace SiasoftAppExt
                 if (!string.IsNullOrEmpty(docmov)) where += " and cue.doc_mov='" + docmov + "'  ";
 
 
-                string query = "select cab.idreg,cue.idregcab,cue.cod_trn,cue.num_trn,cab.fec_trn,cue.cod_cta,cue.cod_ter,cue.des_mov,cue.doc_ref,cue.doc_cruc,cue.deb_mov,cue.cre_mov ";
+                string query = "select cue.idregcab, cue.idreg,cue.cod_trn,cue.num_trn,cab.fec_trn,cue.cod_cta,cue.cod_ter,cue.des_mov,cue.doc_ref,cue.doc_cruc,cue.deb_mov,cue.cre_mov, ";
+                query += "fec_venc,doc_mov ";
                 query += "from Cocue_doc cue ";
                 query += "inner join cocab_doc cab on cab.idreg = cue.idregcab ";
                 query += "WHERE cue.cod_ter='" + codter + "'  " + where + " ;";

@@ -22,26 +22,25 @@ using System.Windows.Shapes;
 
 namespace SiasoftAppExt
 {
-    //    Sia.PublicarPnt(9632,"ConsultaMovimientoDoc");
-    //    dynamic ww = ((Inicio)Application.Current.MainWindow).WindowExt(9632,"ConsultaMovimientoDoc");
-    //    ww.ShowInTaskbar = false;
-    //    ww.Owner = Application.Current.MainWindow;
-    //    ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;        
-    //    ww.ShowDialog();
+    //Sia.PublicarPnt(9632,"ConsultaMovimientoDoc");
+    //Sia.TabU(9632);
 
-    public partial class ConsultaMovimientoDoc : Window
+
+    public partial class ConsultaMovimientoDoc : UserControl
     {
         dynamic SiaWin;
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
         int modulo = 1;
+        dynamic tabitem;
 
-        public ConsultaMovimientoDoc()
+        public ConsultaMovimientoDoc(dynamic tabitem1)
         {
             InitializeComponent();
             SiaWin = Application.Current.MainWindow;
             idemp = SiaWin._BusinessId;
+            tabitem = tabitem1;
             LoadConfig();
         }
 
@@ -54,7 +53,9 @@ namespace SiasoftAppExt
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                this.Title = "Consulta Movimiento Documento Referencia";
+                int idLogo = Convert.ToInt32(foundRow["BusinessLogo"].ToString().Trim());                
+                tabitem.Title = "Consulta Movimiento Documento Referencia";
+                tabitem.Logo(idLogo, ".png");
             }
             catch (Exception e)
             {
@@ -192,5 +193,25 @@ namespace SiasoftAppExt
             }
         }
 
+        private void GridConsulta_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (GridConsulta.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)GridConsulta.SelectedItems[0];
+                    int idreg = Convert.ToInt32(row["idreg"]);
+                    SiaWin.TabTrn(0, idemp, true, idreg, modulo, WinModal: true);
+                }
+                else
+                {
+                    MessageBox.Show("seleccione un documento de la grilla", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrri el documento:" + w);
+            }
+        }
     }
 }

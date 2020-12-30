@@ -26,3 +26,17 @@ C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuditoriaDocumentContable\obj
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.csproj.CopyComplete
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\AuditoriaDocumentContable.dll
 C:\Users\aleja\Desktop\SDA\Siasoft\Library\AuditoriaDocumentContable.pdb
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.csprojAssemblyReference.cache
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.g.cs
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable_MarkupCompile.cache
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable_MarkupCompile.lref
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.baml
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.g.resources
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.Properties.Resources.resources
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.csproj.GenerateResource.cache
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.csproj.CoreCompileInputs.cache
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.csproj.CopyComplete
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.dll
+D:\Empresas\SDA\Library\project\AuditoriaDocumentContable\obj\Debug\AuditoriaDocumentContable.pdb
+D:\Empresas\SDA\Library\AuditoriaDocumentContable.dll
+D:\Empresas\SDA\Library\AuditoriaDocumentContable.pdb
