@@ -93,6 +93,7 @@ namespace SiasoftAppExt
                 dynamic winb = SiaWin.WindowBuscar(cmptabla, cmpcodigo, cmpnombre, cmporden, cmpidrow, cmptitulo, SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
                 winb.ShowInTaskbar = false;
                 winb.Owner = Application.Current.MainWindow;
+                winb.Height = 400;
                 winb.ShowDialog();
                 idr = winb.IdRowReturn;
                 code = winb.Codigo;
@@ -132,12 +133,8 @@ namespace SiasoftAppExt
             try
             {
 
-                if ((sender as TextBox).Name == "Tx_tercero")
-                {
-                    if (string.IsNullOrEmpty((sender as TextBox).Text))
-                        return;
-                }
-
+                if (string.IsNullOrEmpty((sender as TextBox).Text))
+                    return;
 
 
                 string tabla = ""; string campo = "";
@@ -170,6 +167,7 @@ namespace SiasoftAppExt
                     dynamic winb = SiaWin.WindowBuscar(cmptabla, cmpcodigo, cmpnombre, cmporden, cmpidrow, cmptitulo, SiaWin.Func.DatosEmp(idemp), false, "", idEmp: idemp);
                     winb.ShowInTaskbar = false;
                     winb.Owner = Application.Current.MainWindow;
+                    winb.Height = 400;
                     winb.ShowDialog();
                     idr = winb.IdRowReturn;
                     code = winb.Codigo;
@@ -218,7 +216,7 @@ namespace SiasoftAppExt
             {
 
                 string name = (sender as Button).Name;
-                
+
 
                 string tercero = ""; bool flag_ter = false;
                 string cuenta = ""; bool flag_cta = false;
@@ -317,7 +315,7 @@ namespace SiasoftAppExt
 
 
 
-                string query = "select cab.idreg,cue.per_doc,cue.ano_doc,cue.cod_ter,cue.cod_cta,cta.nom_cta,cue.cod_ciu,ciu.nom_ciu,cue.cod_trn,trn.nom_trn,cue.num_trn,cab.fec_trn,cue.des_mov,cue.bas_mov,cue.deb_mov,cue.cre_mov,cue.doc_cruc,cue.doc_ref,cue.fec_venc ";
+                string query = "select cue.idreg,cue.idregcab,cue.per_doc,cue.ano_doc,cue.cod_ter,cue.cod_cta,cta.nom_cta,cue.cod_ciu,ciu.nom_ciu,cue.cod_trn,trn.nom_trn,cue.num_trn,cab.fec_trn,cue.des_mov,cue.bas_mov,cue.deb_mov,cue.cre_mov,cue.doc_cruc,cue.doc_mov,cue.doc_ref,cue.fec_venc ";
                 query += "from Cocue_doc cue ";
                 query += "inner join cocab_doc cab on cab.idreg = cue.idregcab ";
                 query += "inner join comae_trn trn on trn.cod_trn = cab.cod_trn ";
@@ -409,7 +407,7 @@ namespace SiasoftAppExt
                 if (dataGridRefe.SelectedIndex >= 0)
                 {
                     DataRowView row = (DataRowView)dataGridRefe.SelectedItems[0];
-                    int idreg = Convert.ToInt32(row["idreg"]);
+                    int idreg = Convert.ToInt32(row["idregcab"]);
                     int moduloid = 1;
                     SiaWin.TabTrn(0, idemp, true, idreg, moduloid, WinModal: true);
                 }
@@ -418,6 +416,49 @@ namespace SiasoftAppExt
             catch (Exception w)
             {
                 MessageBox.Show("error al abrir documento:" + w);
+            }
+        }
+
+        private void dataGridRefe_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+                if (dataGridRefe.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)dataGridRefe.SelectedItems[0];
+                    int idreg = Convert.ToInt32(row["idregcab"]);
+                    int moduloid = 1;
+                    SiaWin.TabTrn(0, idemp, true, idreg, moduloid, WinModal: true);
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al abrir documento:" + w);
+            }
+        }
+
+        private void dataGridRefe_CurrentCellEndEdit(object sender, CurrentCellEndEditEventArgs e)
+        {
+            try
+            {
+                if (dataGridRefe.SelectedIndex >= 0)
+                {
+
+                    DataRowView row = (DataRowView)dataGridRefe.SelectedItems[0];
+                    int idreg = Convert.ToInt32(row["idreg"]);
+                    string doc_mov = row["doc_mov"].ToString().Trim();
+
+                    string query = "update cocue_doc set doc_mov='" + doc_mov + "' where idreg='" + idreg + "' ";
+                    SiaWin.Func.SqlCRUD(query, idemp);
+
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al editar:" + w);
             }
         }
 

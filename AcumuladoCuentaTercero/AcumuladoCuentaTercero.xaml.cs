@@ -80,7 +80,7 @@ namespace SiasoftAppExt
                     switch (tag)
                     {
                         case "comae_cta":
-                            table = tag; code = "cod_cta"; name = "nom_comae_cta"; title = "maestra de cuentas"; idrow = "idrow";
+                            table = tag; code = "cod_cta"; name = "nom_cta"; title = "maestra de cuentas"; idrow = "idrow";
                             break;
                         case "comae_ter":
                             table = tag; code = "cod_ter"; name = "nom_ter"; title = "maestar de terceros"; idrow = "idrow";

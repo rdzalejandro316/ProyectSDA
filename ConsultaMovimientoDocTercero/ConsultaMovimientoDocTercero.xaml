@@ -111,6 +111,7 @@
                             <SiaSf:GridTextColumn HeaderText="doc_cruc" MappingName="doc_cruc" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="Debito" MappingName="deb_mov" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="Credito" MappingName="cre_mov" Width="100"/>
+                            <SiaSf:GridTextColumn HeaderText="Doc Movimiento" MappingName="doc_mov" Width="100"/>
                         </SiaSf:SfDataGrid.Columns>
                     </SiaSf:SfDataGrid>
 

@@ -99,9 +99,14 @@
         <Border Grid.Row="1" Style="{StaticResource Card}">
             <Grid>
                 <syncfusion:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Rainy" Header="Cargando..." Height="100" IsBusy="False" Foreground="#2196F3"/>
-                <syncfusion:SfDataGrid Name="dataGridRefe" Grid.Row="0" Margin="2" EnableDataVirtualization = "True" AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="dataGridRefe_SelectionChanged">
+                <syncfusion:SfDataGrid Name="dataGridRefe" Grid.Row="0" Margin="2" EnableDataVirtualization = "True" AllowResizingColumns="True" 
+                                       AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" 
+                                       HeaderStyle="{StaticResource headerStyle}" SelectionChanged="dataGridRefe_SelectionChanged"
+                                       CurrentCellEndEdit="dataGridRefe_CurrentCellEndEdit" MouseDoubleClick="dataGridRefe_MouseDoubleClick"
+                                       >
                     <syncfusion:SfDataGrid.Columns>
                         <syncfusion:GridTextColumn MappingName="idreg" IsHidden="True"/>
+                        <syncfusion:GridTextColumn MappingName="idregcab" IsHidden="True"/>
                         <syncfusion:GridTextColumn HeaderText="AÑO" MappingName="ano_doc" Width="60"/>
                         <syncfusion:GridTextColumn HeaderText="PER" MappingName="per_doc" Width="60"/>
                         <syncfusion:GridTextColumn HeaderText="TRN" MappingName="cod_trn" Width="60"/>
@@ -115,6 +120,7 @@
                         <syncfusion:GridTextColumn HeaderText="DES_MOV" MappingName="des_mov" Width="250"/>
                         <syncfusion:GridTextColumn HeaderText="DOC_CRUC" MappingName="doc_cruc" Width="80"/>
                         <syncfusion:GridTextColumn HeaderText="DOC_REF" MappingName="doc_ref" Width="80"/>
+                        <syncfusion:GridTextColumn HeaderText="DOC_MOV" MappingName="doc_mov" Width="80" AllowEditing="True"/>
                         <syncfusion:GridTextColumn HeaderText="FEC_VENC" MappingName="fec_venc" Width="80"/>
                     </syncfusion:SfDataGrid.Columns>
                 </syncfusion:SfDataGrid>
