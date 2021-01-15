@@ -1,17 +1,3 @@
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csprojAssemblyReference.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.g.cs
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos_MarkupCompile.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos_MarkupCompile.lref
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.baml
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.g.resources
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.Properties.Resources.resources
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csproj.GenerateResource.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csproj.CoreCompileInputs.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csproj.CopyComplete
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.dll
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.pdb
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ArmotizacionDiferidos.dll
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ArmotizacionDiferidos.pdb
 D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.csprojAssemblyReference.cache
 D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos.g.cs
 D:\Empresas\SDA\Library\project\ArmotizacionDiferidos\obj\Debug\ArmotizacionDiferidos_MarkupCompile.cache

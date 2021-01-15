@@ -77,17 +77,3 @@ D:\Empresas\SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.dll
 D:\Empresas\SDA\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.pdb
 D:\Empresas\SDA\Library\MaestraTerceros.dll
 D:\Empresas\SDA\Library\MaestraTerceros.pdb
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csprojAssemblyReference.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.g.cs
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros_MarkupCompile.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros_MarkupCompile.lref
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.baml
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.g.resources
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.Properties.Resources.resources
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.GenerateResource.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.CoreCompileInputs.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.csproj.CopyComplete
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.dll
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\MaestraTerceros\obj\Debug\MaestraTerceros.pdb
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\MaestraTerceros.dll
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\MaestraTerceros.pdb

@@ -476,6 +476,7 @@ namespace SiasoftAppExt
         {
             try
             {
+                int linea = 1;
                 //VALIDAR DOCUMENTO si existe
                 foreach (DataTable dtemp in doc_agru.Tables)
                 {
@@ -491,8 +492,7 @@ namespace SiasoftAppExt
                     double debito = 0;
                     double credito = 0;
 
-                    //validar campo por campo
-                    int linea = 1;
+                    //validar campo por campo                    
                     foreach (System.Data.DataRow dr in dtemp.Rows)
                     {
                         #region tercero

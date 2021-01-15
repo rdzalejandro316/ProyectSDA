@@ -360,7 +360,7 @@ namespace SiasoftAppExt
 
                     await slowTask;
 
-                    if (((int)slowTask.Result) > 0)
+                    if (slowTask.IsCompleted)
                     {
 
                         if (TipoCBX.SelectedIndex == 1 && (tag == "Cuentas" || tag == "Tercero"))

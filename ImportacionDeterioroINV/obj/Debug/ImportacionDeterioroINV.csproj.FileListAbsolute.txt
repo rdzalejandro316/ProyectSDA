@@ -1,0 +1,14 @@
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeterioroINV\obj\Debug\ImportacionDeterioroINV.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ImportacionDeterioroINV.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\ImportacionDeterioroINV.pdb

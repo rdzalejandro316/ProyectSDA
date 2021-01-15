@@ -190,46 +190,49 @@ namespace SiasoftAppExt
 
                 #endregion
 
-                CancellationTokenSource source = new CancellationTokenSource();
-                CancellationToken token = source.Token;
-                sfBusyIndicator.IsBusy = true;
+                MessageBoxResult result = MessageBox.Show("Usted desea reclasificar el codigo " + CodAnt.Text.Trim() + " a " + CodNue.Text.Trim() + " de " + BTNreclasificar.Tag.ToString().Trim() + " ?", "Confirmacion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                string tag = BTNreclasificar.Tag.ToString().Trim();
-                string cod_ant = CodAnt.Text.Trim();
-                string cod_nue = CodNue.Text.Trim();
-
-
-                var slowTask = Task<int>.Factory.StartNew(() => SlowDude(cod_ant, cod_nue, dsTemporal.Tables[0], source.Token), source.Token);
-                await slowTask;
-
-                if (((int)slowTask.Result) > 0)
+                if (result == MessageBoxResult.Yes)
                 {
 
+                    Card.IsEnabled = false;
+                    sfBusyIndicator.IsBusy = true;
 
-                    if (TipoCBX.SelectedIndex == 1 && (tag == "Referencia" || tag == "Bodega"))
+                    string tag = BTNreclasificar.Tag.ToString().Trim();
+                    string cod_ant = CodAnt.Text.Trim();
+                    string cod_nue = CodNue.Text.Trim();
+
+
+                    var slowTask = Task<int>.Factory.StartNew(() => SlowDude(cod_ant, cod_nue, dsTemporal.Tables[0]));
+                    await slowTask;
+
+                    if (slowTask.IsCompleted)
                     {
-                        string column = tag == "Referencia" ? "cod_ref" : "cod_bod";
 
-                        var OtherslowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "1", column), source.Token);
-                        await OtherslowTask;
-                        if (((DataSet)OtherslowTask.Result).Tables[0].Rows.Count > 0)
+                        if (TipoCBX.SelectedIndex == 1 && (tag == "Referencia" || tag == "Bodega"))
                         {
-                            MessageBox.Show("los saldos fueron pasados exitosamente", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
+                            string column = tag == "Referencia" ? "cod_ref" : "cod_bod";
+
+                            var OtherslowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "1", column));
+                            await OtherslowTask;
+                            if (((DataSet)OtherslowTask.Result).Tables[0].Rows.Count > 0)
+                            {
+                                MessageBox.Show("los saldos fueron pasados exitosamente", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
                         }
+
+
+                        SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, -9, -1, -9, "GENERO RECLASIFICACION DE INVENTARIO DE LA TABLA:" + Tab_reclas.Text + " cod_anterior:" + cod_ant + " cod_nuevo:" + cod_nue, "");
+                        sfBusyIndicator.IsBusy = false;
+                        MessageBox.Show("Reclasificacion exitosa - # de registros actualizados:" + ((int)slowTask.Result));
+                        clean();
                     }
 
-
-                    SiaWin.seguridad.Auditor(0, SiaWin._ProyectId, SiaWin._UserId, SiaWin._UserGroup, SiaWin._BusinessId, -9, -1, -9, "GENERO RECLASIFICACION DE INVENTARIO DE LA TABLA:" + Tab_reclas.Text + " cod_anterior:" + cod_ant + " cod_nuevo:" + cod_nue, "");
+                    Card.IsEnabled = true;
+                    GridMain.IsEnabled = true;
+                    TipoCBX.IsEnabled = true;
                     sfBusyIndicator.IsBusy = false;
-                    MessageBox.Show("Reclasificacion exitosa - # de registros actualizados:" + ((int)slowTask.Result));
-                    clean();
                 }
-
-
-                Card.IsEnabled = false;
-                GridMain.IsEnabled = true;
-                TipoCBX.IsEnabled = true;
-                sfBusyIndicator.IsBusy = false;
             }
             catch (Exception w)
             {
@@ -238,7 +241,7 @@ namespace SiasoftAppExt
             }
         }
 
-        private int SlowDude(string cod_ant, string cod_nue, DataTable dt, CancellationToken cancellationToken)
+        private int SlowDude(string cod_ant, string cod_nue, DataTable dt)
         {
             int NumReg = 1;
 
@@ -555,8 +558,8 @@ namespace SiasoftAppExt
                 string tag = BTNreclasificar.Tag.ToString().Trim();
                 string cod_ant = CodAnt.Text.Trim();
                 string cod_nue = CodNue.Text.Trim();
-                string column = tag == "Referencia" ? "cod_ref" : "cod_bod";                
-                var slowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "0", column), source.Token);
+                string column = tag == "Referencia" ? "cod_ref" : "cod_bod";
+                var slowTask = Task<DataSet>.Factory.StartNew(() => Saldos(cod_ant, cod_nue, "0", column));
                 await slowTask;
 
                 if (((DataSet)slowTask.Result).Tables[0].Rows.Count > 0)

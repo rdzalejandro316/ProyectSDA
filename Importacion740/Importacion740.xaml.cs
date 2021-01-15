@@ -251,7 +251,7 @@ namespace SiasoftAppExt
 
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
-                var slowTask = Task<DataTable>.Factory.StartNew(() => Process(), source.Token);
+                var slowTask = Task<DataTable>.Factory.StartNew(() => Process());
                 await slowTask;
 
                 if (((DataTable)slowTask.Result).Rows.Count > 0)
@@ -450,6 +450,7 @@ namespace SiasoftAppExt
             {
 
                 //VALIDAR DOCUMENTO si existe
+                int linea = 1;
                 foreach (DataTable dtemp in doc_agru.Tables)
                 {
                     string cod_trn = dtemp.Rows[0]["COD_TRN"].ToString().Trim();
@@ -464,8 +465,7 @@ namespace SiasoftAppExt
                     double debito = 0;
                     double credito = 0;
 
-                    
-                    int linea = 1;
+                                       
                     //validar campo por campo
                     foreach (System.Data.DataRow dr in dtemp.Rows)
                     {

@@ -9,6 +9,31 @@
 
     <UserControl.Resources>
         <SolidColorBrush Color="Indigo" x:Key="ColorMain"/>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+        <Style TargetType="syncfusion:GridRowHeaderCell">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="syncfusion:GridRowHeaderCell">
+                        <Border x:Name="PART_RowHeaderCellBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding RowIndex,RelativeSource={RelativeSource TemplatedParent}}"
+                                   TextAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -29,17 +54,9 @@
         </Grid>
 
         <Grid Grid.Row="1" Margin="5">
-            <Grid.Resources>
-                <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
-                    <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="FontSize" Value="10"/>
-                    <Setter Property="Foreground" Value="LightGray"/>
-                    <Setter Property="Background" Value="#373737"/>
-                </Style>
-            </Grid.Resources>
             <Grid>
                 <syncfusion:SfBusyIndicator Grid.Row="1" Name="sfBusyIndicator" Margin="5" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100" AnimationType="Pen" Header="Importando Datos" Height="100" IsBusy="False" Foreground="{StaticResource ColorMain}"/>
-                <syncfusion:SfDataGrid Name="dataGridRefe" Grid.Row="0" Margin="2" EnableDataVirtualization = "True" AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="DataGridRefe_SelectionChanged">
+                <syncfusion:SfDataGrid Name="dataGridRefe" ShowRowHeader="True" Grid.Row="0" Margin="2" EnableDataVirtualization = "True" AllowResizingColumns="True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" SelectionMode="Single" HeaderStyle="{StaticResource headerStyle}" SelectionChanged="DataGridRefe_SelectionChanged">
                     <syncfusion:SfDataGrid.Columns>
                         <syncfusion:GridTextColumn HeaderText="TRN" MappingName="COD_TRN" Width="60"/>
                         <syncfusion:GridTextColumn HeaderText="NUM_TRN" MappingName="NUM_TRN" Width="100"/>

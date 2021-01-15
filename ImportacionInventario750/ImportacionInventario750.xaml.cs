@@ -127,7 +127,7 @@ namespace SiasoftAppExt
                 BtnCrear.IsEnabled = false;
                 CancellationTokenSource source = new CancellationTokenSource();
                 CancellationToken token = source.Token;
-                var slowTask = Task<(DataTable, decimal, decimal)>.Factory.StartNew(() => Process(), source.Token);
+                var slowTask = Task<(DataTable, decimal, decimal)>.Factory.StartNew(() => Process());
                 await slowTask;
 
 
@@ -343,9 +343,12 @@ namespace SiasoftAppExt
             {
                 decimal ttuni = 0;
                 decimal tttot = 0;
+
                 //VALIDAR DOCUMENTO si existe
+                int linea = 1;
                 foreach (DataTable dtemp in doc_agru.Tables)
                 {
+
                     #region validacion documento
 
                     string cod_trn = dtemp.Rows[0]["COD_TRN"].ToString().Trim();
@@ -358,12 +361,10 @@ namespace SiasoftAppExt
                     if (dt_codtrn.Rows.Count <= 0) { System.Data.DataRow row = dt_errores.NewRow(); row["error"] = "la transaccion " + cod_trn + " no existe "; dt_errores.Rows.Add(row); }
 
                     #endregion
-
-                    double dou;
+                  
                     //validar campo por campo
                     foreach (System.Data.DataRow dr in dtemp.Rows)
-                    {
-
+                    {                        
                         #region tercero
 
                         string cod_ter = dr["COD_TER"].ToString().Trim();
@@ -374,7 +375,7 @@ namespace SiasoftAppExt
                             else
                             {
                                 dr["NOM_TER"] = "";
-                                dt_errores.Rows.Add("el tercero  " + cod_ter + " no existe ");
+                                dt_errores.Rows.Add("el tercero  " + cod_ter + " no existe  (ERROR EN LA LINEA " + linea + ") ");
                             }
                         }
                         #endregion
@@ -385,12 +386,12 @@ namespace SiasoftAppExt
                         DateTime dt;
                         if (string.IsNullOrEmpty(fectrn))
                         {
-                            dt_errores.Rows.Add("el campo fecha de transaccion debe de estar lleno:" + num_trn);
+                            dt_errores.Rows.Add("el campo fecha de transaccion debe de estar lleno:" + num_trn + "  (ERROR EN LA LINEA " + linea + ")");
                         }
                         else
                         {
                             if (DateTime.TryParse(fectrn, out dt) == false)
-                                dt_errores.Rows.Add("el campo fec_trn debe de ser una fecha:" + num_trn);
+                                dt_errores.Rows.Add("el campo fec_trn debe de ser una fecha:" + num_trn + " (ERROR EN LA LINEA " + linea + ")");
                         }
 
 
@@ -404,7 +405,7 @@ namespace SiasoftAppExt
                         else
                         {
                             dr["NOM_REF"] = "";
-                            dt_errores.Rows.Add("la referencia " + cod_ref + " no existe ");
+                            dt_errores.Rows.Add("la referencia " + cod_ref + " no existe (ERROR EN LA LINEA " + linea + ")");
                         }
 
                         #endregion
@@ -419,7 +420,7 @@ namespace SiasoftAppExt
                         else
                         {
                             dr["NOM_BOD"] = "";
-                            dt_errores.Rows.Add("la bodega " + cod_bod + " no existe ");
+                            dt_errores.Rows.Add("la bodega " + cod_bod + " no existe  (ERROR EN LA LINEA " + linea + ")");
                         }
 
                         #endregion
@@ -432,9 +433,9 @@ namespace SiasoftAppExt
                         if (!string.IsNullOrEmpty(cntxls))
                         {
                             if (decimal.TryParse(cntxls, out cantidad) == false)
-                                dt_errores.Rows.Add("el campo cantidad debe de ser numerico:" + num_trn);
+                                dt_errores.Rows.Add("el campo cantidad debe de ser numerico:" + num_trn + " (ERROR EN LA LINEA " + linea + ")");
                         }
-                        else dt_errores.Rows.Add("el campo cantidad debe de estar lleno:" + num_trn);
+                        else dt_errores.Rows.Add("el campo cantidad debe de estar lleno:" + num_trn + " (ERROR EN LA LINEA " + linea + ")");
 
                         #endregion
 
@@ -448,9 +449,9 @@ namespace SiasoftAppExt
                             if (decimal.TryParse(cosuni, out cos_uni) == true)
                                 cos_uni = Convert.ToDecimal(dr["COS_UNI"]);
                             else
-                                dt_errores.Rows.Add("el campo costo unitario debe de ser numerico:" + num_trn);
+                                dt_errores.Rows.Add("el campo costo unitario debe de ser numerico:" + num_trn + " (ERROR EN LA LINEA " + linea + ")");
                         }
-                        else dt_errores.Rows.Add("el campo costo unitario debe de estar lleno:" + num_trn);
+                        else dt_errores.Rows.Add("el campo costo unitario debe de estar lleno:" + num_trn + " (ERROR EN LA LINEA " + linea + ")");
 
 
 
@@ -462,12 +463,12 @@ namespace SiasoftAppExt
                             if (decimal.TryParse(costot, out cos_tot) == true)
                                 cos_tot = Convert.ToDecimal(dr["COS_TOT"]);
                             else
-                                dt_errores.Rows.Add("el campo costo total debe de ser numerico:" + num_trn);
+                                dt_errores.Rows.Add("el campo costo total debe de ser numerico:" + num_trn + " (ERROR EN LA LINEA " + linea + ")");
 
                         }
-                        else dt_errores.Rows.Add("el campo costo total debe de estar lleno:" + num_trn);
+                        else dt_errores.Rows.Add("el campo costo total debe de estar lleno:" + num_trn + " (ERROR EN LA LINEA " + linea + ")");
 
-                        
+
 
                         ttuni += cos_uni;
                         tttot += cos_tot;
@@ -476,10 +477,12 @@ namespace SiasoftAppExt
 
                         if (operation != cos_tot)
                         {
-                            dt_errores.Rows.Add("el costo total no coincide con la operacion de costo unitario por cantidad :" + cod_trn + "-" + num_trn + "  ");
+                            dt_errores.Rows.Add("el costo total no coincide con la operacion de costo unitario por cantidad :" + cod_trn + "-" + num_trn + " (ERROR EN LA LINEA " + linea + ") ");
                         }
 
                         #endregion
+
+                        linea++;
                     }
                 }
 
@@ -538,10 +541,10 @@ namespace SiasoftAppExt
 
                         foreach (System.Data.DataRow dt in dt_cue.Rows)
                         {
-                            
+
                             string cod_ref = dt["cod_ref"].ToString().Trim();
                             string cod_bod = dt["cod_bod"].ToString().Trim();
-                            
+
                             decimal cos_uni = Convert.ToDecimal(dt["cos_uni"]);
 
                             decimal cantidad = Convert.ToDecimal(dt["cantidad"]);
@@ -552,7 +555,7 @@ namespace SiasoftAppExt
                         }
 
                         string query = sql_cab + sql_cue;
-                        
+
 
                         if (SiaWin.Func.SqlCRUD(query, idemp) == false) { MessageBox.Show("se genero un error en un documento por favor consulte"); }
                         sql_cab = ""; sql_cue = "";

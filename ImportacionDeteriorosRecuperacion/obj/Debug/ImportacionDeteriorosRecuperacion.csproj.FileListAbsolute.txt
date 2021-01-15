@@ -1,8 +1,0 @@
-D:\SiasoftApp_SDA\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion.csprojAssemblyReference.cache
-D:\SiasoftApp_SDA\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion.g.cs
-D:\SiasoftApp_SDA\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion_MarkupCompile.cache
-D:\SiasoftApp_SDA\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion_MarkupCompile.lref
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion.csprojAssemblyReference.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion.g.cs
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion_MarkupCompile.cache
-C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\ImportacionDeteriorosRecuperacion\obj\Debug\ImportacionDeteriorosRecuperacion_MarkupCompile.lref
