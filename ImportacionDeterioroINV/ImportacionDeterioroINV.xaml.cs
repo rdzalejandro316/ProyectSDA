@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,7 @@ namespace SiasoftAppExt
         public int idemp = 0;
         string cnEmp = "";
         string cod_empresa = "";
+        int idmodulo = 2;
         dynamic tabitem;
 
         DataTable dt = new DataTable();
@@ -408,15 +410,21 @@ namespace SiasoftAppExt
 
                     if (dt.Rows.Count > 0)
                     {
+                        string codtrn_det = "215";
                         string cab_deterioro = "";
                         string cue_deterioro = "";
 
                         //string cab_recuperacion = "";
                         //string cue_recuperacion = "";
 
+                        string sqlConsecutivo = @"declare @fecdoc as datetime;set @fecdoc = getdate();";
+                        sqlConsecutivo += @"declare @ini as char(4);declare @num as varchar(12);declare @long as int; ";
+                        sqlConsecutivo += "declare @iConsecutivo char(12) = '';";
+                        sqlConsecutivo += "UPDATE inmae_trn SET num_act=ISNULL(num_act, 0) + 1  WHERE cod_trn='" + codtrn_det + "'; ";
+                        sqlConsecutivo += "SELECT @num=num_act,@ini=inicial,@long=lon_num FROM inmae_trn WHERE cod_trn='215';";
+                        sqlConsecutivo += "select @iConsecutivo=rtrim(@ini)+REPLICATE ('0',@long-len(rtrim(@ini))-len(rtrim(convert(varchar,@num))))+rtrim(convert(varchar,@num));";
 
-                        cab_deterioro += "insert into incab_doc (cod_trn,num_trn,fec_trn,des_mov) values ('215','PROCESO DE IMPORTACION 751');DECLARE @NewIDdet INT;SELECT @NewIDdet = SCOPE_IDENTITY(); ";
-
+                        string fec_trn = DateTime.Now.ToString("dd/MM/yyyy");
 
                         foreach (System.Data.DataRow item in dt.Rows)
                         {
@@ -425,11 +433,11 @@ namespace SiasoftAppExt
                             decimal recupera = Convert.ToDecimal(item["RECUPERA"]);
 
                             string cod_ref = item["cod_ref"].ToString().Trim();
-
+                            fec_trn = item["fec_trn"].ToString().Trim();
 
                             if (deterioro > 0)
                             {
-                                cue_deterioro += "insert into incue_doc (idregcab,cod_trn,num_trn,cod_ref,cod_sub,cos_tot,cod_bod) values (NewIDdet,'','215','" + cod_ref + "','050'," + deterioro.ToString("F", CultureInfo.InvariantCulture) + ",'001')";
+                                cue_deterioro += "insert into incue_doc (idregcab,cod_trn,num_trn,cod_ref,cod_sub,cos_tot,cod_bod) values (@NewIDdet,'" + codtrn_det + "',@iConsecutivo,'" + cod_ref + "','050'," + deterioro.ToString("F", CultureInfo.InvariantCulture) + ",'001');";
                             }
 
                             //if (recupera > 0)
@@ -438,10 +446,32 @@ namespace SiasoftAppExt
                             //}
                         }
 
-                        string query = cab_deterioro + cue_deterioro;
+                        cab_deterioro += sqlConsecutivo + "insert into incab_doc (cod_trn,num_trn,fec_trn,des_mov) values ('" + codtrn_det + "',@iConsecutivo,'" + fec_trn + "','PROCESO DE IMPORTACION 751');DECLARE @NewIDdet INT;SELECT @NewIDdet = SCOPE_IDENTITY(); ";
 
-                        if (SiaWin.Func.SqlCRUD(query, idemp) == true) { MessageBox.Show("la importacion fue exitosa", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation); }
+                        string query = cab_deterioro + cue_deterioro;                        
+                        using (SqlConnection connection = new SqlConnection(cnEmp))
+                        {
+
+                            connection.Open();
+                            StringBuilder errorMessages = new StringBuilder();
+                            SqlCommand command = connection.CreateCommand();
+                            SqlTransaction transaction;
+                            transaction = connection.BeginTransaction("Transaction");
+                            command.Connection = connection;
+                            command.Transaction = transaction;
+                            command.CommandText = query + @"select CAST(@NewIDdet AS int);";
+                            var r = new object();
+                            r = command.ExecuteScalar();
+                            transaction.Commit();
+                            connection.Close();
+                            int idreg = Convert.ToInt32(r.ToString());
+                            if (idreg > 0)
+                            {
+                                SiaWin.TabTrn(0, idemp, true, idreg, idmodulo, WinModal: true);
+                            }
+                        }
                     }
+
 
                     dataGridExcel.ItemsSource = null;
                     dt.Clear();
@@ -459,13 +489,14 @@ namespace SiasoftAppExt
 
                 #endregion
 
-
             }
             catch (Exception w)
             {
                 MessageBox.Show("ERROR AL EJECUTAR EL PROCESO:" + w);
             }
         }
+
+
 
         private void BtnErrores_Click(object sender, RoutedEventArgs e)
         {

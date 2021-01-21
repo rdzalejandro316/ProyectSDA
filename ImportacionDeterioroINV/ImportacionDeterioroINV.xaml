@@ -102,6 +102,8 @@
                     <TextBlock Grid.Row="1" Grid.Column="2" Text="COSTO REP: " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
                     <TextBlock x:Name="Tx_costorep" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
 
+                    
+
                     <TextBlock Grid.Row="0" Grid.Column="4" Text="DETERIORO : " VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" FontWeight="Bold"/>
                     <TextBlock x:Name="Tx_deterioro" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" Foreground="White" Margin="5 0 0 0"/>
 
