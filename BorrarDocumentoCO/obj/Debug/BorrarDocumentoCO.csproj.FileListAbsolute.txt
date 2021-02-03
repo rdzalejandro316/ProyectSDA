@@ -40,3 +40,17 @@ D:\Empresas\SDA\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.dl
 D:\Empresas\SDA\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.pdb
 D:\Empresas\SDA\Library\BorrarDocumentoCO.dll
 D:\Empresas\SDA\Library\BorrarDocumentoCO.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\BorrarDocumentoCO\obj\Debug\BorrarDocumentoCO.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\BorrarDocumentoCO.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\BorrarDocumentoCO.pdb

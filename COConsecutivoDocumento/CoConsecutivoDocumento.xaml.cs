@@ -53,7 +53,7 @@ namespace SiasoftAppExt
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
-                this.Title = "Consecutivo de Documentos Inventarios " + cod_empresa + "-" + nomempresa;
+                this.Title = "Consecutivo de Documentos Contabilidad " + cod_empresa + "-" + nomempresa;
                 dt = SiaWin.Func.SqlDT("select cod_trn,nom_trn,ind_con,num_act,lon_num,ind_modi,inicial,num_01,num_02,num_03,num_04,num_05,num_06,num_07,num_08,num_09,num_10,num_11,num_12  from comae_trn order by cod_trn", "transacciones", idemp);
                 dataGridDoc.ItemsSource = dt.DefaultView;
 

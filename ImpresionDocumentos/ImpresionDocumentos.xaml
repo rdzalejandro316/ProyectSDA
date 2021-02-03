@@ -35,11 +35,10 @@
     </Window.Resources>
 
     <Grid>
-        <Grid Height="300" Width="400">
+        <Grid Height="250" Width="400">
             <Border Style="{StaticResource card}"/>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -58,17 +57,11 @@
 
                 <TextBlock Grid.Row="2" Text="Copia:" Style="{StaticResource Title}"/>
                 <syncfusion:UpDown Grid.Row="2" Grid.Column="1" MinValue="1" MaxValue="1" Width="50" Height="25" NumberDecimalDigits="0" HorizontalAlignment="Left" Margin="5 0 0 0"/>
-
-                <TextBlock Grid.Row="3" Text="ZoomMode:" Style="{StaticResource Title}"/>
-                <ComboBox Name="CbZoom" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,50,0">
-                    <ComboBoxItem IsSelected="True" Content="Full Page"/>
-                    <ComboBoxItem Content="Page Width"/>
-                    <ComboBoxItem Content="Percent"/>
-                </ComboBox>
+               
 
 
-                <TextBlock Grid.Row="4" Text="Ver Parametros:" Style="{StaticResource Title}"/>
-                <ComboBox Name="CbShowParm" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,50,0">
+                <TextBlock Grid.Row="3" Text="Ver Parametros:" Style="{StaticResource Title}"/>
+                <ComboBox Name="CbShowParm" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,50,0" Width="100" HorizontalAlignment="Left">
                     <ComboBoxItem IsSelected="True" Content="No"/>
                     <ComboBoxItem Content="Si"/>
                 </ComboBox>

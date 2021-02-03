@@ -65,6 +65,7 @@
                             <SiaSf:GridTextColumn HeaderText="Nit-cc" MappingName="cod_ter" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="Detalle" MappingName="des_mov" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="doc_ref" MappingName="doc_ref" Width="100"/>
+                            <SiaSf:GridTextColumn HeaderText="Referencia" MappingName="doc_mov" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="doc_cruc" MappingName="doc_cruc" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="Debito" MappingName="deb_mov" Width="100"/>
                             <SiaSf:GridTextColumn HeaderText="Credito" MappingName="cre_mov" Width="100"/>

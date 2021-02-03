@@ -191,6 +191,7 @@ namespace SiasoftAppExt
                 query.Append(where);
                 query.Append("order by cod_trn,num_trn  ");
 
+                //MessageBox.Show(query.ToString());
 
                 DataTable dt = SiaWin.Func.SqlDT(query.ToString(), "temp", idemp);
                 if (dt.Rows.Count > 0) SiaWin.Browse(dt);

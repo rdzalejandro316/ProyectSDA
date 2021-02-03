@@ -115,7 +115,7 @@ namespace SiasoftAppExt
             try
             {
                 string query = "select cab.idreg,cab.cod_trn,cab.num_trn,cab.fec_trn,cue.cod_cta,cue.cod_ter,cue.des_mov, ";
-                query += "cue.doc_ref,cue.doc_cruc,cue.deb_mov,cue.cre_mov ";
+                query += "cue.doc_ref,cue.doc_cruc,cue.deb_mov,cue.cre_mov,cue.doc_mov ";
                 query += "from Cocue_doc as cue ";
                 query += "inner join cocab_doc as cab on cab.idreg = cue.idregcab ";
                 query += "WHERE cue.doc_mov='" + doc_mov + "' ";

@@ -25,3 +25,17 @@ C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\projec
 C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.pdb
 C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\COConsecutivoDocumento.dll
 C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\COConsecutivoDocumento.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\CoConsecutivoDocumento.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\CoConsecutivoDocumento.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\COConsecutivoDocumento\obj\Debug\COConsecutivoDocumento.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\COConsecutivoDocumento.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\COConsecutivoDocumento.pdb

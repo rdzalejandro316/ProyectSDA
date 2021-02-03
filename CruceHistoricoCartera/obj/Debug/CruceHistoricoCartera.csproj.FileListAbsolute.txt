@@ -1,0 +1,14 @@
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.csprojAssemblyReference.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.g.cs
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera_MarkupCompile.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera_MarkupCompile.lref
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.baml
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.g.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.Properties.Resources.resources
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.csproj.GenerateResource.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.csproj.CopyComplete
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\CruceHistoricoCartera\obj\Debug\CruceHistoricoCartera.pdb
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\CruceHistoricoCartera.dll
+C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\CruceHistoricoCartera.pdb

@@ -100,28 +100,22 @@ namespace SiasoftAppExt
 
                     WindowsFormsHost winFormsHost = new WindowsFormsHost();
                     ReportViewer viewer = new ReportViewer();
-
-                    switch (CbZoom.SelectedIndex)
-                    {
-                        case 0: viewer.ZoomMode = ZoomMode.FullPage; break;
-                        case 1: viewer.ZoomMode = ZoomMode.PageWidth; break;
-                        case 2: viewer.ZoomMode = ZoomMode.Percent; viewer.ZoomPercent = 100; break;
-                    }
-
-
-                    switch (CbShowParm.SelectedIndex)
-                    {
-                        case 0: viewer.ShowParameterPrompts = false; break;
-                        case 1: viewer.ShowParameterPrompts = true; break;
-                    }
-
-
+                    
                     viewer.ServerReport.ReportServerUrl = new Uri(server);
                     viewer.ServerReport.ReportPath = path;
                     viewer.ProcessingMode = ProcessingMode.Remote;
                     viewer.ServerReport.SetParameters(parameters);
-                    viewer.RefreshReport();
                     viewer.SetDisplayMode(DisplayMode.PrintLayout);
+                    switch (CbShowParm.SelectedIndex)
+                    {
+                        case 0: viewer.ShowParameterPrompts = false; break;
+                        case 1: viewer.ShowParameterPrompts = true; break;
+                    }                    
+                    
+                    viewer.RefreshReport();
+
+                                                      
+                  
 
                     winFormsHost.Child = viewer;
                     w.Content = winFormsHost;
