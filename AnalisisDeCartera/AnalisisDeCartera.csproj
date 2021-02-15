@@ -129,6 +129,9 @@
     <Compile Include="BrowMini.xaml.cs">
       <DependentUpon>BrowMini.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CalculoIntereses.xaml.cs">
+      <DependentUpon>CalculoIntereses.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportCxC.xaml.cs">
       <DependentUpon>ReportCxC.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BrowMini.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CalculoIntereses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
