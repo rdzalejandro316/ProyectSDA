@@ -196,12 +196,9 @@ namespace SiasoftAppExt
                     TxtRecords.Text = ((DataSet)slowTask.Result).Tables[0].Rows.Count.ToString();
                     if (detalle == false)
                     {
-                        //DataTable dt = ((DataSet)slowTask.Result).Tables[0];
-                        //SiaWin.Browse(dt);                        
                         DtCartera = ((DataSet)slowTask.Result).Tables["C"];
                         dataGridCxC.ItemsSource = ((DataSet)slowTask.Result).Tables["C"];
-                        double valorCxC, valorCxCAnt = 0;
-                        //double valorCxCAnt = 0;
+                        double valorCxC, valorCxCAnt = 0;                        
                         double valorCxP = 0;
                         double valorCxPAnt = 0;
                         double saldoCxC = 0;
@@ -1039,7 +1036,13 @@ namespace SiasoftAppExt
 
         private void BtnCalcularInt_Click(object sender, RoutedEventArgs e)
         {
-
+            CalculoIntereses w = new CalculoIntereses();
+            w.feccxc = FechaIni.Text;
+            w.ctacxc = Cuentas;
+            w.ShowInTaskbar = false;
+            w.Owner = Application.Current.MainWindow;
+            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;    
+            w.ShowDialog();               
         }
 
 

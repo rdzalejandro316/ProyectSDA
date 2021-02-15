@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalisisDeCartera", "AnalisisDeCartera.csproj", "{50FB6FED-2639-4372-8553-4D7AD49DEC96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestraTerceros", "..\MaestraTerceros\MaestraTerceros.csproj", "{BB59CF7A-A9D2-4E8D-8FF5-A883D995B81B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CruceHistoricoCartera", "..\CruceHistoricoCartera\CruceHistoricoCartera.csproj", "{EFE305E1-5E50-40A9-BA94-E0A5BC749F6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeterioroCuentasPorCobrar", "..\DeterioroCuentasPorCobrar\DeterioroCuentasPorCobrar.csproj", "{84194AA7-F730-4D92-882A-C91655FF1DE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{50FB6FED-2639-4372-8553-4D7AD49DEC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FB6FED-2639-4372-8553-4D7AD49DEC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50FB6FED-2639-4372-8553-4D7AD49DEC96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB59CF7A-A9D2-4E8D-8FF5-A883D995B81B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB59CF7A-A9D2-4E8D-8FF5-A883D995B81B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB59CF7A-A9D2-4E8D-8FF5-A883D995B81B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB59CF7A-A9D2-4E8D-8FF5-A883D995B81B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE305E1-5E50-40A9-BA94-E0A5BC749F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE305E1-5E50-40A9-BA94-E0A5BC749F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE305E1-5E50-40A9-BA94-E0A5BC749F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE305E1-5E50-40A9-BA94-E0A5BC749F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84194AA7-F730-4D92-882A-C91655FF1DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84194AA7-F730-4D92-882A-C91655FF1DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84194AA7-F730-4D92-882A-C91655FF1DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84194AA7-F730-4D92-882A-C91655FF1DE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

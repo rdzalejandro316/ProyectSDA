@@ -3,55 +3,108 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AnalisisDeCartera"
-        mc:Ignorable="d"
-        Title="CalculoIntereses" Height="450" Width="800">
+        xmlns:local="clr-namespace:AnalisisDeCartera"        
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"                 
+        xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        Title="CalculoIntereses" Height="450" Width="800" Loaded="Window_Loaded" syncfusionskin:SfSkinManager.VisualStyle="Metro">
     
     <Window.Resources>
-        <Style TargetType="TextBlock" x:Key="Title">
+        <SolidColorBrush Color="#2196F3" x:Key="ColorMain"/>
+        <SolidColorBrush Color="#373737" x:Key="ColorSecond"/>
+        <Style TargetType="TextBlock" x:Key="title">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style TargetType="TextBox" x:Key="value">
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnStlye">
+            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="Background" Value="{StaticResource ColorSecond}"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="FontSize" Value="11"/>
         </Style>
     </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="80"/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <Grid>
+        <Grid Grid.Row="0"  Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Cuenta :" Style="{StaticResource Title}"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource value}"/>
+            <TextBlock Text="Fecha : "  Grid.Row="0" Grid.Column="0" Style="{StaticResource title}"/>
+            <DatePicker x:Name="FechaIni" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" ></DatePicker>
 
-            <TextBlock Grid.Row="1" Text="Tasa :" Style="{StaticResource Title}"/>
-                        
-            <TextBlock Grid.Row="2" Text="Tercero :" Style="{StaticResource Title}"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource value}"/>
-            <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource value}"/>
+            <syncfusion:ComboBoxAdv  FontSize="12" x:Name="comboBoxCuentas" Margin="5" Grid.Column="2" Grid.Row="0"	DefaultText="Seleccione Cuenta" DisplayMemberPath="nom_cta"  SelectedValuePath="cod_cta"  />
+
+            <TextBlock Text="Tasa :" Grid.Row="0" Grid.Column="3" Style="{StaticResource title}"/>
+            <syncfusion:UpDown Name="TxTasa" Grid.Row="0" Grid.Column="4" Value="0" MinValue="0" Width="80" Height="25" NumberDecimalDigits="0" Margin="5 0 0 0" HorizontalAlignment="Left"/>
             
-            <TextBlock Grid.Row="3" Text="Fecha :" Style="{StaticResource Title}"/>
-            <DatePicker Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="5"/>
+            <TextBlock Text="Cliente:  " Grid.Row="1" Grid.Column="0" Style="{StaticResource title}"/>
+            <TextBox x:Name="TextCod_Ter" Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" Margin="2,6,2,6" HorizontalAlignment="Stretch" FontSize="13" PreviewKeyDown="TextBox_PreviewKeyDown" Tag="comae_ter" LostFocus="TextCod_Ter_LostFocus" ToolTip="F8 buscar"/>
+            <TextBlock x:Name="TextNombreTercero" Text=""  Grid.Row="1" Grid.Column="2" Foreground="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="13"  Background="LightGray"  Margin="2,6,2,6"/>
+
+            <StackPanel Grid.Column="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <Button x:Name="BtnConsultar" Content="Consultar" Click="BtnConsultar_Click" Style="{StaticResource BtnStlye}" Height="30" Margin="5"/>
+                <Button x:Name="BtnSalir" Content="Salir" Click="BtnSalir_Click" Style="{StaticResource BtnStlye}" Height="30" Margin="5"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <syncfusion:SfDataGrid  x:Name="dataGridCxC" EnableDataVirtualization = "True"  FrozenColumnCount="2" AutoGenerateColumns="False" ShowGroupDropArea="True" FontSize="10" FontFamily="Times New Roman" AllowFiltering="True" HeaderStyle="{StaticResource headerStyle}">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="70" />
+                    <syncfusion:GridTextColumn HeaderText="Nit/cc" MappingName="cod_ter" Width="80"/>
+                    <syncfusion:GridTextColumn HeaderText="Nombre cliente"  MappingName="nom_ter" Width="220"/>
+                    <syncfusion:GridTextColumn HeaderText="Trn" MappingName="cod_trn" Width="50" />
+                    <syncfusion:GridTextColumn HeaderText="Documento" MappingName="num_trn" Width="90" />
+                    <syncfusion:GridTextColumn DisplayBinding="{Binding Path=fec_trn, StringFormat={}{0:dd/MM/yyyy}}"  Width="90" HeaderText="FechaDoc" />
+                    <syncfusion:GridTextColumn DisplayBinding="{Binding Path=fec_ven, StringFormat={}{0:dd/MM/yyyy}}"  Width="90" HeaderText="FechaVenc" />
+                    <syncfusion:GridTextColumn DisplayBinding="{Binding Path=valor,StringFormat='{}{0:N2}'}"   Width="85" HeaderText="Valor Doc" TextAlignment="Right" AllowFiltering="False"/>
+                    <syncfusion:GridTextColumn DisplayBinding="{Binding Path=saldo, StringFormat='{}{0:N2}'}" Width="80" HeaderText="Saldo" TextAlignment="Right" AllowFiltering="False"/>
+                    <syncfusion:GridTextColumn HeaderText="Dias" MappingName="dias" Width="90"/>
+                    <syncfusion:GridTextColumn HeaderText="factura" MappingName="factura" Width="90"/>
+                    <syncfusion:GridTextColumn DisplayBinding="{Binding Path=val_int, StringFormat='{}{0:N2}'}" Width="80" HeaderText="val_int" TextAlignment="Right" AllowFiltering="False"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+
+            <syncfusion:SfBusyIndicator Name="sfBusyIndicator" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100"  AnimationType="Rainy" Header="Cargando Datos ..." Height="200" IsBusy="False"/>
 
         </Grid>
+
+        <Grid Grid.Row="3" Background="#373737">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="REGISTROS :" Foreground="White" FontWeight="Bold" Margin="5,0,0,0"/>
+                <TextBlock Name="TxRegistros" Text="0" Foreground="White" Margin="5,0,0,0"/>
+            </StackPanel>
+            <Button Name="BtnCalcular" Content="Calcular intereses" Style="{StaticResource BtnStlye}" Height="30" Width="120" HorizontalAlignment="Right" Margin="5" Click="BtnCalcular_Click"/>
+        </Grid>
+            
         
     </Grid>
 </Window>

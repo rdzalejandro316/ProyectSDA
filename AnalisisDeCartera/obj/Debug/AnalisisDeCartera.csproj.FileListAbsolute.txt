@@ -263,3 +263,5 @@ C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AnalisisDeCartera\ob
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\project\AnalisisDeCartera\obj\Debug\AnalisisDeCartera.pdb
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\AnalisisDeCartera.dll
 C:\Users\aleja\Desktop\Business\SDA\Siasoft\Library\AnalisisDeCartera.pdb
+D:\Empresas\SDA\Library\project\AnalisisDeCartera\obj\Debug\CalculoIntereses.g.cs
+D:\Empresas\SDA\Library\project\AnalisisDeCartera\obj\Debug\CalculoIntereses.baml
