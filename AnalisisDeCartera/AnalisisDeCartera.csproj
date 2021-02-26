@@ -136,6 +136,7 @@
     <Compile Include="CalculoIntereses.xaml.cs">
       <DependentUpon>CalculoIntereses.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeterioroCuentasPorCobrar.xaml.cs" />
     <Compile Include="ReportCxC.xaml.cs">
       <DependentUpon>ReportCxC.xaml</DependentUpon>
     </Compile>

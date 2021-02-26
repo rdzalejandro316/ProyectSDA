@@ -28,7 +28,6 @@ namespace AnalisisDeCartera
 
         public string feccxc;
         public DataTable ctacxc;
-
         public DataTable cal_inte;
 
         public CalculoIntereses()
@@ -60,6 +59,8 @@ namespace AnalisisDeCartera
             comboBoxCuentas.ItemsSource = ctacxc.DefaultView;
             comboBoxCuentas.DisplayMemberPath = "nom_cta";
             comboBoxCuentas.SelectedValuePath = "cod_cta";
+
+            comboBoxCuentas.SelectedValue = "13";
 
             LoadConfig();
         }
