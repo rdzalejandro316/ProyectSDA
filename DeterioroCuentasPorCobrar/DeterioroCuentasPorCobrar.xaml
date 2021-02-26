@@ -97,13 +97,16 @@
                     <StackPanel Name="PanelB" Grid.Column="5" Grid.Row="1" Orientation="Horizontal" Margin="10,0,0,0">
                         <Button x:Name="BtnPlantillas" Content="Plantilla" Click="BtnPlantillas_Click" Style="{StaticResource BtnStlye}"/>
                         <Button x:Name="BtnImportar" Content="Importar" Click="BtnImportar_Click" Style="{StaticResource BtnStlye}"/>
-                        <Button x:Name="BtnCrear" Content="Crear Documento" Click="BtnCrear_Click" Style="{StaticResource BtnStlye}"/>
+                        <Button x:Name="BtnCrear" Content="Crear Ajuste" Click="BtnCrearAjusteNiif_Click" Style="{StaticResource BtnStlye}"/>
+                        <Button x:Name="BtnCrearRecup" Content="Crear Recuperacion" Click="BtnCrearRecup_Click" Style="{StaticResource BtnStlye}"/>
                     </StackPanel>
 
                 </Grid>
 
 
-                <Grid Grid.Row="1">
+                <SiaSf:SfBusyIndicator Grid.Row="1" Name="sfBusyIndicator" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100"  AnimationType="Rainy" Header="Cargando ..." Height="200" IsBusy="False"/>
+
+                <Grid Grid.Row="1" Name="PanelGrid">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -130,8 +133,7 @@
                         </SiaSf:SfDataGrid.Columns>
                     </SiaSf:SfDataGrid>
 
-                    <SiaSf:SfBusyIndicator Name="sfBusyIndicator" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100"  AnimationType="Rainy" Header="Cargando ..." Height="200" IsBusy="False"/>
-
+                    
                     <Grid Grid.Column="1">
                         <Grid Background="WhiteSmoke" Margin="5">
                             <Border Background="WhiteSmoke">
@@ -211,7 +213,7 @@
                     </Grid>
                 </Grid>
 
-                <Grid Grid.Row="3" Background="{StaticResource ColorSecond}">
+                <Grid x:Name="PanelC" Grid.Row="3" Background="{StaticResource ColorSecond}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>

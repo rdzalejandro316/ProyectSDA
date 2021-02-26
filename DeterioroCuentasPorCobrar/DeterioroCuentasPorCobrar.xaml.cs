@@ -36,7 +36,7 @@ namespace SiasoftAppExt
         int idmodulo = 1;
 
 
-        DataTable dt_consulta = new DataTable();
+        public DataTable dt_consulta = new DataTable();
         DataTable dt_importar = new DataTable();
         DataTable dt_errores = new DataTable();
 
@@ -72,6 +72,7 @@ namespace SiasoftAppExt
 
 
                 FechaIni.Text = DateTime.Now.ToShortDateString();
+
             }
             catch (Exception e)
             {
@@ -177,11 +178,13 @@ namespace SiasoftAppExt
 
                 PanelA.IsEnabled = false;
                 PanelB.IsEnabled = false;
+                PanelC.IsEnabled = false;
                 sfBusyIndicator.IsBusy = true;
 
                 string fecha = FechaIni.Text.Trim();
                 string Tercero = TxCodTer.Text.Trim();
                 string Cta = "";
+                string storedprocedure = "_empSpCoAnalisisCxcDeterioroCartera";
                 if (comboBoxCuentas.SelectedIndex >= 0)
                 {
                     foreach (DataRowView ob in comboBoxCuentas.SelectedItems)
@@ -194,7 +197,7 @@ namespace SiasoftAppExt
                 }
 
 
-                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(fecha, Cta, Tercero));
+                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(fecha, Cta, Tercero, storedprocedure));
                 await slowTask;
 
                 if (slowTask.IsCompleted)
@@ -216,6 +219,7 @@ namespace SiasoftAppExt
 
                 PanelA.IsEnabled = true;
                 PanelB.IsEnabled = true;
+                PanelC.IsEnabled = true;
                 sfBusyIndicator.IsBusy = false;
 
             }
@@ -225,7 +229,7 @@ namespace SiasoftAppExt
             }
         }
 
-        private DataTable LoadData(string Fi, string ctas, string cter)
+        private DataTable LoadData(string Fi, string ctas, string cter, string storeprocedure)
         {
             try
             {
@@ -233,7 +237,8 @@ namespace SiasoftAppExt
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
                 DataTable dt = new DataTable();
-                cmd = new SqlCommand("_empSpCoAnalisisCxcDeterioroCartera", con);
+                //cmd = new SqlCommand("_empSpCoAnalisisCxcDeterioroCartera", con);
+                cmd = new SqlCommand(storeprocedure, con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@cod_cta", ctas);
                 cmd.Parameters.AddWithValue("@cod_ter", cter);
@@ -502,7 +507,9 @@ namespace SiasoftAppExt
         }
 
 
-        private void BtnCrear_Click(object sender, RoutedEventArgs e)
+        #region ajuste niif esto si importan el excel
+
+        private void BtnCrearAjusteNiif_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -533,7 +540,7 @@ namespace SiasoftAppExt
 
                 #region insercion
 
-                int idreg = Documento();
+                int idreg = DocumentoAjusteNiif();
                 if (idreg > 0)
                 {
                     SiaWin.TabTrn(0, idemp, true, idreg, idmodulo, WinModal: true);
@@ -569,8 +576,7 @@ namespace SiasoftAppExt
             }
         }
 
-
-        public int Documento()
+        public int DocumentoAjusteNiif()
         {
             int idreg = -1;
 
@@ -594,8 +600,8 @@ namespace SiasoftAppExt
                         string fec_trn = DateTime.Now.ToString();
 
 
-                        string sqlConsecutivo = "declare @fecdoc as datetime;";                        
-                        sqlConsecutivo += "update Comae_trn set num_act=num_act+1 where cod_trn='"+cod_trn+"';";
+                        string sqlConsecutivo = "declare @fecdoc as datetime;";
+                        sqlConsecutivo += "update Comae_trn set num_act=num_act+1 where cod_trn='" + cod_trn + "';";
                         sqlConsecutivo += "set @fecdoc = getdate();declare @ini as char(4);declare @num as varchar(12);declare @iConsecutivo char(12)='';";
                         sqlConsecutivo += "declare @iFolioHost int = 0;";
                         sqlConsecutivo += "SELECT @iFolioHost=num_act,@ini=rtrim(inicial) FROM comae_trn WHERE cod_trn='" + cod_trn + "' set @num=@iFolioHost;";
@@ -642,6 +648,187 @@ namespace SiasoftAppExt
 
             return idreg;
         }
+
+        #endregion
+
+        private async void BtnCrearRecup_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                #region validacion
+
+                if (string.IsNullOrEmpty(FechaIni.Text))
+                {
+                    MessageBox.Show("debe de ingresar una fecha a consultar", "alerta", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                };
+
+
+                if (dataGridCxC.ItemsSource == null)
+                {
+                    MessageBox.Show("no se ha generado ninguna consulta", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                #endregion
+
+
+                #region trae la temporal de recuperacion
+
+
+                PanelA.IsEnabled = false;
+                PanelB.IsEnabled = false;
+                PanelC.IsEnabled = false;
+                PanelGrid.IsEnabled = false;
+                sfBusyIndicator.IsBusy = true;
+
+                string fecha = FechaIni.Text.Trim();
+                string Tercero = TxCodTer.Text.Trim();
+                string Cta = "";
+                string storeprocedure = "_empSpCoAnalisisCxcDeterioroCarteraRecupera";
+                if (comboBoxCuentas.SelectedIndex >= 0)
+                {
+                    foreach (DataRowView ob in comboBoxCuentas.SelectedItems)
+                    {
+                        String valueCta = ob["cod_cta"].ToString();
+                        Cta += valueCta + ",";
+                    }
+                    string ss = Cta.Trim().Substring(Cta.Trim().Length - 1);
+                    if (ss == ",") Cta = Cta.Substring(0, Cta.Trim().Length - 1);
+                }
+
+
+                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(fecha, Cta, Tercero, storeprocedure));
+                await slowTask;
+
+                if (slowTask.Result.Rows.Count > 0)
+                {
+                    var message = MessageBox.Show("Existen deterioros de cartera por recuerar, desea generar documento ????", "alerta", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+                    if (message == MessageBoxResult.Yes)
+                    {
+
+                        #region insercion
+
+                        int idreg = DocumentoRecuperacion(slowTask.Result);
+                        if (idreg > 0)
+                        {
+                            SiaWin.TabTrn(0, idemp, true, idreg, idmodulo, WinModal: true);
+
+                            dataGridCxC.ItemsSource = null;
+                            dt_consulta.Clear();
+                            dt_importar.Clear();
+                            dt_errores.Clear();
+                            TxRegistros.Text = "0";
+                            TxImportados.Text = "0";
+                            Tx_errores.Text = "0";
+                            TxCodCta.Text = "";
+                            TxNomCta.Text = "";
+
+                            Tx30.Text = "---";
+                            Tx60.Text = "---";
+                            Tx90.Text = "---";
+                            Tx120.Text = "---";
+                            Tx150.Text = "---";
+                            Tx180.Text = "---";
+                            Tx360.Text = "---";
+                            Txm360.Text = "---";
+                        }
+
+                        #endregion
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("no existe deterioros para recuperar", "alerta", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+
+                PanelGrid.IsEnabled = true;
+                PanelA.IsEnabled = true;
+                PanelB.IsEnabled = true;
+                PanelC.IsEnabled = true;
+                sfBusyIndicator.IsBusy = false;
+
+                #endregion
+
+
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("errro al generar el documento BtnCrearRecup_Click:" + w);
+            }
+        }
+
+
+        public int DocumentoRecuperacion(DataTable dt_recu)
+        {
+            int idreg = -1;
+
+            string sql_cab = ""; string sql_cue = "";
+
+            if (dt_recu.Rows.Count > 0)
+            {
+
+                using (SqlConnection connection = new SqlConnection(cnEmp))
+                {
+
+                    connection.Open();
+                    SqlCommand command = connection.CreateCommand();
+                    SqlTransaction transaction = connection.BeginTransaction("Transaction");
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+
+                    string cod_trn = "80A";
+                    string fec_trn = DateTime.Now.ToString();
+
+
+                    string sqlConsecutivo = "declare @fecdoc as datetime;";
+                    sqlConsecutivo += "update Comae_trn set num_act=num_act+1 where cod_trn='" + cod_trn + "';";
+                    sqlConsecutivo += "set @fecdoc = getdate();declare @ini as char(4);declare @num as varchar(12);declare @iConsecutivo char(12)='';";
+                    sqlConsecutivo += "declare @iFolioHost int = 0;";
+                    sqlConsecutivo += "SELECT @iFolioHost=num_act,@ini=rtrim(inicial) FROM comae_trn WHERE cod_trn='" + cod_trn + "' set @num=@iFolioHost;";
+                    sqlConsecutivo += "select @iConsecutivo=rtrim(@ini)+rtrim(@iFolioHost)";
+
+
+                    sql_cab += sqlConsecutivo + @"INSERT INTO cocab_doc (cod_trn,num_trn,fec_trn,detalle,_usu) values ('" + cod_trn + "',@iConsecutivo,'" + fec_trn + "','Recuperación Deterioro Cartera','" + SiaWin._UserName + "');DECLARE @NewID INT;SELECT @NewID = SCOPE_IDENTITY();";
+
+
+                    foreach (System.Data.DataRow dt in dt_recu.Rows)
+                    {
+                        string cod_cta = dt["cod_cta"].ToString().Trim();
+                        string cta_recu = dt["cta_recu"].ToString().Trim();
+                        string cod_ter = dt["cod_ter"].ToString().Trim();
+                        string doc_mov = dt["doc_mov"].ToString().Trim();
+                        string des_mov = "Recuperación Deterioro Cartera:" + doc_mov;
+
+
+                        double saldo = Convert.ToDouble(dt["saldo_positivo"]);
+
+                        if (saldo > 0)
+                        {
+                            sql_cue += @"INSERT INTO cocue_doc (idregcab,cod_trn,num_trn,cod_cta,cod_ter,des_mov,bas_mov,deb_mov,cre_mov,doc_mov) values (@NewID,'" + cod_trn + "',@iConsecutivo,'" + cod_cta + "','" + cod_ter + "','" + des_mov + "',0," + saldo.ToString("F", CultureInfo.InvariantCulture) + ",0,'" + doc_mov + "');";
+
+                            sql_cue += @"INSERT INTO cocue_doc (idregcab,cod_trn,num_trn,cod_cta,cod_ter,des_mov,bas_mov,deb_mov,cre_mov,doc_mov) values (@NewID,'" + cod_trn + "',@iConsecutivo,'" + cta_recu + "','" + cod_ter + "','" + des_mov + "',0,0," + saldo.ToString("F", CultureInfo.InvariantCulture) + ",'"+doc_mov+"');";
+                        }
+
+                    }
+
+                    command.CommandText = sql_cab + sql_cue + @"select CAST(@NewId AS int);";
+                    var r = new object();
+                    r = command.ExecuteScalar();
+                    idreg = Convert.ToInt32(r);
+                    transaction.Commit();
+                    connection.Close();
+                }
+
+            }
+
+            return idreg;
+        }
+
 
         private void BtnErrores_Click(object sender, RoutedEventArgs e)
         {

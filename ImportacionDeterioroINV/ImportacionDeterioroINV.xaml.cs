@@ -440,10 +440,10 @@ namespace SiasoftAppExt
                                 cue_deterioro += "insert into incue_doc (idregcab,cod_trn,num_trn,cod_ref,cod_sub,cos_tot,cod_bod) values (@NewIDdet,'" + codtrn_det + "',@iConsecutivo,'" + cod_ref + "','050'," + deterioro.ToString("F", CultureInfo.InvariantCulture) + ",'001');";
                             }
 
-                            //if (recupera > 0)
+                            //if (recupera > 0)// esta opcion se descarto por que en vfp lleba el valor de recupera a un documento 82A que no existe
                             //{
                             //    cue_recuperacion += "insert into incue_doc (idregcab,cod_trn,num_trn,cod_ref,cod_sub,cos_tot,cod_bod) values (NewIDdet,'','','" + cod_ref + "','050'," + recupera.ToString("F", CultureInfo.InvariantCulture) + ",'001')";
-                            //}
+                            //}n
                         }
 
                         cab_deterioro += sqlConsecutivo + "insert into incab_doc (cod_trn,num_trn,fec_trn,des_mov) values ('" + codtrn_det + "',@iConsecutivo,'" + fec_trn + "','PROCESO DE IMPORTACION 751');DECLARE @NewIDdet INT;SELECT @NewIDdet = SCOPE_IDENTITY(); ";
