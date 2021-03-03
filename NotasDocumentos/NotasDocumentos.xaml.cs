@@ -35,6 +35,8 @@ namespace SiasoftAppExt
         string cnEmp = "";
 
         public int idrowcab = 0;
+        string cod_trn = "";
+        string num_trn = "";        
         public string modulo = ""; //INV,CON,ACF,NII;MMA
 
         public NotasDocumentos()
@@ -82,6 +84,8 @@ namespace SiasoftAppExt
                     {
                         TX_Docum.Text = tabla.Rows[0]["num_trn"].ToString().Trim();
                         TX_Cod.Text = tabla.Rows[0]["cod_trn"].ToString().Trim();
+                        cod_trn = tabla.Rows[0]["cod_trn"].ToString().Trim(); 
+                        num_trn = tabla.Rows[0]["num_trn"].ToString().Trim(); 
                         TX_Docum.Tag = idrowcab;
                         getList(idrowcab.ToString(), modulo);
                     }
@@ -121,14 +125,12 @@ namespace SiasoftAppExt
         {
             try
             {
-                string cmp = tablaNotas(modulo);
 
-                if (!string.IsNullOrEmpty(cmp))
-                {
-                    string select = "select ROW_NUMBER() OVER(ORDER BY idrowcab ASC) AS id,fecha,title,nota,idrow from " + cmp + " where idrowcab='" + idrow + "' ";
-                    DataTable tabla = SiaWin.Func.SqlDT(select, "Clientes", idemp);
-                    list.ItemsSource = tabla.Rows.Count > 0 ? tabla.DefaultView : null;
-                }
+                string select = "select ROW_NUMBER() OVER(ORDER BY idrowcab ASC) AS id,fecha,title,nota,idrow from cab_notas where idrowcab='" + idrow + "' and moduloid='" + modulo + "' ";
+
+                DataTable tabla = SiaWin.Func.SqlDT(select, "Clientes", idemp);
+                list.ItemsSource = tabla.Rows.Count > 0 ? tabla.DefaultView : null;
+
             }
             catch (Exception w)
             {
@@ -137,24 +139,6 @@ namespace SiasoftAppExt
         }
 
 
-        public string tablaNotas(string modulo)
-        {
-            string tabla = "";
-            switch (modulo)
-            {
-                case "INV":
-                    tabla = "incab_notas"; break;
-                case "CON":
-                    tabla = "cocab_notas"; break;
-                case "ACF":
-                    tabla = "afcab_notas"; break;
-                case "MMA":
-                    tabla = "Mmcab_notas"; break;
-                case "NII":
-                    tabla = "NIcab_notas"; break;
-            }
-            return tabla;
-        }
 
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -164,6 +148,8 @@ namespace SiasoftAppExt
             ww.Owner = Application.Current.MainWindow;
             ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             ww.idrow = TX_Docum.Tag.ToString();
+            ww.cod_trn = cod_trn;
+            ww.num_trn = num_trn;
             ww.Modulo = modulo;
             ww.ShowDialog();
 
@@ -184,7 +170,7 @@ namespace SiasoftAppExt
 
                     if (tb.IsChecked.Value)
                     {
-                        query += "delete incab_notas where idrow='" + tb.Tag + "';";
+                        query += "delete cab_notas where idrow='" + tb.Tag + "' and moduloid='" + modulo + "';";
                         flag = true;
                     }
                 }

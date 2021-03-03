@@ -22,6 +22,8 @@ namespace NotasDocumentos
         int idemp = 0;
 
         public string idrow = "";
+        public string cod_trn = "";
+        public string num_trn = "";
         public string Modulo = "";
         public bool actualizo = false;
 
@@ -32,21 +34,7 @@ namespace NotasDocumentos
             idemp = SiaWin._BusinessId;
         }
 
-
-        public string table(string modul)
-        {
-            string tabla = "";
-            switch (modul)
-            {
-                case "INV":tabla = "incab_notas"; break;
-                case "CON":tabla = "cocab_notas"; break;
-                case "ACF":tabla = "afcab_notas"; break;
-                case "MMA":tabla = "Mmcab_notas"; break;
-                case "NII":tabla = "NIcab_notas"; break;
-            }
-            return tabla;
-        }
-
+        
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -57,11 +45,10 @@ namespace NotasDocumentos
                     MessageBox.Show(val);
                     return;
                 }
+                
 
-                string tabla = table(Modulo);
+                string query = "insert into cab_notas (moduloid,idrowcab,cod_trn,num_trn,fecha,usuario,nota,title) values ('" + Modulo + "'," + idrow + ",'" + cod_trn + "','" + num_trn + "',getdate(),'" + SiaWin._UserId + "','" + TX_descr.Text + "','" + Tx_tit.Text + "')";
 
-
-                string query = "insert into "+ tabla + " (idrowcab,fecha,usuario,nota,title) values (" + idrow + ",getdate(),'" + SiaWin._UserId + "','" + TX_descr.Text + "','" + Tx_tit.Text + "')";
                 if (SiaWin.Func.SqlCRUD(query, idemp) == true)
                 {
                     actualizo = true;

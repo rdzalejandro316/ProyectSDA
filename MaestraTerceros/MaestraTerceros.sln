@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultaMovimientoDoc", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalisisDeCartera", "..\AnalisisDeCartera\AnalisisDeCartera.csproj", "{50FB6FED-2639-4372-8553-4D7AD49DEC96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotasDocumentos", "..\NotasDocumentos\NotasDocumentos.csproj", "{6593055A-B120-40FB-A8B6-169FE83E13EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +149,10 @@ Global
 		{50FB6FED-2639-4372-8553-4D7AD49DEC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FB6FED-2639-4372-8553-4D7AD49DEC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50FB6FED-2639-4372-8553-4D7AD49DEC96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6593055A-B120-40FB-A8B6-169FE83E13EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6593055A-B120-40FB-A8B6-169FE83E13EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6593055A-B120-40FB-A8B6-169FE83E13EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6593055A-B120-40FB-A8B6-169FE83E13EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

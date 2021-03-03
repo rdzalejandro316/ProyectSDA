@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:SiasoftAppExt"
-             Height="400" Width="500" Loaded="Window_Loaded" Name="Win">
+             Height="400" Width="500" Loaded="Window_Loaded" Name="Win" Title="Notas Documento">
 
     <Window.Resources>
         <ResourceDictionary>
