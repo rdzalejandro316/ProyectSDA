@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Tools.Controls;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -29,6 +30,7 @@ namespace AnalisisDeCartera
         public string feccxc;
         public DataTable ctacxc;
         public DataTable cal_inte;
+        public List<string> cue_select;
 
         public CalculoIntereses()
         {
@@ -44,7 +46,7 @@ namespace AnalisisDeCartera
                 cod_empresa = foundRow["BusinessCode"].ToString().Trim();
                 string nomempresa = foundRow["BusinessName"].ToString().Trim();
                 this.Title = "Calculo de intereses " + cod_empresa + "-" + nomempresa;
-                FechaIni.Text = DateTime.Now.ToString();
+                
             }
             catch (Exception e)
             {
@@ -53,16 +55,35 @@ namespace AnalisisDeCartera
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SiaWin = System.Windows.Application.Current.MainWindow;
-            if (idemp <= 0) idemp = SiaWin._BusinessId;
+            try
+            {
+                SiaWin = System.Windows.Application.Current.MainWindow;
+                if (idemp <= 0) idemp = SiaWin._BusinessId;
 
-            comboBoxCuentas.ItemsSource = ctacxc.DefaultView;
-            comboBoxCuentas.DisplayMemberPath = "nom_cta";
-            comboBoxCuentas.SelectedValuePath = "cod_cta";
+                comboBoxCuentas.ItemsSource = ctacxc.DefaultView;
+                comboBoxCuentas.DisplayMemberPath = "nom_cta";
+                comboBoxCuentas.SelectedValuePath = "cod_cta";
+                
+                FechaIni.Text = feccxc;
+                
+                LoadConfig();
 
-            comboBoxCuentas.SelectedValue = "13";
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al load:" + w);
+            }
+        }
 
-            LoadConfig();
+        public string getcuentas() 
+        {
+            string Cta = "";
+            foreach (DataRowView ob in comboBoxCuentas.SelectedItems)
+            {
+                String valueCta = ob["cod_cta"].ToString();
+                Cta += valueCta + ",";
+            }
+            return Cta;
         }
 
         private async void BtnConsultar_Click(object sender, RoutedEventArgs e)
@@ -73,7 +94,7 @@ namespace AnalisisDeCartera
 
                 if (comboBoxCuentas.SelectedIndex < 0)
                 {
-                    MessageBox.Show("Seleccione una cuenta");
+                    MessageBox.Show("Seleccione una cuenta", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
                 #endregion
@@ -86,7 +107,7 @@ namespace AnalisisDeCartera
 
                 string ffi = FechaIni.Text.ToString();
                 string tercero = TextCod_Ter.Text.Trim();
-                string cuenta = comboBoxCuentas.SelectedValue.ToString();
+                string cuenta = getcuentas();
                 decimal tasa = Convert.ToDecimal(TxTasa.Value);
                 string fec_cxc = feccxc;
 
@@ -302,7 +323,7 @@ namespace AnalisisDeCartera
                             string _ctadeb = "";
                             string _ctacre = "";
 
-                            
+
 
                             if (xctacxc.Substring(0, 8) == "13110101")
                             {
@@ -314,7 +335,7 @@ namespace AnalisisDeCartera
                                 _ctadeb = "13110102"; _ctacre = "4110030102";
                             }
 
-                            if (xctacxc  == "1311010104")
+                            if (xctacxc == "1311010104")
                             {
                                 _ctadeb = "8190030101"; _ctacre = "8905902301";
                             }
@@ -324,7 +345,7 @@ namespace AnalisisDeCartera
                                 _ctadeb = "8190030102"; _ctacre = "8905902302";
                             }
 
-                           
+
 
                             string cod_ter = dr["cod_ter"].ToString().Trim();
                             string factura = dr["factura"].ToString().Trim();

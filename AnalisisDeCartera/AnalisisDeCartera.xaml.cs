@@ -36,7 +36,9 @@ namespace SiasoftAppExt
         DataTable DtCartera = new DataTable();
         DataTable DtCarteraD = new DataTable();
         string codpvta = string.Empty;
-        bool columndto = false;
+
+        List<string> cuentas_sele = new List<string>();
+
         public AnalisisDeCartera(dynamic tabitem1)
         {
             InitializeComponent();
@@ -198,7 +200,7 @@ namespace SiasoftAppExt
                     {
                         DtCartera = ((DataSet)slowTask.Result).Tables["C"];
                         dataGridCxC.ItemsSource = ((DataSet)slowTask.Result).Tables["C"];
-                        double valorCxC, valorCxCAnt = 0;                        
+                        double valorCxC, valorCxCAnt = 0;
                         double valorCxP = 0;
                         double valorCxPAnt = 0;
                         double saldoCxC = 0;
@@ -1036,13 +1038,35 @@ namespace SiasoftAppExt
 
         private void BtnCalcularInt_Click(object sender, RoutedEventArgs e)
         {
-            CalculoIntereses w = new CalculoIntereses();
-            w.feccxc = FechaIni.Text;
-            w.ctacxc = Cuentas;
-            w.ShowInTaskbar = false;
-            w.Owner = Application.Current.MainWindow;
-            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;    
-            w.ShowDialog();               
+            try
+            {
+
+                
+                if (comboBoxCuentas.SelectedIndex >= 0)
+                {
+                    cuentas_sele.Clear();
+                    foreach (DataRowView ob in comboBoxCuentas.SelectedItems)
+                    {
+                        String valueCta = ob["cod_cta"].ToString().Trim();
+                        cuentas_sele.Add(valueCta);                        
+                    }                    
+                }
+
+                CalculoIntereses w = new CalculoIntereses();
+                w.cue_select = cuentas_sele;
+                w.feccxc = FechaIni.Text;
+                w.ctacxc = Cuentas;
+                w.ShowInTaskbar = false;
+                w.Owner = Application.Current.MainWindow;
+                w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                w.ShowDialog();
+
+                
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("eror al calcular intereses:" + w);
+            }
         }
 
 
