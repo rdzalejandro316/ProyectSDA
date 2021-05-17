@@ -236,8 +236,7 @@ namespace SiasoftAppExt
                 SqlConnection con = new SqlConnection(SiaWin._cn);
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
-                DataTable dt = new DataTable();
-                //cmd = new SqlCommand("_empSpCoAnalisisCxcDeterioroCartera", con);
+                DataTable dt = new DataTable();                
                 cmd = new SqlCommand(storeprocedure, con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@cod_cta", ctas);
@@ -249,6 +248,7 @@ namespace SiasoftAppExt
                 da.Fill(dt);
                 con.Close();
 
+                
                 if (dt.Rows.Count > 0)
                 {
                     dt.Columns.Add("valarch", typeof(decimal));
@@ -266,8 +266,7 @@ namespace SiasoftAppExt
                 return dt;
             }
             catch (Exception e)
-            {
-                SiaWin.seguridad.ErrorLog("Error  ", "AnalisisDeCartera-LoadData:" + e.Message.ToString());
+            {                
                 MessageBox.Show(e.Message);
                 return null;
             }
@@ -698,6 +697,7 @@ namespace SiasoftAppExt
                 }
 
 
+
                 var slowTask = Task<DataTable>.Factory.StartNew(() => LoadData(fecha, Cta, Tercero, storeprocedure));
                 await slowTask;
 
@@ -710,7 +710,9 @@ namespace SiasoftAppExt
 
                         #region insercion
 
-                        int idreg = DocumentoRecuperacion(slowTask.Result);
+                        string fecCorte = FechaIni.Text;
+
+                        int idreg = DocumentoRecuperacion(slowTask.Result, fecCorte);
                         if (idreg > 0)
                         {
                             SiaWin.TabTrn(0, idemp, true, idreg, idmodulo, WinModal: true);
@@ -763,7 +765,7 @@ namespace SiasoftAppExt
         }
 
 
-        public int DocumentoRecuperacion(DataTable dt_recu)
+        public int DocumentoRecuperacion(DataTable dt_recu,string fechadoc)
         {
             int idreg = -1;
 
@@ -781,9 +783,7 @@ namespace SiasoftAppExt
                     command.Connection = connection;
                     command.Transaction = transaction;
 
-                    string cod_trn = "80A";
-                    string fec_trn = DateTime.Now.ToString();
-
+                    string cod_trn = "80A";                    
 
                     string sqlConsecutivo = "declare @fecdoc as datetime;";
                     sqlConsecutivo += "update Comae_trn set num_act=num_act+1 where cod_trn='" + cod_trn + "';";
@@ -793,7 +793,7 @@ namespace SiasoftAppExt
                     sqlConsecutivo += "select @iConsecutivo=rtrim(@ini)+rtrim(@iFolioHost)";
 
 
-                    sql_cab += sqlConsecutivo + @"INSERT INTO cocab_doc (cod_trn,num_trn,fec_trn,detalle,_usu) values ('" + cod_trn + "',@iConsecutivo,'" + fec_trn + "','Recuperación Deterioro Cartera','" + SiaWin._UserName + "');DECLARE @NewID INT;SELECT @NewID = SCOPE_IDENTITY();";
+                    sql_cab += sqlConsecutivo + @"INSERT INTO cocab_doc (cod_trn,num_trn,fec_trn,detalle,_usu) values ('" + cod_trn + "',@iConsecutivo,'" + fechadoc + "','Recuperación Deterioro Cartera','" + SiaWin._UserName + "');DECLARE @NewID INT;SELECT @NewID = SCOPE_IDENTITY();";
 
 
                     foreach (System.Data.DataRow dt in dt_recu.Rows)

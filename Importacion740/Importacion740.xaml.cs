@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -168,6 +169,11 @@ namespace SiasoftAppExt
                     return customersTable;
                 }
             }
+            catch (IOException w)
+            {
+                MessageBox.Show("cierre el archivo para poderlo importar", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return null;
+            }
             catch (Exception w)
             {
                 MessageBox.Show("ConvertExcelToDataTable:" + w);
@@ -273,6 +279,16 @@ namespace SiasoftAppExt
                 BtnImportar.IsEnabled = true;
                 BtnGenerar.IsEnabled = true;
                 BtnCrear.IsEnabled = true;
+                sfBusyIndicator.IsBusy = false;
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("cierre el archivo para poderlo importar","alerta",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                sfBusyIndicator.IsBusy = false;
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("cierre el archivo para poderlo importar", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 sfBusyIndicator.IsBusy = false;
             }
             catch (ArgumentException w)

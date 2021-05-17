@@ -120,7 +120,7 @@
                             <SiaSf:GridTextColumn HeaderText="Nombre cliente"  MappingName="nom_ter" Width="150"/>
                             <SiaSf:GridTextColumn HeaderText="Doc Conta" MappingName="doc_ref" Width="90" />
                             <SiaSf:GridTextColumn HeaderText="Doc Ref" MappingName="doc_mov" Width="90" />
-                            <SiaSf:GridTextColumn MappingName="cod_cta" IsHidden="True"/>
+                            <SiaSf:GridTextColumn HeaderText="Cuenta" MappingName="cod_cta" Width="100"/>
                             <SiaSf:GridTextColumn MappingName="nom_cta" IsHidden="True"/>
                             <SiaSf:GridTextColumn HeaderText="Dias Venc" MappingName="vencido" Width="80"/>
                             <SiaSf:GridTextColumn HeaderText="Sin Vencer" MappingName="sin_ven" Width="80"/>

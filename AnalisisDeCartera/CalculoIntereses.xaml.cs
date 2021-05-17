@@ -110,7 +110,8 @@ namespace AnalisisDeCartera
                 string cuenta = getcuentas();
                 decimal tasa = Convert.ToDecimal(TxTasa.Value);
                 string fec_cxc = feccxc;
-
+                
+                
                 var slowTask = Task<DataSet>.Factory.StartNew(() => LoadData(ffi, fec_cxc, cuenta, tercero, tasa));
                 await slowTask;
 

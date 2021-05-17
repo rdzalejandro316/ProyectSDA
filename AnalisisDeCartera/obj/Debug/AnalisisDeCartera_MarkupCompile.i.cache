@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\SDA\Siasoft\Library\project\AnalisisDeCartera\obj\Debug\
+D:\Empresas\Empresas\SDA\Library\project\AnalisisDeCartera\obj\Debug\
 AnalisisDeCartera
 none
 false
@@ -13,8 +13,8 @@ DEBUG;TRACE
 6-1933923571
 
 10459617012
-35-939900521
+35-1548652714
 AbonoDocumentos.xaml;AnalisisDeCartera.xaml;AnalisisDeCarteraDetalle.xaml;BrowMini.xaml;CalculoIntereses.xaml;ReportCxC.xaml;
 
-True
+False
 
