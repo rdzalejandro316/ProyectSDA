@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -9,27 +14,29 @@ using MaterialDesignThemes.Wpf;
 namespace MenuReporteSetting
 {
 
-    public partial class Form : UserControl
+    public partial class Form : Window
     {
         dynamic SiaWin;
         int idemp = 0;
         string cnEmp = "";
 
-        //edit es true - y insert es false
-        public bool edit = false;
 
-        public string tipo = "";
-        public int server = 0;
-        public int ParentIdRow = 0;
+        // edicion
+        public int idrow = 0;
+        public string nameParent = "";
+        public DataRow[] Datos;
+        public int nivel = 0;
 
-        public int id = 0;
+        public string titleLevel = "";
+        public string IdNameParent = "";
+        public string IdRowParent = "";
+
+
+        public bool flag = false;
+
         public Form()
         {
             InitializeComponent();
-
-            SiaWin = Application.Current.MainWindow;
-            idemp = SiaWin._BusinessId;
-            LoadConfig();
         }
 
         private void LoadConfig()
@@ -41,6 +48,8 @@ namespace MenuReporteSetting
                 idemp = Convert.ToInt32(foundRow["BusinessId"].ToString().Trim());
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 string aliasemp = foundRow["BusinessAlias"].ToString().Trim();
+
+                loadItems();
             }
             catch (Exception e)
             {
@@ -48,294 +57,270 @@ namespace MenuReporteSetting
             }
         }
 
-        private void PanelForm_Loaded(object sender, RoutedEventArgs e)
-        {
-            SetTitle(tipo, edit);
-            loadServer(server, edit);
-            cargardatos(edit, id);
-        }
-
-        public void SetTitle(string tipo, bool edit)
-        {
-            if (tipo == "Togle1")
-            {
-                TX_title.Text = "Items Principales";
-                TX_parent.Visibility = Visibility.Hidden;
-            }
-            if (tipo == "Togle2")
-            {
-                TX_title.Text = "Items Segundarios";
-                TX_parent.Visibility = Visibility.Visible;
-                cargarParents(tipo, edit);
-            }
-            if (tipo == "Togle3")
-            {
-                TX_title.Text = "Items Terciarios";
-                TX_parent.Visibility = Visibility.Visible;
-                cargarParents(tipo, edit);
-            }
-        }
-        public void loadServer(int server, bool edit)
-        {
-            //MessageBox.Show("server:" + server);
-            string where = server == 0 ? "" : "where idrow=" + server + "";
-            string query = "select * from ReportServer " + where + " ;";
-            DataTable dt = SiaWin.Func.SqlDT(query, "Existencia", 0);
-            TX_server.ItemsSource = dt.DefaultView;
-            if (edit == true && server != 0) TX_server.SelectedValue = server;
-        }
-
-        public void cargarParents(string tipo, bool edit)
-        {
-            string where = tipo == "Togle2" ? "where type_item='1'" : "where type_item='2'";
-
-            DataTable dt = SiaWin.Func.SqlDT("select idrow,name_item from Menu_Reports " + where + "", "Existencia", 0);
-            TX_parent.ItemsSource = dt.DefaultView;
-            TX_parent.DisplayMemberPath = "name_item";
-            TX_parent.SelectedValuePath = "idrow";
-            if (edit == true) TX_parent.SelectedValue = ParentIdRow;
-        }
-
-        public void cargardatos(bool bandera, int id)
+        private void panelForm_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (bandera == true && id > 0)
+                SiaWin = Application.Current.MainWindow;
+                idemp = SiaWin._BusinessId;
+
+                LoadConfig();
+                TxTitle.Text = titleLevel;
+
+
+                if (idrow > 0)
                 {
-                    TX_title.Tag = id;
-                    DataTable dt = SiaWin.Func.SqlDT("select * from Menu_Reports where idrow=" + id + ";", "Existencia", 0);
-                    if (dt.Rows.Count > 0)
+                    if (Datos.Length > 0)
                     {
-                        int typePNt = Convert.ToInt32(dt.Rows[0]["typePnt"]);
-                        int isRep = Convert.ToInt32(dt.Rows[0]["id_parm"]);
-                        switch (typePNt)
+
+
+                        TxNombre.Text = Datos[0]["name_item"].ToString();
+                        TxParent.Text = nameParent;
+                        TxParent.Tag = Datos[0]["cod_itemP"].ToString();
+
+                        int idserver = Datos[0]["idserver"] == DBNull.Value ? 0 : (int)Datos[0]["idserver"]; ;
+                        string typePnt = Datos[0]["typePnt"].ToString();
+                        string tag = Checks(typePnt, idserver);
+                        foreach (CheckBox check in PanelCheck.Children)
                         {
-                            case 0:
-                                Check1.IsChecked = true; Ck1.IsChecked = true;
-                                break;
-                            case 1:
-                                Check2.IsChecked = true; Ck2.IsChecked = true; TX_urlreporte.Text = dt.Rows[0]["reporte"].ToString();
-                                break;
-                            case 2:
-                                Check3.IsChecked = true; Ck7.IsChecked = true; TX_idscreen.Text = dt.Rows[0]["id_Screen"].ToString();
-                                break;
-                            case 3:
-                                if (isRep == 1) { Check2.IsChecked = true; TX_urlreporte.Text = dt.Rows[0]["reporte"].ToString(); } //else Check3.IsChecked = true;
-                                if (isRep == 0) { Check3.IsChecked = true; TX_idscreen.Text = dt.Rows[0]["id_Screen"].ToString(); } //else Ck8.IsChecked = true;
-                                break;
-                            case 4:
-                                Check4.IsChecked = true; Ck9.IsChecked = true; TX_urlreporte.Text = dt.Rows[0]["reporte"].ToString();
-                                break;
-                            case 5:
-                                Check4.IsChecked = true; Ck10.IsChecked = true; TX_urlreporte.Text = dt.Rows[0]["reporte"].ToString();
-                                break;
+                            if (check.Tag.ToString() == tag) check.IsChecked = true;
                         }
 
-                        TX_idAcceso.Text = dt.Rows[0]["id_acceso"].ToString();
+                        TxIdAcceso.Value = Datos[0]["id_acceso"] == DBNull.Value ? 0 : (int)Datos[0]["id_acceso"];
+                        CbModulo.SelectedValue = Datos[0]["ModulesId"] == DBNull.Value ? -1 : (int)Datos[0]["ModulesId"];
+                        TxUrlReport.Text = Datos[0]["reporte"].ToString();
+                        CbServer.SelectedValue = idserver;
+                        TxIdScreen.Value = Datos[0]["id_Screen"] == DBNull.Value ? 0 : (int)Datos[0]["id_Screen"];
+                        TxStoredProcedure.Text = Datos[0]["stored_procedure"].ToString();
+                        TxParaEmp.Text = Datos[0]["param_emp"].ToString();
+
 
                     }
+                }
+                else
+                {
+                    TxParent.Text = IdNameParent;
+                    TxParent.Tag = IdRowParent;
                 }
 
             }
             catch (Exception w)
             {
-                MessageBox.Show("error al cargar datos:" + w);
+                MessageBox.Show("error al cargar:" + w);
             }
         }
 
-        private void BtnAtras_Click(object sender, RoutedEventArgs e)
-        {
-            panelForm.Visibility = Visibility.Hidden;
-        }
 
-        public event RoutedEventHandler ActualizarParentEventHandler;
-
-        private void BTN_form_Click(object sender, RoutedEventArgs e)
+        public void loadItems()
         {
             try
             {
-                string typeItem = "";
-                string cod_ItemP = "";
-                switch (tipo)
+
+                DataSet ds = LoadItems();
+
+                if (ds.Tables.Count > 0)
                 {
-                    case "Togle1": typeItem = "1"; cod_ItemP = ""; break;
-                    case "Togle2": typeItem = "2"; cod_ItemP = TX_parent.SelectedValue.ToString(); break;
-                    case "Togle3": typeItem = "3"; cod_ItemP = TX_parent.SelectedValue.ToString(); break;
-                }
 
-                int id_screen = 0;
-                int isreport = 0;
-                string reporte = "";
-                string typePnt = devTagcheking();
-                int idServer = 0;
+                    CbModulo.ItemsSource = ds.Tables[0].DefaultView;
+                    CbModulo.DisplayMemberPath = "ModulesName";
+                    CbModulo.SelectedValuePath = "ModulesId";
 
-                string chek = devNameCheck();
-                switch (chek)
-                {
-                    case "Check1": id_screen = 0; isreport = 0; reporte = ""; idServer = 0; break;
-                    case "Check2": id_screen = 0; isreport = 1; reporte = TX_urlreporte.Text; idServer = Convert.ToInt32(TX_server.SelectedValue); break;
-                    case "Check3": id_screen = Convert.ToInt32(TX_idscreen.Text); isreport = 0; reporte = ""; idServer = 0; break;
-                    case "Check4": id_screen = 0; isreport = 0; reporte = TX_urlreporte.Text; idServer = 0; break;
-                }
-
-
-
-                if (BTN_form.Content.ToString().Trim() == "Guardar")
-                {
-                    string query = "insert into Menu_Reports (cod_itemP,name_item,type_item,id_Screen,id_parm,reporte,typePnt,idserver,id_acceso) " +
-                        "values ('" + cod_ItemP + "','" + TX_nameitem.Text.Trim() + "','" + typeItem + "'," + id_screen + "," + isreport + ",'" + reporte + "','" + typePnt + "'," + idServer + ",'" + TX_idAcceso.Text + "')";
-
-                    if (SiaWin.Func.SqlCRUD(query, 0) == true)
-                    {
-                        MessageBox.Show("Item Agregado exitosamente");
-                        BTNatras.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));                        
-                        if (ActualizarParentEventHandler != null)                            
-                            ActualizarParentEventHandler(sender, e);
-                    }
-
-
-                }
-                if (BTN_form.Content.ToString() == "Modificar")
-                {
-                    string update = "update Menu_Reports set cod_itemP='" + cod_ItemP + "',name_item='" + TX_nameitem.Text.Trim() + "',type_item='" + typeItem + "'," +
-                        "id_Screen='" + id_screen + "',id_parm=" + isreport + ",reporte='" + reporte + "',typePnt='" + typePnt + "',idserver=" + idServer + ",id_acceso=" + TX_idAcceso.Text + " where idrow=" + TX_title.Tag + ";";
-
-                    //MessageBox.Show("update:" + update);
-
-                    if (SiaWin.Func.SqlCRUD(update, 0) == true)
-                    {
-                        MessageBox.Show("Actualizacion exitosa");
-                        BTNatras.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-                        if (ActualizarParentEventHandler != null)
-                            ActualizarParentEventHandler(sender, e);
-                    }
+                    CbServer.ItemsSource = ds.Tables[1].DefaultView;
+                    CbServer.SelectedValuePath = "idrow";
+                    CbServer.DisplayMemberPath = "ServerIP";
                 }
 
             }
             catch (Exception w)
             {
-                MessageBox.Show("erro en el CRUD:" + w);
+                MessageBox.Show("error al cargar items:" + w);
             }
+        }
 
+        public DataSet LoadItems()
+        {
+            try
+            {
+                DataSet ds = new DataSet();
 
+                DataTable dtmod = SiaWin.Func.SqlDT("select rtrim(ModulesId) as ModulesId,rtrim(ModulesName) as ModulesName from Modules order by ModulesId", "modulos", 0);
+                ds.Tables.Add(dtmod);
 
+                DataTable dtconfig = SiaWin.Func.SqlDT("select rtrim(idrow) as idrow,rtrim(ServerIP) as ServerIP from ReportServer ", "config", 0);
+                ds.Tables.Add(dtconfig);
+
+                return ds;
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al cargar informacion:" + w);
+                return null;
+            }
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            string Name = ((CheckBox)sender).Name.ToString().Trim();
-            foreach (CheckBox item in GridTipo.Children)
-                if (item.Name != Name) item.IsChecked = false;
-            visibiliGrid(Name);
+            CheckBox check = ((CheckBox)sender);
+            foreach (CheckBox item in PanelCheck.Children)
+            {
+                if (item.Content != check.Content) item.IsChecked = false;
+            }
         }
 
-
-        public string devNameCheck()
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            string name = "";
-            foreach (CheckBox item in GridTipo.Children)
-                if (item.IsChecked == true) name = item.Name;
-            return name;
+            try
+            {
+
+                #region validaciones
+                if (string.IsNullOrEmpty(TxNombre.Text))
+                {
+                    MessageBox.Show("el campo nombre debe de estar lleno", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+                string tipo = "";
+                foreach (CheckBox item in PanelCheck.Children)
+                {
+                    if (item.IsChecked == true) tipo = item.Tag.ToString();
+                }
+
+                var typepnt = GetTypePnt(tipo);
+
+                if (string.IsNullOrEmpty(tipo))
+                {
+                    MessageBox.Show("debe de seleccionar algun tipo de pantalla", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+
+                if (CbModulo.SelectedIndex < 0)
+                {
+                    MessageBox.Show("el campo id modulo debe de estar lleno", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+
+
+                #endregion
+
+                MessageBoxResult messageBox = MessageBox.Show("usted desea guardar los cambios", "alerta", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+
+
+                if (messageBox == MessageBoxResult.Yes)
+                {
+                    using (SqlConnection connection = new SqlConnection(SiaWin._cn))
+                    {
+
+                        string message = "";
+                        StringBuilder query = new StringBuilder();
+                        if (idrow > 0)
+                        {
+                            query.Append($"UPDATE Menu_Reports SET ");
+                            query.Append($"cod_itemP=@cod_itemP,name_item=@name_item,type_item=@type_item,id_Screen=@id_Screen,id_parm=@id_parm,reporte=@reporte, ");
+                            query.Append($"typePnt=@typePnt,idserver=@idserver,id_acceso=@id_acceso,param_emp=@param_emp,stored_procedure=@stored_procedure,ModulesId=@ModulesId ");
+                            query.Append($"where idrow={idrow}");
+                            message = "se actualizo exisotamente la informacion";
+                        }
+                        else
+                        {
+                            query.Append($"INSERT INTO Menu_Reports ");
+                            query.Append($"(cod_itemP,name_item,type_item,id_Screen,id_parm,reporte,typePnt,idserver,id_acceso,param_emp,stored_procedure,ModulesId) ");
+                            query.Append($"VALUES");
+                            query.Append($"(@cod_itemP,@name_item,@type_item,@id_Screen,@id_parm,@reporte,@typePnt,@idserver,@id_acceso,@param_emp,@stored_procedure,@ModulesId)");
+                            message = "se guardo exisotamente la informacion";
+                        }
+
+
+                        using (SqlCommand command = new SqlCommand(query.ToString(), connection))
+                        {
+                            command.Parameters.AddWithValue("@cod_itemP", TxParent.Tag);
+                            command.Parameters.AddWithValue("@name_item", TxNombre.Text);
+                            command.Parameters.AddWithValue("@type_item", nivel);
+                            command.Parameters.AddWithValue("@id_Screen", TxIdScreen.Value.ToString());
+                            command.Parameters.AddWithValue("@id_parm", typepnt.Item2);
+                            command.Parameters.AddWithValue("@reporte", TxUrlReport.Text);
+                            command.Parameters.AddWithValue("@typePnt", typepnt.Item1);
+                            command.Parameters.AddWithValue("@idserver", CbServer.SelectedIndex < 0 ? 0 : Convert.ToInt32(CbServer.SelectedValue));
+                            command.Parameters.AddWithValue("@id_acceso", TxIdAcceso.Value.ToString());
+                            command.Parameters.AddWithValue("@param_emp", TxParaEmp.Text);
+                            command.Parameters.AddWithValue("@stored_procedure", TxStoredProcedure.Text);
+                            command.Parameters.AddWithValue("@ModulesId", CbModulo.SelectedIndex<0 ? 0 : Convert.ToInt32(CbModulo.SelectedValue));
+                            connection.Open();
+
+                            StringBuilder sb = new StringBuilder();
+
+                            //command.Parameters.Cast<DbParameter>()
+                            //                  .ToList()
+                            //                  .ForEach(p => sb.Append(
+                            //                                   string.Format("{0} = {1}{2}",
+                            //                                      p.ParameterName,
+                            //                                      p.Value,
+                            //                                      Environment.NewLine)));
+
+
+                            //MessageBox.Show(command.CommandText);
+                            //MessageBox.Show(sb.ToString());
+
+                            int result = command.ExecuteNonQuery();
+
+
+                            if (result > 0)
+                            {
+                                MessageBox.Show(message, "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                                flag = true;
+                                this.Close();
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al guardar:" + w);
+            }
         }
 
-
-        public void visibiliGrid(string name)
+        public Tuple<string, int> GetTypePnt(string tipo)
         {
-            if (name == "Check1")
+            string type_return = "";
+            int iserver = 0;
+            switch (tipo)
             {
-                GridNada.Visibility = Visibility.Visible;
-                GridReport.Visibility = Visibility.Hidden;
-                GridPnt.Visibility = Visibility.Hidden;
-                GridNavegador.Visibility = Visibility.Hidden;
-
-                foreach (CheckBox item in GridNada.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridReport.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridPnt.Children) item.IsChecked = false;
-
-                TX_urlreporte.IsEnabled = false; TX_server.IsEnabled = false; TX_idscreen.IsEnabled = false;
+                case "0": type_return = "0"; break;
+                case "1": type_return = "1"; iserver = 1; break;
+                case "2": type_return = "3"; iserver = 1; break;
+                case "3": type_return = "2"; iserver = 0; break;
+                case "4": type_return = "3"; iserver = 0; break;
+                case "5": type_return = "4"; iserver = 0; break;
+                case "6": type_return = "5"; iserver = 1; break;
             }
-            if (name == "Check2")
-            {
-                GridReport.Visibility = Visibility.Visible;
-                GridNada.Visibility = Visibility.Hidden;
-                GridPnt.Visibility = Visibility.Hidden;
-                GridNavegador.Visibility = Visibility.Hidden;
-
-                foreach (CheckBox item in GridNada.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridReport.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridPnt.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridNavegador.Children) item.IsChecked = false;
-
-                TX_urlreporte.IsEnabled = true; TX_server.IsEnabled = true; TX_idscreen.IsEnabled = false;
-            }
-            if (name == "Check3")
-            {
-                GridPnt.Visibility = Visibility.Visible;
-                GridReport.Visibility = Visibility.Hidden;
-                GridNada.Visibility = Visibility.Hidden;
-                GridNavegador.Visibility = Visibility.Hidden;
-
-                foreach (CheckBox item in GridNada.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridReport.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridPnt.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridNavegador.Children) item.IsChecked = false;
-
-                TX_urlreporte.IsEnabled = false; TX_server.IsEnabled = false; TX_idscreen.IsEnabled = true;
-            }
-            if (name == "Check4")
-            {
-                GridNavegador.Visibility = Visibility.Visible;
-                GridPnt.Visibility = Visibility.Hidden;
-                GridReport.Visibility = Visibility.Hidden;
-                GridNada.Visibility = Visibility.Hidden;
-
-                foreach (CheckBox item in GridNada.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridReport.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridPnt.Children) item.IsChecked = false;
-                foreach (CheckBox item in GridNavegador.Children) item.IsChecked = false;
-
-                TX_urlreporte.IsEnabled = true; TX_server.IsEnabled = false; TX_idscreen.IsEnabled = false;
-
-            }
-
+            return new Tuple<string, int>(type_return, iserver);
         }
 
-
-        private void Cheking(object sender, RoutedEventArgs e)
-        {
-            string Name = ((CheckBox)sender).Name.ToString().Trim();
-            FrameworkElement parent = (FrameworkElement)((CheckBox)sender).Parent;
-            StackPanel panel = (StackPanel)this.FindName(parent.Name);
-            foreach (CheckBox item in panel.Children) if (item.Name != Name) item.IsChecked = false;
-        }
-
-        public string devTagcheking()
+        public string Checks(string tipo, int idserver)
         {
             string tag = "";
-            if (Check1.IsChecked == true)
-                foreach (CheckBox item in GridNada.Children) if (item.IsChecked == true) tag = item.Tag.ToString();
-            if (Check2.IsChecked == true)
-                foreach (CheckBox item in GridReport.Children) if (item.IsChecked == true) tag = item.Tag.ToString();
-            if (Check3.IsChecked == true)
-                foreach (CheckBox item in GridPnt.Children) if (item.IsChecked == true) tag = item.Tag.ToString();
-            if (Check4.IsChecked == true)
-                foreach (CheckBox item in GridNavegador.Children) if (item.IsChecked == true) tag = item.Tag.ToString();
+            switch (tipo)
+            {
+                case "0": tag = "0"; break;
+                case "1": tag = "1"; break;
+                case "2": tag = "3"; break;
+                case "3": tag = idserver == 1 ? "2" : "4"; break;
+                case "4": tag = "5"; break;
+                case "5": tag = "6"; break;
+            }
+
             return tag;
         }
 
 
-        private void ValidacionNumeros(object sender, KeyEventArgs e)
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Tab || e.Key == Key.OemMinus || e.Key == Key.Subtract || e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Back || e.Key == Key.Left || e.Key == Key.Right)
-                e.Handled = false;
-            else { MessageBox.Show("este campo solo admite valores numericos"); e.Handled = true; }
+            flag = false;
+            this.Close();
         }
-
-
-
-
-
-
 
 
     }

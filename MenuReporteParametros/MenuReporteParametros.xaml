@@ -1,0 +1,79 @@
+﻿<Window x:Class="SiasoftAppExt.MenuReporteParametros"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:local="clr-namespace:SiasoftAppExt"
+             Width="800" Height="550" Loaded="Window_Loaded">
+    
+    <Window.Resources>
+        <SolidColorBrush Color="#0078d4" x:Key="ColorMain"/>
+        <Style TargetType="syncfusion:GridHeaderCellControl" x:Key="headerStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#373737"/>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnStyle">
+            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ColorMain}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+    
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <syncfusion:SfBusyIndicator Name="sfBusyIndicator1" VerticalAlignment="Bottom" FontSize="12" AnimationSpeed="100"  AnimationType="Rainy" Header="Cargando Datos - SiasoftApp" Height="100" IsBusy="False" Panel.ZIndex="2" Focusable="False"/>
+            <syncfusion:SfDataGrid AllowResizingColumns="True" x:Name="GridMenu"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" Margin="5" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB" SelectionChanged="GridMenu_SelectionChanged">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn HeaderText="idrow" MappingName="idrow" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="nombre" MappingName="name_item" ColumnSizer="AutoWithLastColumnFill"/>
+                    <syncfusion:GridTextColumn HeaderText="path" MappingName="reporte" Width="300"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <syncfusion:SfDataGrid AllowResizingColumns="True" x:Name="GridParametros"  EnableDataVirtualization = "True" AutoGenerateColumns="False" ShowGroupDropArea="False" FontSize="10" AllowFiltering="True" Margin="5" HeaderStyle="{StaticResource headerStyle}" RowSelectionBrush="#7F3498DB">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn MappingName="idrow" IsHidden="True"/>
+                    <syncfusion:GridTextColumn HeaderText="parameter" MappingName="parameter" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="isValid" MappingName="isValid" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="isTable" MappingName="isTable" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="isCombo" MappingName="isCombo" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="isMultiValue" MappingName="isMultiValue" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="nameMaster" MappingName="nameMaster" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="tabla" MappingName="tabla" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="cod_tbl" MappingName="cod_tbl" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="nom_tbl" MappingName="nom_tbl" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="columns" MappingName="columns" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="where" MappingName="where" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="orderMaster" MappingName="orderMaster" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="viewAll" MappingName="viewAll" Width="100"/>
+                    <syncfusion:GridTextColumn HeaderText="isBusiness" MappingName="isBusiness" Width="100"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="#373737">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="BtnAgregar" Content="Agregar" Style="{StaticResource BtnStyle}" Click="BtnAgregar_Click"/>
+                <Button Name="BtnEditar" Content="Editar" Style="{StaticResource BtnStyle}" Click="BtnEditar_Click"/>
+                <Button Name="BtnDelete" Content="Eliminar" Style="{StaticResource BtnStyle}" Click="BtnDelete_Click"/>
+                <Button Name="BtnExit" Content="Salir" Style="{StaticResource BtnStyle}" Click="BtnExit_Click"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>

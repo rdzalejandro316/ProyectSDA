@@ -1,7 +1,9 @@
 ﻿using MenuReporteSetting;
 using System;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
 namespace SiasoftAppExt
@@ -19,6 +21,7 @@ namespace SiasoftAppExt
         dynamic SiaWin;
         int idemp = 0;
         string cnEmp = "";
+        DataTable dtitems;
 
         public MenuReporteSetting()
         {
@@ -38,7 +41,8 @@ namespace SiasoftAppExt
                 idemp = Convert.ToInt32(foundRow["BusinessId"].ToString().Trim());
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 string aliasemp = foundRow["BusinessAlias"].ToString().Trim();
-                this.Title = "Config (" + aliasemp + ")";
+                this.Title = "Configuracion";
+                loadItems();
             }
             catch (Exception e)
             {
@@ -46,182 +50,280 @@ namespace SiasoftAppExt
             }
         }
 
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        public async void loadItems()
         {
             try
             {
-                string Name = ((ToggleButton)sender).Name.ToString().Trim();
-                foreach (ToggleButton item in GridToogle.Children)
+
+                var slowTask = Task<DataTable>.Factory.StartNew(() => LoadItems());
+                await slowTask;
+
+                GridNivel2.ItemsSource = null;
+                GridNivel3.ItemsSource = null;
+
+                if (slowTask.Result.Rows.Count > 0)
                 {
-                    if (item.Name != Name) item.IsChecked = false;
+                    dtitems = slowTask.Result;
+                    DataRow[] row = dtitems.Select("type_item=1");
+
+                    if (row.Length > 0)
+                    {
+                        GridNivel1.ItemsSource = row.CopyToDataTable().DefaultView;
+                    }
+
                 }
 
-                getDatagridItem(Name);
             }
-            catch (Exception W)
+            catch (Exception w)
             {
-                MessageBox.Show("NADA:" + W);
+                MessageBox.Show("error al cargar items:" + w);
             }
-
         }
-
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        public DataTable LoadItems()
         {
-            if (Togle1.IsChecked == false && Togle2.IsChecked == false && Togle3.IsChecked == false) GridItem.ItemsSource = null;
+            try
+            {
+                string select = "select idrow,cod_itemP,name_item,type_item,id_Screen,id_parm,reporte,typePnt,idserver,id_acceso,param_emp,stored_procedure,ModulesId from Menu_Reports";
+                DataTable dt = SiaWin.Func.SqlDT(select, "temp", 0);
+                return dt;
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al cargar informacion:" + w);
+                return null;
+            }
         }
-
-        public void getDatagridItem(string nameToogle)
+        private void GridNivel1_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
         {
-            string select = "";
-            if (nameToogle == "Togle1")
+            try
             {
-                select = "select Menu_Reports.idrow as idrowparent,Menu_Reports.name_item as name_itemparent,id_Screen,type_item,id_parm,reporte,typePnt,idserver ";
-                select += "from Menu_Reports ";
-                select += "where type_item='1' ";
-                column4.Visibility = Visibility.Hidden;
-            }
+                if (GridNivel1.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)GridNivel1.SelectedItems[0];
+                    string idrowparent = row["idrow"].ToString();
+                    DataRow[] temp = dtitems.Select("type_item=2 and cod_itemP=" + idrowparent + "");
 
-            if (nameToogle == "Togle3" || nameToogle == "Togle2")
+                    GridNivel3.ItemsSource = null;
+                    if (temp.Length > 0)
+                    {
+                        GridNivel2.ItemsSource = temp.CopyToDataTable().DefaultView;
+                    }
+                    else
+                    {
+                        GridNivel2.ItemsSource = null;
+                    }
+
+                }
+
+            }
+            catch (Exception w)
             {
-                string tipo = nameToogle == "Togle2" ? "2" : "3";
-                select = "select Menu_Reports.idrow as idrowchild,Menu_Reports.name_item as name_itemchild,";
-                select += "Menu_Reports.id_Screen,Menu_Reports.type_item,Menu_Reports.id_parm,";
-                select += "Menu_Reports.reporte,Menu_Reports.typePnt,Menu_Reports.idserver,";
-                select += "menu.idrow as idrowparent,menu.name_item as name_itemparent,Menu_Reports.id_Screen ";
-                select += "from Menu_Reports ";
-                select += "inner join Menu_Reports as menu on menu.idrow = Menu_Reports.cod_itemp ";
-                select += "where Menu_Reports.type_item='" + tipo + "';";
-                column4.Visibility = Visibility.Visible;
+                MessageBox.Show("error al cargar:" + w);
             }
-
-            DataTable dt = SiaWin.Func.SqlDT(select, "Existencia", 0);
-            GridItem.ItemsSource = dt.DefaultView;
         }
 
-        void ActualizarEventhandler(object sender, RoutedEventArgs e)
-        {           
-            getDatagridItem(nameToogle());
+        private void GridNivel2_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (GridNivel2.SelectedIndex >= 0)
+                {
+                    DataRowView row = (DataRowView)GridNivel2.SelectedItems[0];
+                    string idrowparent = row["idrow"].ToString();
+                    DataRow[] temp = dtitems.Select("type_item=3 and cod_itemP=" + idrowparent + "");
+
+                    if (temp.Length > 0)
+                    {
+                        GridNivel3.ItemsSource = temp.CopyToDataTable().DefaultView;
+                    }
+                    else
+                    {
+                        GridNivel3.ItemsSource = null;
+                    }
+
+                }
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error al cargar:" + w);
+            }
         }
 
-        Form formulario;
+
+
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var verificacion = IsCheck();
-            if (verificacion.check == false)
-            {
-                MessageBox.Show("Selecciona un item para agregar");
-                return;
-            }
 
-            formulario = new Form();
-            formulario.tipo = verificacion.itemToogle;
-            formulario.edit = false;
-            formulario.BTN_form.Content = "Guardar";
-            formulario.ActualizarParentEventHandler += new RoutedEventHandler(ActualizarEventhandler);
-            formulario.panelForm.Visibility = Visibility.Visible;
-            Main.Children.Add(formulario);
+            try
+            {
+                int nivel = Convert.ToInt32(((Button)sender).Tag);
+
+                Syncfusion.UI.Xaml.Grid.SfDataGrid sfData = new Syncfusion.UI.Xaml.Grid.SfDataGrid();
+
+                string idrow = "";
+                string name = "";
+
+                switch (nivel)
+                {
+                    case 1: sfData = null; break;
+                    case 2:
+                        sfData = GridNivel1;
+                        if (GridNivel1.SelectedIndex < 0)
+                        {
+                            MessageBox.Show($"debe de seleccionar algun item del nivel 1 para poder agregar", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            return;
+                        }
+                        break;
+                    case 3:
+                        sfData = GridNivel2;
+                        if (GridNivel2.SelectedIndex < 0)
+                        {
+                            MessageBox.Show($"debe de seleccionar algun item del nivel 2 para poder agregar", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            return;
+                        }
+                        break;
+                }
+
+                if (sfData != null)
+                {
+                    DataRowView row = (DataRowView)sfData.SelectedItems[0];
+                    idrow = row["idrow"].ToString();
+                    name = row["name_item"].ToString();
+                }
+
+
+                Form form = new Form();
+                form.IdRowParent = idrow;
+                form.IdNameParent = name;
+                form.titleLevel = $"Nivel {nivel}";
+                form.nivel = nivel;
+                form.ShowInTaskbar = false;
+                form.Owner = Application.Current.MainWindow;
+                form.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                form.ShowDialog();
+
+                if (form.flag) loadItems();
+
+            }
+            catch (Exception w)
+            {
+                MessageBox.Show("error en BtnAdd_Click:" + w);
+            }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                int nivel = Convert.ToInt32(((Button)sender).Tag);
 
+                Syncfusion.UI.Xaml.Grid.SfDataGrid sfData = new Syncfusion.UI.Xaml.Grid.SfDataGrid();
 
-                var verificacion = IsCheck();
-                if (verificacion.check == false)
+                int idrow = 0;
+                string name = "";
+
+                switch (nivel)
                 {
-                    MessageBox.Show("Selecciona un item para agregar");
+                    case 1: sfData = GridNivel1; break;
+                    case 2: sfData = GridNivel2; break;
+                    case 3: sfData = GridNivel3; break;
+                }
+
+
+                if (sfData.SelectedIndex < 0)
+                {
+                    MessageBox.Show($"debe de seleccionar algun item del nivel {nivel} para poder editar", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
 
 
-                if (GridItem.SelectedIndex >= 0)
-                {
-                    DataRowView row = (DataRowView)GridItem.SelectedItems[0];
-                    //string id = row["idrowparent"].ToString().Trim();
+                DataRowView row = (DataRowView)sfData.SelectedItems[0];
+                idrow = (int)row["idrow"];
+                name = row["name_item"].ToString();
 
-                    Form formulario = new Form();
+                
+                DataRow[] temp = dtitems.Select($"idrow={idrow}");
+                string nameparent = "";                
+                if (temp.Length > 0)
+                {                    
+                    string cod_itemp = temp[0]["cod_itemp"].ToString().Trim();                    
+                    if (!string.IsNullOrWhiteSpace(cod_itemp))
+                    {                        
+                        DataRow[] parent = dtitems.Select($"idrow={cod_itemp}");                        
+                        if (parent.Length > 0) nameparent = parent[0]["name_item"].ToString();
+                    }                    
+                }
 
-                    formulario.edit = true;
-                    formulario.tipo = verificacion.itemToogle;
-                    formulario.id = Togle1.IsChecked == true ? Convert.ToInt32(row["idrowparent"]) : Convert.ToInt32(row["idrowchild"]);
-                    formulario.BTN_form.Content = "Modificar";
-                    formulario.ActualizarParentEventHandler += new RoutedEventHandler(ActualizarEventhandler);
-                    formulario.panelForm.Visibility = Visibility.Visible;
-                    formulario.TX_nameitem.Text = Togle1.IsChecked == true ? row["name_itemparent"].ToString().Trim() : row["name_itemchild"].ToString().Trim();                    
-                    formulario.server = Convert.ToInt32(row["idserver"]);
-                    formulario.ParentIdRow = Convert.ToInt32(row["idrowparent"]);
-                    Main.Children.Add(formulario);
-                }
-                else
-                {
-                    MessageBox.Show("Selecciona un item de la grilla para poder editar");
-                }
+                Form form = new Form();
+                form.nameParent = nameparent;
+                form.titleLevel = $"Nivel {nivel}";
+                form.idrow = idrow;
+                form.Datos = temp;
+                form.nivel = nivel;
+                form.ShowInTaskbar = false;
+                form.Owner = Application.Current.MainWindow;
+                form.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                form.ShowDialog();
+
+                if (form.flag) loadItems();
+
             }
-            catch (Exception W){MessageBox.Show("ERROR EN LA EDICION:"+W);}
-
-        }
-
-        public ValuesReturn IsCheck()
-        {
-            ValuesReturn valores;
-            valores.check = false;
-            valores.itemToogle = "ninguno";
-
-            foreach (ToggleButton item in GridToogle.Children)
+            catch (Exception w)
             {
-                if (item.IsChecked == true)
-                {
-                    valores.check = true;
-                    valores.itemToogle = item.Name;
-                    break;
-                }
+                MessageBox.Show("error en BtnAdd_Click:" + w);
             }
 
-            return valores;
         }
 
-
-        public struct ValuesReturn
-        {
-            public bool check;
-            public string itemToogle;
-        }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var verificacion = IsCheck();
-                if (verificacion.check == false)
+                int nivel = Convert.ToInt32(((Button)sender).Tag);
+
+                Syncfusion.UI.Xaml.Grid.SfDataGrid sfData = new Syncfusion.UI.Xaml.Grid.SfDataGrid();
+
+                switch (nivel)
                 {
-                    MessageBox.Show("Selecciona un item para eliminar");
+                    case 1: sfData = GridNivel1; break;
+                    case 2: sfData = GridNivel2; break;
+                    case 3: sfData = GridNivel3; break;
+                }
+
+
+                if (sfData.SelectedIndex < 0)
+                {
+                    MessageBox.Show($"debe de seleccionar algun item del nivel {nivel} para poder eliminarlo", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
 
-                if (GridItem.SelectedIndex >= 0)
+                DataRowView row = (DataRowView)sfData.SelectedItems[0];
+
+                string idrow = row["idrow"].ToString();
+                string name = row["name_item"].ToString();
+
+                DataRow[] temp = dtitems.Select($"type_item={nivel + 1} and cod_itemP={idrow}");
+                if (temp.Length > 0)
                 {
-                    DataRowView row = (DataRowView)GridItem.SelectedItems[0];
-                    string item = row["name_itemparent"].ToString().Trim();
-
-                    if (MessageBox.Show("Usted desea eliminar el item:" + item + "?", "Guardar Traslado", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                    {
-                        string delete = "";
-
-                        int idDel = Togle1.IsChecked == true ? Convert.ToInt32(row["idrowparent"]) : Convert.ToInt32(row["idrowchild"]);
-
-                        delete = "delete Menu_Reports where idrow=" + idDel+ ";";
-
-                        if (SiaWin.Func.SqlCRUD(delete, 0) == true)
-                        {
-                            MessageBox.Show("Eliminacion de item exitosa");
-                            getDatagridItem(nameToogle());
-                        }
-                                                    
-                    }
+                    MessageBox.Show($"el item {name} tiene elementos anidados debe eliminarlos primero dichos elementos", "alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
                 }
 
+
+                MessageBoxResult message = MessageBox.Show($"Usted desea eliminar el item:{name} del nivel {nivel} ?", "Confitmacion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (message == MessageBoxResult.Yes)
+                {
+                    string delete = $"delete Menu_Reports where idrow={idrow};";                    
+
+                    if (SiaWin.Func.SqlCRUD(delete, 0) == true)
+                    {
+                        MessageBox.Show("Eliminacion de item exitosa", "Alerta", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        loadItems();
+                    }
+
+                }
 
             }
             catch (Exception w)
@@ -229,29 +331,6 @@ namespace SiasoftAppExt
                 MessageBox.Show("erro al eliminar:" + w);
             }
         }
-
-
-        public bool ExisChild(int id)
-        {
-            bool bandera = false;
-            DataTable dt = SiaWin.Func.SqlDT("select * from Menu_Reports where cod_itemP='"+id+"'", "Existencia", 0);
-            if (dt.Rows.Count > 0) bandera = true;
-            return bandera;
-        }
-
-        public string nameToogle()
-        {
-            string nameItem = "";
-            foreach (ToggleButton item in GridToogle.Children)
-            {
-                if (item.IsChecked == true) nameItem = item.Name;
-            }
-            return nameItem.Trim();
-        }
-
-
-
-
 
 
     }

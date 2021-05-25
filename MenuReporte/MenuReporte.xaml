@@ -22,13 +22,31 @@
 
 
     <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
+        <Grid Background="Black" Panel.ZIndex="4">
+            <Button Name="MenuBTN" Tag="1" Click="Button_Vis" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="Menu" >
+                    <materialDesign:PackIcon.LayoutTransform>
+                        <ScaleTransform  ScaleX="1.5" ScaleY="1.5"/>
+                    </materialDesign:PackIcon.LayoutTransform>
+                </materialDesign:PackIcon>
+            </Button>
 
-        <Grid Grid.Column="1"  Grid.Row="1" Name="PanelMenu" Background="Black" Width="350" HorizontalAlignment="Left" Margin="-350,0,0,0" Panel.ZIndex="1">
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Name="BTNParameter" Tag="1" Click="BTNParameter_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon Kind="BookmarkTick"/>
+                </Button>
+                <Button Name="BTNsetting" Tag="1" Click="BTNsetting_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon Kind="Settings"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1"  Grid.Row="1" Name="PanelMenu" Background="Black" Width="350" HorizontalAlignment="Left" Margin="-350,0,0,0" Panel.ZIndex="3" Visibility="Visible" Opacity="0.8">
             <Grid Grid.Row="1" Background="{x:Null}"  VerticalAlignment="Top" Margin="0,0,0,0" >
                 <Grid.Resources>
                     <!--<Style x:Key="botones-menu">-->
@@ -69,33 +87,14 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="1"  Grid.Row="0" Name="menu_panel" Background="black" Panel.ZIndex="2">
-            <materialDesign:ColorZone  Mode="Inverted"  Padding="5">
-                <DockPanel>
-                    <materialDesign:PopupBox DockPanel.Dock="Right"  PlacementMode="BottomAndAlignCentres" Background="Red">
-                        <Button Name="BTNsetting" Cursor="Hand" Margin="5" Click="BTNsetting_Click" Background="#373737">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon  Kind="PackageVariantClosed" Height="20" Width="20" Foreground="#FF2196F3" />
-                                <TextBlock Text="setting" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#FF2196F3" FontSize="10"/>
-                            </StackPanel>
-                        </Button>
-                    </materialDesign:PopupBox>
-                    <StackPanel Orientation="Horizontal">
-                        <ToggleButton  Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Click="Button_Vis" Tag="1" Name="MenuBTN" Cursor="Hand" Margin="15 0 0 0" Foreground="White"/>
-                        <TextBlock  VerticalAlignment="Center"  Margin="10 0 0 0"/>
-                    </StackPanel>
-                    <Button VerticalAlignment="Center" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}">
-                    
-                    </Button>
-                </DockPanel>
-            </materialDesign:ColorZone>
+        <Grid Name="conte" Grid.Column="1" Panel.ZIndex="1" Background="White">
+            <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Center" FontSize="12" AnimationSpeed="100" AnimationType="Rainy" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Panel.ZIndex="2" Focusable="False" />
+            <SiaSf:TabControlExt Name="TabControlPricipal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True" EnableLabelEdit="False"
+                   RotateTextWhenVertical="False" TabStripPlacement="Top" TabItemSelectedBackground="#373737" CloseButtonType="Both"                                  
+                                 >
+                <!--<SiaSf:TabItemExt Content="esto es una prueba" Header="esto es una prueba"    />-->
+            </SiaSf:TabControlExt>
         </Grid>
-
-        <Grid Name="conte" Grid.Row="1">
-            <SiaSf:SfBusyIndicator Name="sfBusyIndicator" Margin="5" VerticalAlignment="Center" FontSize="12" AnimationSpeed="100" AnimationType="Rainy" Header="Cargando Datos - SiasoftApp" Height="200" IsBusy="False" Panel.ZIndex="2" Focusable="False"/>
-            <SiaSf:TabControlExt Name="TabControlPricipal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SiaSf:SkinStorage.VisualStyle="Metro"  IsDisableUnloadTabItemExtContent="True" EnableLabelEdit="False"/>
-        </Grid>
-
 
     </Grid>
 

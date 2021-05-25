@@ -136,31 +136,59 @@ C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\MenuR
 C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\project\MenuReporte\obj\Debug\MenuReporte.pdb
 C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\MenuReporte.dll
 C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019\Library\MenuReporte.pdb
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.g.cs
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.cache
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.lref
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.dll
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.pdb
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.baml
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.g.resources
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.Properties.Resources.resources
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.GenerateResource.cache
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CoreCompileInputs.cache
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CopyComplete
-D:\SiasoftApp_SDA\Library\MenuReporte.dll
-D:\SiasoftApp_SDA\Library\MenuReporte.pdb
-D:\SiasoftApp_SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csprojAssemblyReference.cache
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.csprojAssemblyReference.cache
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.g.cs
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.cache
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.lref
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.baml
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.g.resources
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.Properties.Resources.resources
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.GenerateResource.cache
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CoreCompileInputs.cache
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CopyComplete
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.dll
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\project\MenuReporte\obj\Debug\MenuReporte.pdb
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\MenuReporte.dll
-C:\Users\aleja\Desktop\SDA\Siasoft\Library\MenuReporte.pdb
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.csprojAssemblyReference.cache
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.g.cs
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.cache
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.lref
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.baml
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.g.resources
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.Properties.Resources.resources
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.GenerateResource.cache
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CoreCompileInputs.cache
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CopyComplete
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.dll
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.pdb
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\MenuReporte.dll
+D:\GS\server 10 original\SiasoftGSV2019_actual\Library\MenuReporte.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.csprojAssemblyReference.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.g.cs
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.lref
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.baml
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.g.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.Properties.Resources.resources
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.GenerateResource.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CoreCompileInputs.cache
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CopyComplete
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\project\MenuReporte\obj\Debug\MenuReporte.pdb
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\MenuReporte.dll
+C:\SiasoftApp\SiasoftGSNueva\SiasoftGSV2019\SiasoftGSV2019_actual\Library\MenuReporte.pdb
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.csprojAssemblyReference.cache
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.g.cs
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.cache
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.lref
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.baml
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.g.resources
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.Properties.Resources.resources
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.csproj.GenerateResource.cache
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.csproj.CoreCompileInputs.cache
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.csproj.CopyComplete
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.dll
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuReporte\obj\Debug\MenuReporte.pdb
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\MenuReporte.dll
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\MenuReporte.pdb
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csprojAssemblyReference.cache
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.g.cs
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.cache
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte_MarkupCompile.lref
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.baml
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.g.resources
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.Properties.Resources.resources
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.GenerateResource.cache
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CoreCompileInputs.cache
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.csproj.CopyComplete
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.dll
+D:\Empresas\Empresas\SDA\Library\project\MenuReporte\obj\Debug\MenuReporte.pdb
+D:\Empresas\Empresas\SDA\Library\MenuReporte.dll
+D:\Empresas\Empresas\SDA\Library\MenuReporte.pdb

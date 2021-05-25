@@ -14,15 +14,20 @@ namespace MenuReporte
         public string TipoPnt { get; set; }
         public bool IsRep { get; set; }
         public string urlRep { get; set; }
-        public int Id_screen { get; set; }                     
+        public int Id_screen { get; set; }
         public string typePnt { get; set; }
         public int idserver { get; set; }
         public string serverIp { get; set; }
         public string userServer { get; set; }
         public string userServerPass { get; set; }
 
+        public string userSql { get; set; }
+        public string userSqlPass { get; set; }
+        public string param_emp { get; set; }
+        public string stored_procedure { get; set; }
 
 
+        public int id_acceso { get; set; }
         /* 
           type_item = tipo de item del menu 1 es padre 2 es hijo y 3 es hijo del hijo
           id_parm = 1 si es reporte 0 no es reporte

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuReporteSetting", "MenuReporteSetting.csproj", "{BF1A4049-9021-4CC4-8255-800CC33D0564}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuReporte", "..\MenuReporte\MenuReporte.csproj", "{DE86D211-0683-4BBC-B11E-675014772059}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF1A4049-9021-4CC4-8255-800CC33D0564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF1A4049-9021-4CC4-8255-800CC33D0564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF1A4049-9021-4CC4-8255-800CC33D0564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF1A4049-9021-4CC4-8255-800CC33D0564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE86D211-0683-4BBC-B11E-675014772059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE86D211-0683-4BBC-B11E-675014772059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE86D211-0683-4BBC-B11E-675014772059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE86D211-0683-4BBC-B11E-675014772059}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C59C5D69-F058-4C13-94DF-1A42E05ECEAC}
+	EndGlobalSection
+EndGlobal

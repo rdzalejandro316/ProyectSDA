@@ -1,0 +1,27 @@
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.g.cs
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme_MarkupCompile.cache
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme_MarkupCompile.lref
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.baml
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.g.resources
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.Properties.Resources.resources
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.csproj.GenerateResource.cache
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.csproj.CoreCompileInputs.cache
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.csproj.CopyComplete
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.dll
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\projectGS\MenuInforme\obj\Debug\MenuInforme.pdb
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\MenuInforme.dll
+D:\Empresas\Empresas\Grupo saavedra\SiasoftGS\Library\MenuInforme.pdb
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.csprojAssemblyReference.cache
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.g.cs
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme_MarkupCompile.cache
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme_MarkupCompile.lref
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.baml
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.g.resources
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.Properties.Resources.resources
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.csproj.GenerateResource.cache
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.csproj.CoreCompileInputs.cache
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.csproj.CopyComplete
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.dll
+D:\Empresas\Empresas\SDA\Library\project\MenuInforme\obj\Debug\MenuInforme.pdb
+D:\Empresas\Empresas\SDA\Library\MenuInforme.dll
+D:\Empresas\Empresas\SDA\Library\MenuInforme.pdb

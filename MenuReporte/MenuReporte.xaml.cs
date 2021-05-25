@@ -1,7 +1,7 @@
 ﻿using MenuReporte;
 using Microsoft.Reporting.WinForms;
-//using Syncfusion.Windows.Reports;
-//using Syncfusion.Windows.Reports.Viewer;
+using Syncfusion.Windows.Reports;
+using Syncfusion.Windows.Reports.Viewer;
 using Syncfusion.Windows.Tools.Controls;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms.Integration;
 using System.Windows.Input;
-using ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode;
 
 namespace SiasoftAppExt
 {
@@ -25,6 +24,18 @@ namespace SiasoftAppExt
     //pruebas
     //Sia.PublicarPnt(9552,"MenuReporte");
     //Sia.TabU(9552);
+
+    public class Parametros
+    {
+        public string parameter { get; set; }
+        public string tabla { get; set; }
+        public string cod_tbl { get; set; }
+        public string nom_tbl { get; set; }
+        public bool istable { get; set; }
+        public bool iscombo { get; set; }
+
+    }
+
     public partial class MenuReporte : UserControl
     {
         dynamic SiaWin;
@@ -56,7 +67,7 @@ namespace SiasoftAppExt
                 cnEmp = foundRow[SiaWin.CmpBusinessCn].ToString().Trim();
                 string aliasemp = foundRow["BusinessAlias"].ToString().Trim();
                 tabitem.Logo(idLogo, ".png");
-                tabitem.Title = "Reportes (" + aliasemp + ")";
+                tabitem.Title = "Reportes";
             }
             catch (Exception e)
             {
@@ -101,6 +112,11 @@ namespace SiasoftAppExt
                                 serverIp = row["ServerIP"].ToString().Trim(),
                                 userServer = row["UserServer"].ToString().Trim(),
                                 userServerPass = row["UserServerPassword"].ToString().Trim(),
+                                userSql = row["UserSql"].ToString().Trim(),
+                                userSqlPass = row["UserSqlPassword"].ToString().Trim(),
+                                param_emp = row["param_emp"].ToString().Trim(),
+                                id_acceso = Convert.ToInt32(row["id_acceso"]),
+                                stored_procedure = row["stored_procedure"].ToString().Trim(),
                             };
 
                             item.Tag = btn.Tag;
@@ -127,6 +143,11 @@ namespace SiasoftAppExt
                                 serverIp = row["ServerIP"].ToString().Trim(),
                                 userServer = row["UserServer"].ToString().Trim(),
                                 userServerPass = row["UserServerPassword"].ToString().Trim(),
+                                userSql = row["UserSql"].ToString().Trim(),
+                                userSqlPass = row["UserSqlPassword"].ToString().Trim(),
+                                param_emp = row["param_emp"].ToString().Trim(),
+                                id_acceso = Convert.ToInt32(row["id_acceso"]),
+                                stored_procedure = row["stored_procedure"].ToString().Trim(),
                             };
 
                             string header = row["name_item"].ToString().Trim();
@@ -149,6 +170,11 @@ namespace SiasoftAppExt
                                 serverIp = row["ServerIP"].ToString().Trim(),
                                 userServer = row["UserServer"].ToString().Trim(),
                                 userServerPass = row["UserServerPassword"].ToString().Trim(),
+                                userSql = row["UserSql"].ToString().Trim(),
+                                userSqlPass = row["UserSqlPassword"].ToString().Trim(),
+                                param_emp = row["param_emp"].ToString().Trim(),
+                                id_acceso = Convert.ToInt32(row["id_acceso"]),
+                                stored_procedure = row["stored_procedure"].ToString().Trim(),
                             };
 
                             string header = row["name_item"].ToString().Trim();
@@ -172,7 +198,7 @@ namespace SiasoftAppExt
         private DataTable SlowDude(CancellationToken cancellationToken)
         {
             string query = "select Menu_Reports.idrow,cod_itemP,name_item,type_item,id_Screen,id_parm,reporte,typePnt,idserver,id_acceso, ";
-            query += "ReportServer.idrow as repId,ReportServer.ServerIP,ReportServer.UserServer,ReportServer.UserServerPassword ";
+            query += "ReportServer.idrow as repId,ReportServer.ServerIP,ReportServer.UserServer,ReportServer.UserServerPassword,ReportServer.UserSql,ReportServer.UserSqlPassword,param_emp,stored_procedure ";
             query += "from Menu_Reports ";
             query += "left join ReportServer on Menu_Reports.idserver = ReportServer.idrow ";
             DataTable dt = SiaWin.Func.SqlDT(query, "Menu", 0);
@@ -244,38 +270,26 @@ namespace SiasoftAppExt
 
                     switch (MultiTag.typePnt)
                     {
-                        case "1"://abre un tab interno de esta pantalla
-                                 //Syncfusion.Windows.Reports.Viewer.ReportViewer viewer = new Syncfusion.Windows.Reports.Viewer.ReportViewer();
-                                 //viewer.ReportPath = MultiTag.urlRep;
-                                 //viewer.ReportServerUrl = MultiTag.serverIp;
-                                 //viewer.ProcessingMode = ProcessingMode.Remote;
-                                 //viewer.ReportServerCredential = new System.Net.NetworkCredential(MultiTag.userServer, MultiTag.userServerPass);
-                                 //List<DataSourceCredentials> crdentials = new List<DataSourceCredentials>();
-
-                            //foreach (var dataSource in viewer.GetDataSources())
-                            //{
-                            //    DataSourceCredentials credn = new DataSourceCredentials();
-                            //    credn.Name = dataSource.Name;
-                            //    credn.UserId = "sa";
-                            //    credn.Password = "W654321*";
-                            //    crdentials.Add(credn);
-                            //}
-                            //viewer.SetDataSourceCredentials(crdentials);
-                            //viewer.RefreshReport();
-
-                            //TabItemExt tabItemExt1 = new TabItemExt();
-                            //tabItemExt1.Header = MultiTag.NamePnt;
-                            //tabItemExt1.Content = viewer;
-                            //TabControlPricipal.Items.Add(tabItemExt1);
-
+                        case "1"://abre un tab interno de esta pantalla                                 
                             WindowsFormsHost form = new WindowsFormsHost();
-
 
                             Microsoft.Reporting.WinForms.ReportViewer viewer = new Microsoft.Reporting.WinForms.ReportViewer();
                             viewer.ServerReport.ReportPath = MultiTag.urlRep;
-                            viewer.ServerReport.ReportServerUrl = new Uri(MultiTag.serverIp); ;
+                            viewer.ServerReport.ReportServerUrl = new Uri(MultiTag.serverIp);
+                            ReportServerCredentials rsCredentials = viewer.ServerReport.ReportServerCredentials;
+                            rsCredentials.NetworkCredentials = new System.Net.NetworkCredential(MultiTag.userServer, MultiTag.userServerPass);
+                            List<Microsoft.Reporting.WinForms.DataSourceCredentials> crdentials = new List<Microsoft.Reporting.WinForms.DataSourceCredentials>();
                             viewer.SetDisplayMode(DisplayMode.Normal);
-                            viewer.ProcessingMode = ProcessingMode.Remote;
+                            viewer.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Remote;
+                            foreach (var dataSource in viewer.ServerReport.GetDataSources())
+                            {
+                                Microsoft.Reporting.WinForms.DataSourceCredentials credn = new Microsoft.Reporting.WinForms.DataSourceCredentials();
+                                credn.Name = dataSource.Name;
+                                credn.UserId = MultiTag.userSql;
+                                credn.Password = MultiTag.userSqlPass;
+                                crdentials.Add(credn);
+                            }
+
                             form.Child = viewer;
                             viewer.RefreshReport();
                             TabItemExt tabItemExt1 = new TabItemExt();
@@ -295,8 +309,41 @@ namespace SiasoftAppExt
                             ww.ShowInTaskbar = false;
                             ww.Owner = Application.Current.MainWindow;
                             ww.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                            ww.ShowDialog();
+                            ww.Show();
                             break;
+
+                        case "5":
+
+                            Microsoft.Reporting.WinForms.ReportViewer viewerSia = new Microsoft.Reporting.WinForms.ReportViewer();
+                            viewerSia.ServerReport.ReportPath = MultiTag.urlRep;
+                            viewerSia.ServerReport.ReportServerUrl = new Uri(MultiTag.serverIp);
+                            ReportServerCredentials rsCredentialsSia = viewerSia.ServerReport.ReportServerCredentials;
+                            rsCredentialsSia.NetworkCredentials = new System.Net.NetworkCredential(MultiTag.userServer, MultiTag.userServerPass);
+                            List<Microsoft.Reporting.WinForms.DataSourceCredentials> crdentialsSia = new List<Microsoft.Reporting.WinForms.DataSourceCredentials>();
+                            viewerSia.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Remote;
+                            foreach (var dataSource in viewerSia.ServerReport.GetDataSources())
+                            {
+                                Microsoft.Reporting.WinForms.DataSourceCredentials credn = new Microsoft.Reporting.WinForms.DataSourceCredentials();
+                                credn.Name = dataSource.Name;
+                                credn.UserId = MultiTag.userSql;
+                                credn.Password = MultiTag.userSqlPass;
+                                crdentialsSia.Add(credn);
+                            }
+
+                            Microsoft.Reporting.WinForms.ReportParameterInfoCollection parameters = viewerSia.ServerReport.GetParameters();
+                            dynamic w = SiaWin.WindowExt(9697, "MenuInforme");
+                            w.idrowReport = Convert.ToInt32(MultiTag.Id_Row);
+                            w.reportName = MultiTag.NamePnt;
+                            w.report_parameter = parameters;
+                            w.report = viewerSia;
+                            w.param_emp = MultiTag.param_emp;
+                            w.stored_p = MultiTag.stored_procedure;
+                            w.ShowInTaskbar = false;
+                            w.Owner = Application.Current.MainWindow;
+                            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                            w.Show();
+                            break;
+
                     }
                 }
                 else
@@ -307,7 +354,7 @@ namespace SiasoftAppExt
                             SiaWin.TabU(MultiTag.Id_screen);
                             break;
                         case "3"://windows                            
-                            DataTable dt = SiaWin.Func.SqlDT("select * from screens where id_screen='" + MultiTag.Id_screen + "' ", "Menu", 0);
+                            DataTable dt = SiaWin.Func.SqlDT("select FileExt from screens where id_screen='" + MultiTag.Id_screen + "' ", "Menu", 0);
                             if (dt.Rows.Count > 0)
                             {
                                 dynamic ww = SiaWin.WindowExt(MultiTag.Id_screen, dt.Rows[0]["FileExt"].ToString().Trim());
@@ -318,22 +365,15 @@ namespace SiasoftAppExt
                             }
                             break;
                         case "4":
-                            WebBrowser webPowBi = new WebBrowser();
-                            string urlPowBi = MultiTag.urlRep;
-                            webPowBi.Navigate(urlPowBi);
-                            TabItemExt tabItemExtPowBi = new TabItemExt();
-                            tabItemExtPowBi.Header = MultiTag.NamePnt;
-                            tabItemExtPowBi.Content = webPowBi;
-                            TabControlPricipal.Items.Add(tabItemExtPowBi);
-                            break;
-                        case "5":
-                            WebBrowser web = new WebBrowser();
-                            string url = MultiTag.urlRep;
-                            web.Navigate(url);
-                            TabItemExt tabItemExt = new TabItemExt();
-                            tabItemExt.Header = MultiTag.NamePnt;
-                            tabItemExt.Content = web;
-                            TabControlPricipal.Items.Add(tabItemExt);
+                            //Microsoft.Web.WebView2.Wpf.WebView2 web = new Microsoft.Web.WebView2.Wpf.WebView2();
+                            //string url = MultiTag.urlRep;
+                            //Uri uri = new Uri(url);
+                            //web.Source = uri;
+                            //web.CoreWebView2.Navigate(uri.AbsoluteUri);
+                            //TabItemExt tabItemExt = new TabItemExt();
+                            //tabItemExt.Header = MultiTag.NamePnt;
+                            //tabItemExt.Content = web;
+                            //TabControlPricipal.Items.Add(tabItemExt);
                             break;
                     }
                 }
@@ -349,31 +389,38 @@ namespace SiasoftAppExt
 
         private void Button_Vis(object sender, RoutedEventArgs e)
         {
-            string tag = ((ToggleButton)sender).Tag.ToString();
-
-            if (tag == "1")
+            try
             {
-                Thickness marginMenu = PanelMenu.Margin;
-                marginMenu.Left = 0;
-                PanelMenu.Margin = marginMenu;
 
-                Thickness marginCont = conte.Margin;
-                marginCont.Left = 350;
-                conte.Margin = marginCont;
-                MenuBTN.Tag = "2";
+                string tag = ((Button)sender).Tag.ToString();
+
+                if (tag == "1")
+                {
+                    Thickness marginMenu = PanelMenu.Margin;
+                    marginMenu.Left = 0;
+                    PanelMenu.Margin = marginMenu;
+
+                    Thickness marginCont = conte.Margin;
+                    marginCont.Left = 350;
+                    conte.Margin = marginCont;
+                    MenuBTN.Tag = "2";
+                }
+                else
+                {
+                    Thickness marginMenu = PanelMenu.Margin;
+                    marginMenu.Left = -350;
+                    PanelMenu.Margin = marginMenu;
+
+                    Thickness marginCont = conte.Margin;
+                    marginCont.Left = 0;
+                    conte.Margin = marginCont;
+                    MenuBTN.Tag = "1";
+                }
             }
-            else
+            catch (Exception w)
             {
-                Thickness marginMenu = PanelMenu.Margin;
-                marginMenu.Left = -350;
-                PanelMenu.Margin = marginMenu;
-
-                Thickness marginCont = conte.Margin;
-                marginCont.Left = 0;
-                conte.Margin = marginCont;
-                MenuBTN.Tag = "1";
+                MessageBox.Show("error al abrir:" + w);
             }
-
         }
 
         private void BTNsetting_Click(object sender, RoutedEventArgs e)
@@ -387,6 +434,14 @@ namespace SiasoftAppExt
             LoadItems();
         }
 
+        private void BTNParameter_Click(object sender, RoutedEventArgs e)
+        {
+            dynamic WinDescto = SiaWin.WindowExt(9696, "MenuReporteParametros");
+            WinDescto.ShowInTaskbar = false;
+            WinDescto.Owner = Application.Current.MainWindow;
+            WinDescto.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            WinDescto.ShowDialog();
+        }
 
 
     }
